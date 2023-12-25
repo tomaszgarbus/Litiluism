@@ -14,37 +14,29 @@ fun isSeparator(rune: Char): Boolean {
 }
 
 fun generateOptions(exercise: Exercise): List<List<Pair<Char, Boolean>>> {
-    return exercise.solution.map { c ->
+    return exercise.solution().map { c ->
         listOf(
             Pair(c, true),
             Pair(randomLetter(), false),
             Pair(randomLetter(), false)
-        )
+        ).shuffled()
     }
 }
 
-fun imgResourceForId(exerciseId: String): Int {
-    when (exerciseId) {w
-        "example" -> R.drawable.gripsholmstone179
+fun List<Exercise>.toHashMap(): ExercisesMap {
+    val map = ExercisesMap()
+    for (e in this) {
+        map[e.id] = e
     }
-    return -1
+    return map
 }
 
-fun exampleExercise(): Exercise {
-    val id: String = "example"
-    val title: String = "Gripsholm stone Sö 179"
-    val description: String =
-        "The Gripsholm Stone - which can to this day be visited near the Gripsholm Castle not far from Stockholm - is one of the \\\"Ingvarr stones\\\". This group of stones is dated soon after 1041, when the Icelandic annals record the death of Yngvarr the Far-Travelled in the south. Note how the inscriber forgot one word and added it later!"
-    val runes: String =
-        "ᛏᚢᛚᛅ:ᛚᛁᛏ:ᚱᛅᛁᛋᛅ:ᛋᛏᛅᛁᚾ:ᚦᛁᚾᛋᛅᛏ:ᛋᚢᚾ:ᛋᛁᚾ:ᚼᛅᚱᛅᛚᛏ:ᛒᚱᚢᚦᚢᚱ:ᛁᚾᚴᚢᛅᚱᛋ:ᚦᛅᛁᛦ|ᚠᚢᚱᚢ:ᛏᚱᛁᚴᛁᛚᛅ:ᚠᛁᛅᚱᛁ:ᛅᛏ:ᚴᚢᛚᛁ:ᛅᚢᚴ:ᛅ:ᚢᛋᛏᛅᚱᛚᛅᚱ:ᚾᛁ:ᚴᛅᚠᚢ:ᛏᚢᚢ:ᛋᚢᚾᛅᚱ:ᛚᛅ:ᛅᛋᛁᚱᚴ:ᛚᛅᚾ:ᛏᛁ"
-    val solution: String = "talu:lat:raisa:stain:dinsat:sun:sin:haralt:brudur"
-    val imgResource = R.drawable.gripsholmstone179
-    return Exercise(
-        id = id,
-        title = title,
-        description = description,
-        runes = runes,
-        solution = solution,
-        imgResource = imgResource
-    )
+fun stripFileExtension(str: String): String {
+    return str.replace(".jpg", "").replace(".png", "")
+}
+
+fun removeScandinavianLetters(str: String): String {
+    return str.replace('æ', 'a').replace('á', 'a').replace('ø', 'o').replace('í', 'i')
+        .replace('ö', 'o')
+        .replace('ä', 'a').replace('å', 'a')
 }

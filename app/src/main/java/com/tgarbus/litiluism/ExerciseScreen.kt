@@ -2,6 +2,7 @@ package com.tgarbus.litiluism
 
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,10 +26,12 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -66,17 +69,21 @@ fun Buttons(
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-        AnimatedVisibility(visible = showFeedback) {
-            Text(
-                text = "Click the correct answer to continue",
-                fontFamily = sarabunFontFamily,
-                fontWeight = FontWeight(700),
-                fontSize = 16.sp,
-                color = colorResource(R.color.wrong_red),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
+        val feedbackAlpha: Float by animateFloatAsState(
+            if (showFeedback) 1f else 0f,
+            label = "animateFeedback"
+        )
+        Text(
+            text = "Click the correct answer to continue",
+            fontFamily = sarabunFontFamily,
+            fontWeight = FontWeight(700),
+            fontSize = 16.sp,
+            color = colorResource(R.color.wrong_red),
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .alpha(feedbackAlpha)
+        )
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -193,7 +200,7 @@ fun ExerciseScreen(
             contentAlignment = Alignment.Center,
         ) {
             Image(
-                painter = painterResource(id = R.drawable.gripsholmstone179),
+                painter = painterResource(id = exercise.imgResource),
                 contentDescription = "Image goes brr",
                 modifier = Modifier.clip(AbsoluteRoundedCornerShape(50.dp))
             )
@@ -215,15 +222,18 @@ fun ExerciseScreen(
                         r.toString(),
                         textAlign = TextAlign.Center,
                         style = TextStyle(
-                            color = if (i <= position) colorResource(R.color.primary) else colorResource(
+                            color = if (i == position) colorResource(R.color.primary) else colorResource(
                                 R.color.default_text
                             ),
-                            fontSize = 20.sp,
+                            fontSize = 24.sp,
                             fontWeight = if (i == position) FontWeight(800) else FontWeight(400)
                         )
                     )
                     var textColor =
-                        if (i <= position) colorResource(R.color.correct_green) else colorResource(
+                        if (i < position) colorResource(R.color.default_text)
+                        else if (i == position) colorResource(
+                            R.color.correct_green
+                        ) else colorResource(
                             R.color.translation_placeholder
                         )
                     if (i > position) {
@@ -251,7 +261,7 @@ fun ExerciseScreen(
                 showFeedback = showFeedback.value,
                 onAnswerClick = { c ->
                     run {
-                        if (c == exercise.solution[state.position]) {
+                        if (c == exercise.solution()[state.position]) {
                             Log.d("recomp", "Button click: " + c.toString());
                             viewModel.update(c)
                             showFeedback.value = false;
@@ -266,6 +276,6 @@ fun ExerciseScreen(
 }
 
 @Composable
-fun ExerciseScreenFromId(exerciseId: String, navController: NavController) {
-    ExerciseScreen(exercise = exampleExercise(), navController = navController)
+fun ExerciseScreenFromId(exerciseId: String, content: Content, navController: NavController) {
+    ExerciseScreen(exercise = content.exercisesMap()[exerciseId]!!, navController = navController)
 }
