@@ -1,4 +1,4 @@
-package com.tgarbus.litiluism
+package com.tgarbus.litiluism.data
 
 class StaticData {
     companion object {

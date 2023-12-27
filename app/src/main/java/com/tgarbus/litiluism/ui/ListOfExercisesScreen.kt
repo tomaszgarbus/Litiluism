@@ -1,4 +1,4 @@
-package com.tgarbus.litiluism
+package com.tgarbus.litiluism.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -13,19 +13,17 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -38,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -48,6 +47,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.tgarbus.litiluism.data.Country
+import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.countryToName
+import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.maybeCountryFlagResource
 
 data class ExerciseFilters(
     val countries: List<Country> = Country.entries,
@@ -55,6 +59,35 @@ data class ExerciseFilters(
     val activeCountry: Country = Country.ANY,
     val activeRuneRow: String = ""
 )
+
+@Composable
+fun CountryFilterButton(
+    country: Country,
+    activeCountry: Country,
+    onClick: (Country) -> Unit,
+    content: @Composable () -> Unit
+) {
+    if (country == activeCountry) {
+        Button(
+            onClick = { onClick(country) }, colors = ButtonDefaults.buttonColors(
+                containerColor = colorResource(R.color.secondary),
+                contentColor = colorResource(R.color.white)
+            )
+        ) {
+            content()
+        }
+    } else {
+        OutlinedButton(
+            onClick = { onClick(country) },
+            colors = ButtonDefaults.outlinedButtonColors(
+                containerColor = colorResource(R.color.white),
+                contentColor = colorResource(R.color.secondary),
+            )
+        ) {
+            content()
+        }
+    }
+}
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -66,25 +99,35 @@ fun FiltersSection(filters: MutableState<ExerciseFilters>, onDismissRequest: () 
     )
     Column {
         Text("Countries", fontFamily = sarabunFontFamily)
-        FlowRow (
+        FlowRow(
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             for (country in filters.value.countries) {
                 val onClick: ((Country) -> Unit) =
                     { c -> filters.value = filters.value.copy(activeCountry = c) }
                 val buttonText = countryToName(country)
-                if (country == filters.value.activeCountry) {
-                    Button(onClick = { onClick(country) }, colors = ButtonDefaults.buttonColors(
-                        containerColor = colorResource(R.color.secondary),
-                        contentColor = colorResource(R.color.white)
-                    )) {
-                        Text(buttonText, fontFamily = sarabunFontFamily)
-                    }
-                } else {
-                    OutlinedButton(onClick = { onClick(country) }, colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = colorResource(R.color.white),
-                        contentColor = colorResource(R.color.secondary),
-                    )) {
+                val flagResource = maybeCountryFlagResource(country)
+                // TODO: Deduplicate by extracting button to a custom component.
+                CountryFilterButton(
+                    country = country,
+                    activeCountry = filters.value.activeCountry,
+                    onClick = { onClick(country) }
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if (flagResource != null) {
+                            Image(
+                                painterResource(flagResource),
+                                countryToName(country),
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .requiredSize(24.dp)
+                                    .clip(CircleShape)
+                                    .padding(0.dp)
+                            )
+                        }
                         Text(buttonText, fontFamily = sarabunFontFamily)
                     }
                 }
@@ -99,8 +142,9 @@ fun showCountry(country: Country, filters: ExerciseFilters): Boolean {
 
 @Composable
 fun ListOfExercisesScreen(
-    exercises: List<Exercise>, navController: NavController
+    navController: NavController
 ) {
+    val transliterationExercises = StaticContentRepository.getInstance().transliterationExercises
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
         Font(R.font.sarabun_bold, FontWeight.Bold),
@@ -121,7 +165,7 @@ fun ListOfExercisesScreen(
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(
-                    imageVector = Icons.Filled.ArrowBack,
+                    painter = painterResource(id = R.drawable.backarrow_icon),
                     contentDescription = "back",
                     tint = colorResource(R.color.secondary)
                 )
@@ -154,7 +198,7 @@ fun ListOfExercisesScreen(
         AnimatedVisibility(visible = showFiltersDialog.value) {
             FiltersSection(filters) { showFiltersDialog.value = false }
         }
-        for (exercise in exercises) {
+        for (exercise in transliterationExercises) {
             AnimatedVisibility(visible = showCountry(exercise.country, filters.value)) {
                 Box(modifier = Modifier
                     .fillMaxWidth()
@@ -197,7 +241,12 @@ fun ListOfExercisesScreen(
                             )
                         }
                         Image(
-                            painter = painterResource(id = exercise.thumbnailResource),
+                            painter = painterResource(
+                                id = getThumbnailResourceId(
+                                    exercise.imgResourceName,
+                                    LocalContext.current
+                                )
+                            ),
                             contentDescription = "Image goes brr",
                             contentScale = ContentScale.Crop,
                             modifier = Modifier

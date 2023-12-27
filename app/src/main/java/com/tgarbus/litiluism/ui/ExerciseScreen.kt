@@ -1,7 +1,6 @@
-package com.tgarbus.litiluism
+package com.tgarbus.litiluism.ui
 
 import android.util.Log
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -45,8 +45,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.tgarbus.litiluism.data.TransliterationExercise
+import com.tgarbus.litiluism.data.ExerciseStateViewModel
+import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.generateOptions
 import kotlin.math.max
 
 fun colorWithAlpha(color: Color, alpha: Float): Color {
@@ -59,59 +65,64 @@ fun Buttons(
     showFeedback: Boolean,
     onAnswerClick: (Char) -> Unit
 ) {
-    Log.d("recomp", "Recomposition of buttons: " + options.toString());
+    Log.d("recomp", "Recomposition of buttons: $options");
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
         Font(R.font.sarabun_bold, FontWeight.Bold),
         Font(R.font.sarabun_thin, FontWeight.Thin),
     )
     val buttonShape = RoundedCornerShape(size = 14.dp)
-    Column(
-        modifier = Modifier.fillMaxWidth()
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
     ) {
-        val feedbackAlpha: Float by animateFloatAsState(
-            if (showFeedback) 1f else 0f,
-            label = "animateFeedback"
-        )
-        Text(
-            text = "Click the correct answer to continue",
-            fontFamily = sarabunFontFamily,
-            fontWeight = FontWeight(700),
-            fontSize = 16.sp,
-            color = colorResource(R.color.wrong_red),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .alpha(feedbackAlpha)
-        )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        Column(
+            modifier = Modifier.fillMaxWidth()
         ) {
-            val buttonModifier = Modifier
-                .shadow(elevation = 1.dp, shape = buttonShape)
-                .background(color = colorResource(id = R.color.white))
-                .weight(1f)
-                .aspectRatio(1f / 0.95f)
-            val buttonTextColor = colorResource(R.color.dark_grey)
-            val correctButtonTextColor =
-                if (showFeedback) colorResource(R.color.correct_green) else buttonTextColor
-            val wrongButtonTextcolor =
-                if (showFeedback) colorResource(R.color.wrong_red) else buttonTextColor
-            for (i in 0..2) {
-                OutlinedButton(
-                    onClick = { onAnswerClick(options[i].first) },
-                    modifier = buttonModifier,
-                    shape = buttonShape
-                ) {
-                    Text(
-                        options[i].first.toString(),
-                        color = if (options[i].second) correctButtonTextColor else wrongButtonTextcolor,
-                        fontWeight = FontWeight(600),
-                        fontSize = 20.sp,
-                        fontFamily = sarabunFontFamily
-                    )
+            val feedbackAlpha: Float by animateFloatAsState(
+                if (showFeedback) 1f else 0f,
+                label = "animateFeedback"
+            )
+            Text(
+                text = "Click the correct answer to continue",
+                fontFamily = sarabunFontFamily,
+                fontWeight = FontWeight(700),
+                fontSize = 16.sp,
+                color = colorResource(R.color.wrong_red),
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .alpha(feedbackAlpha)
+            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                val buttonModifier = Modifier
+                    .shadow(elevation = 1.dp, shape = buttonShape)
+                    .background(color = colorResource(id = R.color.white))
+                    .weight(1f)
+                    .aspectRatio(1f / 0.95f)
+                val buttonTextColor = colorResource(R.color.dark_grey)
+                val correctButtonTextColor =
+                    if (showFeedback) colorResource(R.color.correct_green) else buttonTextColor
+                val wrongButtonTextcolor =
+                    if (showFeedback) colorResource(R.color.wrong_red) else buttonTextColor
+                for (i in 0..2) {
+                    OutlinedButton(
+                        onClick = { onAnswerClick(options[i].first) },
+                        modifier = buttonModifier,
+                        shape = buttonShape
+                    ) {
+                        Text(
+                            options[i].first.toString(),
+                            color = if (options[i].second) correctButtonTextColor else wrongButtonTextcolor,
+                            fontWeight = FontWeight(600),
+                            fontSize = 20.sp,
+                            fontFamily = sarabunFontFamily
+                        )
+                    }
                 }
             }
         }
@@ -121,19 +132,20 @@ fun Buttons(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ExerciseScreen(
-    exercise: Exercise,
+    transliterationExercise: TransliterationExercise,
     viewModel: ExerciseStateViewModel = viewModel(),
     navController: NavController
 ) {
+    viewModel.transliterationExercise = transliterationExercise
     val state = viewModel.state.collectAsState().value
     Log.d("recomp", "Recomposition of all: " + state.toString());
     val position = state.position
     val inputs = state.inputs
-    val title = exercise.title
-    val description = exercise.description
-    val runes = exercise.runes
+    val title = transliterationExercise.title
+    val description = transliterationExercise.description
+    val runes = transliterationExercise.runes
 
-    val options = rememberSaveable { generateOptions(exercise) }
+    val options = rememberSaveable { generateOptions(transliterationExercise) }
     val showFeedback = rememberSaveable { mutableStateOf<Boolean>(false) }
 
     val scrollState = rememberScrollState()
@@ -200,7 +212,12 @@ fun ExerciseScreen(
             contentAlignment = Alignment.Center,
         ) {
             Image(
-                painter = painterResource(id = exercise.imgResource),
+                painter = painterResource(
+                    id = getImageResourceId(
+                        transliterationExercise.imgResourceName,
+                        LocalContext.current
+                    )
+                ),
                 contentDescription = "Image goes brr",
                 modifier = Modifier.clip(AbsoluteRoundedCornerShape(50.dp))
             )
@@ -208,13 +225,12 @@ fun ExerciseScreen(
         FlowRow(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 20.dp)
                 .shadow(elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp))
                 .background(
                     color = colorResource(R.color.white),
                     shape = RoundedCornerShape(size = 21.dp)
                 )
-                .padding(start = 35.dp, top = 30.dp, end = 35.dp, bottom = 30.dp),
+                .padding(start = 35.dp, top = 30.dp, end = 35.dp, bottom = 0.dp),
         ) {
             for ((i, r) in runes.withIndex()) {
                 Column() {
@@ -251,19 +267,55 @@ fun ExerciseScreen(
                 }
             }
         }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 20.dp)
-        ) {
+        if (viewModel.isComplete()) {
+            Text(
+                text = "Correct!",
+                color = colorResource(id = R.color.correct_green),
+                fontSize = 24.sp,
+                fontFamily = sarabunFontFamily,
+                fontWeight = FontWeight(700),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .shadow(elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp))
+                    .background(
+                        color = colorResource(R.color.white),
+                        shape = RoundedCornerShape(size = 21.dp)
+                    )
+                    .padding(start = 35.dp, top = 30.dp, end = 35.dp, bottom = 30.dp)
+            ) {
+                Text(
+                    text = transliterationExercise.explanation,
+                    fontFamily = sarabunFontFamily,
+                    fontSize = 18.sp,
+                )
+                if (transliterationExercise.sources.isNotEmpty()) {
+                    Text(
+                        text = "Sources:",
+                        fontFamily = sarabunFontFamily,
+                        fontSize = 12.sp,
+                    )
+                    for (source in transliterationExercise.sources) {
+                        Text(
+                            text = source,
+                            fontFamily = sarabunFontFamily,
+                            fontSize = 12.sp,
+                        )
+                    }
+                }
+            }
+        } else {
             Buttons(
                 options = options[state.position],
                 showFeedback = showFeedback.value,
                 onAnswerClick = { c ->
                     run {
-                        if (c == exercise.solution()[state.position]) {
+                        if (c == transliterationExercise.solution()[state.position]) {
                             Log.d("recomp", "Button click: " + c.toString());
-                            viewModel.update(c)
+                            viewModel.updateState(c)
                             showFeedback.value = false;
                             Log.d("recomp", "Position: " + state.toString());
                         } else {
@@ -276,6 +328,9 @@ fun ExerciseScreen(
 }
 
 @Composable
-fun ExerciseScreenFromId(exerciseId: String, content: Content, navController: NavController) {
-    ExerciseScreen(exercise = content.exercisesMap()[exerciseId]!!, navController = navController)
+fun ExerciseScreenFromId(exerciseId: String, navController: NavController) {
+    ExerciseScreen(
+        transliterationExercise = StaticContentRepository.getInstance().exercisesMap[exerciseId]!!,
+        navController = navController
+    )
 }

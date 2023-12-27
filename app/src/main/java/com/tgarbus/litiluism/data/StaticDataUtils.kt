@@ -1,25 +1,11 @@
-package com.tgarbus.litiluism
+package com.tgarbus.litiluism.data
 
-import android.content.Context
 import android.util.JsonReader
 import android.util.JsonToken
+import com.tgarbus.litiluism.countryFromCode
+import com.tgarbus.litiluism.removeScandinavianLetters
+import com.tgarbus.litiluism.stripFileExtension
 import java.io.StringReader
-
-fun loadThumbnail(imgId: String, context: Context): Int {
-    return context.resources.getIdentifier(
-        "thumbnail_" + stripFileExtension(removeScandinavianLetters(imgId)),
-        "drawable",
-        context.packageName
-    )
-}
-
-fun loadImage(imgId: String, context: Context): Int {
-    return context.resources.getIdentifier(
-        "image_" + stripFileExtension(removeScandinavianLetters(imgId)),
-        "drawable",
-        context.packageName
-    )
-}
 
 interface FromJson {
 
@@ -146,19 +132,28 @@ interface FromJson {
             }
         }
 
+        private fun readSources(jsonReader: JsonReader): List<String> {
+            val sources = arrayListOf<String>()
+            jsonReader.beginArray()
+            while (jsonReader.hasNext()) {
+                sources.add(jsonReader.nextString())
+            }
+            jsonReader.endArray()
+            return sources.toList()
+        }
+
         private fun readExercise(
             jsonReader: JsonReader,
-            runeRowsMap: RuneRowsMap,
-            context: Context
-        ): Exercise {
+            runeRowsMap: RuneRowsMap
+        ): TransliterationExercise {
             var id = ""
             var title = ""
             var runes = ""
             var description = ""
             var runeRowId = ""
             var explanation = ""
-            var thmbResource = -1
-            var imgResource = -1
+            var imgResource = ""
+            var sources = listOf<String>()
             var country = Country.ANY
             jsonReader.beginObject()
             while (jsonReader.hasNext()) {
@@ -171,47 +166,46 @@ interface FromJson {
                     "rowType" -> runeRowId = jsonReader.nextString()
                     "img" -> {
                         val fname = jsonReader.nextString()
-                        imgResource = loadImage(fname, context)
-                        thmbResource = loadThumbnail(fname, context)
+                        imgResource = stripFileExtension(removeScandinavianLetters(fname))
                     }
+
                     "explanationAfter" -> explanation = jsonReader.nextString()
                     "country" -> country = countryFromCode(jsonReader.nextString())
+                    "sources" -> sources = readSources(jsonReader)
                     else -> jsonReader.skipValue()
                 }
             }
             jsonReader.endObject()
-            return Exercise(
+            return TransliterationExercise(
                 id = id,
                 title = title,
                 runes = runes,
                 description = description,
-                imgResource = imgResource,
-                thumbnailResource = thmbResource,
+                imgResourceName = imgResource,
                 runeRow = runeRowsMap[runeRowId]!!,
                 country = country,
                 explanation = explanation,
+                sources = sources
             )
         }
 
         private fun readExercises(
             jsonReader: JsonReader,
-            runeRowsMap: RuneRowsMap,
-            context: Context
-        ): List<Exercise> {
-            var exercises = arrayListOf<Exercise>()
+            runeRowsMap: RuneRowsMap
+        ): List<TransliterationExercise> {
+            var transliterationExercises = arrayListOf<TransliterationExercise>()
             jsonReader.beginArray()
             while (jsonReader.hasNext()) {
-                exercises.add(readExercise(jsonReader, runeRowsMap, context))
+                transliterationExercises.add(readExercise(jsonReader, runeRowsMap))
             }
             jsonReader.endArray()
-            return exercises.toList()
+            return transliterationExercises.toList()
         }
 
-        fun loadExercises(runeRowsMap: RuneRowsMap, context: Context): List<Exercise> {
+        fun loadExercises(runeRowsMap: RuneRowsMap): List<TransliterationExercise> {
             return readExercises(
                 JsonReader(StringReader(StaticData.jsonExercises)),
-                runeRowsMap,
-                context
+                runeRowsMap
             )
         }
     }

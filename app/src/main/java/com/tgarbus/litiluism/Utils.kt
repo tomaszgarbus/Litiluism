@@ -1,5 +1,7 @@
 package com.tgarbus.litiluism
 
+import com.tgarbus.litiluism.data.TransliterationExercise
+import com.tgarbus.litiluism.data.ExercisesMap
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -13,8 +15,8 @@ fun isSeparator(rune: Char): Boolean {
     return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x').contains(rune);
 }
 
-fun generateOptions(exercise: Exercise): List<List<Pair<Char, Boolean>>> {
-    return exercise.solution().map { c ->
+fun generateOptions(transliterationExercise: TransliterationExercise): List<List<Pair<Char, Boolean>>> {
+    return transliterationExercise.solution().map { c ->
         listOf(
             Pair(c, true),
             Pair(randomLetter(), false),
@@ -23,7 +25,7 @@ fun generateOptions(exercise: Exercise): List<List<Pair<Char, Boolean>>> {
     }
 }
 
-fun List<Exercise>.toHashMap(): ExercisesMap {
+fun List<TransliterationExercise>.toHashMap(): ExercisesMap {
     val map = ExercisesMap()
     for (e in this) {
         map[e.id] = e

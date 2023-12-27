@@ -1,5 +1,7 @@
 package com.tgarbus.litiluism
 
+import com.tgarbus.litiluism.data.Country
+
 fun countryFromCode(code: String): Country {
     return when (code) {
         "SE" -> Country.SE
@@ -29,4 +31,15 @@ fun nameToCountry(name: String): Country {
         }
     }
     return Country.ANY
+}
+
+fun maybeCountryFlagResource(country: Country): Int? {
+    return when (country) {
+        Country.SE -> R.drawable.flag_se
+        Country.NO -> R.drawable.flag_no
+        Country.IS -> R.drawable.flag_is
+        Country.DA -> R.drawable.flag_dk
+        Country.FO -> R.drawable.flag_fo
+        else -> null
+    }
 }
