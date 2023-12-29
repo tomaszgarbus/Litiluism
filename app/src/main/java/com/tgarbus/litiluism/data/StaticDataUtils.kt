@@ -210,3 +210,14 @@ interface FromJson {
         }
     }
 }
+
+fun buildExerciseByCountryCountMap(exercises: List<TransliterationExercise>): HashMap<Country, Int> {
+    val result = HashMap<Country, Int>()
+    for (e in exercises) {
+        result[e.country] = result.getOrDefault(e.country, 0) + 1
+        if (e.country != Country.ANY) {
+            result[Country.ANY] = result.getOrDefault(Country.ANY, 0) + 1
+        }
+    }
+    return result
+}

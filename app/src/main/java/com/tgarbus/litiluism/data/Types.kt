@@ -1,11 +1,6 @@
 package com.tgarbus.litiluism.data
 
-import androidx.lifecycle.ViewModel
 import com.tgarbus.litiluism.isSeparator
-import com.tgarbus.litiluism.toHashMap
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 enum class Country {
     SE,
@@ -60,17 +55,3 @@ data class RuneRow(
 
 typealias RuneRowsMap = HashMap<String, RuneRow>
 typealias ExercisesMap = HashMap<String, TransliterationExercise>
-
-data class Content(
-    val transliterationExercises: List<TransliterationExercise>,
-    val runeRowsMap: RuneRowsMap
-) {
-    private var _exercisesMap: ExercisesMap = ExercisesMap()
-
-    fun exercisesMap(): ExercisesMap {
-        if (_exercisesMap.isEmpty()) {
-            _exercisesMap = transliterationExercises.toHashMap()
-        }
-        return _exercisesMap
-    }
-}

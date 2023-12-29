@@ -7,6 +7,7 @@ class StaticContentRepository private constructor(
     val runeRowsMap: RuneRowsMap
 ) {
     val exercisesMap: ExercisesMap = transliterationExercises.toHashMap()
+    val exercisesByCountryCount = buildExerciseByCountryCountMap(transliterationExercises)
 
     companion object {
         private var instance_: StaticContentRepository? = null

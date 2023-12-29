@@ -5,6 +5,7 @@
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorPrimaryDark">@color/primary</item>
         <item name="android:colorBackground">@color/light_bg</item>
+        <item name="android:windowBackground">@color/light_bg</item>
         <item name="android:colorButtonNormal">@color/primary</item>
     </style>
 </resources>

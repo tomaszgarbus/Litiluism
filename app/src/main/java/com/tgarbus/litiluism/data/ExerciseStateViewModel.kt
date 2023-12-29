@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class ExerciseStateViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+class ExerciseStateViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
     var transliterationExercise: TransliterationExercise? = null
     private val _state: MutableStateFlow<TransliterationExerciseState> =
@@ -37,7 +37,7 @@ class ExerciseStateViewModel(private val savedStateHandle: SavedStateHandle) : V
             updateStateByOnePosition(transliterationExercise!!.runes[state.value.position])
         }
         TransliterationExerciseStatesRepository.getInstance()
-            .updateState(transliterationExercise!!.id, _state.value)
+            .updateState(transliterationExercise!!.id, state.value)
     }
 
     fun isComplete(): Boolean {
