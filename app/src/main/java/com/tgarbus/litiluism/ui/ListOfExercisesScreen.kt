@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -99,7 +100,87 @@ fun <T> FilterButton(
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun<T> FiltersSection(
+    values: List<T>,
+    activeValue: T,
+    onValueChange: (T) -> Unit,
+    categoryName: String,
+    valueDisplay: @Composable (T) -> Unit) {
+    val sarabunFontFamily = FontFamily(
+        Font(R.font.sarabun_regular, FontWeight.Normal),
+        Font(R.font.sarabun_bold, FontWeight.Bold),
+        Font(R.font.sarabun_thin, FontWeight.Thin),
+    )
+    val scrollState = rememberScrollState()
+    Column() {
+        Text(categoryName, fontFamily = sarabunFontFamily)
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.horizontalScroll(scrollState)
+        ) {
+            for (value in values) {
+                FilterButton(
+                    buttonValue = value,
+                    onClick = { onValueChange(value) },
+                    activeValue = activeValue) {
+                    valueDisplay(value)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Country, Int>) {
+    val sarabunFontFamily = FontFamily(
+        Font(R.font.sarabun_regular, FontWeight.Normal),
+        Font(R.font.sarabun_bold, FontWeight.Bold),
+        Font(R.font.sarabun_thin, FontWeight.Thin),
+    )
+    val buttonText = countryToName(country)
+    val flagResource = maybeCountryFlagResource(country)
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (flagResource != null) {
+            Image(
+                painterResource(flagResource),
+                countryToName(country),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .requiredSize(24.dp)
+                    .clip(CircleShape)
+            )
+        }
+        val countriesCountText = "(${exercisesByCountryCount[country]})"
+        Text(
+            buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(fontFamily = sarabunFontFamily)
+                ) {
+                    withStyle(
+                        style = SpanStyle(
+                            fontWeight = FontWeight(600)
+                        )
+                    ) {
+                        append(buttonText)
+                    }
+                    append(" ")
+                    withStyle(
+                        style = SpanStyle(
+                            fontWeight = FontWeight(400)
+                        )
+                    ) {
+                        append(countriesCountText)
+                    }
+                }
+            }
+        )
+    }
+}
+
 @Composable
 fun Filters(
     filters: MutableState<ExerciseFilters>,
@@ -112,81 +193,25 @@ fun Filters(
         Font(R.font.sarabun_bold, FontWeight.Bold),
         Font(R.font.sarabun_thin, FontWeight.Thin),
     )
-    Column {
-        Text("Countries", fontFamily = sarabunFontFamily)
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+    Column() {
+        FiltersSection(
+            values = filters.value.countries,
+            activeValue = filters.value.activeCountry,
+            onValueChange = { c -> filters.value = filters.value.copy(activeCountry = c) },
+            categoryName = "Countries",
         ) {
-            for (country in filters.value.countries) {
-                val onClick: ((Country) -> Unit) =
-                    { c -> filters.value = filters.value.copy(activeCountry = c) }
-                val buttonText = countryToName(country)
-                val flagResource = maybeCountryFlagResource(country)
-                FilterButton(
-                    buttonValue = country,
-                    activeValue = filters.value.activeCountry,
-                    onClick = { onClick(country) }
-                ) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        if (flagResource != null) {
-                            Image(
-                                painterResource(flagResource),
-                                countryToName(country),
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier
-                                    .requiredSize(24.dp)
-                                    .clip(CircleShape)
-                            )
-                        }
-                        val countriesCountText = "(${exercisesByCountryCount[country]})"
-                        Text(
-                            buildAnnotatedString {
-                                withStyle(
-                                    style = SpanStyle(fontFamily = sarabunFontFamily)
-                                ) {
-                                    withStyle(
-                                        style = SpanStyle(
-                                            fontWeight = FontWeight(600)
-                                        )
-                                    ) {
-                                        append(buttonText)
-                                    }
-                                    append(" ")
-                                    withStyle(
-                                        style = SpanStyle(
-                                            fontWeight = FontWeight(400)
-                                        )
-                                    ) {
-                                        append(countriesCountText)
-                                    }
-                                }
-                            }
-                        )
-                    }
-                }
-            }
+            CountryButtonContent(it, exercisesByCountryCount)
         }
-        Text("Runic alphabets", fontFamily = sarabunFontFamily)
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        FiltersSection(
+            values = filters.value.runeRows,
+            activeValue = filters.value.activeRuneRow,
+            onValueChange = { r -> filters.value = filters.value.copy(activeRuneRow = r) },
+            categoryName = "Runic alphabets"
         ) {
-            for (baseRuneRow in filters.value.runeRows) {
-                val onClick: ((BaseRuneRow) -> Unit) =
-                    { b -> filters.value = filters.value.copy(activeRuneRow = b) }
-                FilterButton(
-                    buttonValue = baseRuneRow,
-                    activeValue = filters.value.activeRuneRow,
-                    onClick = { onClick(baseRuneRow) }
-                ) {
-                    Text(
-                        text = baseRuneRowToString(baseRuneRow),
-                        fontFamily = sarabunFontFamily
-                    )
-                }
-            }
+            Text(
+                text = baseRuneRowToString(it),
+                fontFamily = sarabunFontFamily
+            )
         }
     }
 }

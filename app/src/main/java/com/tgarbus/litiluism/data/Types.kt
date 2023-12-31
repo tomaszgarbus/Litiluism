@@ -3,21 +3,21 @@ package com.tgarbus.litiluism.data
 import com.tgarbus.litiluism.isSeparator
 
 enum class Country {
+    ANY,
     SE,
     NO,
     FO,
     DA,
     IS,
-    ANY,
 }
 
 enum class BaseRuneRow {
+    ANY,
     OLDER_FUTHARK,
     YOUNGER_FUTHARK_SHORT_TWIG,
     YOUNGER_FUTHARK_LONG_BRANCH,
     ANGLO_SAXON,
     MEDIEVAL,
-    ANY
 }
 
 data class TransliterationExercise(
