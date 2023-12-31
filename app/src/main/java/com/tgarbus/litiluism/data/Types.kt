@@ -11,6 +11,15 @@ enum class Country {
     ANY,
 }
 
+enum class BaseRuneRow {
+    OLDER_FUTHARK,
+    YOUNGER_FUTHARK_SHORT_TWIG,
+    YOUNGER_FUTHARK_LONG_BRANCH,
+    ANGLO_SAXON,
+    MEDIEVAL,
+    ANY
+}
+
 data class TransliterationExercise(
     val id: String,
     // Object description
@@ -51,6 +60,7 @@ data class RuneRow(
     val id: String,
     val name: String,
     val mapping: HashMap<String, List<String>>,
+    val baseRuneRow: BaseRuneRow,
 )
 
 typealias RuneRowsMap = HashMap<String, RuneRow>

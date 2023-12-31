@@ -2,7 +2,6 @@ package com.tgarbus.litiluism.data
 
 import android.util.JsonReader
 import android.util.JsonToken
-import com.tgarbus.litiluism.countryFromCode
 import com.tgarbus.litiluism.removeScandinavianLetters
 import com.tgarbus.litiluism.stripFileExtension
 import java.io.StringReader
@@ -106,14 +105,27 @@ interface FromJson {
             )
             val canonicalFormRuneRows = RuneRowsMap()
             for ((id, runeRow) in runeRows) {
-                val canonicalFormRuneRow = RuneRow(
-                    id = id, name = runeRow.name, mapping = runeRow.symbols,
-                )
-                if (runeRow.inheritsFrom.isNotEmpty()) {
-                    canonicalFormRuneRow.mapping.putAll(runeRows[runeRow.inheritsFrom]!!.symbols)
-                    canonicalFormRuneRow.mapping.putAll(runeRow.overrideSymbols)
+                if (runeRow.inheritsFrom.isEmpty()) {
+                    val canonicalFormRuneRow = RuneRow(
+                        id = id,
+                        name = runeRow.name,
+                        mapping = runeRow.symbols,
+                        baseRuneRow = maybeBaseRuneRowFromId(id)!!
+                    )
+                    canonicalFormRuneRows[id] = canonicalFormRuneRow
                 }
-                canonicalFormRuneRows[id] = canonicalFormRuneRow
+            }
+            for ((id, runeRow) in runeRows) {
+                if (runeRow.inheritsFrom.isNotEmpty()) {
+                    val mapping = runeRow.symbols
+                    mapping.putAll(runeRows[runeRow.inheritsFrom]!!.symbols)
+                    mapping.putAll(runeRow.overrideSymbols)
+                    val baseRuneRow = canonicalFormRuneRows[runeRow.inheritsFrom]!!.baseRuneRow
+                    val canonicalFormRuneRow = RuneRow(
+                        id = id, name = runeRow.name, mapping = mapping, baseRuneRow = baseRuneRow!!
+                    )
+                    canonicalFormRuneRows[id] = canonicalFormRuneRow
+                }
             }
             return canonicalFormRuneRows
         }

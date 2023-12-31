@@ -107,7 +107,7 @@ fun PracticeScreen(navController: NavController) {
             // TODO: set bg color through theme
             .background(colorResource(R.color.light_bg))
             .verticalScroll(scrollState)
-            .padding(bottom = 10.dp)
+            .padding(vertical = 20.dp)
             .padding(horizontal = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -117,7 +117,6 @@ fun PracticeScreen(navController: NavController) {
             textAlign = TextAlign.Justify,
             color = colorResource(R.color.secondary),
             modifier = Modifier
-                .padding(vertical = 20.dp)
                 .fillMaxWidth(),
             fontFamily = sarabunFontFamily,
             fontSize = 32.sp,

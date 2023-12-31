@@ -53,29 +53,32 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.data.Country
 import com.tgarbus.litiluism.R
-import com.tgarbus.litiluism.countryToName
-import com.tgarbus.litiluism.data.ListOfExercisesStateViewModel
+import com.tgarbus.litiluism.data.countryToName
+import com.tgarbus.litiluism.data.BaseRuneRow
+import com.tgarbus.litiluism.data.ListOfExercisesViewModel
 import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
-import com.tgarbus.litiluism.maybeCountryFlagResource
+import com.tgarbus.litiluism.data.baseRuneRowToString
+import com.tgarbus.litiluism.data.maybeCountryFlagResource
 
 data class ExerciseFilters(
     val countries: List<Country> = Country.entries,
-    val runeRows: List<String> = listOf("", "Younger Futhark"),
+    val runeRows: List<BaseRuneRow> = BaseRuneRow.entries,
     val activeCountry: Country = Country.ANY,
-    val activeRuneRow: String = ""
+    val activeRuneRow: BaseRuneRow = BaseRuneRow.ANY
 )
 
 @Composable
-fun CountryFilterButton(
-    country: Country,
-    activeCountry: Country,
-    onClick: (Country) -> Unit,
+fun <T> FilterButton(
+    buttonValue: T,
+    activeValue: T,
+    onClick: (T) -> Unit,
     content: @Composable () -> Unit
 ) {
-    if (country == activeCountry) {
+    if (buttonValue == activeValue) {
         Button(
-            onClick = { onClick(country) }, colors = ButtonDefaults.buttonColors(
+            onClick = { onClick(buttonValue) }, colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(R.color.secondary),
                 contentColor = colorResource(R.color.white)
             )
@@ -85,7 +88,7 @@ fun CountryFilterButton(
     } else {
         OutlinedButton(
             modifier = Modifier.padding(0.dp),
-            onClick = { onClick(country) },
+            onClick = { onClick(buttonValue) },
             colors = ButtonDefaults.outlinedButtonColors(
                 containerColor = colorResource(R.color.white),
                 contentColor = colorResource(R.color.secondary),
@@ -98,9 +101,10 @@ fun CountryFilterButton(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun FiltersSection(
+fun Filters(
     filters: MutableState<ExerciseFilters>,
     exercisesByCountryCount: HashMap<Country, Int>,
+    viewModel: ListOfExercisesViewModel,
     onDismissRequest: () -> Unit
 ) {
     val sarabunFontFamily = FontFamily(
@@ -118,9 +122,9 @@ fun FiltersSection(
                     { c -> filters.value = filters.value.copy(activeCountry = c) }
                 val buttonText = countryToName(country)
                 val flagResource = maybeCountryFlagResource(country)
-                CountryFilterButton(
-                    country = country,
-                    activeCountry = filters.value.activeCountry,
+                FilterButton(
+                    buttonValue = country,
+                    activeValue = filters.value.activeCountry,
                     onClick = { onClick(country) }
                 ) {
                     Row(
@@ -165,6 +169,25 @@ fun FiltersSection(
                 }
             }
         }
+        Text("Runic alphabets", fontFamily = sarabunFontFamily)
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            for (baseRuneRow in filters.value.runeRows) {
+                val onClick: ((BaseRuneRow) -> Unit) =
+                    { b -> filters.value = filters.value.copy(activeRuneRow = b) }
+                FilterButton(
+                    buttonValue = baseRuneRow,
+                    activeValue = filters.value.activeRuneRow,
+                    onClick = { onClick(baseRuneRow) }
+                ) {
+                    Text(
+                        text = baseRuneRowToString(baseRuneRow),
+                        fontFamily = sarabunFontFamily
+                    )
+                }
+            }
+        }
     }
 }
 
@@ -172,10 +195,21 @@ fun showCountry(country: Country, filters: ExerciseFilters): Boolean {
     return country == filters.activeCountry || filters.activeCountry == Country.ANY
 }
 
+fun showRuneRow(baseRuneRow: BaseRuneRow, filters: ExerciseFilters): Boolean {
+    return baseRuneRow == filters.activeRuneRow || filters.activeRuneRow == BaseRuneRow.ANY
+}
+
+fun showExercise(exercise: TransliterationExercise, filters: ExerciseFilters): Boolean {
+    return showCountry(exercise.country, filters) && showRuneRow(
+        exercise.runeRow.baseRuneRow,
+        filters
+    )
+}
+
 @Composable
 fun ListOfExercisesScreen(
     navController: NavController,
-    viewModel: ListOfExercisesStateViewModel = viewModel()
+    viewModel: ListOfExercisesViewModel = viewModel()
 ) {
     val transliterationExercises = StaticContentRepository.getInstance().transliterationExercises
     val sarabunFontFamily = FontFamily(
@@ -231,13 +265,14 @@ fun ListOfExercisesScreen(
             }
         }
         AnimatedVisibility(visible = showFiltersDialog.value) {
-            FiltersSection(
+            Filters(
                 filters,
-                StaticContentRepository.getInstance().exercisesByCountryCount
+                StaticContentRepository.getInstance().exercisesByCountryCount,
+                viewModel
             ) { showFiltersDialog.value = false }
         }
         for (exercise in transliterationExercises) {
-            AnimatedVisibility(visible = showCountry(exercise.country, filters.value)) {
+            AnimatedVisibility(visible = showExercise(exercise, filters.value)) {
                 Box(modifier = Modifier
                     .fillMaxWidth()
                     .shadow(

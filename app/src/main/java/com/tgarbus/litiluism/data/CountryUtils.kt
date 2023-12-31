@@ -1,6 +1,6 @@
-package com.tgarbus.litiluism
+package com.tgarbus.litiluism.data
 
-import com.tgarbus.litiluism.data.Country
+import com.tgarbus.litiluism.R
 
 fun countryFromCode(code: String): Country {
     return when (code) {
