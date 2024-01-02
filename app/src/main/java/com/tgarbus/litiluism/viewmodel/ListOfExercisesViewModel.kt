@@ -1,10 +1,13 @@
-package com.tgarbus.litiluism.data
+package com.tgarbus.litiluism.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.data.TransliterationExercise
+import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 
 class ListOfExercisesViewModel: ViewModel() {
-    val exerciseStatesRepository = TransliterationExerciseStatesRepository.getInstance()
-    val staticContentRepository = StaticContentRepository.getInstance()
+    private val exerciseStatesRepository = TransliterationExerciseStatesRepository.getInstance()
+    private val staticContentRepository = StaticContentRepository.getInstance()
 
     fun isComplete(exercise: TransliterationExercise): Boolean {
         return exerciseStatesRepository.getExerciseState(exercise.id).complete

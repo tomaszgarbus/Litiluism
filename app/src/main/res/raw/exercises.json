@@ -11,7 +11,11 @@
     "sources": [
       "A plaque next to the stone, provided by Riksantikvarieambetet"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": {
+      "lat": 59.25712104244483,
+      "long": 17.21712304851343
+    }
   },
   {
     "id": "gripsholmstone179",

@@ -1,5 +1,7 @@
 package com.tgarbus.litiluism.ui
 
+import android.util.Log
+import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -29,8 +32,57 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.ui.reusables.Header
+import com.tgarbus.litiluism.ui.reusables.MapPreview
+import org.mapsforge.map.layer.download.tilesource.TileSource
+import org.osmdroid.api.IGeoPoint
+import org.osmdroid.events.MapListener
+import org.osmdroid.views.MapView
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.BoundingBox
+import org.osmdroid.util.GeoPoint
+
+@Composable
+fun PracticeTypeButtonText(
+    name: String,
+    modifier: Modifier = Modifier
+) {
+    val sarabunFontFamily = FontFamily(
+        Font(R.font.sarabun_regular, FontWeight.Normal),
+        Font(R.font.sarabun_bold, FontWeight.Bold),
+        Font(R.font.sarabun_thin, FontWeight.Thin),
+    )
+    Box(
+        modifier = modifier
+            .padding(10.dp)
+            .background(
+                color = colorResource(R.color.primary),
+                shape = RoundedCornerShape(27.dp)
+            )
+            .padding(start = 10.dp, end = 10.dp, bottom = 5.dp, top = 5.dp)
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(5.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = name.uppercase(),
+                fontFamily = sarabunFontFamily,
+                fontSize = 12.sp,
+                fontWeight = FontWeight(600),
+                color = colorResource(R.color.white),
+            )
+            Image(
+                painter = painterResource(R.drawable.icon_forward),
+                name,
+                modifier = Modifier.size(12.dp)
+            )
+        }
+    }
+}
 
 @Composable
 fun PracticeTypeButton(
@@ -60,34 +112,7 @@ fun PracticeTypeButton(
                 .fillMaxSize(),
             contentScale = ContentScale.Crop,
         )
-        // TODO: Make it a custom component
-        Box(
-            modifier = Modifier
-                .padding(10.dp)
-                .background(
-                    color = colorResource(R.color.primary),
-                    shape = RoundedCornerShape(27.dp)
-                )
-                .padding(start = 10.dp, end = 10.dp, bottom = 5.dp, top = 5.dp)
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(5.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = name.uppercase(),
-                    fontFamily = sarabunFontFamily,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight(600),
-                    color = colorResource(R.color.white),
-                )
-                Image(
-                    painter = painterResource(R.drawable.icon_forward),
-                    name,
-                    modifier = Modifier.size(12.dp)
-                )
-            }
-        }
+        PracticeTypeButtonText(name)
     }
 }
 
@@ -111,19 +136,26 @@ fun PracticeScreen(navController: NavController) {
             .padding(horizontal = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        // TODO: Deduplicate into a "Header" composable.
-        Text(
-            text = "Practice",
-            textAlign = TextAlign.Justify,
-            color = colorResource(R.color.secondary),
+        Header("Practice")
+        Box(
+            modifier = Modifier
+                .height(150.dp)
+                .fillMaxWidth()
+                .shadow(
+                    elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
+                )
+                .clip(RoundedCornerShape(21.dp))
+        ) {
+            // TODO: map should be clickable too
+            MapPreview(navController)
+            PracticeTypeButtonText(
+                name = "Pick from map",
+                modifier = Modifier.clickable { navController.navigate("mapscreen") }
+                )
+        }
+        Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            fontFamily = sarabunFontFamily,
-            fontSize = 32.sp,
-            fontWeight = FontWeight(700),
-        )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             PracticeTypeButton(

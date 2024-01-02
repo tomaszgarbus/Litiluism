@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.data
 
+import android.content.Context
 import com.tgarbus.litiluism.toHashMap
 
 class StaticContentRepository private constructor(
@@ -12,15 +13,17 @@ class StaticContentRepository private constructor(
     companion object {
         private var instance_: StaticContentRepository? = null
 
+        // TODO: Try to remove context reference from here
+        fun init(context: Context) {
+            val runeRowsMap = FromJson.loadCanonicalRuneRows(context)
+            instance_ = StaticContentRepository(
+                runeRowsMap = runeRowsMap,
+                transliterationExercises =
+                FromJson.loadExercises(context, runeRowsMap)
+            )
+        }
+
         fun getInstance(): StaticContentRepository {
-            if (instance_ == null) {
-                val runeRowsMap = FromJson.loadCanonicalRuneRows()
-                instance_ = StaticContentRepository(
-                    runeRowsMap = runeRowsMap,
-                    transliterationExercises =
-                    FromJson.loadExercises(runeRowsMap)
-                )
-            }
             return instance_!!
         }
     }

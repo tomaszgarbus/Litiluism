@@ -9,8 +9,6 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,7 +43,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -56,12 +53,13 @@ import com.tgarbus.litiluism.data.Country
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.BaseRuneRow
-import com.tgarbus.litiluism.data.ListOfExercisesViewModel
+import com.tgarbus.litiluism.viewmodel.ListOfExercisesViewModel
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import com.tgarbus.litiluism.data.baseRuneRowToString
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
+import com.tgarbus.litiluism.ui.reusables.Header
 
 data class ExerciseFilters(
     val countries: List<Country> = Country.entries,
@@ -256,26 +254,20 @@ fun ListOfExercisesScreen(
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = { navController.navigate("practice") }) {
+            // TODO: Extract to a common component
+            IconButton(onClick = { navController.popBackStack() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.icon_backarrow),
                     contentDescription = "back",
                     tint = colorResource(R.color.secondary)
                 )
             }
-            Text(
-                text = "Transliteration exercises",
-                textAlign = TextAlign.Justify,
-                color = colorResource(R.color.secondary),
+            Header(
+                "Transliteration exercises",
                 modifier = Modifier
                     .padding(vertical = 20.dp)
                     .fillMaxWidth()
-                    .weight(2f),
-                fontFamily = sarabunFontFamily,
-                fontSize = 32.sp,
-                fontWeight = FontWeight(700),
-                lineHeight = 37.sp,
-            )
+                    .weight(2f))
             FilledIconButton(
                 onClick = { showFiltersDialog.value = !showFiltersDialog.value },
                 colors = IconButtonDefaults.iconButtonColors(

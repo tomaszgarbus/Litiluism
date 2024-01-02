@@ -1,7 +1,9 @@
 package com.tgarbus.litiluism.data
 
+import android.content.Context
 import android.util.JsonReader
 import android.util.JsonToken
+import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.removeScandinavianLetters
 import com.tgarbus.litiluism.stripFileExtension
 import java.io.StringReader
@@ -95,11 +97,15 @@ interface FromJson {
             return result
         }
 
-        fun loadCanonicalRuneRows(): RuneRowsMap {
+        fun loadCanonicalRuneRows(
+            context: Context
+        ): RuneRowsMap {
+            val rawStringData = context.resources.openRawResource(R.raw.rune_rows).bufferedReader()
+                .use { it.readText() }
             val runeRows = readRuneRows(
                 JsonReader(
                     StringReader(
-                        StaticData.jsonRuneRows
+                        rawStringData
                     )
                 )
             )
@@ -154,6 +160,20 @@ interface FromJson {
             return sources.toList()
         }
 
+        private fun readLocation(jsonReader: JsonReader): Location {
+            jsonReader.beginObject()
+            var lat = 0.0
+            var long = 0.0
+            while (jsonReader.hasNext()) {
+                when (jsonReader.nextName()) {
+                    "lat" -> lat = jsonReader.nextDouble()
+                    "long" -> long = jsonReader.nextDouble()
+                }
+            }
+            jsonReader.endObject()
+            return Location(lat, long)
+        }
+
         private fun readExercise(
             jsonReader: JsonReader,
             runeRowsMap: RuneRowsMap
@@ -167,6 +187,7 @@ interface FromJson {
             var imgResource = ""
             var sources = listOf<String>()
             var country = Country.ANY
+            var location: Location? = null
             jsonReader.beginObject()
             while (jsonReader.hasNext()) {
                 val property = jsonReader.nextName()
@@ -184,6 +205,7 @@ interface FromJson {
                     "explanationAfter" -> explanation = jsonReader.nextString()
                     "country" -> country = countryFromCode(jsonReader.nextString())
                     "sources" -> sources = readSources(jsonReader)
+                    "location" -> location = readLocation(jsonReader)
                     else -> jsonReader.skipValue()
                 }
             }
@@ -197,7 +219,8 @@ interface FromJson {
                 runeRow = runeRowsMap[runeRowId]!!,
                 country = country,
                 explanation = explanation,
-                sources = sources
+                sources = sources,
+                location = location
             )
         }
 
@@ -214,9 +237,14 @@ interface FromJson {
             return transliterationExercises.toList()
         }
 
-        fun loadExercises(runeRowsMap: RuneRowsMap): List<TransliterationExercise> {
+        fun loadExercises(
+            context: Context,
+            runeRowsMap: RuneRowsMap
+        ): List<TransliterationExercise> {
+            val rawStringData = context.resources.openRawResource(R.raw.exercises).bufferedReader()
+                .use { it.readText() }
             return readExercises(
-                JsonReader(StringReader(StaticData.jsonExercises)),
+                JsonReader(StringReader(rawStringData)),
                 runeRowsMap
             )
         }

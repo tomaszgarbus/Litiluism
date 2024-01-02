@@ -20,6 +20,11 @@ enum class BaseRuneRow {
     MEDIEVAL,
 }
 
+data class Location(
+    val lat: Double,
+    val long: Double,
+)
+
 data class TransliterationExercise(
     val id: String,
     // Object description
@@ -28,6 +33,7 @@ data class TransliterationExercise(
     val explanation: String,
     val country: Country,
     val sources: List<String>,
+    val location: Location?,
     // Exercise
     val runes: String,
     val runeRow: RuneRow,
