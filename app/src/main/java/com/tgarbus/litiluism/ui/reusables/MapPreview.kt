@@ -37,7 +37,7 @@ fun MapPreview(
                     exercise.location!!.lat,
                     exercise.location.long
                 )
-                exerciseMarker.setOnMarkerClickListener { marker, mapView ->
+                exerciseMarker.setOnMarkerClickListener { _, _ ->
                     navController.navigate(
                         "exercise/${exercise.id}"
                     )
@@ -47,6 +47,7 @@ fun MapPreview(
 //                    context.getDrawable(R.drawable.logotype_litiluism_square_no_text)
                 exerciseMarker.title = exercise.title
                 mapView.overlays.add(exerciseMarker)
+                mapView.setMultiTouchControls(true)
                 Log.d("debug", exercise.toString())
             }
             view

@@ -13,8 +13,8 @@
     ],
     "country": "SE",
     "location": {
-      "lat": 59.25712104244483,
-      "long": 17.21712304851343
+      "lat": 59.25727460543379,
+      "long": 17.218195972875403
     }
   },
   {
@@ -29,7 +29,11 @@
     "sources": [
       "Runes: A Handbook by Michael P. Barnes (p 77-8, 81, 139, 169)"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": {
+      "lat": 59.25727460543379,
+      "long": 17.218195972875403
+    }
   },
   {
     "id": "kylverstone",
