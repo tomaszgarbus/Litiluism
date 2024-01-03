@@ -21,8 +21,10 @@ enum class BaseRuneRow {
 }
 
 data class Location(
+    val id: String,
     val lat: Double,
     val long: Double,
+    val description: String
 )
 
 data class TransliterationExercise(
@@ -65,9 +67,12 @@ data class TransliterationExerciseState(
 data class RuneRow(
     val id: String,
     val name: String,
-    val mapping: HashMap<String, List<String>>,
+    val mapping: Map<String, List<String>>,
     val baseRuneRow: BaseRuneRow,
 )
 
-typealias RuneRowsMap = HashMap<String, RuneRow>
-typealias ExercisesMap = HashMap<String, TransliterationExercise>
+typealias RuneRowsMap = Map<String, RuneRow>
+typealias RuneRowsMapImpl = HashMap<String, RuneRow>
+typealias LocationsMap = Map<String, Location>
+typealias ExercisesMap = Map<String, TransliterationExercise>
+typealias ExercisesMapImpl = HashMap<String, TransliterationExercise>

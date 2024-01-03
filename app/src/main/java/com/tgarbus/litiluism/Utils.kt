@@ -2,6 +2,7 @@ package com.tgarbus.litiluism
 
 import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.ExercisesMap
+import com.tgarbus.litiluism.data.ExercisesMapImpl
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -25,8 +26,8 @@ fun generateOptions(transliterationExercise: TransliterationExercise): List<List
     }
 }
 
-fun List<TransliterationExercise>.toHashMap(): ExercisesMap {
-    val map = ExercisesMap()
+fun List<TransliterationExercise>.toHashMapById(): ExercisesMap {
+    val map = ExercisesMapImpl()
     for (e in this) {
         map[e.id] = e
     }

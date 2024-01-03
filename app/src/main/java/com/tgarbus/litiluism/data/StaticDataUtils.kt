@@ -109,7 +109,7 @@ interface FromJson {
                     )
                 )
             )
-            val canonicalFormRuneRows = RuneRowsMap()
+            val canonicalFormRuneRows = RuneRowsMapImpl()
             for ((id, runeRow) in runeRows) {
                 if (runeRow.inheritsFrom.isEmpty()) {
                     val canonicalFormRuneRow = RuneRow(
@@ -150,6 +150,44 @@ interface FromJson {
             }
         }
 
+        private fun readLocation(jsonReader: JsonReader): Location {
+            jsonReader.beginObject()
+            var id = ""
+            var lat = 0.0
+            var long = 0.0
+            var description = ""
+            while (jsonReader.hasNext()) {
+                when (jsonReader.nextName()) {
+                    "id" -> id = jsonReader.nextString()
+                    "lat" -> lat = jsonReader.nextDouble()
+                    "long" -> long = jsonReader.nextDouble()
+                    "description" -> description = jsonReader.nextString()
+                }
+            }
+            jsonReader.endObject()
+            return Location(id, lat, long, description)
+        }
+
+        private fun readLocations(jsonReader: JsonReader): List<Location> {
+            val locations = arrayListOf<Location>()
+            jsonReader.beginArray()
+            while (jsonReader.hasNext()) {
+                locations.add(readLocation(jsonReader))
+            }
+            jsonReader.endArray()
+            return locations.toList()
+        }
+
+        fun loadLocations(
+            context: Context,
+        ): List<Location> {
+            val rawStringData = context.resources.openRawResource(R.raw.locations).bufferedReader()
+                .use { it.readText() }
+            return readLocations(
+                JsonReader(StringReader(rawStringData)),
+            )
+        }
+
         private fun readSources(jsonReader: JsonReader): List<String> {
             val sources = arrayListOf<String>()
             jsonReader.beginArray()
@@ -160,23 +198,10 @@ interface FromJson {
             return sources.toList()
         }
 
-        private fun readLocation(jsonReader: JsonReader): Location {
-            jsonReader.beginObject()
-            var lat = 0.0
-            var long = 0.0
-            while (jsonReader.hasNext()) {
-                when (jsonReader.nextName()) {
-                    "lat" -> lat = jsonReader.nextDouble()
-                    "long" -> long = jsonReader.nextDouble()
-                }
-            }
-            jsonReader.endObject()
-            return Location(lat, long)
-        }
-
         private fun readExercise(
             jsonReader: JsonReader,
-            runeRowsMap: RuneRowsMap
+            runeRowsMap: RuneRowsMap,
+            locationsMap: LocationsMap
         ): TransliterationExercise {
             var id = ""
             var title = ""
@@ -205,7 +230,7 @@ interface FromJson {
                     "explanationAfter" -> explanation = jsonReader.nextString()
                     "country" -> country = countryFromCode(jsonReader.nextString())
                     "sources" -> sources = readSources(jsonReader)
-                    "location" -> location = readLocation(jsonReader)
+                    "location" -> location = locationsMap[jsonReader.nextString()]
                     else -> jsonReader.skipValue()
                 }
             }
@@ -226,12 +251,18 @@ interface FromJson {
 
         private fun readExercises(
             jsonReader: JsonReader,
-            runeRowsMap: RuneRowsMap
+            runeRowsMap: RuneRowsMap,
+            locations: List<Location>
         ): List<TransliterationExercise> {
-            var transliterationExercises = arrayListOf<TransliterationExercise>()
+            val transliterationExercises = arrayListOf<TransliterationExercise>()
             jsonReader.beginArray()
             while (jsonReader.hasNext()) {
-                transliterationExercises.add(readExercise(jsonReader, runeRowsMap))
+                transliterationExercises.add(
+                    readExercise(
+                        jsonReader,
+                        runeRowsMap,
+                        locations.associateBy { l -> l.id })
+                )
             }
             jsonReader.endArray()
             return transliterationExercises.toList()
@@ -239,13 +270,15 @@ interface FromJson {
 
         fun loadExercises(
             context: Context,
-            runeRowsMap: RuneRowsMap
+            runeRowsMap: RuneRowsMap,
+            locations: List<Location>
         ): List<TransliterationExercise> {
             val rawStringData = context.resources.openRawResource(R.raw.exercises).bufferedReader()
                 .use { it.readText() }
             return readExercises(
                 JsonReader(StringReader(rawStringData)),
-                runeRowsMap
+                runeRowsMap,
+                locations
             )
         }
     }

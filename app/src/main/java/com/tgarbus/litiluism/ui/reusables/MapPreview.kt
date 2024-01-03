@@ -11,6 +11,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.Location
 import com.tgarbus.litiluism.viewmodel.MapPreviewViewModel
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
@@ -21,7 +22,8 @@ import org.osmdroid.views.overlay.infowindow.InfoWindow
 @Composable
 fun MapPreview(
     navController: NavController,
-    viewModel: MapPreviewViewModel = viewModel()
+    viewModel: MapPreviewViewModel = viewModel(),
+    onLocationClick: (Location) -> Unit,
 ) {
     // Adds view to Compose
     AndroidView(
@@ -31,25 +33,20 @@ fun MapPreview(
             val view = LayoutInflater.from(context).inflate(R.layout.map_preview, null)
             val mapView = view.findViewById<MapView>(R.id.map)
             mapView.setTileSource(TileSourceFactory.MAPNIK)
-            for (exercise in viewModel.getExercisesWithLocations()) {
-                val exerciseMarker = Marker(mapView)
-                exerciseMarker.position = GeoPoint(
-                    exercise.location!!.lat,
-                    exercise.location.long
+            for (location in viewModel.getLocations()) {
+                val locationMarker = Marker(mapView)
+                locationMarker.position = GeoPoint(
+                    location.lat,
+                    location.long
                 )
-                exerciseMarker.setOnMarkerClickListener { _, _ ->
-                    navController.navigate(
-                        "exercise/${exercise.id}"
-                    )
+                locationMarker.setOnMarkerClickListener { _, _ ->
+                    onLocationClick(location)
                     true
                 }
-//                exerciseMarker.icon =
-//                    context.getDrawable(R.drawable.logotype_litiluism_square_no_text)
-                exerciseMarker.title = exercise.title
-                mapView.overlays.add(exerciseMarker)
-                mapView.setMultiTouchControls(true)
-                Log.d("debug", exercise.toString())
+                locationMarker.title = location.description
+                mapView.overlays.add(locationMarker)
             }
+            mapView.setMultiTouchControls(true)
             view
         },
         update = { view ->

@@ -12,10 +12,7 @@
       "A plaque next to the stone, provided by Riksantikvarieambetet"
     ],
     "country": "SE",
-    "location": {
-      "lat": 59.25727460543379,
-      "long": 17.218195972875403
-    }
+    "location": "gripsholm"
   },
   {
     "id": "gripsholmstone179",
@@ -30,10 +27,7 @@
       "Runes: A Handbook by Michael P. Barnes (p 77-8, 81, 139, 169)"
     ],
     "country": "SE",
-    "location": {
-      "lat": 59.25727460543379,
-      "long": 17.218195972875403
-    }
+    "location": "gripsholm"
   },
   {
     "id": "kylverstone",
@@ -118,7 +112,8 @@
     "sources": [
       "Description in Historiska Museet"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "historiska"
   },
   {
     "id": "u614",
@@ -132,7 +127,8 @@
     "sources": [
       "Description in Historiska Museet"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "historiska"
   },
   {
     "id": "u613",
@@ -147,7 +143,8 @@
       "Description in Historiska Museet",
       "https://vikingar.historiska.se/object_details.php?object=44677_HST&e=no&l=en"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "historiska"
   },
   {
     "id": "lerkaka_stenen",
@@ -175,7 +172,8 @@
     "sources": [
       "Description in Historiska Museet"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "historiska"
   },
   {
     "id": "eidi_runestick",
@@ -231,7 +229,8 @@
     "sources": [
       "https://www.runesdb.eu/find-list/d/fa/q////6/f/3218/c/ea625a4d7a879c814004254c503a0b1f/"
     ],
-    "country": "NO"
+    "country": "NO",
+    "location": "bryggen"
   },
   {
     "id": "bergen_possible_gravestone",
@@ -245,7 +244,8 @@
     "sources": [
       "Description in the Bryggen Museum, Bergen."
     ],
-    "country": "NO"
+    "country": "NO",
+    "location": "bryggen"
   },
   {
     "id": "bergen_knife_beater",
@@ -259,7 +259,8 @@
     "sources": [
       "Description in the Bryggen Museum, Bergen."
     ],
-    "country": "NO"
+    "country": "NO",
+    "location": "bryggen"
   },
   {
     "id": "norumfont",
@@ -274,7 +275,8 @@
       "Description in Historiska Museet",
       "https://vikingar.historiska.se/object_details.php?object=46162_HST&e=no&l=en"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "historiska"
   },
   {
     "id": "eik_sokndal",

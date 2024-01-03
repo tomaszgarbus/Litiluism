@@ -118,12 +118,7 @@ fun PracticeTypeButton(
 
 @Composable
 fun PracticeScreen(navController: NavController) {
-    // TODO: Server font family from one static place in the app
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
+    // TODO: Serve font family from one static place in the app
     val scrollState = rememberScrollState()
     // TODO: Extract common column to a custom composable
     Column(
@@ -147,11 +142,11 @@ fun PracticeScreen(navController: NavController) {
                 .clip(RoundedCornerShape(21.dp))
         ) {
             // TODO: map should be clickable too
-            MapPreview(navController)
+            MapPreview(navController, onLocationClick = {})
             PracticeTypeButtonText(
                 name = "Pick from map",
                 modifier = Modifier.clickable { navController.navigate("mapscreen") }
-                )
+            )
         }
         Row(
             modifier = Modifier
