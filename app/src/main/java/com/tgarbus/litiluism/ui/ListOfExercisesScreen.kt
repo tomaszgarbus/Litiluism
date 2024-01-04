@@ -60,6 +60,7 @@ import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import com.tgarbus.litiluism.data.baseRuneRowToString
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
 import com.tgarbus.litiluism.ui.reusables.Header
+import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
 
 data class ExerciseFilters(
     val countries: List<Country> = Country.entries,
@@ -99,12 +100,13 @@ fun <T> FilterButton(
 }
 
 @Composable
-fun<T> FiltersSection(
+fun <T> FiltersSection(
     values: List<T>,
     activeValue: T,
     onValueChange: (T) -> Unit,
     categoryName: String,
-    valueDisplay: @Composable (T) -> Unit) {
+    valueDisplay: @Composable (T) -> Unit
+) {
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
         Font(R.font.sarabun_bold, FontWeight.Bold),
@@ -121,7 +123,8 @@ fun<T> FiltersSection(
                 FilterButton(
                     buttonValue = value,
                     onClick = { onValueChange(value) },
-                    activeValue = activeValue) {
+                    activeValue = activeValue
+                ) {
                     valueDisplay(value)
                 }
             }
@@ -235,11 +238,6 @@ fun ListOfExercisesScreen(
     viewModel: ListOfExercisesViewModel = viewModel()
 ) {
     val transliterationExercises = StaticContentRepository.getInstance().transliterationExercises
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     val scrollState = rememberScrollState()
 
     val filters = remember { mutableStateOf(ExerciseFilters()) }
@@ -267,7 +265,8 @@ fun ListOfExercisesScreen(
                 modifier = Modifier
                     .padding(vertical = 20.dp)
                     .fillMaxWidth()
-                    .weight(2f))
+                    .weight(2f)
+            )
             FilledIconButton(
                 onClick = { showFiltersDialog.value = !showFiltersDialog.value },
                 colors = IconButtonDefaults.iconButtonColors(
@@ -290,104 +289,10 @@ fun ListOfExercisesScreen(
         }
         for (exercise in transliterationExercises) {
             AnimatedVisibility(visible = showExercise(exercise, filters.value)) {
-                Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(
-                        elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
-                    )
-                    .background(
-                        color = colorResource(id = R.color.white),
-                        shape = RoundedCornerShape(size = 21.dp)
-                    )
-                    .clickable {
-                        navController.navigate("exercise/${exercise.id}")
-                    }  // TODO: add ripple effect
-                    .padding(vertical = 10.dp, horizontal = 10.dp)) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .weight(2f)
-                        ) {
-                            Image(
-                                painter = painterResource(
-                                    id = getThumbnailResourceId(
-                                        exercise.imgResourceName,
-                                        LocalContext.current
-                                    )
-                                ),
-                                contentDescription = "Image goes brr",
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier
-                                    .aspectRatio(1f)
-                                    .clip(CircleShape)
-                            )
-                            if (exercise.country != Country.ANY) {
-                                Image(
-                                    painter = painterResource(
-                                        maybeCountryFlagResource(exercise.country)!!
-                                    ),
-                                    countryToName(exercise.country),
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier
-                                        .align(Alignment.BottomStart)
-                                        .requiredSize(24.dp)
-                                        .clip(CircleShape)
-                                        .padding(0.dp)
-                                )
-                            }
-                        }
-                        Column(
-                            modifier = Modifier.weight(5f),
-                            verticalArrangement = Arrangement.spacedBy(0.dp, Alignment.Top),
-                        ) {
-                            Text(
-                                text = exercise.title,
-                                fontFamily = sarabunFontFamily,
-                                fontWeight = FontWeight(700),
-                                fontSize = 16.sp,
-                            )
-                            Text(
-                                text = exercise.runeRow.name,
-                                fontFamily = sarabunFontFamily,
-                                fontWeight = FontWeight(700),
-                                fontSize = 16.sp,
-                                color = colorResource(R.color.rune_row_type_text),
-                            )
-                            Text(
-                                text = exercise.runes,
-                                fontFamily = sarabunFontFamily,
-                                fontWeight = FontWeight(300),
-                                fontSize = 16.sp,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                            // TODO: move this to a ViewModel
-                            if (TransliterationExerciseStatesRepository.getInstance()
-                                    .getExerciseState(exercise.id).complete
-                            ) {
-                                Box(
-                                    Modifier
-                                        .border(
-                                            width = 1.dp,
-                                            color = colorResource(R.color.primary),
-                                            shape = RoundedCornerShape(size = 20.dp)
-                                        )
-                                        .padding(start = 10.dp, end = 10.dp)
-                                ) {
-                                    Text(
-                                        text = "done",
-                                        fontFamily = sarabunFontFamily,
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight(600),
-                                        color = colorResource(R.color.primary)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
+                TransliterationExercisesListItem(
+                    exercise,
+                    navController
+                )
             }
         }
     }

@@ -1,13 +1,20 @@
 package com.tgarbus.litiluism.ui
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -20,18 +27,24 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.Location
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.MapPreview
+import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
 import com.tgarbus.litiluism.viewmodel.MapScreenStateViewModel
 
 @Composable
@@ -39,11 +52,6 @@ fun MapScreen(
     navController: NavController,
     viewModel: MapScreenStateViewModel = viewModel()
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     val showLocationDialog = remember { mutableStateOf<Location?>(null) }
     // TODO: Extract common column to a custom composable
     Column(
@@ -75,19 +83,49 @@ fun MapScreen(
                     showLocationDialog.value = l
                 }
             })
-            androidx.compose.animation.AnimatedVisibility(visible = (showLocationDialog.value != null)) {
+            // TODO: slide in vertically
+            androidx.compose.animation.AnimatedVisibility(
+                visible = (showLocationDialog.value != null)
+            ) {
+                val scrollState = rememberScrollState()
                 Column(
-                    modifier = Modifier.padding(20.dp)
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .clip(RoundedCornerShape(size = 21.dp))
+                        .verticalScroll(scrollState)
+                        .background(colorResource(R.color.light_bg))
+                        .padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    for (exercise in viewModel.exercisesByLocation[showLocationDialog.value]!!) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = exercise.title,
-                                fontFamily = sarabunFontFamily
-                            )
-                        }
+                    Row() {
+                        Spacer(modifier = Modifier.weight(1f))
+                        Image(
+                            painter = painterResource(id = R.drawable.icon_cross),
+                            contentDescription = "Close dialog",
+                            contentScale = ContentScale.None,
+                            modifier = Modifier
+                                .padding(0.dp)
+                                .width(21.dp)
+                                .height(21.dp)
+                                .clickable { showLocationDialog.value = null }
+                        )
+                    }
+                    Text(
+                        text = showLocationDialog.value?.description.orEmpty(),
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            fontFamily = FontFamily(Font(R.font.sarabun_regular)),
+                            fontWeight = FontWeight(700),
+                            color = Color(0xFF9C9C9C),
+                        )
+                    )
+                    for (exercise in viewModel.exercisesByLocation.getOrDefault(
+                        showLocationDialog.value, listOf()
+                    )) {
+                        TransliterationExercisesListItem(exercise, navController)
                     }
                 }
             }
