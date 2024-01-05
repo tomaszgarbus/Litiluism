@@ -1,8 +1,10 @@
 package com.tgarbus.litiluism.ui.reusables
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,6 +37,7 @@ fun MapPreview(
             mapView.setTileSource(TileSourceFactory.MAPNIK)
             for (location in viewModel.getLocations()) {
                 val locationMarker = Marker(mapView)
+                // TODO: Use Litiluism icon for the markers
                 locationMarker.position = GeoPoint(
                     location.lat,
                     location.long
@@ -47,6 +50,7 @@ fun MapPreview(
                 mapView.overlays.add(locationMarker)
             }
             mapView.setMultiTouchControls(true)
+            mapView.minZoomLevel = 4.0
             view
         },
         update = { view ->
@@ -54,7 +58,6 @@ fun MapPreview(
             // Add logic here if necessary.
             val mapView = view.findViewById<MapView>(R.id.map)
             mapView.controller.animateTo(GeoPoint(60.0, -15.0))
-//            mapView.controller.animateTo(GeoPoint(59.25712104244483, 17.21712304851343))
             mapView.controller.zoomTo(4.0)
             Log.d("mapview", "update")
         }

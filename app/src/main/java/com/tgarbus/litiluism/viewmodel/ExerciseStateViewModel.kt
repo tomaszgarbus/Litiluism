@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.viewmodel
 
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.tgarbus.litiluism.data.StaticContentRepository

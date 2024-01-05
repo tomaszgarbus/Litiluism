@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import org.osmdroid.config.Configuration
 
 
@@ -24,6 +25,7 @@ class MainActivity : ComponentActivity() {
         val ctx = applicationContext
         Configuration.getInstance().load(ctx, getPreferences(Context.MODE_PRIVATE))
         StaticContentRepository.init(this)
+        TransliterationExerciseStatesRepository.init(this)
 
         setContent {
             MaterialTheme(

@@ -16,5 +16,65 @@
     "lat": 59.3347747,
     "long": 18.0883866,
     "description": "Historiska Museet in Stockholm"
+  },
+  {
+    "id": "lidingö_dalängen",
+    "lat": 59.37078564979929,
+    "long": 18.129423152027226,
+    "description": "Lidingö, between Lejonsvägen and Nörra Kungsgatan"
+  },
+  {
+    "id": "lidingö_askrikevägen",
+    "lat": 59.3738418629652,
+    "long": 18.16162842165115,
+    "description": "Lidingö, Askrikevägen, at the crossing with Rönnvägen and Timmermansvägen"
+  },
+  {
+    "id": "bjärby",
+    "lat": 56.711012239061674,
+    "long": 16.705395112459602,
+    "description": "Bjärby, by the side of the road"
+  },
+  {
+    "id": "lerkaka",
+    "lat": 56.718947921009224,
+    "long": 16.710023871452364,
+    "description": "Lerkaka, across the road from the windmills"
+  },
+  {
+    "id": "gårdby",
+    "lat": 56.601121601917555,
+    "long": 16.637741806135296,
+    "description": "Gårdby, cemetery next to the church"
+  },
+  {
+    "id": "tjóðsavnið",
+    "lat": 62.032156647481166,
+    "long": -6.766054655207621,
+    "description": "Tjóðsavnið - the National Museum of Faroe Islands"
+  },
+  {
+    "id": "stavanger_archeology_museum",
+    "lat": 58.96300512604775,
+    "long": 5.730423589735501,
+    "description": "Museum of Archeology, University in Stavanger"
+  },
+  {
+    "id": "þjóðminjasafnið",
+    "lat": 64.14169418540335,
+    "long": -21.947687395498818,
+    "description": "National Museum of Iceland"
+  },
+  {
+    "id": "einar_jónssons_museum",
+    "lat": 64.14202376256117,
+    "long": -21.928905740069602,
+    "description": "The Einar Jónsson Museum in Reykjavik"
+  },
+  {
+    "id": "skallagrímsgarður",
+    "lat": 64.53999201346264,
+    "long": -21.920680411061834,
+    "description": "Skallagrim's garden in Borgarnes"
   }
 ]

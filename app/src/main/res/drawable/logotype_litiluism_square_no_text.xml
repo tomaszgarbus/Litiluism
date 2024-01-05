@@ -5,10 +5,10 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
   <path
-      android:pathData="M30.29,18L77.71,18A12.29,12.29 0,0 1,90 30.29L90,77.71A12.29,12.29 0,0 1,77.71 90L30.29,90A12.29,12.29 0,0 1,18 77.71L18,30.29A12.29,12.29 0,0 1,30.29 18z"
+      android:pathData="M30.29,18L77.71,18A12.29,12.29 0,0 1,91 30.29L91,77.71A12.29,12.29 0,0 1,77.71 91L30.29,91A12.29,12.29 0,0 1,18 77.71L18,30.29A12.29,12.29 0,0 1,30.29 18z"
       android:strokeWidth="0.195122">
     <aapt:attr name="android:fillColor">
-      <gradient 
+      <gradient
           android:startX="47.37"
           android:startY="55.27"
           android:endX="20.44"

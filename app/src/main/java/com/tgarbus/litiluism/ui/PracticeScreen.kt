@@ -140,12 +140,15 @@ fun PracticeScreen(navController: NavController) {
                     elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
                 )
                 .clip(RoundedCornerShape(21.dp))
+                .clickable { navController.navigate("mapscreen") }
         ) {
-            // TODO: map should be clickable too
             MapPreview(navController, onLocationClick = {})
             PracticeTypeButtonText(
                 name = "Pick from map",
-                modifier = Modifier.clickable { navController.navigate("mapscreen") }
+            )
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .clickable { navController.navigate("mapscreen") }
             )
         }
         Row(

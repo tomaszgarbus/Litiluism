@@ -41,7 +41,8 @@
     "sources": [
       "Runes: A Handbook by Michael P. Barnes (p 16-19)"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "historiska"
   },
   {
     "id": "lidingö_dalängen",
@@ -55,7 +56,8 @@
     "sources": [
       "Info table next to the stone, provided by Stockholms Läns Museum and Lidingö Stad"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "lidingö_dalängen"
   },
   {
     "id": "lidingö_askrikevägen",
@@ -70,7 +72,8 @@
       "Info table next to the stone, provided by Lidingö Stad",
       "http://raa.diva-portal.org/smash/get/diva2:1225795/FULLTEXT01.pdf"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "lidingö_askrikevägen"
   },
   {
     "id": "bjärby_runsten",
@@ -84,7 +87,8 @@
     "sources": [
       "Info table next to the stone, provided by Riksantikvarieambetet."
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "bjärby"
   },
   {
     "id": "gårdby_runsten",
@@ -98,7 +102,8 @@
     "sources": [
       "Info table next to the stone, provided by Riksantikvarieambetet."
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "gårdby"
   },
   {
     "id": "picture_stone_stånga",
@@ -158,7 +163,8 @@
     "sources": [
       "A plaque next to the stone, provided by Riksantikvarieambetet"
     ],
-    "country": "SE"
+    "country": "SE",
+    "location": "lerkaka"
   },
   {
     "id": "össeby_fragment",
@@ -187,7 +193,8 @@
     "sources": [
       "Tjóðsavnið - the National Museum of Faroe Islands"
     ],
-    "country": "FO"
+    "country": "FO",
+    "location": "tjóðsavnið"
   },
   {
     "id": "sandavagur_stone",
@@ -201,7 +208,8 @@
     "sources": [
       "Tjóðsavnið - the National Museum of Faroe Islands"
     ],
-    "country": "FO"
+    "country": "FO",
+    "location": "tjóðsavnið"
   },
   {
     "id": "sørvágur_box",
@@ -215,7 +223,8 @@
     "sources": [
       "Tjóðsavnið - the National Museum of Faroe Islands"
     ],
-    "country": "FO"
+    "country": "FO",
+    "location": "tjóðsavnið"
   },
   {
     "id": "bryggengohome",
@@ -290,7 +299,8 @@
     "sources": [
       "Arkeologisk museum | University of Stavanger"
     ],
-    "country": "NO"
+    "country": "NO",
+    "location": "stavanger_archeology_museum"
   },
   {
     "id": "møgedal",
@@ -304,7 +314,8 @@
     "sources": [
       "Arkeologisk museum | University of Stavanger"
     ],
-    "country": "NO"
+    "country": "NO",
+    "location": "stavanger_archeology_museum"
   },
   {
     "id": "wooden_spade",
@@ -318,7 +329,8 @@
     "sources": [
       "National Museum of Iceland"
     ],
-    "country": "IS"
+    "country": "IS",
+    "location": "þjóðminjasafnið"
   },
   {
     "id": "thorfinn_karlsefni",
@@ -332,7 +344,8 @@
     "sources": [
       "The Einar Jónsson Museum"
     ],
-    "country": "IS"
+    "country": "IS",
+    "location": "einar_jónssons_museum"
   },
   {
     "id": "borgarnes",
@@ -346,7 +359,8 @@
     "sources": [
       "An information board provided by the Borgarnes commune authorities"
     ],
-    "country": "IS"
+    "country": "IS",
+    "location": "skallagrímsgarður"
   },
   {
     "id": "acvalhalla",
