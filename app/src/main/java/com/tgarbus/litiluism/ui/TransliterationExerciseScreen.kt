@@ -65,7 +65,6 @@ fun Buttons(
     showFeedback: Boolean,
     onAnswerClick: (Char) -> Unit
 ) {
-    Log.d("recomp", "Recomposition of buttons: $options");
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
         Font(R.font.sarabun_bold, FontWeight.Bold),
@@ -138,7 +137,6 @@ fun ExerciseScreen(
 ) {
     viewModel.transliterationExercise = transliterationExercise
     val state = viewModel.state.collectAsState().value
-    Log.d("recomp", "Recomposition of all: " + state.toString());
     val position = state.position
     val inputs = state.inputs
     val title = transliterationExercise.title
@@ -320,10 +318,8 @@ fun ExerciseScreen(
                 onAnswerClick = { c ->
                     run {
                         if (c == transliterationExercise.solution()[state.position]) {
-                            Log.d("recomp", "Button click: " + c.toString());
                             viewModel.updateState(c)
                             showFeedback.value = false;
-                            Log.d("recomp", "Position: " + state.toString());
                         } else {
                             showFeedback.value = true;
                         }

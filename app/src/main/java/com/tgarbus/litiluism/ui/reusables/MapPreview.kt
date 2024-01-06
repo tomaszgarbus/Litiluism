@@ -59,7 +59,6 @@ fun MapPreview(
             val mapView = view.findViewById<MapView>(R.id.map)
             mapView.controller.animateTo(GeoPoint(60.0, -15.0))
             mapView.controller.zoomTo(4.0)
-            Log.d("mapview", "update")
         }
     )
 }

@@ -54,9 +54,7 @@ import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.BaseRuneRow
 import com.tgarbus.litiluism.viewmodel.ListOfExercisesViewModel
-import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExercise
-import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import com.tgarbus.litiluism.data.baseRuneRowToString
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
 import com.tgarbus.litiluism.ui.reusables.Header
@@ -237,7 +235,7 @@ fun ListOfExercisesScreen(
     navController: NavController,
     viewModel: ListOfExercisesViewModel = viewModel()
 ) {
-    val transliterationExercises = StaticContentRepository.getInstance().transliterationExercises
+    val transliterationExercises = viewModel.transliterationExercises()
     val scrollState = rememberScrollState()
 
     val filters = remember { mutableStateOf(ExerciseFilters()) }
@@ -283,7 +281,7 @@ fun ListOfExercisesScreen(
         AnimatedVisibility(visible = showFiltersDialog.value) {
             Filters(
                 filters,
-                StaticContentRepository.getInstance().exercisesByCountryCount,
+                viewModel.exercisesByCountryCount(),
                 viewModel
             ) { showFiltersDialog.value = false }
         }

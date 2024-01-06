@@ -8,7 +8,6 @@ import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 
 class MapPreviewViewModel() : ViewModel() {
-    private val exerciseStatesRepository = TransliterationExerciseStatesRepository.getInstance()
     private val staticContentRepository = StaticContentRepository.getInstance()
 
     fun getLocations(): List<Location> {

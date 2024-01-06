@@ -9,12 +9,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.res.colorResource
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.osmdroid.config.Configuration
 
 
@@ -26,6 +30,9 @@ class MainActivity : ComponentActivity() {
         Configuration.getInstance().load(ctx, getPreferences(Context.MODE_PRIVATE))
         StaticContentRepository.init(this)
         TransliterationExerciseStatesRepository.init(this)
+        lifecycleScope.launch {
+            TransliterationExerciseStatesRepository.getInstance().maybeLoadDataFromDataStore()
+        }
 
         setContent {
             MaterialTheme(
