@@ -16,12 +16,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ExerciseStateViewModel() : ViewModel() {
-
-    var transliterationExercise: TransliterationExercise? = null
-    private val _state: MutableStateFlow<TransliterationExerciseState> =
-        MutableStateFlow(TransliterationExerciseState())
+class ExerciseStateViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     private val exerciseStatesRepository = TransliterationExerciseStatesRepository.getInstance()
+    private val staticContentRepository = StaticContentRepository.getInstance()
+    var transliterationExercise =
+        staticContentRepository.exercisesMap[savedStateHandle["exerciseId"]!!]!!
+    private val _state: MutableStateFlow<TransliterationExerciseState> =
+        MutableStateFlow(exerciseStatesRepository.getExerciseState(transliterationExercise.id))
     val state = _state.asStateFlow()
 
     private fun updateStateByOnePosition(c: Char) {

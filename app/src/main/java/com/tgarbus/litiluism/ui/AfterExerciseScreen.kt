@@ -54,7 +54,10 @@ fun AfterExerciseScreen(
             )
             PrimaryButton(
                 text = "Back to practice",
-                onClick = { navController.navigate("practice") })
+                onClick = {
+                    navController.popBackStack()
+                    navController.popBackStack()
+                })
         }
     }
 }

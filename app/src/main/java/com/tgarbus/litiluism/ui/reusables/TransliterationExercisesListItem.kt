@@ -75,7 +75,7 @@ fun TransliterationExercisesListItem(
                             LocalContext.current
                         )
                     ),
-                    contentDescription = "Image goes brr",
+                    contentDescription = exercise.title,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .aspectRatio(1f)
