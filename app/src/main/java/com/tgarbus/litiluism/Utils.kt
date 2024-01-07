@@ -3,6 +3,8 @@ package com.tgarbus.litiluism
 import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.ExercisesMap
 import com.tgarbus.litiluism.data.ExercisesMapImpl
+import com.tgarbus.litiluism.data.RuneRow
+import com.tgarbus.litiluism.data.ThreeButtonOptions
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -16,14 +18,28 @@ fun isSeparator(rune: Char): Boolean {
     return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x').contains(rune);
 }
 
-fun generateOptions(transliterationExercise: TransliterationExercise): List<List<Pair<Char, Boolean>>> {
-    return transliterationExercise.solution().map { c ->
-        listOf(
-            Pair(c, true),
-            Pair(randomLetter(), false),
-            Pair(randomLetter(), false)
-        ).shuffled()
+fun generateOptions(runeRow: RuneRow, symbol: Char): ThreeButtonOptions {
+    if (isSeparator(symbol)) {
+        return listOf(
+            Pair(listOf(symbol), false),
+            Pair(listOf(symbol), false),
+            Pair(listOf(symbol), false),
+        )
     }
+    val symbols = runeRow.mapping.keys.toList()
+    var secondSymbol = symbols[abs(Random.nextInt()) % symbols.size]
+    while (secondSymbol == symbol) {
+        secondSymbol = symbols[abs(Random.nextInt()) % symbols.size]
+    }
+    var thirdSymbol = symbols[abs(Random.nextInt()) % symbols.size]
+    while (thirdSymbol == symbol || thirdSymbol == secondSymbol) {
+        thirdSymbol = symbols[abs(Random.nextInt()) % symbols.size]
+    }
+    return listOf(
+        Pair(runeRow.mapping[symbol]!!, true),
+        Pair(runeRow.mapping[secondSymbol]!!, false),
+        Pair(runeRow.mapping[thirdSymbol]!!, false),
+    ).shuffled()
 }
 
 fun List<TransliterationExercise>.toHashMapById(): ExercisesMap {

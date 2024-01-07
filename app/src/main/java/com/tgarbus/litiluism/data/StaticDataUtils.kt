@@ -11,47 +11,47 @@ import java.io.StringReader
 interface FromJson {
 
     data class RuneRow(
-        val symbols: HashMap<String, List<String>>,
-        val overrideSymbols: HashMap<String, List<String>>,
+        val symbols: HashMap<Char, List<Char>>,
+        val overrideSymbols: HashMap<Char, List<Char>>,
         val name: String,
         val inheritsFrom: String,
     )
 
     companion object {
 
-        private fun readStringOrList(jsonReader: JsonReader): List<String> {
+        private fun readCharOrList(jsonReader: JsonReader): List<Char> {
             if (jsonReader.peek() == JsonToken.STRING) {
-                return listOf(jsonReader.nextString())
+                return listOf(jsonReader.nextString()[0])
             }
             jsonReader.beginArray()
-            var result = arrayListOf<String>()
+            val result = arrayListOf<Char>()
             while (jsonReader.hasNext()) {
-                result.add(jsonReader.nextString())
+                result.add(jsonReader.nextString()[0])
             }
             jsonReader.endArray()
             return result.toList()
         }
 
-        private fun readRuneRowSymbol(jsonReader: JsonReader): Pair<String, List<String>> {
+        private fun readRuneRowSymbol(jsonReader: JsonReader): Pair<Char, List<Char>> {
             jsonReader.beginObject()
-            var name = "";
-            var latin = listOf<String>()
+            var rune = ' ';
+            var latin = listOf<Char>()
             while (jsonReader.hasNext()) {
                 val property = jsonReader.nextName()
                 if (property == "rune") {
-                    name = jsonReader.nextString()
+                    rune = jsonReader.nextString()[0]
                 }
                 if (property == "latin") {
-                    latin = readStringOrList(jsonReader)
+                    latin = readCharOrList(jsonReader)
                 }
             }
             jsonReader.endObject()
-            return Pair(name, latin)
+            return Pair(rune, latin)
         }
 
-        private fun readRuneRowSymbols(jsonReader: JsonReader): HashMap<String, List<String>> {
+        private fun readRuneRowSymbols(jsonReader: JsonReader): HashMap<Char, List<Char>> {
             jsonReader.beginArray()
-            var symbols = HashMap<String, List<String>>()
+            var symbols = HashMap<Char, List<Char>>()
             while (jsonReader.hasNext()) {
                 val symbol = readRuneRowSymbol(jsonReader)
                 symbols[symbol.first] = symbol.second
@@ -64,8 +64,8 @@ interface FromJson {
             jsonReader.beginObject()
             var inheritsFrom = ""
             var name = ""
-            var symbols = HashMap<String, List<String>>()
-            var overrideSymbols = HashMap<String, List<String>>()
+            var symbols = HashMap<Char, List<Char>>()
+            var overrideSymbols = HashMap<Char, List<Char>>()
             while (jsonReader.hasNext()) {
                 val property = jsonReader.nextName()
                 if (property == "name") {

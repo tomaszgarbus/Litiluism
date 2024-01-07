@@ -41,22 +41,7 @@ data class TransliterationExercise(
     val runeRow: RuneRow,
     // Images
     val imgResourceName: String,
-) {
-    private var _solution: String = ""
-
-    fun solution(): String {
-        if (_solution.isEmpty()) {
-            for (r in runes) {
-                if (isSeparator(r)) {
-                    _solution += r
-                } else {
-                    _solution += runeRow.mapping[r.toString()]!![0]
-                }
-            }
-        }
-        return _solution
-    }
-}
+)
 
 data class TransliterationExerciseState(
     val inputs: String = "",
@@ -67,8 +52,7 @@ data class TransliterationExerciseState(
 data class RuneRow(
     val id: String,
     val name: String,
-    // TODO: Char instead of String?
-    val mapping: Map<String, List<String>>,
+    val mapping: Map<Char, List<Char>>,
     val baseRuneRow: BaseRuneRow,
 )
 
@@ -77,3 +61,4 @@ typealias RuneRowsMapImpl = HashMap<String, RuneRow>
 typealias LocationsMap = Map<String, Location>
 typealias ExercisesMap = Map<String, TransliterationExercise>
 typealias ExercisesMapImpl = HashMap<String, TransliterationExercise>
+typealias ThreeButtonOptions = List<Pair<List<Char>, Boolean>>

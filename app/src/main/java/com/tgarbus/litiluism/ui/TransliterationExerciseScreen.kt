@@ -46,6 +46,7 @@ import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.generateOptions
+import com.tgarbus.litiluism.ui.reusables.ExerciseHeaderFrame
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
 import com.tgarbus.litiluism.ui.reusables.ThreeAnswerButtons
 import com.tgarbus.litiluism.viewmodel.TransliterationExerciseViewModel
@@ -71,9 +72,6 @@ fun ExerciseScreen(
     val description = transliterationExercise.description
     val runes = transliterationExercise.runes
 
-    val options = rememberSaveable { generateOptions(transliterationExercise) }
-    val showFeedback = rememberSaveable { mutableStateOf<Boolean>(false) }
-
     val scrollState = rememberScrollState()
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
@@ -86,43 +84,7 @@ fun ExerciseScreen(
             .verticalScroll(scrollState)
             .padding(horizontal = 20.dp, vertical = 20.dp)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Spacer(modifier = Modifier.weight(1f))
-            Image(
-                painter = painterResource(id = R.drawable.icon_cross),
-                contentDescription = "Close exercise",
-                contentScale = ContentScale.None,
-                modifier = Modifier
-                    .padding(0.dp)
-                    .width(21.dp)
-                    .height(21.dp)
-                    .clickable { navController.popBackStack() }
-            )
-        }
-        Text(
-            text = "Transliteration exercise",
-            modifier = Modifier
-                .fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            style = TextStyle(
-                fontSize = 16.sp,
-                fontFamily = FontFamily(Font(R.font.sarabun_regular)),
-                fontWeight = FontWeight(700),
-                color = Color(0xFF9C9C9C),
-            )
-        )
-        Text(
-            text = title,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(vertical = 20.dp)
-                .fillMaxWidth(),
-            fontFamily = sarabunFontFamily,
-            fontSize = 20.sp,
-            fontWeight = FontWeight(700),
-        )
+        ExerciseHeaderFrame("Transliteration exercise", title, navController)
         Text(
             text = description,
             modifier = Modifier.padding(vertical = 20.dp),
@@ -242,16 +204,13 @@ fun ExerciseScreen(
         } else {
             val context = LocalContext.current
             ThreeAnswerButtons(
-                options = options[state.position],
-                showFeedback = showFeedback.value,
-                onAnswerClick = { c ->
+                options = generateOptions(
+                    transliterationExercise.runeRow,
+                    transliterationExercise.runes[position]
+                ),
+                onCorrectAnswerClick = { c ->
                     run {
-                        if (c == transliterationExercise.solution()[state.position]) {
-                            viewModel.updateState(c, context)
-                            showFeedback.value = false;
-                        } else {
-                            showFeedback.value = true;
-                        }
+                        viewModel.updateState(c, context)
                     }
                 })
         }

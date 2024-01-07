@@ -14,23 +14,28 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.ThreeButtonOptions
 
 @Composable
 fun ThreeAnswerButtons(
-    options: List<Pair<Char, Boolean>>,
-    showFeedback: Boolean,
-    onAnswerClick: (Char) -> Unit
+    options: ThreeButtonOptions,
+    onCorrectAnswerClick: (Char) -> Unit
 ) {
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
@@ -38,6 +43,7 @@ fun ThreeAnswerButtons(
         Font(R.font.sarabun_thin, FontWeight.Thin),
     )
     val buttonShape = RoundedCornerShape(size = 14.dp)
+    val showFeedback = rememberSaveable { mutableStateOf<Boolean>(false) }
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -46,7 +52,7 @@ fun ThreeAnswerButtons(
             modifier = Modifier.fillMaxWidth()
         ) {
             val feedbackAlpha: Float by animateFloatAsState(
-                if (showFeedback) 1f else 0f,
+                if (showFeedback.value) 1f else 0f,
                 label = "animateFeedback"
             )
             Text(
@@ -72,12 +78,19 @@ fun ThreeAnswerButtons(
                     .aspectRatio(1f / 0.95f)
                 val buttonTextColor = colorResource(R.color.dark_grey)
                 val correctButtonTextColor =
-                    if (showFeedback) colorResource(R.color.correct_green) else buttonTextColor
-                val wrongButtonTextcolor =
-                    if (showFeedback) colorResource(R.color.wrong_red) else buttonTextColor
+                    if (showFeedback.value) colorResource(R.color.correct_green) else buttonTextColor
+                val wrongButtonTextColor =
+                    if (showFeedback.value) colorResource(R.color.wrong_red) else buttonTextColor
                 for (i in 0..2) {
                     ElevatedButton(
-                        onClick = { onAnswerClick(options[i].first) },
+                        onClick = {
+                            if (options[i].second) {
+                                onCorrectAnswerClick(options[i].first[0])
+                                showFeedback.value = false
+                            } else {
+                                showFeedback.value = true
+                            }
+                        },
                         modifier = buttonModifier,
                         colors = ButtonDefaults.elevatedButtonColors(
                             containerColor = colorResource(
@@ -87,8 +100,19 @@ fun ThreeAnswerButtons(
                         shape = buttonShape
                     ) {
                         Text(
-                            options[i].first.toString(),
-                            color = if (options[i].second) correctButtonTextColor else wrongButtonTextcolor,
+                            buildAnnotatedString {
+                                append(options[i].first[0].toString())
+                                for (j in 1..<options[i].first.size) {
+                                    withStyle(
+                                        style = SpanStyle(
+                                            fontWeight = FontWeight(400),
+                                        )
+                                    ) {
+                                        append("/${options[i].first[j]}")
+                                    }
+                                }
+                            },
+                            color = if (options[i].second) correctButtonTextColor else wrongButtonTextColor,
                             fontWeight = FontWeight(600),
                             fontSize = 20.sp,
                             fontFamily = sarabunFontFamily
