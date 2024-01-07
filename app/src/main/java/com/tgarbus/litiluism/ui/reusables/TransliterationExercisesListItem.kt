@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +35,7 @@ import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.Country
 import com.tgarbus.litiluism.data.TransliterationExercise
+import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
@@ -123,8 +125,9 @@ fun TransliterationExercisesListItem(
                     overflow = TextOverflow.Ellipsis,
                 )
                 // TODO: move this to a ViewModel
-                if (TransliterationExerciseStatesRepository.getInstance()
-                        .getExerciseState(exercise.id).complete
+                if (TransliterationExerciseStatesRepository.getInstance(LocalContext.current)
+                        .getExerciseStateAsFlow(exercise.id)
+                        .collectAsState(TransliterationExerciseState()).value.complete
                 ) {
                     Box(
                         Modifier

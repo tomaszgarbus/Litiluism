@@ -1,7 +1,5 @@
 package com.tgarbus.litiluism.ui
 
-import android.util.Log
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,7 +10,6 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,16 +18,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -47,96 +41,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.tgarbus.litiluism.data.TransliterationExercise
-import com.tgarbus.litiluism.viewmodel.ExerciseStateViewModel
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.data.TransliterationExercise
+import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.generateOptions
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
+import com.tgarbus.litiluism.ui.reusables.ThreeAnswerButtons
+import com.tgarbus.litiluism.viewmodel.TransliterationExerciseViewModel
 import kotlin.math.max
 
 fun colorWithAlpha(color: Color, alpha: Float): Color {
     return Color(color.red, color.green, color.blue, alpha);
 }
 
-@Composable
-fun Buttons(
-    options: List<Pair<Char, Boolean>>,
-    showFeedback: Boolean,
-    onAnswerClick: (Char) -> Unit
-) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
-    val buttonShape = RoundedCornerShape(size = 14.dp)
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            val feedbackAlpha: Float by animateFloatAsState(
-                if (showFeedback) 1f else 0f,
-                label = "animateFeedback"
-            )
-            Text(
-                text = "Click the correct answer to continue",
-                fontFamily = sarabunFontFamily,
-                fontWeight = FontWeight(700),
-                fontSize = 16.sp,
-                color = colorResource(R.color.wrong_red),
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .alpha(feedbackAlpha)
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                val buttonModifier = Modifier
-                    .shadow(elevation = 1.dp, shape = buttonShape)
-                    .background(color = colorResource(id = R.color.white))
-                    .weight(1f)
-                    .aspectRatio(1f / 0.95f)
-                val buttonTextColor = colorResource(R.color.dark_grey)
-                val correctButtonTextColor =
-                    if (showFeedback) colorResource(R.color.correct_green) else buttonTextColor
-                val wrongButtonTextcolor =
-                    if (showFeedback) colorResource(R.color.wrong_red) else buttonTextColor
-                for (i in 0..2) {
-                    OutlinedButton(
-                        onClick = { onAnswerClick(options[i].first) },
-                        modifier = buttonModifier,
-                        shape = buttonShape
-                    ) {
-                        Text(
-                            options[i].first.toString(),
-                            color = if (options[i].second) correctButtonTextColor else wrongButtonTextcolor,
-                            fontWeight = FontWeight(600),
-                            fontSize = 20.sp,
-                            fontFamily = sarabunFontFamily
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ExerciseScreen(
     transliterationExercise: TransliterationExercise,
-    viewModel: ExerciseStateViewModel = viewModel(),
+    viewModel: TransliterationExerciseViewModel = viewModel(),
     navController: NavController
 ) {
     viewModel.transliterationExercise = transliterationExercise
-    val state = viewModel.state.collectAsState().value
+    val state = viewModel.getState(LocalContext.current)
+        .collectAsState(TransliterationExerciseState()).value
     val position = state.position
     val inputs = state.inputs
     val title = transliterationExercise.title
@@ -266,7 +194,7 @@ fun ExerciseScreen(
                 }
             }
         }
-        if (viewModel.isComplete()) {
+        if (state.complete) {
             Text(
                 text = "Correct!",
                 color = colorResource(id = R.color.correct_green),
@@ -312,13 +240,14 @@ fun ExerciseScreen(
                 onClick = { navController.navigate("afterexercise") }
             )
         } else {
-            Buttons(
+            val context = LocalContext.current
+            ThreeAnswerButtons(
                 options = options[state.position],
                 showFeedback = showFeedback.value,
                 onAnswerClick = { c ->
                     run {
                         if (c == transliterationExercise.solution()[state.position]) {
-                            viewModel.updateState(c)
+                            viewModel.updateState(c, context)
                             showFeedback.value = false;
                         } else {
                             showFeedback.value = true;

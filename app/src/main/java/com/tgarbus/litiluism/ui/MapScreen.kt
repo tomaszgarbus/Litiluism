@@ -2,6 +2,8 @@ package com.tgarbus.litiluism.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -83,9 +85,10 @@ fun MapScreen(
                     showLocationDialog.value = l
                 }
             })
-            // TODO: slide in vertically
             androidx.compose.animation.AnimatedVisibility(
-                visible = (showLocationDialog.value != null)
+                visible = (showLocationDialog.value != null),
+                enter = slideInVertically(),
+                exit = slideOutVertically()
             ) {
                 val scrollState = rememberScrollState()
                 Column(

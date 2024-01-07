@@ -87,9 +87,9 @@ fun PracticeTypeButtonText(
 @Composable
 fun PracticeTypeButton(
     name: String,
-    navController: NavController,
     bgResource: Int,
-    boxModifier: Modifier = Modifier
+    boxModifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     val sarabunFontFamily = FontFamily(
         Font(R.font.sarabun_regular, FontWeight.Normal),
@@ -103,7 +103,7 @@ fun PracticeTypeButton(
             )
             .fillMaxSize()
             .clip(RoundedCornerShape(size = 21.dp))
-            .clickable { navController.navigate("exerciseslist") }
+            .clickable { onClick() }
     ) {
         Image(
             painter = painterResource(bgResource),
@@ -158,22 +158,22 @@ fun PracticeScreen(navController: NavController) {
         ) {
             PracticeTypeButton(
                 "Rune to latin",
-                navController,
                 R.drawable.button_bg_rune_to_latin,
-                Modifier.weight(1f)
+                Modifier.weight(1f),
+                onClick = { navController.navigate("runetolatin/older_futhark") }
             )
             PracticeTypeButton(
                 "Latin to rune",
-                navController,
                 R.drawable.button_bg_latin_to_rune,
-                Modifier.weight(1f)
+                Modifier.weight(1f),
+                onClick = { navController.navigate("exerciseslist") }
             )
         }
         Row(modifier = Modifier.fillMaxWidth()) {
             PracticeTypeButton(
                 "Text transliteration",
-                navController,
-                R.drawable.button_bg_transliteration_exercises
+                R.drawable.button_bg_transliteration_exercises,
+                onClick = { navController.navigate("exerciseslist") }
             )
         }
     }

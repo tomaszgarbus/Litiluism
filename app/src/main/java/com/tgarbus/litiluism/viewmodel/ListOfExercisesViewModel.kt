@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ListOfExercisesViewModel: ViewModel() {
-    private val exerciseStatesRepository = TransliterationExerciseStatesRepository.getInstance()
     private val staticContentRepository = StaticContentRepository.getInstance()
 
     fun transliterationExercises(): List<TransliterationExercise> {

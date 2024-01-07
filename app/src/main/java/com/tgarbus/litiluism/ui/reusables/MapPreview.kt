@@ -1,14 +1,13 @@
 package com.tgarbus.litiluism.ui.reusables
 
 import android.content.Context
-import android.os.Build
-import android.util.Log
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.VectorDrawable
 import android.view.LayoutInflater
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -19,7 +18,6 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.infowindow.InfoWindow
 
 @Composable
 fun MapPreview(
@@ -57,8 +55,7 @@ fun MapPreview(
             // View's been inflated or state read in this block has been updated
             // Add logic here if necessary.
             val mapView = view.findViewById<MapView>(R.id.map)
-            mapView.controller.animateTo(GeoPoint(60.0, -15.0))
-            mapView.controller.zoomTo(4.0)
+            mapView.controller.animateTo(GeoPoint(60.0, -15.0), 4.0, 0)
         }
     )
 }
