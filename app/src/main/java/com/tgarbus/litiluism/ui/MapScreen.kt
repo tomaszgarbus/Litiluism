@@ -44,6 +44,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.Location
+import com.tgarbus.litiluism.ui.reusables.ChoiceDialog
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.MapPreview
 import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
@@ -85,51 +86,14 @@ fun MapScreen(
                     showLocationDialog.value = l
                 }
             })
-            androidx.compose.animation.AnimatedVisibility(
+            ChoiceDialog(
+                title = showLocationDialog.value?.description.orEmpty(),
                 visible = (showLocationDialog.value != null),
-                enter = slideInVertically(),
-                exit = slideOutVertically()
-            ) {
-                val scrollState = rememberScrollState()
-                Column(
-                    modifier = Modifier
-                        .padding(20.dp)
-                        .clip(RoundedCornerShape(size = 21.dp))
-                        .verticalScroll(scrollState)
-                        .background(colorResource(R.color.light_bg))
-                        .padding(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    Row() {
-                        Spacer(modifier = Modifier.weight(1f))
-                        Image(
-                            painter = painterResource(id = R.drawable.icon_cross),
-                            contentDescription = "Close dialog",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier
-                                .padding(0.dp)
-                                .width(21.dp)
-                                .height(21.dp)
-                                .clickable { showLocationDialog.value = null }
-                        )
-                    }
-                    Text(
-                        text = showLocationDialog.value?.description.orEmpty(),
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        textAlign = TextAlign.Center,
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontFamily = FontFamily(Font(R.font.sarabun_regular)),
-                            fontWeight = FontWeight(700),
-                            color = Color(0xFF9C9C9C),
-                        )
-                    )
-                    for (exercise in viewModel.exercisesByLocation.getOrDefault(
-                        showLocationDialog.value, listOf()
-                    )) {
-                        TransliterationExercisesListItem(exercise, navController)
-                    }
+                onClose = { showLocationDialog.value = null }) {
+                for (exercise in viewModel.exercisesByLocation.getOrDefault(
+                    showLocationDialog.value, listOf()
+                )) {
+                    TransliterationExercisesListItem(exercise, navController)
                 }
             }
         }

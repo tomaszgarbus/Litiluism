@@ -6,10 +6,17 @@ import com.tgarbus.litiluism.toHashMapById
 class StaticContentRepository private constructor(
     val transliterationExercises: List<TransliterationExercise>,
     val locations: List<Location>,
-    val runeRowsMap: RuneRowsMap
+    val runeRowsMap: RuneRowsMap,
 ) {
     val exercisesMap: ExercisesMap = transliterationExercises.toHashMapById()
     val exercisesByCountryCount = buildExerciseByCountryCountMap(transliterationExercises)
+
+    fun getFullBaseRuneRow(baseRuneRow: BaseRuneRow): RuneRow? {
+        return when (val maybeId = maybeBaseRuneRowToId(baseRuneRow)) {
+            null -> null
+            else -> runeRowsMap[maybeId]
+        }
+    }
 
     companion object {
         private var instance_: StaticContentRepository? = null
