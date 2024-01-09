@@ -2,6 +2,10 @@ package com.tgarbus.litiluism.ui
 
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,6 +23,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,7 +42,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.maybeBaseRuneRowToId
 import com.tgarbus.litiluism.ui.reusables.Header
+import com.tgarbus.litiluism.ui.reusables.ListOfRuneRowsDialog
 import com.tgarbus.litiluism.ui.reusables.MapPreview
 import org.mapsforge.map.layer.download.tilesource.TileSource
 import org.osmdroid.api.IGeoPoint
@@ -91,11 +100,6 @@ fun PracticeTypeButton(
     boxModifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     Box(
         modifier = boxModifier
             .shadow(
@@ -118,7 +122,7 @@ fun PracticeTypeButton(
 
 @Composable
 fun PracticeScreen(navController: NavController) {
-    // TODO: Serve font family from one static place in the app
+    var showRuneRowDialog = remember { mutableStateOf(false) }
     val scrollState = rememberScrollState()
     // TODO: Extract common column to a custom composable
     Column(
@@ -135,10 +139,10 @@ fun PracticeScreen(navController: NavController) {
         Box(
             modifier = Modifier
                 .height(150.dp)
-                .fillMaxWidth()
                 .shadow(
                     elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
                 )
+                .fillMaxWidth()
                 .clip(RoundedCornerShape(21.dp))
                 .clickable { navController.navigate("mapscreen") }
         ) {
@@ -157,10 +161,10 @@ fun PracticeScreen(navController: NavController) {
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             PracticeTypeButton(
-                "Rune to latin",
+                "Rune to Latin",
                 R.drawable.button_bg_rune_to_latin,
                 Modifier.weight(1f),
-                onClick = { navController.navigate("runetolatin/older_futhark") }
+                onClick = { showRuneRowDialog.value = true }
             )
             PracticeTypeButton(
                 "Latin to rune",
@@ -177,4 +181,13 @@ fun PracticeScreen(navController: NavController) {
             )
         }
     }
+    ListOfRuneRowsDialog(
+        visible = showRuneRowDialog.value,
+        onClose = { showRuneRowDialog.value = false },
+        title = "Select runic alphabet",
+        onSelectItem = { baseRuneRow ->
+            navController.navigate(
+                "runetolatin/${maybeBaseRuneRowToId(baseRuneRow)!!}"
+            )
+        })
 }
