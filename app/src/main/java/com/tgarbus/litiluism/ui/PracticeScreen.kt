@@ -122,7 +122,7 @@ fun PracticeTypeButton(
 
 @Composable
 fun PracticeScreen(navController: NavController) {
-    var showRuneRowDialog = remember { mutableStateOf(false) }
+    var runeRowDialogDestination = remember { mutableStateOf<String?>(null) }
     val scrollState = rememberScrollState()
     // TODO: Extract common column to a custom composable
     Column(
@@ -164,13 +164,13 @@ fun PracticeScreen(navController: NavController) {
                 "Rune to Latin",
                 R.drawable.button_bg_rune_to_latin,
                 Modifier.weight(1f),
-                onClick = { showRuneRowDialog.value = true }
+                onClick = { runeRowDialogDestination.value = "runetolatin" }
             )
             PracticeTypeButton(
                 "Latin to rune",
                 R.drawable.button_bg_latin_to_rune,
                 Modifier.weight(1f),
-                onClick = { navController.navigate("exerciseslist") }
+                onClick = { runeRowDialogDestination.value = "latintorune" }
             )
         }
         Row(modifier = Modifier.fillMaxWidth()) {
@@ -182,12 +182,15 @@ fun PracticeScreen(navController: NavController) {
         }
     }
     ListOfRuneRowsDialog(
-        visible = showRuneRowDialog.value,
-        onClose = { showRuneRowDialog.value = false },
+        visible = runeRowDialogDestination.value != null,
+        onClose = { runeRowDialogDestination.value = null },
         title = "Select runic alphabet",
         onSelectItem = { baseRuneRow ->
-            navController.navigate(
-                "runetolatin/${maybeBaseRuneRowToId(baseRuneRow)!!}"
-            )
+            val destination = runeRowDialogDestination.value
+            if (destination != null) {
+                navController.navigate(
+                    "${destination}/${maybeBaseRuneRowToId(baseRuneRow)!!}"
+                )
+            }
         })
 }

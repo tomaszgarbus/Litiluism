@@ -58,6 +58,9 @@ class MainActivity : ComponentActivity() {
                     composable("runetolatin/{runeRowId}") {
                         RuneToLatinExerciseScreen(navController)
                     }
+                    composable("latintorune/{runeRowId}") {
+                        LatinToRuneExerciseScreen(navController)
+                    }
                 }
             }
         }
