@@ -163,10 +163,6 @@
         "latin": "s"
       },
       {
-        "rune": "ᛌ",
-        "latin": "s"
-      },
-      {
         "rune": "ᛏ",
         "latin": "t"
       },
@@ -210,8 +206,8 @@
       {
         "rune": "ᚭ",
         "latin": [
-          "ą",
-          "o"
+          "o",
+          "ą"
         ]
       },
       {
@@ -221,14 +217,6 @@
       {
         "rune": "ᚴ",
         "latin": "k"
-      },
-      {
-        "rune": "ᚵ",
-        "latin": "g"
-      },
-      {
-        "rune": "ᚽ",
-        "latin": "h"
       },
       {
         "rune": "ᚼ",
@@ -241,14 +229,6 @@
       {
         "rune": "ᛁ",
         "latin": "i"
-      },
-      {
-        "rune": "ᛂ",
-        "latin": "e"
-      },
-      {
-        "rune": "ᛅ",
-        "latin": "a"
       },
       {
         "rune": "ᛆ",
@@ -518,7 +498,12 @@
   "b149_younger_futhark": {
     "name": "Short-twig Younger Fuþark",
     "inherit_from": "younger_futhark_short_twig",
-    "override_symbols": []
+    "override_symbols": [
+      {
+        "rune": "ᛅ",
+        "latin": "a"
+      }
+    ]
   },
   "bergen_possible_gravestone_younger_futhark": {
     "name": "Short-twig Younger Fuþark",
@@ -531,6 +516,10 @@
       {
         "rune": "ᚮ",
         "latin": "o"
+      },
+      {
+        "rune": "ᛅ",
+        "latin": "a"
       }
     ]
   },
@@ -625,6 +614,10 @@
         "latin": "a"
       },
       {
+        "rune": "ᚽ",
+        "latin": "h"
+      },
+      {
         "rune": "ᛦ",
         "latin": [
           "y",
@@ -638,7 +631,16 @@
   "younger_futhark_sandavagur_stone": {
     "name": "Short-twig Younger Fuþark",
     "inherit_from": "younger_futhark_short_twig",
-    "override_symbols": []
+    "override_symbols": [
+      {
+        "rune": "ᚵ",
+        "latin": "g"
+      },
+      {
+        "rune": "ᛅ",
+        "latin": "a"
+      }
+    ]
   },
   "wooden_spade_younger_futhark": {
     "name": "Short-twig Younger Fuþark",
@@ -793,6 +795,10 @@
       {
         "rune": "ᚽ",
         "latin": "e"
+      },
+      {
+        "rune": "ᛌ",
+        "latin": "s"
       }
     ]
   },
