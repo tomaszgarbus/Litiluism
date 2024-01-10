@@ -2,6 +2,7 @@ package com.tgarbus.litiluism.ui.reusables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -32,7 +33,7 @@ enum class ButtonType {
 }
 
 fun getResourceId(buttonType: ButtonType): Int {
-    return when(buttonType) {
+    return when (buttonType) {
         ButtonType.HOME -> R.drawable.icon_home
         ButtonType.LEARNING -> R.drawable.icon_learning
         ButtonType.MATERIALS -> R.drawable.icon_materials
@@ -42,7 +43,7 @@ fun getResourceId(buttonType: ButtonType): Int {
 }
 
 fun getName(buttonType: ButtonType): String {
-    return when(buttonType) {
+    return when (buttonType) {
         ButtonType.HOME -> "Home"
         ButtonType.SETTINGS -> "Settings"
         ButtonType.PRACTICE -> "Practice"
@@ -51,25 +52,38 @@ fun getName(buttonType: ButtonType): String {
     }
 }
 
+fun getLink(buttonType: ButtonType): String {
+    return when (buttonType) {
+        ButtonType.HOME -> "home"
+        ButtonType.SETTINGS -> "settings"
+        ButtonType.PRACTICE -> "practice"
+        ButtonType.MATERIALS -> "materials"
+        ButtonType.LEARNING -> "learning"
+    }
+}
+
 @Composable
 fun DockButton(
-    buttonType: ButtonType, isActive: Boolean
+    buttonType: ButtonType, isActive: Boolean, navController: NavController
 ) {
     Image(
         painterResource(getResourceId(buttonType)),
         getName(buttonType),
-        modifier = Modifier.size(25.dp),
+        modifier = Modifier
+            .size(25.dp)
+            .clickable { navController.navigate(getLink(buttonType)) },
         colorFilter = if (isActive) ColorFilter.tint(
             colorResource(R.color.primary),
             blendMode = BlendMode.SrcAtop
-        ) else null
+        ) else null,
     )
 }
 
 @Composable
 fun Dock(
     activeTab: ButtonType,
-    navController: NavController) {
+    navController: NavController
+) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -84,7 +98,7 @@ fun Dock(
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             for (buttonType in ButtonType.entries) {
-                DockButton(buttonType, isActive = (activeTab == buttonType))
+                DockButton(buttonType, isActive = (activeTab == buttonType), navController)
             }
         }
     }
