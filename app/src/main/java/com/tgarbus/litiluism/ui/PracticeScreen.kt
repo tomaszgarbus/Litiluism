@@ -43,6 +43,8 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.maybeBaseRuneRowToId
+import com.tgarbus.litiluism.ui.reusables.ButtonType
+import com.tgarbus.litiluism.ui.reusables.Dock
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.ListOfRuneRowsDialog
 import com.tgarbus.litiluism.ui.reusables.MapPreview
@@ -125,61 +127,64 @@ fun PracticeScreen(navController: NavController) {
     var showRuneRowDialog = remember { mutableStateOf(false) }
     val scrollState = rememberScrollState()
     // TODO: Extract common column to a custom composable
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            // TODO: set bg color through theme
-            .background(colorResource(R.color.light_bg))
-            .verticalScroll(scrollState)
-            .padding(vertical = 20.dp)
-            .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
-        Header("Practice")
-        Box(
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
             modifier = Modifier
-                .height(150.dp)
-                .shadow(
-                    elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
-                )
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(21.dp))
-                .clickable { navController.navigate("mapscreen") }
+                // TODO: set bg color through theme
+                .background(colorResource(R.color.light_bg))
+                .verticalScroll(scrollState)
+                .padding(vertical = 20.dp)
+                .padding(horizontal = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            MapPreview(navController, onLocationClick = {})
-            PracticeTypeButtonText(
-                name = "Pick from map",
-            )
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .clickable { navController.navigate("mapscreen") }
-            )
+            Header("Practice")
+            Box(
+                modifier = Modifier
+                    .height(150.dp)
+                    .shadow(
+                        elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
+                    )
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(21.dp))
+                    .clickable { navController.navigate("mapscreen") }
+            ) {
+                MapPreview(navController, onLocationClick = {})
+                PracticeTypeButtonText(
+                    name = "Pick from map",
+                )
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .clickable { navController.navigate("mapscreen") }
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                PracticeTypeButton(
+                    "Rune to Latin",
+                    R.drawable.button_bg_rune_to_latin,
+                    Modifier.weight(1f),
+                    onClick = { showRuneRowDialog.value = true }
+                )
+                PracticeTypeButton(
+                    "Latin to rune",
+                    R.drawable.button_bg_latin_to_rune,
+                    Modifier.weight(1f),
+                    onClick = { navController.navigate("exerciseslist") }
+                )
+            }
+            Row(modifier = Modifier.fillMaxWidth()) {
+                PracticeTypeButton(
+                    "Text transliteration",
+                    R.drawable.button_bg_transliteration_exercises,
+                    onClick = { navController.navigate("exerciseslist") }
+                )
+            }
         }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            PracticeTypeButton(
-                "Rune to Latin",
-                R.drawable.button_bg_rune_to_latin,
-                Modifier.weight(1f),
-                onClick = { showRuneRowDialog.value = true }
-            )
-            PracticeTypeButton(
-                "Latin to rune",
-                R.drawable.button_bg_latin_to_rune,
-                Modifier.weight(1f),
-                onClick = { navController.navigate("exerciseslist") }
-            )
-        }
-        Row(modifier = Modifier.fillMaxWidth()) {
-            PracticeTypeButton(
-                "Text transliteration",
-                R.drawable.button_bg_transliteration_exercises,
-                onClick = { navController.navigate("exerciseslist") }
-            )
-        }
+        Dock(ButtonType.PRACTICE, navController)
     }
     ListOfRuneRowsDialog(
         visible = showRuneRowDialog.value,
