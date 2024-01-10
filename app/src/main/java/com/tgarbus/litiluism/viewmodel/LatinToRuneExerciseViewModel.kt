@@ -5,26 +5,32 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.ThreeButtonOptions
+import com.tgarbus.litiluism.generateOptions
 import com.tgarbus.litiluism.generateRuneToLatinOptions
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-// TODO: common interface for this and LatinToRune
-class RuneToLatinExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
+// TODO: common interface for this and RuneToLatin
+class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle): ViewModel() {
     private val staticContentRepository = StaticContentRepository.getInstance()
     private val runeRow =
         staticContentRepository.runeRowsMap[savedStateHandle["runeRowId"]!!]!!
-    private val queue = ArrayDeque(runeRow.mapping.keys.shuffled())
+    private val reverseMapping = buildReverseMapping()
+    private val queue = ArrayDeque(reverseMapping.keys.shuffled())
+    val queueSize: Int
+        get() = queue.size
     val optionsFlow = MutableStateFlow(getOptions())
     val questionsFlow = MutableStateFlow(getQuestion())
     val runeRowName = runeRow.name
     val finished = MutableStateFlow(false)
 
-    val queueSize: Int
-        get() = queue.size
+    private fun buildReverseMapping(): Map<Char, List<Char>> {
+        // TODO: should I worry about two runes transliterated to the same latin symbol?
+        return runeRow.mapping.entries.associateBy({ it.value[0] }, { listOf(it.key) })
+    }
 
     private fun getOptions(): ThreeButtonOptions {
-        return generateRuneToLatinOptions(runeRow, queue.first())
+        return generateOptions(reverseMapping, queue.first())
     }
 
     private fun getQuestion(): Char {

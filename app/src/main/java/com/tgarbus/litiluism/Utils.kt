@@ -18,15 +18,8 @@ fun isSeparator(rune: Char): Boolean {
     return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x').contains(rune);
 }
 
-fun generateOptions(runeRow: RuneRow, symbol: Char): ThreeButtonOptions {
-    if (isSeparator(symbol)) {
-        return listOf(
-            Pair(listOf(symbol), false),
-            Pair(listOf(symbol), false),
-            Pair(listOf(symbol), false),
-        )
-    }
-    val symbols = runeRow.mapping.keys.toList()
+fun generateOptions(mapping: Map<Char, List<Char>>, symbol: Char): ThreeButtonOptions {
+    val symbols = mapping.keys.toList()
     var secondSymbol = symbols[abs(Random.nextInt()) % symbols.size]
     while (secondSymbol == symbol) {
         secondSymbol = symbols[abs(Random.nextInt()) % symbols.size]
@@ -36,10 +29,21 @@ fun generateOptions(runeRow: RuneRow, symbol: Char): ThreeButtonOptions {
         thirdSymbol = symbols[abs(Random.nextInt()) % symbols.size]
     }
     return listOf(
-        Pair(runeRow.mapping[symbol]!!, true),
-        Pair(runeRow.mapping[secondSymbol]!!, false),
-        Pair(runeRow.mapping[thirdSymbol]!!, false),
+        Pair(mapping[symbol]!!, true),
+        Pair(mapping[secondSymbol]!!, false),
+        Pair(mapping[thirdSymbol]!!, false),
     ).shuffled()
+}
+
+fun generateRuneToLatinOptions(runeRow: RuneRow, symbol: Char): ThreeButtonOptions {
+    if (isSeparator(symbol)) {
+        return listOf(
+            Pair(listOf(symbol), false),
+            Pair(listOf(symbol), false),
+            Pair(listOf(symbol), false),
+        )
+    }
+    return generateOptions(runeRow.mapping, symbol)
 }
 
 fun List<TransliterationExercise>.toHashMapById(): ExercisesMap {

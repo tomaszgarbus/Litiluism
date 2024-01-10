@@ -124,7 +124,7 @@ fun PracticeTypeButton(
 
 @Composable
 fun PracticeScreen(navController: NavController) {
-    var showRuneRowDialog = remember { mutableStateOf(false) }
+    var runeRowDialogDestination = remember { mutableStateOf<String?>(null) }
     val scrollState = rememberScrollState()
     // TODO: Extract common column to a custom composable
     Box(modifier = Modifier.fillMaxSize()) {
@@ -138,61 +138,52 @@ fun PracticeScreen(navController: NavController) {
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Header("Practice")
-            Box(
-                modifier = Modifier
-                    .height(150.dp)
-                    .shadow(
-                        elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
-                    )
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(21.dp))
-                    .clickable { navController.navigate("mapscreen") }
-            ) {
-                MapPreview(navController, onLocationClick = {})
-                PracticeTypeButtonText(
-                    name = "Pick from map",
-                )
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .clickable { navController.navigate("mapscreen") }
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                PracticeTypeButton(
-                    "Rune to Latin",
-                    R.drawable.button_bg_rune_to_latin,
-                    Modifier.weight(1f),
-                    onClick = { showRuneRowDialog.value = true }
-                )
-                PracticeTypeButton(
-                    "Latin to rune",
-                    R.drawable.button_bg_latin_to_rune,
-                    Modifier.weight(1f),
-                    onClick = { navController.navigate("exerciseslist") }
-                )
-            }
-            Row(modifier = Modifier.fillMaxWidth()) {
-                PracticeTypeButton(
-                    "Text transliteration",
-                    R.drawable.button_bg_transliteration_exercises,
-                    onClick = { navController.navigate("exerciseslist") }
-                )
-            }
+            MapPreview(navController, onLocationClick = {})
+            PracticeTypeButtonText(
+                name = "Pick from map",
+            )
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .clickable { navController.navigate("mapscreen") }
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            PracticeTypeButton(
+                "Rune to Latin",
+                R.drawable.button_bg_rune_to_latin,
+                Modifier.weight(1f),
+                onClick = { runeRowDialogDestination.value = "runetolatin" }
+            )
+            PracticeTypeButton(
+                "Latin to rune",
+                R.drawable.button_bg_latin_to_rune,
+                Modifier.weight(1f),
+                onClick = { runeRowDialogDestination.value = "latintorune" }
+            )
+        }
+        Row(modifier = Modifier.fillMaxWidth()) {
+            PracticeTypeButton(
+                "Text transliteration",
+                R.drawable.button_bg_transliteration_exercises,
+                onClick = { navController.navigate("exerciseslist") }
+            )
         }
         Dock(ButtonType.PRACTICE, navController)
     }
     ListOfRuneRowsDialog(
-        visible = showRuneRowDialog.value,
-        onClose = { showRuneRowDialog.value = false },
+        visible = runeRowDialogDestination.value != null,
+        onClose = { runeRowDialogDestination.value = null },
         title = "Select runic alphabet",
         onSelectItem = { baseRuneRow ->
-            navController.navigate(
-                "runetolatin/${maybeBaseRuneRowToId(baseRuneRow)!!}"
-            )
+            val destination = runeRowDialogDestination.value
+            if (destination != null) {
+                navController.navigate(
+                    "${destination}/${maybeBaseRuneRowToId(baseRuneRow)!!}"
+                )
+            }
         })
 }
