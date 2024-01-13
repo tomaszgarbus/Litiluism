@@ -77,7 +77,7 @@ fun SettingsItem(
 fun SettingsScreen(navController: NavController) {
     FullScreenPaddedColumn {
         Header("Settings")
-        SettingsItem("About app", R.drawable.icon_info) {
+        SettingsItem("About the app", R.drawable.icon_info) {
             navController.navigate("about")
         }
     }

@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui
 
+import android.graphics.drawable.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -82,6 +83,7 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
             .clickable { hidden.value = !hidden.value }
             .padding(10.dp)
     ) {
+        // TODO: use a question mark icon instead
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (hidden.value) {
                 Icon(
