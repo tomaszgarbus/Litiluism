@@ -25,8 +25,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -39,6 +37,7 @@ import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.getThumbnailResourceId
 
 @Composable
@@ -46,11 +45,6 @@ fun TransliterationExercisesListItem(
     exercise: TransliterationExercise,
     navController: NavController
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     Box(modifier = Modifier
         .fillMaxWidth()
         .shadow(
@@ -105,16 +99,16 @@ fun TransliterationExercisesListItem(
                 Text(
                     text = exercise.title,
                     fontFamily = sarabunFontFamily,
-                    fontWeight = FontWeight(700),
+                    fontWeight = FontWeight.ExtraBold,
                     fontSize = 16.sp,
                 )
                 Text(
                     text = exercise.runeRow.name,
                     fontFamily = sarabunFontFamily,
-                    fontWeight = FontWeight(700),
+                    fontWeight = FontWeight.ExtraBold,
                     fontSize = 16.sp,
                     maxLines = 1,
-                    color = colorResource(R.color.rune_row_type_text),
+                    color = colorResource(R.color.dim_grey_text),
                 )
                 Text(
                     text = exercise.runes,
@@ -142,7 +136,7 @@ fun TransliterationExercisesListItem(
                             text = "done",
                             fontFamily = sarabunFontFamily,
                             fontSize = 12.sp,
-                            fontWeight = FontWeight(600),
+                            fontWeight = FontWeight.Bold,
                             color = colorResource(R.color.primary)
                         )
                     }

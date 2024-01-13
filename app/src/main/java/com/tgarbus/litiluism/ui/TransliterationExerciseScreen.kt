@@ -11,10 +11,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -27,8 +25,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -40,7 +36,9 @@ import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.generateRuneToLatinOptions
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.ExerciseHeaderFrame
+import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
 import com.tgarbus.litiluism.ui.reusables.ThreeAnswerButtons
 import com.tgarbus.litiluism.viewmodel.TransliterationExerciseViewModel
@@ -66,18 +64,7 @@ fun ExerciseScreen(
     val description = transliterationExercise.description
     val runes = transliterationExercise.runes
 
-    val scrollState = rememberScrollState()
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .verticalScroll(scrollState)
-            .padding(horizontal = 20.dp, vertical = 20.dp)
-    ) {
+    FullScreenPaddedColumn() {
         ExerciseHeaderFrame("Transliteration exercise", title, navController)
         Text(
             text = description,
@@ -85,7 +72,7 @@ fun ExerciseScreen(
             textAlign = TextAlign.Justify,
             fontFamily = sarabunFontFamily,
             fontSize = 14.sp,
-            fontWeight = FontWeight(400)
+            fontWeight = FontWeight.Normal
         )
         Box(
             modifier = Modifier
@@ -125,7 +112,7 @@ fun ExerciseScreen(
                                 R.color.default_text
                             ),
                             fontSize = 24.sp,
-                            fontWeight = if (i == position) FontWeight(800) else FontWeight(400)
+                            fontWeight = if (i == position) FontWeight.ExtraBold else FontWeight.Normal
                         )
                     )
                     var textColor =
@@ -144,7 +131,7 @@ fun ExerciseScreen(
                         style = TextStyle(
                             color = textColor,
                             fontSize = 20.sp,
-                            fontWeight = if (i <= position) FontWeight(700) else FontWeight(400)
+                            fontWeight = if (i <= position) FontWeight.ExtraBold else FontWeight.Normal
                         )
                     )
                 }
@@ -156,7 +143,7 @@ fun ExerciseScreen(
                 color = colorResource(id = R.color.correct_green),
                 fontSize = 24.sp,
                 fontFamily = sarabunFontFamily,
-                fontWeight = FontWeight(700),
+                fontWeight = FontWeight.ExtraBold,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )

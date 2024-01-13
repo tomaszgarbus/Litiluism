@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.BaseRuneRow
 import com.tgarbus.litiluism.data.StaticContentRepository
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
 @Composable
 fun ListOfRuneRowsDialog(
@@ -29,11 +30,6 @@ fun ListOfRuneRowsDialog(
     title: String,
     onSelectItem: (BaseRuneRow) -> Unit
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     ChoiceDialog(
         visible = visible,
         onClose = onClose,
@@ -52,7 +48,7 @@ fun ListOfRuneRowsDialog(
                         runeRow!!.name,
                         fontFamily = sarabunFontFamily,
                         fontSize = 20.sp,
-                        fontWeight = FontWeight(600)
+                        fontWeight = FontWeight.Bold
                     )
                 }
             }

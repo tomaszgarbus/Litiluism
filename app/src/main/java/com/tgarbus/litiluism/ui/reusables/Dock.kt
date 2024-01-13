@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,7 +20,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -67,17 +68,23 @@ fun getLink(buttonType: ButtonType): String {
 fun DockButton(
     buttonType: ButtonType, isActive: Boolean, navController: NavController
 ) {
-    Image(
-        painterResource(getResourceId(buttonType)),
-        getName(buttonType),
+    Box(
         modifier = Modifier
-            .size(25.dp)
-            .clickable { navController.navigate(getLink(buttonType)) },
-        colorFilter = if (isActive) ColorFilter.tint(
-            colorResource(R.color.primary),
-            blendMode = BlendMode.SrcAtop
-        ) else null,
-    )
+            .clip(CircleShape)
+            .clickable { navController.navigate(getLink(buttonType)) }
+            .padding(10.dp)
+    ) {
+        Image(
+            painterResource(getResourceId(buttonType)),
+            getName(buttonType),
+            modifier = Modifier
+                .size(25.dp),
+            colorFilter = if (isActive) ColorFilter.tint(
+                colorResource(R.color.primary),
+                blendMode = BlendMode.SrcAtop
+            ) else null,
+        )
+    }
 }
 
 @Composable

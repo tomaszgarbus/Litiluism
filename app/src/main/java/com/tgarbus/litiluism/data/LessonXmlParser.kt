@@ -2,6 +2,7 @@ package com.tgarbus.litiluism.data
 
 import android.content.Context
 import android.util.Xml
+import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.ui.getDrawableResourceId
 import org.xmlpull.v1.XmlPullParser
 
@@ -128,15 +129,12 @@ class LessonXmlParser(private val xmlString: String) {
         return result
     }
 
-    private fun parseInternal(): Lesson {
-        val pullParser = Xml.newPullParser()
-        pullParser.setInput(xmlString.byteInputStream(), null)
+    private fun parseLessonInternal(pullParser: XmlPullParser): Lesson {
         var eventType: Int = pullParser.eventType
         var title = ""
         var body = ArrayList<Node>()
-        while (eventType != XmlPullParser.END_DOCUMENT) {
+        while (eventType != XmlPullParser.END_TAG || pullParser.name != "lesson") {
             when (eventType) {
-                XmlPullParser.START_DOCUMENT -> {}
                 XmlPullParser.START_TAG -> {
                     when (pullParser.name) {
                         "title" -> title = parseTitle(pullParser)
@@ -164,7 +162,7 @@ class LessonXmlParser(private val xmlString: String) {
         )
     }
 
-    fun Node.toLessonBlock(context: Context): LessonBlock {
+    private fun Node.toLessonBlock(context: Context): LessonBlock {
         val textSpan = toLessonTextSpan()
         var imageResourceId: Int? = null
         if (modifiers.contains(NodeModifier.IMAGE)) {
@@ -184,8 +182,8 @@ class LessonXmlParser(private val xmlString: String) {
         )
     }
 
-    fun parse(context: Context): com.tgarbus.litiluism.data.Lesson {
-        val lessonInternal = parseInternal()
+    private fun parseLesson(pullParser: XmlPullParser, context: Context): com.tgarbus.litiluism.data.Lesson {
+        val lessonInternal = parseLessonInternal(pullParser)
         val body = ArrayList<LessonBlock>()
         for (node in lessonInternal.body) {
             val newBlock = node.toLessonBlock(context)
@@ -198,5 +196,34 @@ class LessonXmlParser(private val xmlString: String) {
         return Lesson(
             lessonInternal.title, body
         )
+    }
+
+    fun parse(context: Context): List<com.tgarbus.litiluism.data.Lesson> {
+        val pullParser = Xml.newPullParser()
+        val lessons = arrayListOf<com.tgarbus.litiluism.data.Lesson>()
+        pullParser.setInput(xmlString.byteInputStream(), null)
+        var eventType: Int = pullParser.eventType
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            when (eventType) {
+                XmlPullParser.START_DOCUMENT -> {}
+                XmlPullParser.START_TAG -> {
+                    when (pullParser.name) {
+                        "lesson" -> lessons.add(parseLesson(pullParser, context))
+                        else -> assert(false)
+                    }
+                }
+            }
+            eventType = pullParser.next()
+        }
+        return lessons
+    }
+
+    companion object {
+        fun loadLessons(context: Context): List<com.tgarbus.litiluism.data.Lesson> {
+            val rawStringData = context.resources.openRawResource(R.raw.lessons).bufferedReader()
+                .use { it.readText() }
+            val parser = LessonXmlParser(rawStringData)
+            return parser.parse(context)
+        }
     }
 }

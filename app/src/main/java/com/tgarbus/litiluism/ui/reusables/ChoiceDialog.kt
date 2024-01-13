@@ -78,7 +78,7 @@ fun ChoiceDialog(
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontFamily = FontFamily(Font(R.font.sarabun_regular)),
-                    fontWeight = FontWeight(700),
+                    fontWeight = FontWeight.ExtraBold,
                     color = Color(0xFF9C9C9C),
                 )
             )

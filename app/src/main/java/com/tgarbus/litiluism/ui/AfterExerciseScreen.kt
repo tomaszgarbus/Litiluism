@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
@@ -26,11 +27,6 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 fun AfterExerciseScreen(
     navController: NavController
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -48,7 +44,7 @@ fun AfterExerciseScreen(
             Text(
                 text = "Keep it up!",
                 fontFamily = sarabunFontFamily,
-                fontWeight = FontWeight(800),
+                fontWeight = FontWeight.ExtraBold,
                 color = colorResource(R.color.primary),
                 fontSize = 48.sp
             )

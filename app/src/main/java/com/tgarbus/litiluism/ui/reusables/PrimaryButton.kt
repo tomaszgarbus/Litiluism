@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
 @Composable
 fun PrimaryButton(text: String, onClick: () -> Unit) {
@@ -27,18 +28,12 @@ fun PrimaryButton(text: String, onClick: () -> Unit) {
             .fillMaxWidth()
             .padding(horizontal = 20.dp)
     ) {
-        val sarabunFontFamily = FontFamily(
-            Font(R.font.sarabun_regular, FontWeight.Normal),
-            Font(R.font.sarabun_bold, FontWeight.Bold),
-            Font(R.font.sarabun_thin, FontWeight.Thin),
-        )
-
         Text(
             text = text,
             fontSize = 24.sp,
             lineHeight = 28.08.sp,
             fontFamily = sarabunFontFamily,
-            fontWeight = FontWeight(600),
+            fontWeight = FontWeight.Bold,
             color = colorResource(R.color.white),
         )
         Spacer(modifier = Modifier.width(10.dp))

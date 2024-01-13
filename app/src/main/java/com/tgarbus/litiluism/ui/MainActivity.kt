@@ -64,6 +64,9 @@ class MainActivity : ComponentActivity() {
                     composable("learning") {
                         LessonsScreen(navController)
                     }
+                    composable("lesson/{lessonNumber}") {
+                        LessonScreen(navController)
+                    }
                 }
             }
         }

@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledIconButton
@@ -32,8 +31,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -46,6 +43,8 @@ import com.tgarbus.litiluism.data.TransliterationExercise
 import com.tgarbus.litiluism.data.baseRuneRowToString
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
+import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
 import com.tgarbus.litiluism.viewmodel.ListOfExercisesViewModel
@@ -95,11 +94,6 @@ fun <T> FiltersSection(
     categoryName: String,
     valueDisplay: @Composable (T) -> Unit
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     val scrollState = rememberScrollState()
     Column() {
         Text(categoryName, fontFamily = sarabunFontFamily)
@@ -122,11 +116,6 @@ fun <T> FiltersSection(
 
 @Composable
 fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Country, Int>) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     val buttonText = countryToName(country)
     val flagResource = maybeCountryFlagResource(country)
     Row(
@@ -151,7 +140,7 @@ fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Coun
                 ) {
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight(600)
+                            fontWeight = FontWeight.Bold
                         )
                     ) {
                         append(buttonText)
@@ -159,7 +148,7 @@ fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Coun
                     append(" ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight(400)
+                            fontWeight = FontWeight.Normal
                         )
                     ) {
                         append(countriesCountText)
@@ -177,11 +166,6 @@ fun Filters(
     viewModel: ListOfExercisesViewModel,
     onDismissRequest: () -> Unit
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     Column() {
         FiltersSection(
             values = filters.value.countries,
@@ -231,14 +215,7 @@ fun ListOfExercisesScreen(
     val filters = remember { mutableStateOf(ExerciseFilters()) }
     val showFiltersDialog = remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .verticalScroll(scrollState)
-            .padding(bottom = 10.dp)
-            .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
+    FullScreenPaddedColumn() {
         Row(verticalAlignment = Alignment.CenterVertically) {
             // TODO: Extract to a common component
             IconButton(onClick = { navController.popBackStack() }) {

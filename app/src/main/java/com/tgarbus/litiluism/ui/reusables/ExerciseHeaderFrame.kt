@@ -23,17 +23,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
 @Composable
 fun ExerciseHeaderFrame(
     exerciseType: String,
     title: String,
     navController: NavController) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     Row(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -56,8 +52,8 @@ fun ExerciseHeaderFrame(
         textAlign = TextAlign.Center,
         style = TextStyle(
             fontSize = 16.sp,
-            fontFamily = FontFamily(Font(R.font.sarabun_regular)),
-            fontWeight = FontWeight(700),
+            fontFamily = sarabunFontFamily,
+            fontWeight = FontWeight.ExtraBold,
             color = Color(0xFF9C9C9C),
         )
     )
@@ -69,6 +65,6 @@ fun ExerciseHeaderFrame(
             .fillMaxWidth(),
         fontFamily = sarabunFontFamily,
         fontSize = 20.sp,
-        fontWeight = FontWeight(700),
+        fontWeight = FontWeight.ExtraBold,
     )
 }

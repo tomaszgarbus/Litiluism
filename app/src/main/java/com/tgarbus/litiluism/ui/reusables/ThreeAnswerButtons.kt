@@ -31,17 +31,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.ThreeButtonOptions
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
 @Composable
 fun ThreeAnswerButtons(
     options: ThreeButtonOptions,
     onCorrectAnswerClick: (Char) -> Unit
 ) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     val buttonShape = RoundedCornerShape(size = 14.dp)
     val showFeedback = rememberSaveable { mutableStateOf<Boolean>(false) }
     Box(
@@ -58,7 +54,7 @@ fun ThreeAnswerButtons(
             Text(
                 text = "Click the correct answer to continue",
                 fontFamily = sarabunFontFamily,
-                fontWeight = FontWeight(700),
+                fontWeight = FontWeight.ExtraBold,
                 fontSize = 16.sp,
                 color = colorResource(R.color.wrong_red),
                 textAlign = TextAlign.Center,
@@ -105,7 +101,7 @@ fun ThreeAnswerButtons(
                                 for (j in 1..<options[i].first.size) {
                                     withStyle(
                                         style = SpanStyle(
-                                            fontWeight = FontWeight(400),
+                                            fontWeight = FontWeight.Normal,
                                         )
                                     ) {
                                         append("/${options[i].first[j]}")
@@ -113,7 +109,7 @@ fun ThreeAnswerButtons(
                                 }
                             },
                             color = if (options[i].second) correctButtonTextColor else wrongButtonTextColor,
-                            fontWeight = FontWeight(600),
+                            fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             fontFamily = sarabunFontFamily
                         )

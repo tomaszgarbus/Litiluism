@@ -11,14 +11,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
 @Composable
 fun Header(text: String, modifier: Modifier = Modifier) {
-    val sarabunFontFamily = FontFamily(
-        Font(R.font.sarabun_regular, FontWeight.Normal),
-        Font(R.font.sarabun_bold, FontWeight.Bold),
-        Font(R.font.sarabun_thin, FontWeight.Thin),
-    )
     Text(
         text = text,
         textAlign = TextAlign.Justify,
@@ -27,7 +23,7 @@ fun Header(text: String, modifier: Modifier = Modifier) {
             .fillMaxWidth(),
         fontFamily = sarabunFontFamily,
         fontSize = 32.sp,
-        fontWeight = FontWeight(700),
+        fontWeight = FontWeight.ExtraBold,
         lineHeight = 37.sp,
     )
 }

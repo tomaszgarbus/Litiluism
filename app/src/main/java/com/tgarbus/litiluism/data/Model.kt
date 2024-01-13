@@ -86,4 +86,8 @@ data class LessonBlock(
 data class Lesson(
     val title: String,
     val body: List<LessonBlock>
-)
+) {
+    fun stringPreview(): String {
+        return body.joinToString(separator = "") { b -> b.textBlock.toString() }
+    }
+}
