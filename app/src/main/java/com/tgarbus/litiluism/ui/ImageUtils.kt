@@ -2,18 +2,18 @@ package com.tgarbus.litiluism.ui
 
 import android.content.Context
 
-fun getThumbnailResourceId(imgResourceName: String, context: Context): Int {
+fun getDrawableResourceId(imgResourceName: String, context: Context): Int {
     return context.resources.getIdentifier(
-        "thumbnail_" + imgResourceName,
+        imgResourceName,
         "drawable",
         context.packageName
     )
 }
 
+fun getThumbnailResourceId(imgResourceName: String, context: Context): Int {
+    return getDrawableResourceId("thumbnail_$imgResourceName", context)
+}
+
 fun getImageResourceId(imgResourceName: String, context: Context): Int {
-    return context.resources.getIdentifier(
-        "image_" + imgResourceName,
-        "drawable",
-        context.packageName
-    )
+    return getDrawableResourceId("image_$imgResourceName", context)
 }

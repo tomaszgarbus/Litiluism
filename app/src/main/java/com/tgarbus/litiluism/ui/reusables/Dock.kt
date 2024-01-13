@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
@@ -89,6 +90,7 @@ fun Dock(
     ) {
         Row(
             modifier = Modifier
+                .shadow(10.dp, RoundedCornerShape(27.dp, 27.dp, 0.dp, 0.dp))
                 .fillMaxWidth()
                 .height(67.dp)
                 .clip(RoundedCornerShape(27.dp, 27.dp, 0.dp, 0.dp))

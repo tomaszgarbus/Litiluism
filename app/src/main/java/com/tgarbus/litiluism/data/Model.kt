@@ -1,7 +1,5 @@
 package com.tgarbus.litiluism.data
 
-import com.tgarbus.litiluism.isSeparator
-
 enum class Country {
     ANY,
     SE,
@@ -62,3 +60,30 @@ typealias LocationsMap = Map<String, Location>
 typealias ExercisesMap = Map<String, TransliterationExercise>
 typealias ExercisesMapImpl = HashMap<String, TransliterationExercise>
 typealias ThreeButtonOptions = List<Pair<List<Char>, Boolean>>
+
+enum class LessonTextModifier {
+    BOLD,
+    ITALIC
+}
+
+data class LessonTextSpan(
+    val text: String,
+    val modifiers: List<LessonTextModifier>
+)
+data class LessonTextBlock(
+    val spans: List<LessonTextSpan>
+) {
+    override fun toString(): String {
+        return spans.joinToString(separator = "") { s -> s.text }
+    }
+}
+
+data class LessonBlock(
+    val textBlock: LessonTextBlock,
+    val imageResourceId: Int?
+)
+
+data class Lesson(
+    val title: String,
+    val body: List<LessonBlock>
+)
