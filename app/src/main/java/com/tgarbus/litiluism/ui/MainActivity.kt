@@ -67,6 +67,15 @@ class MainActivity : ComponentActivity() {
                     composable("lesson/{lessonNumber}") {
                         LessonScreen(navController)
                     }
+                    composable("home") {
+                        HomeScreen(navController)
+                    }
+                    composable("about") {
+                        AboutScreen(navController)
+                    }
+                    composable("settings") {
+                        SettingsScreen(navController)
+                    }
                 }
             }
         }
