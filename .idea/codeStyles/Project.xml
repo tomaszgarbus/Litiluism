@@ -6,7 +6,8 @@
     <codeStyleSettings language="XML">
       <option name="FORCE_REARRANGE_MODE" value="1" />
       <indentOptions>
-        <option name="CONTINUATION_INDENT_SIZE" value="4" />
+        <option name="INDENT_SIZE" value="0" />
+        <option name="CONTINUATION_INDENT_SIZE" value="0" />
       </indentOptions>
       <arrangement>
         <rules>

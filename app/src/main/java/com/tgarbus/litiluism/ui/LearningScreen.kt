@@ -38,9 +38,9 @@ fun LessonListItem(lesson: Lesson, lessonNumber: Int, navController: NavControll
             .clickable { navController.navigate("lesson/$lessonNumber") }
             .padding(20.dp)
     ) {
-        Column() {
+        Column {
             Text(
-                text = "Lesson $lessonNumber",
+                text = "Lesson ${lessonNumber + 1}",
                 fontFamily = sarabunFontFamily,
                 color = colorResource(R.color.primary),
                 fontSize = 14.sp,
@@ -80,8 +80,7 @@ fun LessonsScreen(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Header("Learn")
-            StaticContentRepository.getInstance().lessons.forEachIndexed {
-                i, lesson ->
+            StaticContentRepository.getInstance().lessons.forEachIndexed { i, lesson ->
                 LessonListItem(lesson, i, navController)
             }
         }
