@@ -88,5 +88,17 @@
     "lat": 56.584053137624466,
     "long": 9.851513135609983,
     "description": "Glenstrup church"
+  },
+  {
+    "id": "læborg_kirke",
+    "lat": 55.522786102865915,
+    "long": 9.114478537729148,
+    "description": "Læborg church"
+  },
+  {
+    "id": "bække_kirke",
+    "lat": 55.56892825684815,
+    "long": 9.137074061693303,
+    "description": "Bække church"
   }
 ]

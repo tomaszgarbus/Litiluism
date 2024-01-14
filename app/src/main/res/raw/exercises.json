@@ -350,6 +350,37 @@
     "location": "glenstrup_kirke"
   },
   {
+    "id": "læborg",
+    "img": "laborg.jpg",
+    "title": "Læborg stone",
+    "img_credit": "Own photo, taken in Læborg",
+    "runes": "ᚱᚼᛅᚠᚾᚢᚴᛅᛏᚢᚠᛁ:ᚼᛁᛅᚢ:ᚱᚢᚾᛅᛦ:ᚦᛅᛋᛁ … ᚦᚢᚱᚢᛁ:ᛏᚱᚢᛏᚾᛁᚴ:ᛋᛁᚾᛅ",
+    "rowType": "younger_futhark_long_branch",
+    "description": "A large granit rune stone standing in Læborg. Runic inscriptions run on two sides and it is decorated with two hammers (presumably Thor's).",
+    "sources": [
+      "Læborg church",
+      "Gåden om Thyra show on DRTV"
+    ],
+    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunga-Tove hug runer disse efter Tyre, dronning sin.\" English: \"Ravnunga-Tove carved these runes after Thyra, his queen.\" Who was Thyra? We don't know, but she must have been a powerful figure, who's named also on both Jelling stones and the Bække stone. Ravnunge-Tove (or -Tue) is named also on Bække 1 stone and Bække 2 stone.",
+    "country": "DA",
+    "location": "læborg_kirke"
+  },
+  {
+    "id": "bække",
+    "img": "bakke.jpg",
+    "title": "Bække 1 stone",
+    "img_credit": "Own photo, taken in Bække",
+    "description": "A runestone found in Bække in 1820. It was brought to its current honourable placing in 1923, as the construction of church's tower has was completed.",
+    "runes": "ᚱᛅᚠᚾᚢᚴᛅ:ᛏᚢᚠᛁ:ᛅᚢᚴ:ᚠᚢᛏᛁᚾ:ᛅᚢᚴ:ᚴᚾᚢᛒᛚᛁ:ᚦᛅᛁᛦ:ᚦᚱᛁᛦ:ᚴᛅᚦᚢ:ᚦᚢᚱᚢᛁᛅᛦ:ᚼᛅᚢᚴ",
+    "rowType": "younger_futhark_long_branch",
+    "sourcs": [
+      "Plaque in Bække"
+    ],
+    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunge-Tue og Fundin og Gnyple, de tre gjorde Thyras høj\". In English: \"Ravnunge-Tue and Fundin and Gnyple, they three made Thyras monument.\" Who was Thyra? We don't know, but she must have been a powerful figure, who's named also on both Jelling stones and the Læborg stone. Ravnunge-Tue (or -Tove) is named also on Læborg stone and Bække 2 stone.",
+    "country": "DA",
+    "location": "bække_kirke"
+  },
+  {
     "id": "wooden_spade",
     "img": "wooden_spade.jpg",
     "title": "A wooden spade from Iceland",

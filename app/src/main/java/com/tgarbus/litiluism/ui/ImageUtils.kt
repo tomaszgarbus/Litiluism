@@ -1,7 +1,6 @@
 package com.tgarbus.litiluism.ui
 
 import android.content.Context
-import com.tgarbus.litiluism.ImageResourcesMap
 
 fun getDrawableResourceId(imgResourceName: String, context: Context): Int {
     return ImageResourcesMap.map.getOrDefault(imgResourceName, null)
