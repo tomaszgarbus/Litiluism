@@ -6,8 +6,7 @@ import com.tgarbus.litiluism.data.StaticContentRepository
 
 class LessonViewModel(savedStateHandle: SavedStateHandle): ViewModel() {
     private val staticContentRepository = StaticContentRepository.getInstance()
-    private val lessonNumberStr: String = savedStateHandle["lessonNumber"]!!
-    private val lessonNumber: Int = lessonNumberStr.toInt()
+    private val lessonNumber: Int = savedStateHandle["lessonNumber"]!!
     val lesson =
         staticContentRepository.lessons[lessonNumber]
 }

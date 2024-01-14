@@ -28,7 +28,11 @@ fun RuneToLatinExerciseScreen(
         if (viewModel.finished.collectAsState().value) {
             PrimaryButton(
                 text = "Complete",
-                onClick = { navController.navigate("afterexercise") }
+                onClick = {
+                    val correct = viewModel.score.value.correct
+                    val total = viewModel.score.value.total
+                    navController.navigate("afterexercise/${correct}/${total}")
+                }
             )
         } else {
             Text(
@@ -47,8 +51,8 @@ fun RuneToLatinExerciseScreen(
             )
 
             val answerOptions = viewModel.optionsFlow.collectAsState().value
-            ThreeAnswerButtons(answerOptions, onCorrectAnswerClick = {
-                viewModel.onCorrectClick()
+            ThreeAnswerButtons(answerOptions, onCorrectAnswerClick = { _, corr ->
+                viewModel.onCorrectClick(corr)
             })
         }
     }

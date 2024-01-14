@@ -1,8 +1,10 @@
 package com.tgarbus.litiluism.viewmodel
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tgarbus.litiluism.data.ExerciseScore
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.ThreeButtonOptions
 import com.tgarbus.litiluism.generateRuneToLatinOptions
@@ -19,6 +21,7 @@ class RuneToLatinExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewMod
     val questionsFlow = MutableStateFlow(getQuestion())
     val runeRowName = runeRow.name
     val finished = MutableStateFlow(false)
+    val score = mutableStateOf(ExerciseScore())
 
     val queueSize: Int
         get() = queue.size
@@ -38,7 +41,8 @@ class RuneToLatinExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewMod
         }
     }
 
-    fun onCorrectClick() {
+    fun onCorrectClick(countAsCorrect: Boolean) {
+        score.value.recordAnswer(countAsCorrect)
         queue.removeFirst()
         if (queue.isEmpty()) {
             viewModelScope.launch {

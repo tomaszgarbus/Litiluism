@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -101,7 +102,7 @@ fun Dock(
                 .fillMaxWidth()
                 .height(67.dp)
                 .clip(RoundedCornerShape(27.dp, 27.dp, 0.dp, 0.dp))
-                .background(colorResource(R.color.white))
+                .background(Color.White)
                 .align(Alignment.BottomCenter),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly

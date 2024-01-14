@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -67,7 +68,7 @@ fun <T> FilterButton(
         Button(
             onClick = { onClick(buttonValue) }, colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(R.color.secondary),
-                contentColor = colorResource(R.color.white)
+                contentColor = Color.White
             )
         ) {
             content()
@@ -77,7 +78,7 @@ fun <T> FilterButton(
             modifier = Modifier.padding(0.dp),
             onClick = { onClick(buttonValue) },
             colors = ButtonDefaults.outlinedButtonColors(
-                containerColor = colorResource(R.color.white),
+                containerColor = Color.White,
                 contentColor = colorResource(R.color.secondary),
             )
         ) {
@@ -236,7 +237,7 @@ fun ListOfExercisesScreen(
                 onClick = { showFiltersDialog.value = !showFiltersDialog.value },
                 colors = IconButtonDefaults.iconButtonColors(
                     containerColor = colorResource(R.color.secondary),
-                    contentColor = colorResource(R.color.white)
+                    contentColor = Color.White
                 )
             ) {
                 Icon(

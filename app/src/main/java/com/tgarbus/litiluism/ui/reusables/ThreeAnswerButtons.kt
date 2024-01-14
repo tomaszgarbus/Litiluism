@@ -36,7 +36,7 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 @Composable
 fun ThreeAnswerButtons(
     options: ThreeButtonOptions,
-    onCorrectAnswerClick: (Char) -> Unit
+    onCorrectAnswerClick: (Char, Boolean) -> Unit
 ) {
     val buttonShape = RoundedCornerShape(size = 14.dp)
     val showFeedback = rememberSaveable { mutableStateOf<Boolean>(false) }
@@ -81,7 +81,7 @@ fun ThreeAnswerButtons(
                     ElevatedButton(
                         onClick = {
                             if (options[i].second) {
-                                onCorrectAnswerClick(options[i].first[0])
+                                onCorrectAnswerClick(options[i].first[0], !showFeedback.value)
                                 showFeedback.value = false
                             } else {
                                 showFeedback.value = true

@@ -224,7 +224,7 @@ fun AboutSliderCards(navController: NavController) {
                     .scale(max(0.75, 1.0 - distanceFromCurrentPage).toFloat())
                     .alpha(max(0.5, 1.0 - distanceFromCurrentPage).toFloat())
                     .clip(RoundedCornerShape(28.dp))
-                    .background(colorResource(R.color.white))
+                    .background(Color.White)
                     .padding(28.dp)
             ) {
                 when (page) {
@@ -264,7 +264,7 @@ fun AboutScreen(navController: NavController) {
                 fontFamily = sarabunFontFamily,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.ExtraBold,
-                color = colorResource(R.color.white)
+                color = Color.White
             )
             AboutSliderCards(navController)
         }

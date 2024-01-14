@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -34,7 +35,7 @@ fun LessonListItem(lesson: Lesson, lessonNumber: Int, navController: NavControll
         modifier = Modifier
             .fillMaxWidth()
             .shadow(elevation = 1.dp, RoundedCornerShape(21.dp))
-            .background(colorResource(R.color.white), RoundedCornerShape(21.dp))
+            .background(Color.White, RoundedCornerShape(21.dp))
             .clickable { navController.navigate("lesson/$lessonNumber") }
             .padding(20.dp)
     ) {

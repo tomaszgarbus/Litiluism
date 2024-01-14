@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -48,7 +49,7 @@ fun PracticeTypeButtonText(
                 fontFamily = Fonts.sarabunFontFamily,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = colorResource(R.color.white),
+                color = Color.White,
             )
             Image(
                 painter = painterResource(R.drawable.icon_forward),

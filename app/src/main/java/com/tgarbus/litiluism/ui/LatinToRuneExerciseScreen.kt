@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
@@ -11,6 +13,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.ExerciseScore
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.ExerciseHeaderFrame
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
@@ -28,7 +31,11 @@ fun LatinToRuneExerciseScreen(
         if (viewModel.finished.collectAsState().value) {
             PrimaryButton(
                 text = "Complete",
-                onClick = { navController.navigate("afterexercise") }
+                onClick = {
+                    val correct = viewModel.score.value.correct
+                    val total = viewModel.score.value.total
+                    navController.navigate("afterexercise/${correct}/${total}")
+                }
             )
         } else {
             Text(
@@ -47,8 +54,8 @@ fun LatinToRuneExerciseScreen(
             )
 
             val answerOptions = viewModel.optionsFlow.collectAsState().value
-            ThreeAnswerButtons(answerOptions, onCorrectAnswerClick = {
-                viewModel.onCorrectClick()
+            ThreeAnswerButtons(answerOptions, onCorrectAnswerClick = { _, corr ->
+                viewModel.onCorrectClick(corr)
             })
         }
     }

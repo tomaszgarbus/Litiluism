@@ -8,9 +8,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.res.colorResource
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.tgarbus.litiluism.MaterialsScreen
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.StaticContentRepository
@@ -50,7 +52,12 @@ class MainActivity : ComponentActivity() {
                             navController
                         )
                     }
-                    composable("afterexercise") {
+                    composable("afterexercise/{correct}/{total}",
+                        arguments = listOf(
+                            navArgument("correct") { type = NavType.IntType },
+                            navArgument("total") { type = NavType.IntType }
+                        )
+                    ) {
                         AfterExerciseScreen(navController)
                     }
                     composable("mapscreen") {
@@ -68,7 +75,10 @@ class MainActivity : ComponentActivity() {
                     composable("learning") {
                         LessonsScreen(navController)
                     }
-                    composable("lesson/{lessonNumber}") {
+                    composable("lesson/{lessonNumber}",
+                        arguments = listOf(
+                            navArgument("lessonNumber") { type = NavType.IntType }
+                        )) {
                         LessonScreen(navController)
                     }
                     composable("home") {
@@ -87,9 +97,11 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        var permissions = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION,
+        var permissions = arrayOf<String>(
+            Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.INTERNET,
-            Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
         requestPermissions(permissions, 1)
     }
 }

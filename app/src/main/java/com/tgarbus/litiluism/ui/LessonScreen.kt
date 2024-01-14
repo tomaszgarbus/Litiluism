@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -80,7 +81,7 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
         modifier = Modifier
             .padding(14.dp)
             .clip(RoundedCornerShape(size = 21.dp))
-            .background(colorResource(R.color.white))
+            .background(Color.White)
             .clickable { hidden.value = !hidden.value }
             .padding(10.dp)
     ) {

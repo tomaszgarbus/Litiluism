@@ -1,8 +1,11 @@
 package com.tgarbus.litiluism.viewmodel
 
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tgarbus.litiluism.data.ExerciseScore
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.ThreeButtonOptions
 import com.tgarbus.litiluism.generateOptions
@@ -23,6 +26,7 @@ class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle): ViewMode
     val questionsFlow = MutableStateFlow(getQuestion())
     val runeRowName = runeRow.name
     val finished = MutableStateFlow(false)
+    val score = mutableStateOf(ExerciseScore())
 
     private fun buildReverseMapping(): Map<Char, List<Char>> {
         // TODO: should I worry about two runes transliterated to the same latin symbol?
@@ -44,7 +48,8 @@ class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle): ViewMode
         }
     }
 
-    fun onCorrectClick() {
+    fun onCorrectClick(countAsCorrect: Boolean) {
+        score.value.recordAnswer(countAsCorrect)
         queue.removeFirst()
         if (queue.isEmpty()) {
             viewModelScope.launch {

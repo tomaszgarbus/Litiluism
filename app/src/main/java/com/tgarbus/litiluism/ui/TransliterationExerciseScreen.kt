@@ -66,6 +66,7 @@ fun ExerciseScreen(
 
     FullScreenPaddedColumn() {
         ExerciseHeaderFrame("Transliteration exercise", title, navController)
+        Text(state.score.toString())
         Text(
             text = description,
             modifier = Modifier.padding(vertical = 20.dp),
@@ -96,7 +97,7 @@ fun ExerciseScreen(
                 .fillMaxWidth()
                 .shadow(elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp))
                 .background(
-                    color = colorResource(R.color.white),
+                    color = Color.White,
                     shape = RoundedCornerShape(size = 21.dp)
                 )
                 .padding(start = 15.dp, top = 15.dp, end = 15.dp, bottom = 15.dp),
@@ -152,7 +153,7 @@ fun ExerciseScreen(
                     .fillMaxWidth()
                     .shadow(elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp))
                     .background(
-                        color = colorResource(R.color.white),
+                        color = Color.White,
                         shape = RoundedCornerShape(size = 21.dp)
                     )
                     .padding(start = 35.dp, top = 30.dp, end = 35.dp, bottom = 30.dp)
@@ -180,7 +181,11 @@ fun ExerciseScreen(
             Spacer(modifier = Modifier.height(20.dp))
             PrimaryButton(
                 text = "Complete",
-                onClick = { navController.navigate("afterexercise") }
+                onClick = {
+                    val correct = state.score.correct
+                    val total = state.score.total
+                    navController.navigate("afterexercise/${correct}/${total}")
+                }
             )
         } else {
             val context = LocalContext.current
@@ -189,9 +194,9 @@ fun ExerciseScreen(
                     transliterationExercise.runeRow,
                     transliterationExercise.runes[position]
                 ),
-                onCorrectAnswerClick = { c ->
+                onCorrectAnswerClick = { c, corr ->
                     run {
-                        viewModel.updateState(c, context)
+                        viewModel.onUserInput(c, context, corr)
                     }
                 })
         }

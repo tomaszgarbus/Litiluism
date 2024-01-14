@@ -20,10 +20,10 @@ class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : Vie
             .getExerciseStateAsFlow(transliterationExercise.id)
     }
 
-    fun updateState(c: Char, context: Context) {
+    fun onUserInput(c: Char, context: Context, countAsCorrect: Boolean) {
         viewModelScope.launch {
             TransliterationExerciseStatesRepository.getInstance(context)
-                .updateExerciseWithUserInput(transliterationExercise, c)
+                .updateExerciseWithUserInput(transliterationExercise, c, countAsCorrect)
         }
     }
 }

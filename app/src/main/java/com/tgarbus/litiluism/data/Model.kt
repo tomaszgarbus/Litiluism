@@ -41,10 +41,20 @@ data class TransliterationExercise(
     val imgResourceName: String,
 )
 
+data class ExerciseScore(var correct: Int = 0, var total: Int = 0) {
+    fun recordAnswer(isCorrect: Boolean) {
+        total += 1
+        if (isCorrect) {
+            correct += 1
+        }
+    }
+}
+
 data class TransliterationExerciseState(
     val inputs: String = "",
     val position: Int = 0,
     val complete: Boolean = false,
+    val score: ExerciseScore = ExerciseScore(0, 0)
 )
 
 data class RuneRow(
@@ -70,6 +80,7 @@ data class LessonTextSpan(
     val text: String,
     val modifiers: List<LessonTextModifier>
 )
+
 data class LessonTextBlock(
     val spans: List<LessonTextSpan>
 ) {

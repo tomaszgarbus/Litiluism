@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -44,7 +45,7 @@ fun SettingsItem(
             .shadow(1.dp, RoundedCornerShape(21.dp))
             .clip(RoundedCornerShape(21.dp))
             .fillMaxWidth()
-            .background(colorResource(R.color.white))
+            .background(Color.White)
             .clickable { onClick() }
             .padding(20.dp)
     ) {

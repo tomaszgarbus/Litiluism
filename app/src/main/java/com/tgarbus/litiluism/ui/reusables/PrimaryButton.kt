@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -37,7 +38,7 @@ fun PrimaryButton(text: String, onClick: () -> Unit) {
             lineHeight = 28.08.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
-            color = colorResource(R.color.white),
+            color = Color.White,
         )
         Spacer(modifier = Modifier.width(10.dp))
         Image(
