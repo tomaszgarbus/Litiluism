@@ -1,0 +1,31 @@
+name: Thumbnalize images
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install ImageMagick
+        run: sudo apt-get install imagemagick
+      - name: DEBUG
+        run: ls 1>&2
+      - name: Create output directory
+        run: mkdir output
+      - name: Resize all images
+        run: for f in `ls original_images | grep -E 'jpg|jpeg|png'`;
+             echo "converting $f to image_";
+             do convert original_images/$f -resize 2000x2000\> output/image_$f;
+             echo "converting $f to thumbnail_";
+             do convert original_images/$f -resize 200x200^ output/thumbnail_$f;
+             done;
+      - name: Upload generated thumbnails
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: output
