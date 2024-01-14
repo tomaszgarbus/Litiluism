@@ -76,5 +76,17 @@
     "lat": 64.53999201346264,
     "long": -21.920680411061834,
     "description": "Skallagrim's garden in Borgarnes"
+  },
+  {
+    "id": "hobro",
+    "lat": 56.63842535623863,
+    "long": 9.792765488341091,
+    "description": "Public library in Hobro"
+  },
+  {
+    "id": "glenstrup_kirke",
+    "lat": 56.584053137624466,
+    "long": 9.851513135609983,
+    "description": "Glenstrup church"
   }
 ]

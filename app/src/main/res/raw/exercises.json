@@ -318,6 +318,38 @@
     "location": "stavanger_archeology_museum"
   },
   {
+    "id": "hobro",
+    "img": "hobro.jpg",
+    "title": "Hobro rune stone",
+    "img_credit": "Own photo, taken in the public library in Hobro",
+    "runes": "ᚦᚢᚱᛁᛦ:ᚱᛁᛋᚦᛁ ᛋᛏᛁᚾ:ᚦᚮᛅᛋᛁ:ᛅᚢᚠᛏᛁ:ᚴᛅᚱᛚ:ᚼᛁᚾ:ᚴᚢᚦᚮᛆ:ᚠᛦᛚᛅᚴᛅ:ᛋᛁᚾ:ᚼᛅᚱᚦ:ᛅ:ᚴᚢᚦᚮᛅᚾ:ᛏᚱᛦᚴ",
+    "rowType": "hobro_younger_futhark",
+    "description": "A granit rune stone dated to 970-1020.",
+    "sources": [
+      "Public library in Hobro",
+      "https://www.mariagerfjordbibliotekerne.dk/runesten"
+    ],
+    "explanationAfter": "The stone is transliterated as: \"Thurir risthi stin tháasi aufti Karl hin kuthaa fælaka sin harta a kutháan træk\". In Danish: \"Thore rejste denne sten efter sin fælle Karl den Gode, en meget god dreng\". Finally, in English: \"Thore raised this stone after his friend Carl the Good, a very good guy\". Confusingly, the \"ᛦ\" rune, normally denoting \"r\", is used also as \"æ\" in several words. This type of laying out letters on a runestone is typical for Jutland and Skåne. We know of one more stone raised probably by the same Thore - the Glenstrup 1 stone.",
+    "country": "DA",
+    "location": "hobro"
+  },
+  {
+    "id": "glenstrup",
+    "img": "glenstrup.jpg",
+    "title": "Glenstrup 2 rune stone",
+    "img_credit": "Own photo, taken in the Glenstrup church",
+    "runes": "ᛏᚢᚴᛁ:ᛋᛅᛏᛁ:ᛋᛏᛁᚾ:ᚦᚬᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚢᚠᛚᛅ:ᚠᛅᚦᚢᚱ:ᛋᛁᚾ:ᚼᛅᚱᚦᛅ:ᚴᚢᚦᛅᚾ:ᚦᛁᚵᚾ",
+    "rowType": "glenstrup_younger_futhark",
+    "description": "Glenstrup 2 stone is also known as Handeststenen, since it used to be located in the Handest church, which no longer exists. Then it was used as a part of the foundation for a turf house. Finally, it was moved to Glenstrup in 1881. The photo below shows the front of the stone, but the last few runes are on the side. At the back of the stone, there is a carving of a deer. The red paint on the carvings has been filled by the conservators from Danish National Museum.",
+    "sources": [
+      "Glenstrup church",
+      "A pamphlet from the Glenstrup church"
+    ],
+    "explanationAfter": "The inscription translates very similarly to Danish: \"Toke satte denne sten efter sin far Ufla en hard god thegn\". In English: \"Toki raised this stone after his father Ufla, a rich and good landowner.\"",
+    "country": "DA",
+    "location": "glenstrup_kirke"
+  },
+  {
     "id": "wooden_spade",
     "img": "wooden_spade.jpg",
     "title": "A wooden spade from Iceland",

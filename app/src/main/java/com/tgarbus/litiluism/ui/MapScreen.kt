@@ -29,9 +29,9 @@ import com.tgarbus.litiluism.viewmodel.MapScreenStateViewModel
 @Composable
 fun MapScreen(
     navController: NavController,
-    viewModel: MapScreenStateViewModel = viewModel()
+    viewModel: MapScreenStateViewModel = viewModel(),
 ) {
-    val showLocationDialog = remember { mutableStateOf<Location?>(null) }
+    val showLocationDialog = remember { mutableStateOf(viewModel.locationFromSavedStateHandle) }
     FullScreenPaddedColumn(scrollable = false) {
         Row(
             modifier = Modifier.fillMaxWidth(),

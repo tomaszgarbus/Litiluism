@@ -75,11 +75,12 @@ fun LessonTextBlockView(textBlock: LessonTextBlock) {
 
 @Composable
 fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
-    val hidden = remember { mutableStateOf(false) }
+    val hidden = remember { mutableStateOf(true) }
     Box(
         modifier = Modifier
             .padding(14.dp)
-            .background(colorResource(R.color.white), RoundedCornerShape(size = 21.dp))
+            .clip(RoundedCornerShape(size = 21.dp))
+            .background(colorResource(R.color.white))
             .clickable { hidden.value = !hidden.value }
             .padding(10.dp)
     ) {
@@ -173,6 +174,7 @@ fun LessonHeaderFrame(lesson: Lesson, navController: NavController) {
             .fillMaxWidth(),
         fontFamily = Fonts.sarabunFontFamily,
         fontSize = 32.sp,
+        lineHeight = 38.sp,
         fontWeight = FontWeight.ExtraBold,
         color = colorResource(R.color.dark_grey)
     )

@@ -10,7 +10,21 @@ Unlike other European scripts (roman or greek alphabets, cyrillic letters), rune
 
 It is important to emphasize that there wasn't a single canonical runic alphabet and the scripts varied depending on both geographical and temporal dimensions.
 
-Commonly, four main types of rune row are distinguished: <b>the older fuþark, the Anglo-Frisian fuþorc, the younger fuþark and the medieval fuþark</b>. They differed in the number of symbols, complexity and the set of expressible sounds. Even within these four types, countless local variations are found.
+Commonly, four main types of rune row are distinguished: <b>the older fuþark, the Anglo-Frisian fuþorc, the younger fuþark and the medieval fuþork</b>. They differed in the number of symbols, complexity and the set of expressible sounds. Even within these four types, countless local variations are found.
+
+Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Martin Findell.
+</body>
+</lesson>
+
+<lesson>
+<title>Futhark? Fuþark? Fuþork?</title>
+<body><b><i>Futhark, fuþark, fuþork...</i></b> what <i>are</i> those?
+
+As you probably know very well, the word <i>alphabet</i> originates from the first two letters of the latin alphabet: <i>alpha (α)</i> and <i>beta (β)</i>.
+
+It's exactly the same story with the runic alphabets. The name <i>futhark</i> comes from the first six runes in the rune row: <b>ᚠ (f), ᚢ (u), ᚦ (þ/th), ᚨ (a), ᚱ (r), ᚲ (k)</b>. As you can see, <i>futhark</i> and <i>fuþark</i> are different renderings, depending on how one chooses to read the Thorn rune (ᚦ).
+
+<i>Fuþorc</i> is a rendering of the first characters of the <b>Anglo-Frisian</b> rune row (<b>ᚠᚢᚦᚩᚱᚳ</b>), and <i>fuþork</i> of the so-called (Scandinavian) medieval rune row (<b>ᚠᚢᚦᚮᚱᚴ</b>).
 
 Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Martin Findell.
 </body>
@@ -18,5 +32,16 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 <lesson>
 <title>Transliteration</title>
-<body><b>witajcie ponownie dzieciaczki</b></body>
+<body>Runic inscriptions are often presented in <b>transliteration</b>.
+
+Every rune is assigned a corresponding letter from modern alphabet, generally roman, but also regional European letters as well as IPA characters are used.
+
+Let us start with an example - the model for transliterating the older fuþark:
+
+<img src="learn_older_futhark">The older <i>fuþark</i></img>
+
+The modern equivalents for runic characters are generally chosen based on supposed sound value, but scholars accept that perfect phonetic reproduction of Viking Age language is impossible. Moreover, one rune can denote multiple sounds. For example: <i>ᚢ</i> may stand for <i>u</i>, <i>v</i>, and others, depending on the context.
+
+Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Martin Findell.
+</body>
 </lesson>

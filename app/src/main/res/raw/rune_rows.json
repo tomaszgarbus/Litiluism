@@ -601,6 +601,37 @@
     "inherit_from": "younger_futhark_long_branch",
     "override_symbols": []
   },
+  "hobro_younger_futhark": {
+    "name": "Long-branch Younger Fuþark",
+    "inherit_from": "younger_futhark_long_branch",
+    "override_symbols": [
+      {
+        "rune": "ᛆ",
+        "latin": "a"
+      },
+      {
+        "rune": "ᚮ",
+        "latin": "á"
+      },
+      {
+        "rune": "ᛦ",
+        "latin": [
+          "r",
+          "æ"
+        ]
+      }
+    ]
+  },
+  "glenstrup_younger_futhark": {
+    "name": "Long-branch Younger Fuþark",
+    "inherit_from": "younger_futhark_long_branch",
+    "override_symbols": [
+      {
+        "rune": "ᚵ",
+        "latin": "g"
+      }
+    ]
+  },
   "younger_futhark_eidi_runestick": {
     "name": "Short-twig Younger Fuþark",
     "inherit_from": "younger_futhark_short_twig",

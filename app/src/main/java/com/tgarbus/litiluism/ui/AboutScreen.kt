@@ -50,14 +50,14 @@ fun Page1() {
         Text(
             text = "Welcome!",
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.primary),
         )
         Text(
             text = "First things first. You're probably wondering...",
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
@@ -70,14 +70,14 @@ fun Page1() {
                 append(" Litiluism?")
             },
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.dark_grey),
         )
         Text(
             text = "Swipe left to find out.",
             fontSize = 16.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dim_grey_text),
         )
@@ -90,7 +90,7 @@ fun Page2() {
         Text(
             text = "Litiluism",
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.primary),
         )
@@ -103,14 +103,14 @@ fun Page2() {
                 append(" of a runic inscription found in Oseberg, Norway:")
             },
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
         Text(
             text = "ᛚᛁᛏᛁᛚᚢᛁᛌᛙ",
             fontSize = 36.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Thin,
             color = colorResource(R.color.dark_grey),
             textAlign = TextAlign.Center,
@@ -123,21 +123,18 @@ fun Page2() {
 fun Page3() {
     Column {
         Text(
-            text = buildAnnotatedString {
-                append("It is sometimes interpreted as ")
-            },
+            text = "It is sometimes interpreted as ",
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
         Text(
-            text = buildAnnotatedString {
-                append("lítilvíss maðr - man knows little")
-            },
+            text = "lítilvíss maðr - man knows little",
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
+            fontStyle = FontStyle.Italic,
             color = colorResource(R.color.primary),
         )
         Text(
@@ -145,7 +142,7 @@ fun Page3() {
                 append("It may be a statement that human knowledge is limited, or perhaps some viking was just insulting their friend.")
             },
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
@@ -160,7 +157,7 @@ fun Page4(navController: NavController) {
                 append("Personally, we choose to take it as an invitation to learn and gain new knowledge.")
             },
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
@@ -169,7 +166,7 @@ fun Page4(navController: NavController) {
                 append("Join us on the journey through the history written in runes!")
             },
             fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
+            fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.primary),
         )
