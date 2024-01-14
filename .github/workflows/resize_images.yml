@@ -18,11 +18,11 @@ jobs:
       - name: Create output directory
         run: mkdir output
       - name: Resize all images
-        run: for f in `ls original_images | grep -E 'jpg|jpeg|png'`; do
+        run: for f in `ls original\ images | grep -E 'jpg|jpeg|png'`; do
              echo "converting $f to image_";
-             convert original_images/$f -resize 2000x2000\> output/image_$f;
+             convert original\ images/$f -resize 2000x2000\> output/image_$f;
              echo "converting $f to thumbnail_";
-             convert original_images/$f -resize 200x200^ output/thumbnail_$f;
+             convert original\ images/$f -resize 200x200^ output/thumbnail_$f;
              done;
       - name: Upload generated thumbnails
         uses: actions/upload-artifact@v3
