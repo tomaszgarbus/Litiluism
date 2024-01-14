@@ -66,7 +66,6 @@ fun ExerciseScreen(
 
     FullScreenPaddedColumn() {
         ExerciseHeaderFrame("Transliteration exercise", title, navController)
-        Text(state.score.toString())
         Text(
             text = description,
             modifier = Modifier.padding(vertical = 20.dp),
