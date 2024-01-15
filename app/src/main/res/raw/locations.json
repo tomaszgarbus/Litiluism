@@ -100,5 +100,23 @@
     "lat": 55.56892825684815,
     "long": 9.137074061693303,
     "description": "Bække church"
+  },
+  {
+    "id": "klebæk_høje",
+    "lat": 55.58172049733949,
+    "long": 9.144938333584678,
+    "description": "Klebæk Høje"
+  },
+  {
+    "id": "da_nationalmuseet",
+    "lat": 55.674611325660095,
+    "long": 12.575051919385043,
+    "description": "Danish National Museum in Copenhagen"
+  },
+  {
+    "id": "jelling",
+    "lat": 55.756080575636005,
+    "long": 9.420086044799028,
+    "description": "Jelling monuments"
   }
 ]

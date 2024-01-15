@@ -329,17 +329,32 @@
       "Public library in Hobro",
       "https://www.mariagerfjordbibliotekerne.dk/runesten"
     ],
-    "explanationAfter": "The stone is transliterated as: \"Thurir risthi stin tháasi aufti Karl hin kuthaa fælaka sin harta a kutháan træk\". In Danish: \"Thore rejste denne sten efter sin fælle Karl den Gode, en meget god dreng\". Finally, in English: \"Thore raised this stone after his friend Carl the Good, a very good guy\". Confusingly, the \"ᛦ\" rune, normally denoting \"r\", is used also as \"æ\" in several words. This type of laying out letters on a runestone is typical for Jutland and Skåne. We know of one more stone raised probably by the same Thore - the Glenstrup 1 stone.",
+    "explanationAfter": "The stone is transliterated as: \"Thurir risthi stin tháasi aufti Karl hin kuthaa fælaka sin harta a kutháan træk\". In Danish: \"Thore rejste denne sten efter sin fælle Karl den Gode, en meget god dreng\". Finally, in English: \"Thore raised this stone after his friend Carl the Good, a very good guy\". Confusingly, the \"ᛦ\" rune, normally denoting \"r\", is used also as \"æ\" in several words. This type of laying out letters on a runestone is typical for Jutland and Skåne. We know of one more stone raised possibly by the same Thore - the Glenstrup 1 stone.",
     "country": "DA",
     "location": "hobro"
   },
   {
-    "id": "glenstrup",
-    "img": "glenstrup.jpg",
+    "id": "glenstrup1",
+    "img": "glenstrup1.jpg",
+    "title": "Glenstrup 1 rune stone",
+    "img_credit": "Own photo, taken in Copenhagen",
+    "rowType": "younger_futhark_long_branch",
+    "description": "A rune stone from Glenstrup, dated to around 1000 AD.",
+    "runes": "ᚦᚢᚱᛁᛦ:ᚱᛁᛋᚦᛁ:ᛋᛏᛁᚾ:ᚦᛅᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚴᚢᚾᛅᚱ:ᚠᛅᚦᚢᚱ:ᛋᛁᚾ",
+    "sources": [
+      "Danish National Museum in Copenhagen"
+    ],
+    "explanationAfter": "The inscription is rendered into Danish as: \"Thore rejste denne sten efter sin fader Gunnar\" and English: \"Thore raised this stone in memory of Gunnar, his father\". This type of laying out letters on a runestone is typical for Jutland and Skåne. We know of one more stone raised possibly by the same Thore - the Hobro stone.",
+    "country": "DA",
+    "location": "da_nationalmuseet"
+  },
+  {
+    "id": "glenstrup2",
+    "img": "glenstrup2.jpg",
     "title": "Glenstrup 2 rune stone",
     "img_credit": "Own photo, taken in the Glenstrup church",
     "runes": "ᛏᚢᚴᛁ:ᛋᛅᛏᛁ:ᛋᛏᛁᚾ:ᚦᚬᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚢᚠᛚᛅ:ᚠᛅᚦᚢᚱ:ᛋᛁᚾ:ᚼᛅᚱᚦᛅ:ᚴᚢᚦᛅᚾ:ᚦᛁᚵᚾ",
-    "rowType": "glenstrup_younger_futhark",
+    "rowType": "younger_futhark_long_branch",
     "description": "Glenstrup 2 stone is also known as Handeststenen, since it used to be located in the Handest church, which no longer exists. Then it was used as a part of the foundation for a turf house. Finally, it was moved to Glenstrup in 1881. The photo below shows the front of the stone, but the last few runes are on the side. At the back of the stone, there is a carving of a deer. The red paint on the carvings has been filled by the conservators from Danish National Museum.",
     "sources": [
       "Glenstrup church",
@@ -361,24 +376,55 @@
       "Læborg church",
       "Gåden om Thyra show on DRTV"
     ],
-    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunga-Tove hug runer disse efter Tyre, dronning sin.\" English: \"Ravnunga-Tove carved these runes after Thyra, his queen.\" Who was Thyra? We don't know, but she must have been a powerful figure, who's named also on both Jelling stones and the Bække stone. Ravnunge-Tove (or -Tue) is named also on Bække 1 stone and Bække 2 stone.",
+    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunga-Tove hug runer disse efter Tyre, dronning sin.\" English: \"Ravnunga-Tove carved these runes after Thyra, his queen.\" Who was Thyra? She must have been a powerful figure, who's named also on both Jelling stones and the Bække 1 stone. Ravnunge-Tove (or -Tue) is named also on Bække 1 stone and Bække 2 stone.",
     "country": "DA",
     "location": "læborg_kirke"
   },
   {
-    "id": "bække",
-    "img": "bakke.jpg",
+    "id": "bække1",
+    "img": "bakke1.jpg",
     "title": "Bække 1 stone",
     "img_credit": "Own photo, taken in Bække",
     "description": "A runestone found in Bække in 1820. It was brought to its current honourable placing in 1923, as the construction of church's tower has was completed.",
     "runes": "ᚱᛅᚠᚾᚢᚴᛅ:ᛏᚢᚠᛁ:ᛅᚢᚴ:ᚠᚢᛏᛁᚾ:ᛅᚢᚴ:ᚴᚾᚢᛒᛚᛁ:ᚦᛅᛁᛦ:ᚦᚱᛁᛦ:ᚴᛅᚦᚢ:ᚦᚢᚱᚢᛁᛅᛦ:ᚼᛅᚢᚴ",
     "rowType": "younger_futhark_long_branch",
-    "sourcs": [
+    "sources": [
       "Plaque in Bække"
     ],
-    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunge-Tue og Fundin og Gnyple, de tre gjorde Thyras høj\". In English: \"Ravnunge-Tue and Fundin and Gnyple, they three made Thyras monument.\" Who was Thyra? We don't know, but she must have been a powerful figure, who's named also on both Jelling stones and the Læborg stone. Ravnunge-Tue (or -Tove) is named also on Læborg stone and Bække 2 stone.",
+    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunge-Tue og Fundin og Gnyple, de tre gjorde Thyras høj\". In English: \"Ravnunge-Tue and Fundin and Gnyple, they three made Thyras monument.\" Who was Thyra? She must have been a powerful figure, who's named also on both Jelling stones and the Læborg stone. Ravnunge-Tue (or -Tove) is named also on Læborg stone and Bække 2 stone.",
     "country": "DA",
     "location": "bække_kirke"
+  },
+  {
+    "id": "bække2",
+    "img": "bakke2.jpg",
+    "title": "Bække 2 stone",
+    "img_credit": "Own photo, taken in Bække",
+    "description": "The runic stone was erected in the 900s. It constitutes a part (in fact, a stem) of a stone ship near Klebæk Høje. Stone ships were often, though not always, build around graves. The stone ship at Klebæk Høje (also known as the Bække Monument) is 45 meters long and dates back to the Viking Age. It is flanked by two Bronze Age burial mounds.",
+    "runes": "ᚼᚱᛁᛒᚾᚬ:ᚴᛏᚢᛒᛁ:ᚴᚱᛁᚢᚴᚢᛒᚦᛋᛁ:ᛅᚠᛏ:ᚢᛁᛒᚱᚢᚴ:ᛘᚦᚢ:ᛋᛁᚾ",
+    "rowType": "younger_futhark_long_branch",
+    "sources": [
+      "Plaques in Bække",
+      "Gåden om Thyra show on DRTV"
+    ],
+    "explanationAfter":  "The inscription states: \"Ravnunge-Tue made these monuments for his mother Viborg\". Unlike the other two nearby stones signed Ravnunge-Tue (Bække 1 and Læborg stones), this one is hard to read, due to abbreviated words and missing separators between words. Either way, Ravnunge-Tue was clearly an important figure in the local community.",
+    "country": "DA",
+    "location": "klebæk_høje"
+  },
+  {
+    "id": "jelling_gorm",
+    "title": "Gorm's stone in Jelling",
+    "img": "jelling_gorm.jpg",
+    "img_credit": "Own photo, taken in Jelling",
+    "description": "On this stone, the name Denmark appears for the first time within the country. The stone was placed in c. 950 by Gorm the Old. It is the smaller of the two iconic Jelling stones. They stand to this day at the location of Jelling monument, an enormous show of power consisting of two grave mounds, and a gigantic grave ship surrounded by a 1.4 km long palisade.",
+    "runes": "ᚴᚢᚱᛘᛦ:ᚴᚢᚾᚢᚴᛦ:ᚴ…ᛁ:ᚴᚢᛒᛚ:ᚦᚢᛋᛁ:ᛅᚠᛏ:ᚦᚢᚱᚢᛁ:ᚴᚢᚾᚢ:ᛋᛁᚾ:ᛏᛅᚾᛘᛅᚱᚴᛋᛦ:ᛒᚢᛏ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Kong Gorm gjorde disse kumler (monumenter) efter Thyra sin kone - Danmarks pryd\". And to English: \"King Gorm made this monument to Thyra, his wife, Denmark's adornment\". Little is known about Thyra, apart from her name appearing on four different runestones, praising her as wife or queen.",
+    "sources": [
+      "Plaques in Jelling"
+    ],
+    "country": "DA",
+    "location": "jelling"
   },
   {
     "id": "wooden_spade",
