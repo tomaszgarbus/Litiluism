@@ -24,6 +24,7 @@ class LessonXmlParser(private val xmlString: String) {
     )
 
     data class Lesson(
+        val id: String,
         val title: String,
         val body: List<Node>
     )
@@ -88,6 +89,19 @@ class LessonXmlParser(private val xmlString: String) {
         }
     }
 
+    private fun parseId(pullParser: XmlPullParser): String {
+        var eventType: Int = pullParser.next()
+        var text = ""
+        while (eventType != XmlPullParser.END_TAG) {
+            when (eventType) {
+                XmlPullParser.START_TAG -> assert(false) { "Tags in <id> not allowed" }
+                XmlPullParser.TEXT -> text += pullParser.text
+            }
+            eventType = pullParser.next()
+        }
+        return text
+    }
+
     private fun parseTitle(pullParser: XmlPullParser): String {
         var eventType: Int = pullParser.next()
         var text = ""
@@ -131,6 +145,7 @@ class LessonXmlParser(private val xmlString: String) {
 
     private fun parseLessonInternal(pullParser: XmlPullParser): Lesson {
         var eventType: Int = pullParser.eventType
+        var id = ""
         var title = ""
         var body = ArrayList<Node>()
         while (eventType != XmlPullParser.END_TAG || pullParser.name != "lesson") {
@@ -138,6 +153,7 @@ class LessonXmlParser(private val xmlString: String) {
                 XmlPullParser.START_TAG -> {
                     when (pullParser.name) {
                         "title" -> title = parseTitle(pullParser)
+                        "id" -> id = parseId(pullParser)
                         "body" -> body = parseBody(pullParser)
                     }
                 }
@@ -146,7 +162,7 @@ class LessonXmlParser(private val xmlString: String) {
             }
             eventType = pullParser.next()
         }
-        return Lesson(title, body)
+        return Lesson(id, title, body)
     }
 
     private fun Node.toLessonTextSpan(): LessonTextSpan {
@@ -194,7 +210,7 @@ class LessonXmlParser(private val xmlString: String) {
             }
         }
         return Lesson(
-            lessonInternal.title, body
+            lessonInternal.id, lessonInternal.title, body
         )
     }
 

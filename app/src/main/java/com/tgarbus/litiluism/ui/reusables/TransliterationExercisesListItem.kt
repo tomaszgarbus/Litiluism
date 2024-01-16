@@ -123,23 +123,7 @@ fun TransliterationExercisesListItem(
                         .getExerciseStateAsFlow(exercise.id)
                         .collectAsState(TransliterationExerciseState()).value.complete
                 ) {
-                    Box(
-                        Modifier
-                            .border(
-                                width = 1.dp,
-                                color = colorResource(R.color.primary),
-                                shape = RoundedCornerShape(size = 20.dp)
-                            )
-                            .padding(start = 10.dp, end = 10.dp)
-                    ) {
-                        Text(
-                            text = "done",
-                            fontFamily = sarabunFontFamily,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = colorResource(R.color.primary)
-                        )
-                    }
+                   DoneMarker()
                 }
             }
         }

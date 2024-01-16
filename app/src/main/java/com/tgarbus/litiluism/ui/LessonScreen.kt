@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -188,7 +189,9 @@ fun LessonScreen(navController: NavController, viewModel: LessonViewModel = view
         // TODO: deduplicate with exercise header frame
         LessonHeaderFrame(lesson, navController)
         LessonView(lesson)
+        val context = LocalContext.current
         PrimaryButton("Complete") {
+            viewModel.markAsComplete(context)
             navController.popBackStack()
         }
     }

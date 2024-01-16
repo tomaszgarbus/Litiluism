@@ -59,7 +59,7 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         return state.position
     }
 
-    suspend fun appendInputToExerciseState(
+    private suspend fun appendInputToExerciseState(
         exercise: TransliterationExercise,
         c: Char,
         scoreUpdate: (ExerciseScore) -> Unit

@@ -95,6 +95,7 @@ data class LessonBlock(
 )
 
 data class Lesson(
+    val id: String,
     val title: String,
     val body: List<LessonBlock>
 ) {

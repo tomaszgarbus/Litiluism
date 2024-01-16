@@ -1,5 +1,6 @@
 <lesson>
 <title>What are runes?</title>
+<id>what_are_runes</id>
 <body>Runes are an <b>alphabetic writing system</b>, popularly (and for the most part, correctly) associated with Scandinavian culture and with the Viking Age (c. 750-1050).
 
 Though in principle runes may be used to write in any language, they are best suited to record the sounds of old Germanic tongues.
@@ -18,6 +19,7 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 <lesson>
 <title>Futhark? Fuþark? Fuþork?</title>
+<id>futhark_meaning</id>
 <body><b><i>Futhark, fuþark, fuþork...</i></b> what <i>are</i> those?
 
 As you probably know very well, the word <i>alphabet</i> originates from the first two letters of the latin alphabet: <i>alpha (α)</i> and <i>beta (β)</i>.
@@ -32,6 +34,7 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 <lesson>
 <title>Transliteration</title>
+<id>transliteration</id>
 <body>Runic inscriptions are often presented in <b>transliteration</b>.
 
 Every rune is assigned a corresponding letter from modern alphabet, generally roman, but also regional European letters as well as IPA characters are used.
