@@ -81,6 +81,7 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
     Box(
         modifier = Modifier
             .padding(14.dp)
+            .shadow(1.dp, RoundedCornerShape(size = 21.dp))
             .clip(RoundedCornerShape(size = 21.dp))
             .background(Color.White)
             .clickable { hidden.value = !hidden.value }
@@ -122,7 +123,9 @@ fun LessonView(lesson: Lesson) {
                 ) {
                     Image(
                         painterResource(block.imageResourceId),
-                        block.textBlock.toString()
+                        block.textBlock.toString(),
+                        modifier = Modifier.fillMaxWidth(),
+                        contentScale = ContentScale.Fit
                     )
                     LessonTextBlockOnImageView(block.textBlock)
                 }

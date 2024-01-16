@@ -34,6 +34,7 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.ButtonType
 import com.tgarbus.litiluism.ui.reusables.Dock
 import com.tgarbus.litiluism.ui.reusables.DoneMarker
+import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.viewmodel.LearningViewModel
 
@@ -90,20 +91,10 @@ fun LessonListItem(
 
 @Composable
 fun LessonsScreen(navController: NavController, viewModel: LearningViewModel = viewModel()) {
-    val scrollState = rememberScrollState()
     val completedLessons =
         viewModel.getCompletedLessons(LocalContext.current).collectAsState(setOf())
     Box(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                // TODO: set bg color through theme
-                .background(colorResource(R.color.light_bg))
-                .verticalScroll(scrollState)
-                .padding(vertical = 20.dp)
-                .padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
+        FullScreenPaddedColumn {
             Header("Learn")
             StaticContentRepository.getInstance().lessons.forEachIndexed { i, lesson ->
                 LessonListItem(lesson, i, completedLessons.value.contains(lesson.id), navController)

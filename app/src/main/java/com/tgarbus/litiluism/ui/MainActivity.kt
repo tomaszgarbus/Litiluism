@@ -13,7 +13,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.tgarbus.litiluism.MaterialsScreen
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.StaticContentRepository
 import org.osmdroid.config.Configuration
