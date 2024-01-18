@@ -61,7 +61,7 @@ fun MaterialsScreen(navController: NavController) {
         NormalText("\"Saga of the Volsungs")
         SubsectionHeader("Scandinavian history")
         NormalText("\"Outbreak of the Viking Age\" by Torgrim Titlestad")
-        SectionHeader("\"Podcasts\"")
+        SectionHeader("Podcasts")
         NormalText("\"Nordic Mythology Podcast\"")
     }
     Dock(ButtonType.MATERIALS, navController)

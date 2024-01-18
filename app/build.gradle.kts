@@ -72,4 +72,5 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.17")
     implementation("org.osmdroid:osmdroid-wms:6.1.17")
     implementation("org.osmdroid:osmdroid-mapsforge:6.1.17")
+    implementation("com.patrykandpatrick.vico:compose:1.13.1")
 }
