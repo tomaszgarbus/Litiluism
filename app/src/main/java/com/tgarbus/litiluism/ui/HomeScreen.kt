@@ -6,14 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.RichTooltipBox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +23,7 @@ import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.ButtonType
-import com.tgarbus.litiluism.ui.reusables.CircularProgressBar
+import com.tgarbus.litiluism.ui.reusables.SemiCircularProgressBar
 import com.tgarbus.litiluism.ui.reusables.Dock
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
@@ -91,13 +87,6 @@ fun HomeScreen(navController: NavController) {
                 onClick = { navController.navigate("materials") }
             )
         }
-        Row(
-            modifier = Modifier.fillMaxWidth().aspectRatio(3f)
-        ) {
-            CircularProgressBar(modifier = Modifier.weight(1f))
-            CircularProgressBar(modifier = Modifier.weight(1f))
-        }
-        StatisticsLineChart("Progress", values = listOf())
     }
     Dock(ButtonType.HOME, navController)
 }

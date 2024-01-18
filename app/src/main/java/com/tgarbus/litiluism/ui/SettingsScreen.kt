@@ -81,6 +81,9 @@ fun SettingsScreen(navController: NavController) {
         SettingsItem("About the app", R.drawable.icon_info) {
             navController.navigate("about")
         }
+        SettingsItem("Statistics", R.drawable.icon_info) {
+            navController.navigate("statistics")
+        }
     }
     Dock(ButtonType.SETTINGS, navController)
 }

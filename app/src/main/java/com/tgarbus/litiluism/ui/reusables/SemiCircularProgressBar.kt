@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui.reusables
 
+import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -21,7 +22,8 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import kotlin.math.min
 
 @Composable
-fun CircularProgressBar(
+fun SemiCircularProgressBar(
+    progressPercentage: Int,
     modifier: Modifier = Modifier
 ) {
     val progress = 45f
@@ -33,6 +35,7 @@ fun CircularProgressBar(
             .fillMaxSize()
             .padding(32.dp)
     ) {
+        Log.d("size", size.toString())
         val radius = min(size.width / 2, size.height)
         inset(size.width / 2 - radius, size.height / 2 - radius) {
             drawArc(
@@ -44,12 +47,12 @@ fun CircularProgressBar(
             )
             drawArc(
                 startAngle = 180f, // 270 is 0 degree
-                sweepAngle = progress,
+                sweepAngle = progressPercentage * 1.8f,
                 useCenter = false,
                 color = primaryColor,
                 style = Stroke(width = 30f, cap = StrokeCap.Round)
             )
-            val text = "20%"
+            val text = "${progressPercentage}%"
             val textStyle = TextStyle(
                 fontFamily = sarabunFontFamily,
                 fontSize = 20.sp,

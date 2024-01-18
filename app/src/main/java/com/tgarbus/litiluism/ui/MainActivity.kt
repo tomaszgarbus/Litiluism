@@ -92,6 +92,9 @@ class MainActivity : ComponentActivity() {
                     composable("materials") {
                         MaterialsScreen(navController)
                     }
+                    composable("statistics") {
+                        StatisticsScreen(navController)
+                    }
                 }
             }
         }
