@@ -118,5 +118,11 @@
     "lat": 55.756080575636005,
     "long": 9.420086044799028,
     "description": "Jelling monuments"
+  },
+  {
+    "id": "moesgaard_museum",
+    "lat": 56.08852420407162,
+    "long": 10.223480229177408,
+    "description": "Moesgård Museum in Aarhus"
   }
 ]

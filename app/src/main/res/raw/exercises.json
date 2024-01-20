@@ -419,12 +419,108 @@
     "description": "On this stone, the name Denmark appears for the first time within the country. The stone was placed in c. 950 by Gorm the Old. It is the smaller of the two iconic Jelling stones. They stand to this day at the location of Jelling monument, an enormous show of power consisting of two grave mounds, and a gigantic grave ship surrounded by a 1.4 km long palisade.",
     "runes": "ᚴᚢᚱᛘᛦ:ᚴᚢᚾᚢᚴᛦ:ᚴ…ᛁ:ᚴᚢᛒᛚ:ᚦᚢᛋᛁ:ᛅᚠᛏ:ᚦᚢᚱᚢᛁ:ᚴᚢᚾᚢ:ᛋᛁᚾ:ᛏᛅᚾᛘᛅᚱᚴᛋᛦ:ᛒᚢᛏ",
     "rowType": "younger_futhark_long_branch",
-    "explanationAfter": "The inscription is rendered into modern Danish as: \"Kong Gorm gjorde disse kumler (monumenter) efter Thyra sin kone - Danmarks pryd\". And to English: \"King Gorm made this monument to Thyra, his wife, Denmark's adornment\". Little is known about Thyra, apart from her name appearing on four different runestones, praising her as wife or queen.",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Kong Gorm gjorde disse kumler (monumenter) efter Thyra sin kone - Danmarks pryd\". And to English: \"King Gorm made this monument to Thyra, his wife, Denmark's adornment\". Little is known about Thyra, apart from her name appearing on four different runestones, praising her as wife and queen.",
     "sources": [
       "Plaques in Jelling"
     ],
     "country": "DA",
     "location": "jelling"
+  },
+  {
+    "id": "jelling_harald",
+    "title": "Harald's stone in Jelling",
+    "img": "jelling_harald.jpg",
+    "img_credit": "Own photo, taken in Jelling",
+    "description": "The bigger of the two Jelling stones, raised by Harald Bluetooth, the son of Gorm. The stone dates back to around 965, to a time when Denmark was transitioning from a tribal society to a Christian kingdom.",
+    "runes": "ᚼᛅᚱᛅᛚᛏᚱ:ᚴᚢᚾᚢᚴᛦ:ᛒᛅᚦᚴᛅᚢᚱᚢᛅ:ᚴᚢᛒᛚ:ᚦᛅᚢᛋᛁ:ᛅᚠᛏ:ᚴᚢᚱᛘᚠᛅᚦᚢᚱᛋᛁᚾ:ᛅᚢᚴᛅᚠᛏ:ᚦᚢᚱᚢᛁ:ᛘᚢᚦᚢᚱ:ᛋᛁᚾᛅ:ᛋᛅ:ᚼᛅᚱᛅᛚᛏᚱ:ᛁᛅᛋ:ᛋᚬᛁ:ᛏᛅᚾᛘᛅᚢᚱᚴ:ᛅᛚᛅ:ᛅᚢᚴ:ᚾᚢᚱᚢᛁᛅᚴ:ᛅᚢᚴ:ᛏᛅᚾᛁ:ᚴᛅᚱᚦᛁ:ᚴᚱᛁᛋᛏᚾᚬ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered to modern Danish as: \"Kong Harald bød gøre disse kumler (monumenter) efter Gorm sin fader og efter Thyra sin moder. Den Harald som vandt sig hele Danmark og Norge og gjorde Danerne kristne.\" And in English: \"King Harald had these monuments raised after his father Gorm and after his mother Thyra. Harald, who united all of Denmark and Norway and christened the Danes.\" This stone is considered the Denmark's birth certificate.",
+    "sources": [
+      "Plaques in Jelling"
+    ],
+    "country": "DA",
+    "location": "jelling"
+  },
+  {
+    "id": "aarhus_mask_stone",
+    "title": "Aarhus mask stone DR 66 (Mjy77)",
+    "img": "aarhus_mask.jpg",
+    "img_credit": "Own photo, taken in the musem",
+    "description": "The \"mask stone\" from Aarhus, dating from around AD 1000. It was found in 1850, in the foundations of the mill Aarhus Mølle.",
+    "runes": "ᚴᚢᚾᚢᛚᚠᛦ:ᛅᚢᚴ:ᛅᚢᚴᚢᛏᚱ:ᛅᚢᚴ:ᛅᛋᛚᛅᚴᛦ:ᛅᚢᚴ:ᚱᚢᛚᚠᛦ:ᚱᛁᛋᚦᚢ:ᛋᛏᛁᚾ:ᚦᛅᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚠᚢᛚ:ᚠᛁᛚᛅ(ᚴ)ᛅ:ᛋᛁᚾ:ᛁᛅᛦ:ᚢᛅᚱᚦ…ᛁ…ᛏᚢᚦᚱ:ᚦᚬ:ᚴᚢᚾᚢᚴᛅᛦ:ᛒᛅᚱᚦᚢᛋᚴ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Gunulv og Øgot og Aslak og Rolf rejste denne sten efter deres fælle Ful. Han fandt døden ... da konger kæmpede\". In English: \"Gunnulfr and Eygautr/Auðgautr and Áslakr and Hrólfr raised this stone in memory of Fúl, their partner, who died when kings fought\".",
+    "sources": [
+      "Moesgaard Museum",
+      "https://app.raa.se"
+    ],
+    "country": "DA",
+    "location": "moesgaard_museum"
+  },
+  {
+    "id": "aarhus_dr67",
+    "title": "Aarhus Runestone DR 67 (MJy78)",
+    "img": "aarhus_dr67.jpg",
+    "img_credit": "Own photo, taken in the museum",
+    "description": "Runestone dated around AD 1000, found in 1866 beneath Vor Frue Kirke (church of Our Lady) in Aarhus.",
+    "runes": "ᚴᛁᛏᛁᛚ:ᚱᛁᛋᚦᛁ:ᛋᛏᛁᚾ:ᚦᛅᚾᛋᛁ:ᚢᚠᛏᛁᛦ:ᛁᚴᛅ:ᚠᛅᚦᚢᚱ:ᛋᛁᚾ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Kaeld rejste denne sten efter sin fader Inge.\" In English: \"Ketill raised this stone in memory of Ingi, his father\".",
+    "sources": [
+      "Moesgaard Museum",
+      "https://app.raa.se"
+    ],
+    "country": "DA",
+    "location": "moesgaard_museum"
+  },
+  {
+    "id": "aarhus_dr68",
+    "title": "Aarhus Runestone DR 68 (MJy79)",
+    "img": "aarhus_dr68.jpg",
+    "img_credit": "Own photo, taken in the museum",
+    "description": "Rune stone from around AD 1000. Found in 1905 in the foundations of Vor Frue Kirke (church of Our Lady) in Aarhus. The inscription runs on two sides of the stone. One side (the continuation of the text) is also ornamented.",
+    "runes": "ᛏᚢᛋᛏᛁ:ᛅᚢᚴ:ᚼᚢᚠᛁ:ᛅᚢᚴ:ᚦᛁᚱ:ᚠᚱᛁᛒᛁᚢᚱᚾ:ᚱᛁᛋᚦᚢ:ᛋᛏᛁᚾ:ᚦᚬᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚬᛋᚢᚱ:ᛋᛅᚴᛋᛅ:ᚠᛁᛚᛅᚴᛅ:ᛋᛁᚾ:ᚼᛅᚱᚦᛅ:ᚴᚢᚦᛅᚾ:ᛏᚱᛁᚴ:ᛋᛅᛦ:ᛏᚢ:ᛘᛅᚾᛅ:ᛘᛁᛋᛏ:ᚢᚾᛁᚦᛁᚴᛦ:ᛋᛅᛦ:ᛅᛏᛁ:ᛋᚴᛁᛒ:ᛘᛁᚦ:ᛅᚱᚾᚬ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Toste og Hove rejste sammen med Fredbjørn denne sten efter Asser Saxe, deres fælle, en meget velbyrdig dreng. Han døde som den største unidding blandt mænd. Han ejede skib sammen med Arne\". In English: \"Tosti and Hofi and Freybjorn raised this stone in memory of Azurr Saxon/Sword(-wielder), their partner, a very good 'drengr'. He died as the most unvillainous of men. He owned a ship with Arni\". Asser Saxe was clearly a respected figure. The term drengr is a noble title and unvillainous simply means an honourable man. The statement that Asser owned a ship with Arne could mean that they ran a trading company together.",
+    "sources": [
+      "Moesgaard Museum",
+      "https://app.raa.se"
+    ],
+    "country": "DA",
+    "location": "moesgaard_museum"
+  },
+  {
+    "id": "aarhus_dr69",
+    "title": "Aarhus Runestone DR 69 (MJy73)",
+    "img": "aarhus_dr69.jpg",
+    "img_credit": "Own photo, taken in the museum",
+    "description": "Rune stone dating back to AD 1000, found north of Aarhus in the 17th century.",
+    "runes": "ᚦᚢᚦᚴᛁᛚ:ᚱᛁᛋᚦᛁ:ᛋᛏᚾ:ᚦᛅᚾᛋᛁ:ᚢᚠᛏᛁᛦ:ᛏᚢᚠᛅ:ᛘᛅᚴ:ᛋᛁᚾ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Thydkill rejste denne sten efter sin måg Thue\". In English: \"Þjöðkell raised this stone in memory of Tófi, his måg\". Måg is a male relation by marriage - a brother- or father-in-law.",
+    "sources": [
+      "Moesgaard Museum",
+      "https://app.raa.se"
+    ],
+    "country": "DA",
+    "location": "moesgaard_museum"
+  },
+  {
+    "id": "hørningstenen",
+    "title": "The Hørning stone DR 58",
+    "img": "horning_stenen.jpg",
+    "img_credit": "Own photo, taken in the museum",
+    "description": "Runestone dating around AD 1000, found in 1849 in Hørning, southwest of Aarhus, next to the old road between Jelling and Aarhus. A copy of this stone stands in the Viking Museum in Aarhus.",
+    "runes": "ᛏᚢᚴᛁ:ᛋᛘᛁᚦᚱ:ᚱᛁᚦ:ᛋᛏᛁᚾ:ᛁᚠᛏ:ᚦᚢᚱᚴᛁᛋᛚ:ᚴᚢᚦᛘᚢᛏᛅᛦ:ᛋᚢᚾ:ᛁᛋ:ᚼᛅᚾᚢᛘ:ᚴᛅᚠ:ᚴᚢᛚ:ᚢᚴ:ᚠᚱᛁᛅᛚᛋᛁ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Toke Smed rejste stenen efter Troels Gudmunds søn, som gav ham guld(?) og frihed\". In English: \"Toki Smith raised the stone in memory of Þorgist Guðmundr's son, who gave him gold(?) and freedom\".",
+    "sources": [
+      "Moesgaard Museum",
+      "https://samlinger.natmus.dk/dmr/asset/7750",
+      "https://trap.lex.dk/Hørningstenen"
+    ],
+    "country": "DA",
+    "location": "moesgaard_museum"
   },
   {
     "id": "wooden_spade",
