@@ -376,7 +376,7 @@
       "Læborg church",
       "Gåden om Thyra show on DRTV"
     ],
-    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunga-Tove hug runer disse efter Tyre, dronning sin.\" English: \"Ravnunga-Tove carved these runes after Thyra, his queen.\" Who was Thyra? She must have been a powerful figure, who's named also on both Jelling stones and the Bække 1 stone. Ravnunge-Tove (or -Tue) is named also on Bække 1 stone and Bække 2 stone.",
+    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunga-Tove hug runer disse efter Tyre, dronning sin.\" English: \"Ravnunga-Tove carved these runes after Thyra, his queen.\" Who was Thyra? She was a powerful figure, who's named also on both Jelling stones and the Bække 1 stone. Ravnunge-Tove (or -Tue) is named also on Bække 1 stone and Bække 2 stone.",
     "country": "DA",
     "location": "læborg_kirke"
   },
@@ -391,7 +391,7 @@
     "sources": [
       "Plaque in Bække"
     ],
-    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunge-Tue og Fundin og Gnyple, de tre gjorde Thyras høj\". In English: \"Ravnunge-Tue and Fundin and Gnyple, they three made Thyras monument.\" Who was Thyra? She must have been a powerful figure, who's named also on both Jelling stones and the Læborg stone. Ravnunge-Tue (or -Tove) is named also on Læborg stone and Bække 2 stone.",
+    "explanationAfter": "The inscription is rendered into Danish as: \"Ravnunge-Tue og Fundin og Gnyple, de tre gjorde Thyras høj\". In English: \"Ravnunge-Tue and Fundin and Gnyple, they three made Thyras monument.\" Who was Thyra? She was a powerful figure, who's named also on both Jelling stones and the Læborg stone. Ravnunge-Tue (or -Tove) is named also on Læborg stone and Bække 2 stone.",
     "country": "DA",
     "location": "bække_kirke"
   },
@@ -554,7 +554,7 @@
   },
   {
     "id": "tirsted",
-    "title": "Tirsted stone ",
+    "title": "Tirsted stone DR 216",
     "img": "tirsted.jpg",
     "img_credit": "Own photo, taken in the National Museum of Denmark",
     "description": "A rune stone dated to 10th century AD.",
