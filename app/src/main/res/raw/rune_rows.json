@@ -632,6 +632,34 @@
       }
     ]
   },
+  "asferg_younger_futhark": {
+    "name": "Long-branch Younger Fuþark",
+    "inherit_from": "younger_futhark_long_branch",
+    "override_symbols": [
+      {
+        "rune": "ᚵ",
+        "latin": "g"
+      }
+    ]
+  },
+  "snoldelev_younger_futhark": {
+    "name": "Long-branch Younger Fuþark",
+    "inherit_from": "younger_futhark_long_branch",
+    "override_symbols": [
+      {
+        "rune": "ᚼ",
+        "latin": "a"
+      },
+      {
+        "rune": "ᚺ",
+        "latin": "h"
+      },
+      {
+        "rune": "ᚨ",
+        "latin": "o"
+      }
+    ]
+  },
   "younger_futhark_eidi_runestick": {
     "name": "Short-twig Younger Fuþark",
     "inherit_from": "younger_futhark_short_twig",

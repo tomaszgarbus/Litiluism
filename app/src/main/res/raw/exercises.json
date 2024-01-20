@@ -341,10 +341,10 @@
     "rowType": "younger_futhark_long_branch",
     "description": "A rune stone from Glenstrup, dated to around 1000 AD.",
     "runes": "ᚦᚢᚱᛁᛦ:ᚱᛁᛋᚦᛁ:ᛋᛏᛁᚾ:ᚦᛅᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚴᚢᚾᛅᚱ:ᚠᛅᚦᚢᚱ:ᛋᛁᚾ",
+    "explanationAfter": "The inscription is rendered into Danish as: \"Thore rejste denne sten efter sin fader Gunnar\" and English: \"Thore raised this stone in memory of Gunnar, his father\". This type of laying out letters on a runestone is typical for Jutland and Skåne. We know of one more stone raised possibly by the same Thore - the Hobro stone.",
     "sources": [
       "Danish National Museum in Copenhagen"
     ],
-    "explanationAfter": "The inscription is rendered into Danish as: \"Thore rejste denne sten efter sin fader Gunnar\" and English: \"Thore raised this stone in memory of Gunnar, his father\". This type of laying out letters on a runestone is typical for Jutland and Skåne. We know of one more stone raised possibly by the same Thore - the Hobro stone.",
     "country": "DA",
     "location": "da_nationalmuseet"
   },
@@ -446,10 +446,10 @@
     "title": "Aarhus mask stone DR 66 (Mjy77)",
     "img": "aarhus_mask.jpg",
     "img_credit": "Own photo, taken in the musem",
-    "description": "The \"mask stone\" from Aarhus, dating from around AD 1000. It was found in 1850, in the foundations of the mill Aarhus Mølle.",
+    "description": "The \"mask stone\" from Aarhus, dating from around AD 970-1020. It was found in 1850, in the foundations of the mill Aarhus Mølle.",
     "runes": "ᚴᚢᚾᚢᛚᚠᛦ:ᛅᚢᚴ:ᛅᚢᚴᚢᛏᚱ:ᛅᚢᚴ:ᛅᛋᛚᛅᚴᛦ:ᛅᚢᚴ:ᚱᚢᛚᚠᛦ:ᚱᛁᛋᚦᚢ:ᛋᛏᛁᚾ:ᚦᛅᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᚠᚢᛚ:ᚠᛁᛚᛅ(ᚴ)ᛅ:ᛋᛁᚾ:ᛁᛅᛦ:ᚢᛅᚱᚦ…ᛁ…ᛏᚢᚦᚱ:ᚦᚬ:ᚴᚢᚾᚢᚴᛅᛦ:ᛒᛅᚱᚦᚢᛋᚴ",
     "rowType": "younger_futhark_long_branch",
-    "explanationAfter": "The inscription is rendered into modern Danish as: \"Gunulv og Øgot og Aslak og Rolf rejste denne sten efter deres fælle Ful. Han fandt døden ... da konger kæmpede\". In English: \"Gunnulfr and Eygautr/Auðgautr and Áslakr and Hrólfr raised this stone in memory of Fúl, their partner, who died when kings fought\".",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Gunulv og Øgot og Aslak og Rolf rejste denne sten efter deres fælle Ful. Han fandt døden ... da konger kæmpede\". In English: \"Gunnulfr and Eygautr/Auðgautr and Áslakr and Hrólfr raised this stone in memory of Fúl, their partner, who died when kings fought\". Perhaps it is a reference to the battle at Svolder, a naval battle in AD 1000, when the Danish king Swein Forkbeard, the Swedish king Olof Skötkonung and the Norwegian earl Eirik Hákonarson fought the Norwegian king Olaf Tryggvason.",
     "sources": [
       "Moesgaard Museum",
       "https://app.raa.se"
@@ -521,6 +521,51 @@
     ],
     "country": "DA",
     "location": "moesgaard_museum"
+  },
+  {
+    "id": "asferg",
+    "title": "Asferg stone DR 121 (MJy 47)",
+    "img": "asferg.jpg",
+    "img_credit": "Own photo, taken in the National Museum of Denmark",
+    "description": "Rune stoned dated around AD 1000.",
+    "runes": "ᚦᚢᚱᚵᛁᛦ:ᛏᚢᚴᛅ:ᛋᚢᚾ:ᚱᛁᛋᚦᛁ:ᛋᛏᛁᚾ:ᚦᚬᚾᚾᛋᛁ:ᛁᚠᛏᛁᛦ:ᛘᚢᛚᛅ:ᛒᚱᚢᚦᚱ:ᛋᛁᚾ:ᚼᛅᚱᚦᚬ:ᚴᚢᚦᚱᚢ:ᚦᛁᚾ",
+    "rowType": "asferg_younger_futhark",
+    "explanationAfter": "The transcription in Danish runs: \"Thorger Tokes søn rejste denne sten efter sin broder Mule, en meget god thegn\". In English: \"Thorger Toke's son raised this stone in memory of Mule, his brother, a very good thegn\".",
+    "sources": [
+      "Danish National Museum in Copenhagen"
+    ],
+    "country": "DA",
+    "location": "da_nationalmuseet"
+  },
+  {
+    "id": "snoldelev",
+    "title": "Snoldelev stone DR 248",
+    "img": "snoldelev.jpg",
+    "img_credit": "Own photo, taken in the National Museum of Denmark",
+    "description": "Rune stone dated to 8th-9th century AD. Apart from the inscription, contains two ornaments: three interlaced horns and a fylfot.",
+    "runes": "ᚴᚢᚾ᛫ᚢᚼᛚᛏᛋᛏᚼᛁᚾ᛫ᛋᚢᚾᛅᛦ:ᚱᚢᚺᛅᛚᛏᛋ᛫ᚦᚢᛚᛅᛦ᛫ᚨᛋᛅᛚᚺᛅᚢᚴᚢ(ᛘ)",
+    "rowType": "snoldelev_younger_futhark",
+    "explanationAfter": "This older stone is tricky to transliterate. For example, 'ᚼ' denotes 'a' instead of 'h', and two words blend together (kunualts stain = kunualtstain). It is rendered into Danish as: \"Gunvalds sten, søn af Roald, thul (taler, fremsigemand?) i Salløv (på Salhøjene)\". In English: \"Gunvald's stone, son of Roald, thul (speaker, reciter?) in Salløv (on the Salmounds)\".",
+    "sources": [
+      "Danish National Museum in Copenhagen"
+    ],
+    "country": "DA",
+    "location": "da_nationalmuseet"
+  },
+  {
+    "id": "tirsted",
+    "title": "Tirsted stone ",
+    "img": "tirsted.jpg",
+    "img_credit": "Own photo, taken in the National Museum of Denmark",
+    "description": "A rune stone dated to 10th century AD.",
+    "runes": "ᚬᛋᚱᛅᚦᚱ:ᛅᚢᚴ:ᚼᛁᛚᛏᚢ(-)-ᛦ:ᚱᛅᛁᛋᚦᚢ:ᛋᛏᛅᛁᚾ:ᚦᛅᚾᛋᛁ:ᛅᚠᛏ:ᚠᚱᚬᚦᛅ:ᚠᚱᚬᚾᛏᛁ:ᛋᛁᚾ:ᛋᛁᚾ:ᛁᛅᚾ:ᚼᛅᚾ:ᚢᛅᛋ:ᚦᚬ:ᚠᚬᛁᚾᚴ:ᚢᛅᛁᛦᛅ:ᛁᛅᚾ:ᚼᛅᚾ:ᚢᛅᚱᚦ:ᛏᛅᚢᚦᚱ:ᚬ:ᛋᚢᚬ:ᚦᛁᛅᚢᚦᚢ:ᛅᚢᚴ:ᚢᛅᛋ:ᚠᚢᚱᛋ:ᛁ:ᚠᚱᛁᚴᛁᛋ:ᚬᚦᛁ:ᚦᚬ:ᛅᛚᛁᛦ:ᚢᛁᚴᛁᚴᛅᛦ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription is rendered into modern Danish as: \"Asråd og Hildvig (eller Hildulv?) rejste denne sten efter Frede, deres frænde (?), men han var (da mænds skræk?), og han døde i Svitjod (Sverige) og var (først i Frigges skare?), derefter alle vikingerne.\" In English: \"Asråd and Hildvig  Hildulv?) raised this stone in memory of Frede, their kinsman (?). And he was then (the terror of man?), and he died in Svitjod (Sweden) and was (the foremost of Frigge's host?). And then: all viking\". As you see, it's very hard to interpret.",
+    "sources": [
+      "Danish National Museum in Copenhagen"
+    ],
+    "country": "DA",
+    "location": "da_nationalmuseet"
   },
   {
     "id": "wooden_spade",
