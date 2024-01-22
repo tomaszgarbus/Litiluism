@@ -85,6 +85,7 @@ class ImageResourcesMap {
             "learn_aft_kurm" to R.drawable.learn_aft_kurm,
             "learn_aukaft_thaurui" to R.drawable.learn_aukaft_thaurui,
             "learn_fadur_sin" to R.drawable.learn_fadur_sin,
+            "learn_lost_stone" to R.drawable.learn_lost_stone,
             "learn_modur_sin" to R.drawable.learn_modur_sin,
             "learn_older_futhark" to R.drawable.learn_older_futhark,
             "learn_younger_futhark_long_and_short" to R.drawable.learn_younger_futhark_long_and_short,

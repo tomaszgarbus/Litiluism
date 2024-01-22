@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -130,7 +131,9 @@ fun LessonView(lesson: Lesson) {
                     LessonTextBlockOnImageView(block.textBlock)
                 }
             } else {
-                LessonTextBlockView(block.textBlock)
+                SelectionContainer {
+                    LessonTextBlockView(block.textBlock)
+                }
             }
         }
     }
