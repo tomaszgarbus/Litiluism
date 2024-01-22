@@ -47,6 +47,16 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         }
     }
 
+    fun getExerciseStatesAsFlow(exerciseIds: List<String>): Flow<Map<String, TransliterationExerciseState>> {
+        return context.transliterationStatesDataStore.data.map { preferences ->
+            val result = HashMap<String, TransliterationExerciseState>()
+            for (exerciseId in exerciseIds) {
+                result[exerciseId] = preferencesToState(preferences, exerciseId)
+            }
+            result
+        }
+    }
+
     private suspend fun isExerciseComplete(exercise: TransliterationExercise): Boolean {
         val exerciseStateFlow = getExerciseStateAsFlow(exercise.id)
         val state = exerciseStateFlow.firstOrNull() ?: return false

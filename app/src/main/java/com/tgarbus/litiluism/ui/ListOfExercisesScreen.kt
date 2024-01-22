@@ -45,6 +45,7 @@ import com.tgarbus.litiluism.data.baseRuneRowToString
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
+import com.tgarbus.litiluism.ui.reusables.BackButton
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
@@ -211,21 +212,13 @@ fun ListOfExercisesScreen(
     viewModel: ListOfExercisesViewModel = viewModel()
 ) {
     val transliterationExercises = viewModel.transliterationExercises()
-    val scrollState = rememberScrollState()
 
     val filters = remember { mutableStateOf(ExerciseFilters()) }
     val showFiltersDialog = remember { mutableStateOf(false) }
 
     FullScreenPaddedColumn() {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            // TODO: Extract to a common component
-            IconButton(onClick = { navController.popBackStack() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.icon_backarrow),
-                    contentDescription = "back",
-                    tint = colorResource(R.color.secondary)
-                )
-            }
+            BackButton(navController)
             Header(
                 "Transliteration exercises",
                 modifier = Modifier
