@@ -87,6 +87,7 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 <lesson>
 <title>Runes in Anglo-Saxon England and Frisia</title>
+<id>anglo_saxon_frisian</id>
 <body>Runes were introduced to England in the fifth century, during the Anglo-Saxon invasion of the country.
 
 During <b>the seventh and eight centuries</b>, several more runes were added to the runic alphabet, producing a so-called <b><i>Anglo-Saxon</i>, or <i>Anglo-Frisian futhorc</i></b>.
@@ -105,6 +106,7 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 <lesson>
 <title>Younger Fuþark (and the vikings)</title>
+<id>younger_futhark</id>
 <body>As you know from the last lesson, fuþark expanded from twenty four runes to twenty eight or even more to keep up with the sound changes in spoken Germanic in England and Frisia.
 
 The Scandinavian Germanic sound system also underwent significant changes in the sixth and seventh centuries. The writing system, however, changed drastically in the opposite direction - it was reduced from the older futhark by one-third!
@@ -140,6 +142,7 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 <lesson>
 <title>The Jelling stones</title>
+<id>jelling_stones</id>
 <body><b>Spoiler alert!</b> It is recommended to complete the exercises about Jelling stones (<i>Gorm's stone</i> and <i>Harald's stone</i>) before reading this lesson.
 
 In central Jutland (the peninsula constituting the continental part of Denmark), there's a small town called Jelling. It can be reached by taking a bus from Vejle - the closest larger city - departing every hour or so.
@@ -175,6 +178,7 @@ Sources: plaques in Jelling.
 
 <lesson>
 <title>Harald Bluetooth's lost stone</title>
+<id>lost_stone</id>
 <body>
 </body>
 </lesson>

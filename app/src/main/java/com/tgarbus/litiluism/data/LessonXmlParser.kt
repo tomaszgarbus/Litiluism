@@ -162,6 +162,7 @@ class LessonXmlParser(private val xmlString: String) {
             }
             eventType = pullParser.next()
         }
+        assert(id.isNotEmpty())
         return Lesson(id, title, body)
     }
 

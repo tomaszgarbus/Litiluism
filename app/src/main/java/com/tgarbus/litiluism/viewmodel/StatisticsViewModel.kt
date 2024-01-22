@@ -12,7 +12,7 @@ import kotlin.math.roundToInt
 
 class StatisticsViewModel(): ViewModel() {
     private fun computePercentage(completed: Int, total: Int): Int {
-        return (completed.toFloat() / total.toFloat()).roundToInt()
+        return (100f * completed.toFloat() / total.toFloat()).roundToInt()
     }
 
     private fun listAllExerciseIds(): List<String> {
