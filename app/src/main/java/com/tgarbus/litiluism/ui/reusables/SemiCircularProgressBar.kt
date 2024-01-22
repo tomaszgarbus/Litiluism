@@ -24,20 +24,18 @@ import kotlin.math.min
 @Composable
 fun SemiCircularProgressBar(
     progressPercentage: Int,
-    modifier: Modifier = Modifier
+    canvasModifier: Modifier = Modifier
 ) {
-    val progress = 45f
     val bgColor = colorResource(R.color.dim_grey_text)
     val primaryColor = colorResource(R.color.primary)
     val textMeasurer = rememberTextMeasurer()
     Canvas(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(32.dp)
+        modifier = canvasModifier
     ) {
         Log.d("size", size.toString())
         val radius = min(size.width / 2, size.height)
-        inset(size.width / 2 - radius, size.height / 2 - radius) {
+        // TODO: rethink inset
+        inset(size.width / 2 - radius / 2, size.height / 2 - radius / 2) {
             drawArc(
                 startAngle = 180f, // 270 is 0 degree
                 sweepAngle = 180f,
