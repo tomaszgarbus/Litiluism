@@ -37,6 +37,7 @@ fun MapPreview(
             for (location in viewModel.getLocations()) {
                 val locationMarker = Marker(mapView)
                 // TODO: Use Litiluism icon for the markers
+                locationMarker.icon = context.getDrawable(R.drawable.icon_map_marker_orange)
                 locationMarker.position = GeoPoint(
                     location.lat,
                     location.long

@@ -35,23 +35,6 @@ fun ListOfRuneRowsDialog(
         onClose = onClose,
         title = title,
     ) {
-        for (baseRuneRow in BaseRuneRow.entries) {
-            if (baseRuneRow != BaseRuneRow.ANY) {
-                val runeRow =
-                    StaticContentRepository.getInstance().getFullBaseRuneRow(baseRuneRow)
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onSelectItem(baseRuneRow) }
-                ) {
-                    Text(
-                        runeRow!!.name,
-                        fontFamily = sarabunFontFamily,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
-        }
+        RuneRowList(onSelectItem)
     }
 }

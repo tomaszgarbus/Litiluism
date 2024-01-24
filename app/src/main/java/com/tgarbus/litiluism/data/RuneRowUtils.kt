@@ -1,5 +1,7 @@
 package com.tgarbus.litiluism.data
 
+import com.tgarbus.litiluism.R
+
 fun maybeBaseRuneRowFromId(id: String): BaseRuneRow? {
     return when (id) {
         "older_futhark" -> BaseRuneRow.OLDER_FUTHARK
@@ -30,5 +32,16 @@ fun baseRuneRowToString(baseRuneRow: BaseRuneRow): String {
         BaseRuneRow.YOUNGER_FUTHARK_SHORT_TWIG -> "Younger Futhark short-twig"
         BaseRuneRow.YOUNGER_FUTHARK_LONG_BRANCH -> "Younger Futhark long-branch"
         BaseRuneRow.OLDER_FUTHARK -> "Older Futhark"
+    }
+}
+
+fun BaseRuneRow.getIconResourceId(): Int {
+    return when (this) {
+        BaseRuneRow.ANGLO_SAXON -> R.drawable.icon_runerow_anglo_saxon
+        BaseRuneRow.OLDER_FUTHARK -> R.drawable.icon_runerow_older_futhark
+        BaseRuneRow.YOUNGER_FUTHARK_SHORT_TWIG -> R.drawable.icon_runerow_short_twig
+        BaseRuneRow.YOUNGER_FUTHARK_LONG_BRANCH -> R.drawable.icon_runerow_long_branch
+        BaseRuneRow.MEDIEVAL -> R.drawable.icon_runerow_medieval
+        BaseRuneRow.ANY -> 0
     }
 }

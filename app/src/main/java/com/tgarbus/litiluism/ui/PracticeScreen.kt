@@ -27,9 +27,28 @@ import com.tgarbus.litiluism.ui.reusables.MapPreview
 import com.tgarbus.litiluism.ui.reusables.PracticeTypeButton
 import com.tgarbus.litiluism.ui.reusables.PracticeTypeButtonText
 
+enum class DestinationType {
+    LATIN_TO_RUNE,
+    RUNE_TO_LATIN
+}
+
+fun DestinationType.toNavigationString(): String {
+    return when (this) {
+        DestinationType.LATIN_TO_RUNE -> "latintorune"
+        DestinationType.RUNE_TO_LATIN -> "runetolatin"
+    }
+}
+
+fun DestinationType.toDisplayableString(): String {
+    return when (this) {
+        DestinationType.LATIN_TO_RUNE -> "Latin to rune"
+        DestinationType.RUNE_TO_LATIN -> "Rune to latin"
+    }
+}
+
 @Composable
 fun PracticeScreen(navController: NavController) {
-    var runeRowDialogDestination = remember { mutableStateOf<String?>(null) }
+    var runeRowDialogDestination = remember { mutableStateOf<DestinationType?>(null) }
     Box(modifier = Modifier.fillMaxSize()) {
         FullScreenPaddedColumn {
             Header("Practice")
@@ -61,13 +80,13 @@ fun PracticeScreen(navController: NavController) {
                     "Rune to Latin",
                     R.drawable.button_bg_rune_to_latin,
                     Modifier.weight(1f),
-                    onClick = { runeRowDialogDestination.value = "runetolatin" }
+                    onClick = { runeRowDialogDestination.value = DestinationType.RUNE_TO_LATIN }
                 )
                 PracticeTypeButton(
                     "Latin to rune",
                     R.drawable.button_bg_latin_to_rune,
                     Modifier.weight(1f),
-                    onClick = { runeRowDialogDestination.value = "latintorune" }
+                    onClick = { runeRowDialogDestination.value = DestinationType.LATIN_TO_RUNE }
                 )
             }
             Row(modifier = Modifier.fillMaxWidth()) {
@@ -82,12 +101,12 @@ fun PracticeScreen(navController: NavController) {
         ListOfRuneRowsDialog(
             visible = runeRowDialogDestination.value != null,
             onClose = { runeRowDialogDestination.value = null },
-            title = "Select runic alphabet",
+            title = runeRowDialogDestination.value?.toDisplayableString() ?: "",
             onSelectItem = { baseRuneRow ->
                 val destination = runeRowDialogDestination.value
                 if (destination != null) {
                     navController.navigate(
-                        "${destination}/${maybeBaseRuneRowToId(baseRuneRow)!!}"
+                        "${destination.toNavigationString()}/${maybeBaseRuneRowToId(baseRuneRow)!!}"
                     )
                 }
             })
