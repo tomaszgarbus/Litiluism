@@ -3,6 +3,7 @@ package com.tgarbus.litiluism.ui
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,11 +14,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -26,6 +30,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -36,10 +41,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.AboutRepository
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
+import com.tgarbus.litiluism.viewmodel.AboutViewModel
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
@@ -150,7 +158,7 @@ fun Page3() {
 }
 
 @Composable
-fun Page4(navController: NavController) {
+fun Page4(navController: NavController, onButtonClick: () -> Unit) {
     Column {
         Text(
             text = buildAnnotatedString {
@@ -172,6 +180,7 @@ fun Page4(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(20.dp))
         PrimaryButton("Get started!") {
+            onButtonClick()
             navController.navigate("home")
         }
     }
@@ -187,7 +196,8 @@ fun PageIndicator(pageCount: Int, currentPage: Int) {
         horizontalArrangement = Arrangement.Start
     ) {
         repeat(pageCount) { iteration ->
-            val color = if (currentPage == iteration) Color.White else Color.White.copy(alpha = 0.5f)
+            val color =
+                if (currentPage == iteration) Color.White else Color.White.copy(alpha = 0.5f)
             Box(
                 modifier = Modifier
                     .padding(4.dp)
@@ -202,9 +212,10 @@ fun PageIndicator(pageCount: Int, currentPage: Int) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun AboutSliderCards(navController: NavController) {
+fun AboutSliderCards(navController: NavController, viewModel: AboutViewModel = viewModel()) {
     val pageCount = 4
     val pagerState = rememberPagerState(pageCount = { pageCount })
+    val context = LocalContext.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -231,7 +242,7 @@ fun AboutSliderCards(navController: NavController) {
                     0 -> Page1()
                     1 -> Page2()
                     2 -> Page3()
-                    3 -> Page4(navController)
+                    3 -> Page4(navController) { viewModel.markComplete(context) }
                 }
             }
         }
@@ -241,6 +252,8 @@ fun AboutSliderCards(navController: NavController) {
 
 @Composable
 fun AboutScreen(navController: NavController) {
+    val aboutRepo = AboutRepository()
+    val alreadyCompleted = aboutRepo.getCompletedAsFlow(LocalContext.current).collectAsState(false)
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -256,9 +269,27 @@ fun AboutScreen(navController: NavController) {
             )
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            if (alreadyCompleted.value) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp)
+                ) {
+                    Spacer(modifier = Modifier.weight(1f))
+                    Icon(
+                        painterResource(R.drawable.icon_cross),
+                        "close",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .size(21.dp)
+                            .clickable { navController.popBackStack() }
+                    )
+                }
+            }
             Image(
                 painterResource(R.drawable.banner_about_screen),
-                "App logo")
+                "App logo"
+            )
             Text(
                 "Litiluism",
                 fontFamily = sarabunFontFamily,

@@ -36,7 +36,10 @@ class MainActivity : ComponentActivity() {
                 ),
             ) {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "home") {
+                NavHost(navController = navController, startDestination = "homeorabout") {
+                    composable("homeorabout") {
+                        HomeOrAboutScreen(navController)
+                    }
                     composable("practice") {
                         PracticeScreen(navController)
                     }

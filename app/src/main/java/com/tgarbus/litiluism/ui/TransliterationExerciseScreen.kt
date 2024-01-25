@@ -87,7 +87,7 @@ fun ExerciseScreen(
                         LocalContext.current
                     )
                 ),
-                contentDescription = "Image goes brr",
+                contentDescription = transliterationExercise.title,
                 modifier = Modifier.clip(AbsoluteRoundedCornerShape(50.dp))
             )
         }
