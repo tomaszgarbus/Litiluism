@@ -63,12 +63,36 @@ val materials = listOf(
         link = "https://www.goodreads.com/book/show/22011888-runes"
     ),
     Material(
+        id = "poetic_edda",
+        type = MaterialType.BOOK,
+        name = "The Poetic Edda",
+        author = "",
+        description = "Arguably the most comprehensive and reliable literary source about Norse myths. Translated from 13th century's manuscript, but the poems are dated centuries earlier.",
+        link = "https://www.goodreads.com/book/show/123002139-the-poetic-edda"
+    ),
+    Material(
         id = "prose_edda",
         type = MaterialType.BOOK,
-        name = "The prose edda",
+        name = "The Prose Edda",
         author = "Snorri Sturluson",
         description = "Renowned introduction to Norse mythology, written down by a famous Icelander Snorri Sturluson, a century after the Viking Age.",
         link = "https://www.goodreads.com/book/show/24658.The_Prose_Edda"
+    ),
+    Material(
+        id = "volsungs_saga",
+        type = MaterialType.BOOK,
+        name = "Saga of the Volsungs",
+        author = "",
+        description = "One of the key texts about Norse heroes. Covers some of the same plot as the heroic part of The Prose Edda.",
+        link = "https://www.goodreads.com/book/show/593109.The_Saga_of_the_Volsungs"
+    ),
+    Material(
+        id = "outbreak_viking_age",
+        type = MaterialType.BOOK,
+        name = "Outbreak of the Viking Age",
+        author = "Torgrim Titlestad",
+        description = "Easy-read book about the viking history. Available in English and Norwegian.",
+        link = "https://www.goodreads.com/book/show/40613026-outbreak-of-the-viking-age"
     ),
     Material(
         id = "hamborggaardstenen",
@@ -123,7 +147,10 @@ fun MaterialsListItem(material: Material) {
         }
         .padding(vertical = 10.dp, horizontal = 10.dp)) {
         Column {
-            Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Spacer(Modifier.width(10.dp))
                 MaterialTypeMarker(material.type)
             }
@@ -161,20 +188,6 @@ fun MaterialsListItem(material: Material) {
         }
     }
 }
-
-//Text("Recommended materials about runes and related topics:")
-//SectionHeader("Books")
-//SubsectionHeader("Runes")
-//NormalText("\"Runes\" by Michael P. Barnes")
-//NormalText("\"Runes\" by Martin Findell")
-//SubsectionHeader("Norse mythology")
-//NormalText("\"The prose edda\" by Snorri Sturluson")
-//NormalText("\"The poetic edda\"")
-//NormalText("\"Saga of the Volsungs")
-//SubsectionHeader("Scandinavian history")
-//NormalText("\"Outbreak of the Viking Age\" by Torgrim Titlestad")
-//SectionHeader("Podcasts")
-//NormalText("\"Nordic Mythology Podcast\"")
 
 @Composable
 fun MaterialsScreen(navController: NavController) {
