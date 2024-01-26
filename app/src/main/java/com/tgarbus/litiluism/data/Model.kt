@@ -103,3 +103,26 @@ data class Lesson(
         return body.joinToString(separator = "") { b -> b.textBlock.toString() }
     }
 }
+
+enum class MaterialType {
+    BOOK,
+    PODCAST,
+    ONLINE_ARTICLE
+}
+
+fun MaterialType.toDisplayableString(): String {
+    return when (this) {
+        MaterialType.BOOK -> "book"
+        MaterialType.PODCAST -> "podcast"
+        MaterialType.ONLINE_ARTICLE -> "article"
+    }
+}
+
+data class Material(
+    val id: String,
+    val name: String,
+    val author: String,
+    val description: String,
+    val link: String,
+    val type: MaterialType,
+)

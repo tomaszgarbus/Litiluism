@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui.reusables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ fun DoneMarker() {
                 color = colorResource(R.color.primary),
                 shape = RoundedCornerShape(size = 20.dp)
             )
+            .background(colorResource(R.color.primary))
             .padding(start = 10.dp, end = 10.dp)
     ) {
         Text(
