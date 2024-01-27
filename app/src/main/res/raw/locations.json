@@ -124,5 +124,11 @@
     "lat": 56.08852420407162,
     "long": 10.223480229177408,
     "description": "Moesgård Museum in Aarhus"
+  },
+  {
+    "id": "ladby",
+    "lat": 55.443527391582165,
+    "long": 10.617347561682074,
+    "description": "Ladby Vikingmuseet"
   }
 ]

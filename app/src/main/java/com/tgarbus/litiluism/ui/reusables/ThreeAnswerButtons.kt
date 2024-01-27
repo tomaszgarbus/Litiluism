@@ -39,7 +39,7 @@ fun ThreeAnswerButtons(
     onCorrectAnswerClick: (Char, Boolean) -> Unit
 ) {
     val buttonShape = RoundedCornerShape(size = 14.dp)
-    val showFeedback = rememberSaveable { mutableStateOf<Boolean>(false) }
+    val showFeedback = rememberSaveable { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .fillMaxWidth()

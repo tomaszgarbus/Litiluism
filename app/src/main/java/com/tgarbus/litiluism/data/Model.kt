@@ -107,7 +107,8 @@ data class Lesson(
 enum class Language {
     ANY,
     EN,
-    DA
+    DA,
+    SE
 }
 
 fun Language.toDisplayableString(): String {
@@ -115,6 +116,7 @@ fun Language.toDisplayableString(): String {
         Language.ANY -> "any"
         Language.EN -> "English"
         Language.DA -> "Danish"
+        Language.SE -> "Swedish"
     }
 }
 
@@ -122,7 +124,8 @@ enum class MaterialType {
     ANY,
     BOOK,
     PODCAST,
-    ONLINE_ARTICLE
+    ONLINE_ARTICLE,
+    TV
 }
 
 fun MaterialType.toDisplayableString(): String {
@@ -131,6 +134,7 @@ fun MaterialType.toDisplayableString(): String {
         MaterialType.BOOK -> "book"
         MaterialType.PODCAST -> "podcast"
         MaterialType.ONLINE_ARTICLE -> "article"
+        MaterialType.TV -> "TV"
     }
 }
 

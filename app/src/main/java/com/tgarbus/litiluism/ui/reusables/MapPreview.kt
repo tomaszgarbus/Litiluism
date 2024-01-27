@@ -57,7 +57,7 @@ fun MapPreview(
             // View's been inflated or state read in this block has been updated
             // Add logic here if necessary.
             val mapView = view.findViewById<MapView>(R.id.map)
-            mapView.controller.animateTo(GeoPoint(60.0, -15.0), 4.0, 0)
+            mapView.controller.animateTo(GeoPoint(60.0, -19.0), 4.0, 0)
         }
     )
 }

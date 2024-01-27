@@ -24,7 +24,6 @@ fun DoneMarker() {
                 color = colorResource(R.color.primary),
                 shape = RoundedCornerShape(size = 20.dp)
             )
-            .background(colorResource(R.color.primary))
             .padding(start = 10.dp, end = 10.dp)
     ) {
         Text(

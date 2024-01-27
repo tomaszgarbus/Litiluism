@@ -78,6 +78,14 @@ val materials = listOf(
         link = "https://www.goodreads.com/book/show/22011888-runes"
     ),
     Material(
+        id = "jackson_crawford",
+        type = MaterialType.TV,
+        name = "Jackson Crawdford's YouTube channel",
+        author = "Jackson Crawford",
+        description = "Jackson Crawford is an American scholar with strong expertise in Norse language.",
+        link = "https://www.youtube.com/@JacksonCrawford/videos"
+    ),
+    Material(
         id = "poetic_edda",
         type = MaterialType.BOOK,
         name = "The Poetic Edda",
@@ -117,6 +125,51 @@ val materials = listOf(
         description = "An article about Hamborggaardstenen. See also a lesson in the Learn section.",
         link = "https://www.geus.dk/udforsk-geologien/ture-i-naturen/kaempesten/hamborggaardsstenen/",
         language = Language.DA
+    ),
+    Material(
+        id = "gåden_om_thyra",
+        type = MaterialType.TV,
+        name = "Gåden om Thyra",
+        author = "DRTV",
+        description = "Mini-series exploring the historical figure of queen Thyra, wife of king Gorm and mother of king Harald. Her names occurs on multiple stones in this app (Jelling, Læborg, Bække).",
+        link = "https://www.dr.dk/drtv/serie/gaaden-om-thyra_408873",
+        language = Language.DA
+    ),
+    Material(
+        id = "gåden_om_danmarks_første_konge",
+        type = MaterialType.TV,
+        name = "Gåden om Danmarks første konge",
+        author = "DRTV",
+        description = "Mini-series exploring the first kings of Denmark, in particular Gorm and Harald mentioned on the Jelling stones.",
+        link = "https://www.dr.dk/drtv/serie/gaaden-om-danmarks-foerste-konge_280400",
+        language = Language.DA
+    ),
+    Material(
+        id = "gåden_om_odin",
+        type = MaterialType.TV,
+        name = "Gåden om Odin",
+        author = "DRTV",
+        description = "Mini-series exploring Denmark's transition from the Ása gods to Christianity. What do we learn from the Jelling stones?",
+        link = "https://www.dr.dk/drtv/serie/gaaden-om-odin_370324",
+        language = Language.DA
+    ),
+    Material(
+        id = "1000_års_tro",
+        type = MaterialType.TV,
+        name = "1000 års tro",
+        author = "DRTV",
+        description = "Mini-series about the development of religion in Denmark. Starts with Norse mythology.",
+        link = "https://www.dr.dk/drtv/serie/1000-aars-tro_103511",
+        language = Language.DA
+    ),
+    Material(
+        id = "vikingarnas_arv",
+        type = MaterialType.TV,
+        name = "Världens historia: Vikingarnas arv",
+        author = "SVT",
+        description = "An episode of SVT's series World's History, dedicated to the Viking Age.",
+        link = "https://www.svtplay.se/varldens-historia-vikingarnas-arv",
+        language = Language.SE
     )
 )
 
@@ -124,6 +177,7 @@ fun maybeLanguageFlagResource(language: Language): Int? {
     return when (language) {
         Language.EN -> R.drawable.flag_gb
         Language.DA -> R.drawable.flag_dk
+        Language.SE -> R.drawable.flag_se
         else -> null
     }
 }

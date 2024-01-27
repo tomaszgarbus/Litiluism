@@ -568,6 +568,20 @@
     "location": "da_nationalmuseet"
   },
   {
+    "id": "ladby_viking_museum_stone",
+    "title": "Stone at the Viking Museum Ladby",
+    "img": "ladby_viking_museum_stone",
+    "img_credit": "Own photo, taken in Ladby",
+    "description": "A modern stone at the parking of the Ladby Viking Museum.",
+    "runes": "ᚢᛁᛚᚴᚢᛘᛁᚾ:ᛏᛁᛚ:ᚼᛚᛅᛏᛒᛁ ᛋᚴᛁᛒᛁᛏ:ᚠᛅᚱᛅ:ᚼᛁᛚ:ᚢᚴ:ᚢᛁᛚ",
+    "rowType": "younger_futhark_long_branch",
+    "explanationAfter": "The inscription says: \"Velkomin til Ladby Skibet. Fare hel og vel\" - \"Welcome to the Ladby ship. Travel whole and well!\" There is indeed a 1000-year old ship burial next to the museum, left in its original location and shape. It's truly worth paying a visit there.",
+    "sources": [
+    ],
+    "country": "DA",
+    "location": "ladby"
+  },
+  {
     "id": "wooden_spade",
     "img": "wooden_spade.jpg",
     "title": "A wooden spade from Iceland",
