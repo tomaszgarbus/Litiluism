@@ -3,6 +3,12 @@ package com.tgarbus.litiluism.ui
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -228,13 +234,11 @@ fun MaterialsListItem(material: Material) {
             elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
         )
         .background(
-            color = colorResource(id = R.color.white),
-            shape = RoundedCornerShape(size = 21.dp)
+            color = colorResource(id = R.color.white), shape = RoundedCornerShape(size = 21.dp)
         )
         .clickable {
             val urlIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(material.link)
+                Intent.ACTION_VIEW, Uri.parse(material.link)
             )
             context.startActivity(urlIntent)
         }
@@ -353,11 +357,18 @@ fun MaterialsScreen(navController: NavController) {
             )
             FiltersToggle(showFiltersDialog)
         }
-        AnimatedVisibility(visible = showFiltersDialog.value) {
+        AnimatedVisibility(
+            visible = showFiltersDialog.value, enter = slideInVertically() + fadeIn(),
+            exit = slideOutVertically() + fadeOut()
+        ) {
             Filters(filters)
         }
         for (material in materials) {
-            AnimatedVisibility(visible = showMaterial(material, filters.value)) {
+            AnimatedVisibility(
+                visible = showMaterial(material, filters.value),
+                enter = slideInHorizontally(initialOffsetX = { -2 * it }),
+                exit = slideOutHorizontally(targetOffsetX = { 2 * it })
+            ) {
                 MaterialsListItem(material)
             }
         }

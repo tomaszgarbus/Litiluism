@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,6 +78,8 @@ fun ThreeAnswerButtons(
                     if (showFeedback.value) colorResource(R.color.correct_green) else buttonTextColor
                 val wrongButtonTextColor =
                     if (showFeedback.value) colorResource(R.color.wrong_red) else buttonTextColor
+                val correctTextDecoration = if (showFeedback.value) TextDecoration.Underline else TextDecoration.None
+                val wrongTextDecoration = TextDecoration.None
                 for (i in 0..2) {
                     ElevatedButton(
                         onClick = {
@@ -111,7 +114,8 @@ fun ThreeAnswerButtons(
                             color = if (options[i].second) correctButtonTextColor else wrongButtonTextColor,
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
-                            fontFamily = sarabunFontFamily
+                            fontFamily = sarabunFontFamily,
+                            textDecoration = if (options[i].second) correctTextDecoration else wrongTextDecoration,
                         )
                     }
                 }

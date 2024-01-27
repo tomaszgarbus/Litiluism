@@ -1,22 +1,22 @@
 package com.tgarbus.litiluism.ui
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.FilledIconButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -140,7 +140,7 @@ fun Filters(
     filters: MutableState<ExerciseFilters>,
     exercisesByCountryCount: HashMap<Country, Int>,
 ) {
-    Column() {
+    Column {
         FiltersSection(
             values = filters.value.countries,
             activeValue = filters.value.activeCountry,
@@ -188,7 +188,7 @@ fun ListOfExercisesScreen(
     val filters = remember { mutableStateOf(ExerciseFilters()) }
     val showFiltersDialog = remember { mutableStateOf(false) }
 
-    FullScreenPaddedColumn() {
+    FullScreenPaddedColumn {
         Row(verticalAlignment = Alignment.CenterVertically) {
             BackButton(navController)
             Header(
@@ -200,14 +200,22 @@ fun ListOfExercisesScreen(
             )
             FiltersToggle(showFiltersDialog)
         }
-        AnimatedVisibility(visible = showFiltersDialog.value) {
+        AnimatedVisibility(
+            visible = showFiltersDialog.value,
+            enter = slideInVertically() + fadeIn(),
+            exit = slideOutVertically() + fadeOut()
+        ) {
             Filters(
                 filters,
                 viewModel.exercisesByCountryCount(),
             )
         }
         for (exercise in transliterationExercises) {
-            AnimatedVisibility(visible = showExercise(exercise, filters.value)) {
+            AnimatedVisibility(
+                visible = showExercise(exercise, filters.value),
+                enter = slideInHorizontally(initialOffsetX = { - 2 * it }),
+                exit = slideOutHorizontally(targetOffsetX = { 2 * it })
+            ) {
                 TransliterationExercisesListItem(
                     exercise,
                     navController

@@ -5,6 +5,8 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.res.colorResource
@@ -36,7 +38,10 @@ class MainActivity : ComponentActivity() {
                 ),
             ) {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "homeorabout") {
+                NavHost(navController = navController,
+                    startDestination = "homeorabout",
+                    enterTransition = { EnterTransition.None },
+                    exitTransition = { ExitTransition.None }) {
                     composable("homeorabout") {
                         HomeOrAboutScreen(navController)
                     }

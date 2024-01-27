@@ -61,10 +61,9 @@ fun ExerciseHeaderFrame(
         text = title,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .padding(vertical = 20.dp)
             .fillMaxWidth(),
         fontFamily = sarabunFontFamily,
-        fontSize = 20.sp,
+        fontSize = 32.sp,
         fontWeight = FontWeight.ExtraBold,
     )
 }
