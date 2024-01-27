@@ -104,7 +104,22 @@ data class Lesson(
     }
 }
 
+enum class Language {
+    ANY,
+    EN,
+    DA
+}
+
+fun Language.toDisplayableString(): String {
+    return when (this) {
+        Language.ANY -> "any"
+        Language.EN -> "English"
+        Language.DA -> "Danish"
+    }
+}
+
 enum class MaterialType {
+    ANY,
     BOOK,
     PODCAST,
     ONLINE_ARTICLE
@@ -112,6 +127,7 @@ enum class MaterialType {
 
 fun MaterialType.toDisplayableString(): String {
     return when (this) {
+        MaterialType.ANY -> "all"
         MaterialType.BOOK -> "book"
         MaterialType.PODCAST -> "podcast"
         MaterialType.ONLINE_ARTICLE -> "article"
@@ -125,4 +141,5 @@ data class Material(
     val description: String,
     val link: String,
     val type: MaterialType,
+    val language: Language = Language.EN
 )

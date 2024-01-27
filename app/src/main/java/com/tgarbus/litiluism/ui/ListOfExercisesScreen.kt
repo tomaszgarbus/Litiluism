@@ -46,6 +46,8 @@ import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.BackButton
+import com.tgarbus.litiluism.ui.reusables.FiltersSection
+import com.tgarbus.litiluism.ui.reusables.FiltersToggle
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
@@ -84,34 +86,6 @@ fun <T> FilterButton(
             )
         ) {
             content()
-        }
-    }
-}
-
-@Composable
-fun <T> FiltersSection(
-    values: List<T>,
-    activeValue: T,
-    onValueChange: (T) -> Unit,
-    categoryName: String,
-    valueDisplay: @Composable (T) -> Unit
-) {
-    val scrollState = rememberScrollState()
-    Column() {
-        Text(categoryName, fontFamily = sarabunFontFamily)
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-            modifier = Modifier.horizontalScroll(scrollState)
-        ) {
-            for (value in values) {
-                FilterButton(
-                    buttonValue = value,
-                    onClick = { onValueChange(value) },
-                    activeValue = activeValue
-                ) {
-                    valueDisplay(value)
-                }
-            }
         }
     }
 }
@@ -165,8 +139,6 @@ fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Coun
 fun Filters(
     filters: MutableState<ExerciseFilters>,
     exercisesByCountryCount: HashMap<Country, Int>,
-    viewModel: ListOfExercisesViewModel,
-    onDismissRequest: () -> Unit
 ) {
     Column() {
         FiltersSection(
@@ -226,25 +198,13 @@ fun ListOfExercisesScreen(
                     .fillMaxWidth()
                     .weight(2f)
             )
-            FilledIconButton(
-                onClick = { showFiltersDialog.value = !showFiltersDialog.value },
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = colorResource(R.color.secondary),
-                    contentColor = Color.White
-                )
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.icon_filter),
-                    contentDescription = "filters",
-                )
-            }
+            FiltersToggle(showFiltersDialog)
         }
         AnimatedVisibility(visible = showFiltersDialog.value) {
             Filters(
                 filters,
                 viewModel.exercisesByCountryCount(),
-                viewModel
-            ) { showFiltersDialog.value = false }
+            )
         }
         for (exercise in transliterationExercises) {
             AnimatedVisibility(visible = showExercise(exercise, filters.value)) {
