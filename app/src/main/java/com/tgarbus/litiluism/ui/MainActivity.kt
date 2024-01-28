@@ -5,10 +5,15 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -23,6 +28,8 @@ import org.osmdroid.config.Configuration
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
 
         val ctx = applicationContext
         Configuration.getInstance().load(ctx, getPreferences(Context.MODE_PRIVATE))
@@ -41,7 +48,8 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController,
                     startDestination = "homeorabout",
                     enterTransition = { EnterTransition.None },
-                    exitTransition = { ExitTransition.None }) {
+                    exitTransition = { ExitTransition.None },
+                    modifier = Modifier.fillMaxSize()) {
                     composable("homeorabout") {
                         HomeOrAboutScreen(navController)
                     }
