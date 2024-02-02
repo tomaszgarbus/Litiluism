@@ -86,7 +86,7 @@ val materials = listOf(
     Material(
         id = "jackson_crawford",
         type = MaterialType.TV,
-        name = "Jackson Crawdford's YouTube channel",
+        name = "Jackson Crawford's YouTube channel",
         author = "Jackson Crawford",
         description = "Jackson Crawford is an American scholar with strong expertise in Norse language.",
         link = "https://www.youtube.com/@JacksonCrawford/videos"
