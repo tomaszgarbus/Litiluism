@@ -55,7 +55,11 @@ fun PracticeScreen(navController: NavController) {
         FullScreenPaddedColumn {
             Header("Practice")
             val balloonsQueue = BalloonsQueue()
-            IntroTooltip(text = "Explore the runic objects on the map.", queue = balloonsQueue) {
+            IntroTooltip(
+                id = "map",
+                text = "Explore the runic objects on the map.",
+                queue = balloonsQueue
+            ) {
                 Box(
                     modifier = Modifier
                         .height(150.dp)
@@ -82,6 +86,7 @@ fun PracticeScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 IntroTooltip(
+                    id = "runetolatin",
                     text = "Practice transliteration, one rune at a time.",
                     queue = balloonsQueue,
                     Modifier.weight(1f)
@@ -89,10 +94,12 @@ fun PracticeScreen(navController: NavController) {
                     PracticeTypeButton(
                         "Rune to Latin",
                         R.drawable.button_bg_rune_to_latin,
+                        Modifier.weight(1f),
                         onClick = { runeRowDialogDestination.value = DestinationType.RUNE_TO_LATIN }
                     )
                 }
                 IntroTooltip(
+                    id = "latintorune",
                     text = "Practice writing in runes, one rune at a time.",
                     queue = balloonsQueue,
                     Modifier.weight(1f)
@@ -106,6 +113,7 @@ fun PracticeScreen(navController: NavController) {
                 }
             }
             IntroTooltip(
+                id = "transliteration",
                 text = "Practice transliteration of full inscriptions!",
                 queue = balloonsQueue,
                 modifier = Modifier.fillMaxWidth()

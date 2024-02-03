@@ -2,6 +2,7 @@ package com.tgarbus.litiluism.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import com.tgarbus.litiluism.data.Country
 import com.tgarbus.litiluism.data.LessonStatesRepository
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
@@ -28,13 +29,25 @@ class StatisticsViewModel(): ViewModel() {
         }
     }
 
-    fun getExercisesCompletedPercentage(context: Context): Flow<Int> {
-        val exerciseIds = listAllExerciseIds()
+    private fun getExercisesCompletedPercentageByIds(context: Context, exerciseIds: List<String>): Flow<Int> {
         return TransliterationExerciseStatesRepository.getInstance(context).getExerciseStatesAsFlow(exerciseIds).map {
-            states ->
+                states ->
             val numCompleted = states.filterValues { v -> v.complete }.size
             val all = states.size
             computePercentage(numCompleted, all)
         }
+    }
+
+    fun getExercisesCompletedPercentage(context: Context): Flow<Int> {
+        val exerciseIds = listAllExerciseIds()
+        return getExercisesCompletedPercentageByIds(context, exerciseIds)
+    }
+
+    fun getExercisesCompletedPercentageByCountry(context: Context, country: Country): Flow<Int> {
+        val repo = StaticContentRepository.getInstance()
+        val exerciseIds = listAllExerciseIds().filter {
+            exerciseId -> repo.exercisesMap[exerciseId]!!.country == country
+        }
+        return getExercisesCompletedPercentageByIds(context, exerciseIds)
     }
 }

@@ -49,12 +49,14 @@ import com.tgarbus.litiluism.data.Material
 import com.tgarbus.litiluism.data.MaterialType
 import com.tgarbus.litiluism.data.toDisplayableString
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
+import com.tgarbus.litiluism.ui.reusables.BalloonsQueue
 import com.tgarbus.litiluism.ui.reusables.ButtonType
 import com.tgarbus.litiluism.ui.reusables.Dock
 import com.tgarbus.litiluism.ui.reusables.FiltersSection
 import com.tgarbus.litiluism.ui.reusables.FiltersToggle
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
+import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 
 // TODO: put all this in an embedded file
 // TODO: Add shows from DRTV and SVT
@@ -348,6 +350,7 @@ fun showMaterial(material: Material, filters: MaterialFilters): Boolean {
 fun MaterialsScreen(navController: NavController) {
     val filters = remember { mutableStateOf(MaterialFilters()) }
     val showFiltersDialog = remember { mutableStateOf(false) }
+    val balloonsQueue = BalloonsQueue()
     FullScreenPaddedColumn {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Header(
@@ -355,7 +358,13 @@ fun MaterialsScreen(navController: NavController) {
                     .fillMaxWidth()
                     .weight(2f)
             )
-            FiltersToggle(showFiltersDialog)
+            IntroTooltip(
+                id = "filter_materials",
+                text = "Click here to filter materials by country and language.",
+                queue = balloonsQueue
+            ) {
+                FiltersToggle(showFiltersDialog)
+            }
         }
         AnimatedVisibility(
             visible = showFiltersDialog.value, enter = slideInVertically() + fadeIn(),

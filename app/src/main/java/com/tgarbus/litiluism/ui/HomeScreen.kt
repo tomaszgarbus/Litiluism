@@ -72,6 +72,7 @@ fun HomeScreen(navController: NavController) {
         Header("Litiluism")
 //        GreenBanner(navController)
         IntroTooltip(
+            id = "practice",
             text = "Apply your knowledge here.",
             queue = balloonsQueue
         ) {
@@ -79,6 +80,7 @@ fun HomeScreen(navController: NavController) {
                 PracticeTypeButton(
                     "Practice",
                     R.drawable.button_bg_practice,
+                    Modifier.weight(1f),
                     onClick = { navController.navigate("practice") }
                 )
             }
@@ -88,6 +90,7 @@ fun HomeScreen(navController: NavController) {
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             IntroTooltip(
+                id = "learn",
                 text = "Learn more here.",
                 queue = balloonsQueue,
                 Modifier.weight(1f),
@@ -95,10 +98,12 @@ fun HomeScreen(navController: NavController) {
                 PracticeTypeButton(
                     "Learn",
                     R.drawable.button_bg_lessons,
+                    Modifier.weight(1f),
                     onClick = { navController.navigate("learning") }
                 )
             }
             IntroTooltip(
+                id = "materials",
                 text = "Check out the recommended materials section.",
                 queue = balloonsQueue,
                 Modifier.weight(1f),
@@ -106,6 +111,7 @@ fun HomeScreen(navController: NavController) {
                 PracticeTypeButton(
                     "Materials",
                     R.drawable.button_bg_materials,
+                    Modifier.weight(1f),
                     onClick = { navController.navigate("materials") }
                 )
             }

@@ -46,10 +46,12 @@ import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.BackButton
+import com.tgarbus.litiluism.ui.reusables.BalloonsQueue
 import com.tgarbus.litiluism.ui.reusables.FiltersSection
 import com.tgarbus.litiluism.ui.reusables.FiltersToggle
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
+import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
 import com.tgarbus.litiluism.viewmodel.ListOfExercisesViewModel
 
@@ -184,6 +186,7 @@ fun ListOfExercisesScreen(
     viewModel: ListOfExercisesViewModel = viewModel()
 ) {
     val transliterationExercises = viewModel.transliterationExercises()
+    val balloonsQueue = BalloonsQueue()
 
     val filters = remember { mutableStateOf(ExerciseFilters()) }
     val showFiltersDialog = remember { mutableStateOf(false) }
@@ -198,7 +201,9 @@ fun ListOfExercisesScreen(
                     .fillMaxWidth()
                     .weight(2f)
             )
-            FiltersToggle(showFiltersDialog)
+            IntroTooltip(id = "filter_exercises", text = "Click here to filter exercises.", queue = balloonsQueue) {
+                FiltersToggle(showFiltersDialog)
+            }
         }
         AnimatedVisibility(
             visible = showFiltersDialog.value,
