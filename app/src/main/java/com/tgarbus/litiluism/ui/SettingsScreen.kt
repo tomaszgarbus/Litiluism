@@ -84,6 +84,9 @@ fun SettingsScreen(navController: NavController) {
         SettingsItem("Statistics", R.drawable.icon_info) {
             navController.navigate("statistics")
         }
+        SettingsItem("Input method", R.drawable.icon_input_method) {
+            navController.navigate("input_method")
+        }
     }
     Dock(ButtonType.SETTINGS, navController)
 }

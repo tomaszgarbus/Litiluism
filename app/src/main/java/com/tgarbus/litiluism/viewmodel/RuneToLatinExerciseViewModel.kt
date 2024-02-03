@@ -1,13 +1,17 @@
 package com.tgarbus.litiluism.viewmodel
 
+import android.content.Context
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tgarbus.litiluism.data.ExerciseScore
+import com.tgarbus.litiluism.data.InputMethod
+import com.tgarbus.litiluism.data.SettingsRepository
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.ThreeButtonOptions
 import com.tgarbus.litiluism.generateRuneToLatinOptions
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
@@ -51,5 +55,9 @@ class RuneToLatinExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewMod
         } else {
             emitNext()
         }
+    }
+
+    fun getInputMethodAsFlow(context: Context): Flow<InputMethod> {
+        return SettingsRepository(context).inputMethodAsFlow()
     }
 }

@@ -64,7 +64,7 @@ fun PracticeScreen(navController: NavController) {
                     modifier = Modifier
                         .height(150.dp)
                         .shadow(
-                            elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)
+                            elevation = 2.dp, shape = RoundedCornerShape(size = 21.dp)
                         )
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(21.dp))

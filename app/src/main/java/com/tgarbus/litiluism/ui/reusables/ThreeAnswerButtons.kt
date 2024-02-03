@@ -22,8 +22,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -37,7 +35,7 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 @Composable
 fun ThreeAnswerButtons(
     options: ThreeButtonOptions,
-    onCorrectAnswerClick: (Char, Boolean) -> Unit
+    onCorrectAnswer: (Char, Boolean) -> Unit,
 ) {
     val buttonShape = RoundedCornerShape(size = 14.dp)
     val showFeedback = rememberSaveable { mutableStateOf(false) }
@@ -48,21 +46,7 @@ fun ThreeAnswerButtons(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            val feedbackAlpha: Float by animateFloatAsState(
-                if (showFeedback.value) 1f else 0f,
-                label = "animateFeedback"
-            )
-            Text(
-                text = "Click the correct answer to continue",
-                fontFamily = sarabunFontFamily,
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 16.sp,
-                color = colorResource(R.color.wrong_red),
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .alpha(feedbackAlpha)
-            )
+            InputFeedbackText("Click the correct answer to continue", showFeedback.value)
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -78,13 +62,14 @@ fun ThreeAnswerButtons(
                     if (showFeedback.value) colorResource(R.color.correct_green) else buttonTextColor
                 val wrongButtonTextColor =
                     if (showFeedback.value) colorResource(R.color.wrong_red) else buttonTextColor
-                val correctTextDecoration = if (showFeedback.value) TextDecoration.Underline else TextDecoration.None
+                val correctTextDecoration =
+                    if (showFeedback.value) TextDecoration.Underline else TextDecoration.None
                 val wrongTextDecoration = TextDecoration.None
                 for (i in 0..2) {
                     ElevatedButton(
                         onClick = {
                             if (options[i].second) {
-                                onCorrectAnswerClick(options[i].first[0], !showFeedback.value)
+                                onCorrectAnswer(options[i].first[0], !showFeedback.value)
                                 showFeedback.value = false
                             } else {
                                 showFeedback.value = true

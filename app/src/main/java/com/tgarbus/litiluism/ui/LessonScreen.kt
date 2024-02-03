@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Icon
@@ -191,15 +192,24 @@ fun LessonHeaderFrame(lesson: Lesson, navController: NavController) {
 
 @Composable
 fun LessonScreen(navController: NavController, viewModel: LessonViewModel = viewModel()) {
-    FullScreenPaddedColumn {
+    val balloonsQueue = BalloonsQueue()
+    val scrollState = rememberScrollState()
+    FullScreenPaddedColumn(unownedScrollState = scrollState) {
         val lesson = viewModel.lesson
         // TODO: deduplicate with exercise header frame
         LessonHeaderFrame(lesson, navController)
         LessonView(lesson)
         val context = LocalContext.current
-        PrimaryButton("Complete") {
-            viewModel.markAsComplete(context)
-            navController.popBackStack()
+        IntroTooltip(
+            id = "complete_lesson",
+            text = "Mark a lesson as completed after reading it.",
+            queue = balloonsQueue,
+            scrollState = scrollState
+        ) {
+            PrimaryButton("Complete") {
+                viewModel.markAsComplete(context)
+                navController.popBackStack()
+            }
         }
     }
 }

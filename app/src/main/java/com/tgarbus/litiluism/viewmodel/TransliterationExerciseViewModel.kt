@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tgarbus.litiluism.data.InputMethod
+import com.tgarbus.litiluism.data.SettingsRepository
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
@@ -25,5 +27,9 @@ class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : Vie
             TransliterationExerciseStatesRepository.getInstance(context)
                 .updateExerciseWithUserInput(transliterationExercise, c, countAsCorrect)
         }
+    }
+
+    fun getInputMethodAsFlow(context: Context): Flow<InputMethod> {
+        return SettingsRepository(context).inputMethodAsFlow()
     }
 }

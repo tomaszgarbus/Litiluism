@@ -21,4 +21,5 @@
     <color name="wrong_red">#FFFF3B20</color>
     <color name="dim_grey_text">#FF9C9C9C</color>
     <color name="dialog_dim">#66000000</color>
+    <color name="active_settings_option">#FFFFE8AA</color>
 </resources>

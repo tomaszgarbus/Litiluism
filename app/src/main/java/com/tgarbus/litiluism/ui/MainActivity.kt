@@ -111,6 +111,9 @@ class MainActivity : ComponentActivity() {
                     composable("statistics") {
                         StatisticsScreen(navController)
                     }
+                    composable("input_method") {
+                        InputMethodScreen(navController)
+                    }
                 }
             }
         }

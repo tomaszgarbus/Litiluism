@@ -15,6 +15,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,10 +40,10 @@ import kotlinx.coroutines.sync.Mutex
 // 2. If non-empty, only push at the end of the queue.
 // 3. If non-empty, the first element is currently in execution.
 class BalloonsQueue {
-    private val queue = ArrayList<() -> Unit>()
+    private val queue = ArrayList<suspend () -> Unit>()
     private val mutex = Mutex()
 
-    suspend fun addToQueue(fn: () -> Unit) {
+    suspend fun addToQueue(fn: suspend () -> Unit) {
         mutex.lock()
         queue.add(fn)
         if (queue.size == 1) {
@@ -49,7 +52,7 @@ class BalloonsQueue {
         mutex.unlock()
     }
 
-    private fun runNextFromQueue() {
+    private suspend fun runNextFromQueue() {
         if (queue.isNotEmpty()) {
             val next = queue.first()
             next()
@@ -72,6 +75,7 @@ fun IntroTooltip(
     text: String,
     queue: BalloonsQueue,
     modifier: Modifier = Modifier,
+    scrollState: ScrollState? = null,
     content: @Composable () -> Unit,
 ) {
     val dialogDimColor = colorResource(R.color.dialog_dim)
@@ -102,6 +106,7 @@ fun IntroTooltip(
     }
     var balloonWindow: BalloonWindow? by remember { mutableStateOf(null) }
     val scope = rememberCoroutineScope()
+    val layoutCoordinates = remember { mutableStateOf<LayoutCoordinates?>(null) }
 
     if (isCompleted.value == false) {
         Balloon(
@@ -110,6 +115,14 @@ fun IntroTooltip(
                 balloonWindow = it
                 scope.launch {
                     queue.addToQueue {
+                        if (layoutCoordinates.value != null) {
+                            scope.launch {
+                                scrollState?.animateScrollTo(
+                                    value = layoutCoordinates.value!!.positionInParent().y.toInt(),
+                                    // TODO: slow down the animation
+                                )
+                            }
+                        }
                         balloonWindow?.showAlignBottom()
                     }
                 }
@@ -135,7 +148,9 @@ fun IntroTooltip(
                     )
                 }
             },
-            modifier = modifier
+            modifier = modifier.onGloballyPositioned {
+                layoutCoordinates.value = it
+            }
         ) { _ ->
             content()
         }

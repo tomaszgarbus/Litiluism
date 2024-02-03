@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui.reusables
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import com.tgarbus.litiluism.R
 @Composable
 fun FullScreenPaddedColumn(
     scrollable: Boolean = true,
+    unownedScrollState: ScrollState? = null,
     content: @Composable () -> Unit
 ) {
     var modifier = Modifier
@@ -27,7 +29,7 @@ fun FullScreenPaddedColumn(
         // TODO: set bg color through theme
         .background(colorResource(R.color.light_bg))
     if (scrollable) {
-        val scrollState = rememberScrollState()
+        val scrollState = unownedScrollState ?: rememberScrollState()
         modifier = modifier.verticalScroll(scrollState)
     }
     modifier = modifier
