@@ -47,6 +47,7 @@ import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.AboutRepository
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
+import com.tgarbus.litiluism.ui.reusables.PageIndicator
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
 import com.tgarbus.litiluism.viewmodel.AboutViewModel
 import kotlin.math.absoluteValue
@@ -185,30 +186,6 @@ fun Page4(navController: NavController, alreadyCompleted: Boolean, onButtonClick
                 onButtonClick()
                 navController.navigate("home")
             }
-        }
-    }
-}
-
-@Composable
-fun PageIndicator(pageCount: Int, currentPage: Int) {
-    Row(
-        Modifier
-            .height(24.dp)
-            .padding(start = 4.dp)
-            .fillMaxWidth(0.5f),
-        horizontalArrangement = Arrangement.Start
-    ) {
-        repeat(pageCount) { iteration ->
-            val color =
-                if (currentPage == iteration) Color.White else Color.White.copy(alpha = 0.5f)
-            Box(
-                modifier = Modifier
-                    .padding(4.dp)
-                    .clip(RoundedCornerShape(2.dp))
-                    .background(color)
-                    .weight(1f)
-                    .height(4.dp)
-            )
         }
     }
 }
