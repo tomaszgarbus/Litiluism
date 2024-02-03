@@ -178,6 +178,15 @@ val materials = listOf(
         description = "An episode of SVT's series World's History, dedicated to the Viking Age.",
         link = "https://www.svtplay.se/varldens-historia-vikingarnas-arv",
         language = Language.SE
+    ),
+    Material(
+        id = "heroje_polnocy",
+        type = MaterialType.BOOK,
+        name = "Heroje Północy",
+        author = "Jerzy Ros",
+        description = "Sagas about gods and heroes told in a compelling way in Polish. Based on the Eddas and Volsungas Saga.",
+        link = "https://www.goodreads.com/book/show/13348164-heroje-p-nocy",
+        language = Language.PL
     )
 )
 
@@ -186,6 +195,7 @@ fun maybeLanguageFlagResource(language: Language): Int? {
         Language.EN -> R.drawable.flag_gb
         Language.DA -> R.drawable.flag_dk
         Language.SE -> R.drawable.flag_se
+        Language.PL -> R.drawable.flag_pl
         else -> null
     }
 }

@@ -108,7 +108,8 @@ enum class Language {
     ANY,
     EN,
     DA,
-    SE
+    SE,
+    PL
 }
 
 fun Language.toDisplayableString(): String {
@@ -117,6 +118,7 @@ fun Language.toDisplayableString(): String {
         Language.EN -> "English"
         Language.DA -> "Danish"
         Language.SE -> "Swedish"
+        Language.PL -> "Polish"
     }
 }
 

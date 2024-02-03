@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
@@ -160,7 +159,7 @@ fun Page3() {
 }
 
 @Composable
-fun Page4(navController: NavController, onButtonClick: () -> Unit) {
+fun Page4(navController: NavController, alreadyCompleted: Boolean, onButtonClick: () -> Unit) {
     Column {
         Text(
             text = buildAnnotatedString {
@@ -181,9 +180,11 @@ fun Page4(navController: NavController, onButtonClick: () -> Unit) {
             color = colorResource(R.color.primary),
         )
         Spacer(modifier = Modifier.height(20.dp))
-        PrimaryButton("Get started!") {
-            onButtonClick()
-            navController.navigate("home")
+        if (!alreadyCompleted) {
+            PrimaryButton("Get started!") {
+                onButtonClick()
+                navController.navigate("home")
+            }
         }
     }
 }
@@ -214,7 +215,11 @@ fun PageIndicator(pageCount: Int, currentPage: Int) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun AboutSliderCards(navController: NavController, viewModel: AboutViewModel = viewModel()) {
+fun AboutSliderCards(
+    navController: NavController,
+    viewModel: AboutViewModel = viewModel(),
+    alreadyCompleted: Boolean
+) {
     val pageCount = 4
     val pagerState = rememberPagerState(pageCount = { pageCount })
     val context = LocalContext.current
@@ -244,7 +249,7 @@ fun AboutSliderCards(navController: NavController, viewModel: AboutViewModel = v
                     0 -> Page1()
                     1 -> Page2()
                     2 -> Page3()
-                    3 -> Page4(navController) { viewModel.markComplete(context) }
+                    3 -> Page4(navController, alreadyCompleted) { viewModel.markComplete(context) }
                 }
             }
         }
@@ -302,7 +307,7 @@ fun AboutScreen(navController: NavController) {
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.White
             )
-            AboutSliderCards(navController)
+            AboutSliderCards(navController, alreadyCompleted = alreadyCompleted.value)
         }
     }
 }

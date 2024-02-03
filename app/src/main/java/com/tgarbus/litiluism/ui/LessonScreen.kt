@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -94,14 +95,14 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (hidden.value) {
                 Icon(
-                    painterResource(R.drawable.icon_forward),
+                    painterResource(R.drawable.icon_question_mark),
                     "show description",
                     modifier = Modifier.size(14.dp),
                     tint = colorResource(R.color.black)
                 )
             } else {
                 Icon(
-                    painterResource(R.drawable.icon_backarrow),
+                    painterResource(R.drawable.icon_question_mark),
                     "hide description",
                     modifier = Modifier.size(14.dp),
                     tint = colorResource(R.color.black)
@@ -124,11 +125,14 @@ fun LessonView(lesson: Lesson) {
                         .shadow(elevation = 1.dp, RoundedCornerShape(size = 28.dp))
                         .clip(RoundedCornerShape(size = 28.dp)),
                 ) {
+                    val painter = painterResource(block.imageResourceId)
                     Image(
-                        painterResource(block.imageResourceId),
+                        painter,
                         block.textBlock.toString(),
-                        modifier = Modifier.fillMaxWidth(),
-                        contentScale = ContentScale.Fit
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(ratio = painter.intrinsicSize.width / painter.intrinsicSize.height),
+                        contentScale = ContentScale.Fit,
                     )
                     LessonTextBlockOnImageView(block.textBlock)
                 }
