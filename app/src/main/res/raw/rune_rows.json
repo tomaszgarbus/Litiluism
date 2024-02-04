@@ -776,6 +776,20 @@
       }
     ]
   },
+  "medieval_bergthorshvoll": {
+    "name": "Medieval runes",
+    "inherit_from": "medieval",
+    "override_symbols": [
+      {
+        "rune": "ᛍ",
+        "latin": "s"
+      },
+      {
+        "rune": "ᛕ",
+        "latin": "p"
+      }
+    ]
+  },
   "anglo_saxon_at_pitcher": {
     "name": "Anglo-Saxon",
     "inherit_from": "anglo_saxon",

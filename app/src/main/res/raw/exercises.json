@@ -597,6 +597,21 @@
     "location": "þjóðminjasafnið"
   },
   {
+    "id": "bergthorshvoll",
+    "img": "bergthorshvoll_stick.jpg",
+    "title": "Bergþórshvoll stick",
+    "img_credit": "Own photo, taken in the National Museum of Iceland",
+    "runes": "ᛍᛆᛐᚮᚱ ᛆᚱᛁᛕᚮ ᛐᛁᚿᛁᛐ ᚮᛕᛁᚱᛆ ᚱᚮᛐᛆᛍ",
+    "rowType": "medieval_bergthorshvoll",
+    "description": "A rune-inscribed stick said to have been unearthed in 1925 at the farm Bergþórshvoll in the south of Iceland. On one side it has a list of runes in roman alphabet order from a to u and on the other... Solve the exercise to find out!",
+    "explanationAfter": "The runes form a formula \"sator:aripo:tinit:opira:rotas\", widely quoted in the medieval Europe (though originating in earlier period). The formula is a palindrome with some interesting patterns, also known as Sator Square. The stick is dated late, to seventeenth or eighteenth century.",
+    "sources": [
+      "National Museum of Iceland"
+    ],
+    "country": "IS",
+    "location": "þjóðminjasafnið"
+  },
+  {
     "id": "thorfinn_karlsefni",
     "img": "thorfinn_karlsefni.jpg",
     "img_credit": "Own photo, taken in The Einar Jónsson Museum",
