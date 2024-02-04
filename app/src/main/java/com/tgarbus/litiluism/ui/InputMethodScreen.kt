@@ -79,7 +79,7 @@ fun InputMethodScreen(navController: NavController, viewModel: SettingsViewModel
     FullScreenPaddedColumn {
         HeaderWithBackButton("Input method", navController)
         Text(
-            text = "Choose how you prefer to input latin letters when transliterating runes.",
+            text = "Choose how you prefer to input latin letters when transliterating runes. Latin to rune exercise will stay in the Variants mode.",
             fontFamily = sarabunFontFamily,
             color = colorResource(R.color.dark_grey)
         )
