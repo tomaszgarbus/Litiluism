@@ -35,35 +35,65 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 
-// Principles of BalloonsQueue:
-// 1. If empty, trigger the newly added element.
-// 2. If non-empty, only push at the end of the queue.
-// 3. If non-empty, the first element is currently in execution.
 class BalloonsQueue {
-    private val queue = ArrayList<suspend () -> Unit>()
+    data class BalloonsQueueItem(
+        val id: String,
+        val dependencies: ArrayList<String> = arrayListOf(),
+        val fn: suspend () -> Unit,
+    )
+
+    // Queue, not running yet.
+    private val queue = ArrayList<BalloonsQueueItem>()
+
+    // Completed tasks.
+    private val completed = ArrayList<String>()
+
+    // Currently running element.
+    private var running: BalloonsQueueItem? = null
     private val mutex = Mutex()
 
-    suspend fun addToQueue(fn: suspend () -> Unit) {
-        mutex.lock()
-        queue.add(fn)
-        if (queue.size == 1) {
-            runNextFromQueue()
+    private fun removeCompletedDependencies(list: ArrayList<String>) {
+        list.removeAll { completed.contains(it) }
+    }
+
+    private suspend fun runNextIfPossible() {
+        if (running != null) {
+            return
         }
+        val firstRunnable = queue.find { it.dependencies.isEmpty() } ?: return
+        running = firstRunnable
+        queue.remove(firstRunnable)
+        firstRunnable.fn()
+    }
+
+    private suspend fun addToQueue(queueItem: BalloonsQueueItem) {
+        removeCompletedDependencies(queueItem.dependencies)
+        queue.add(queueItem)
+        runNextIfPossible()
+    }
+
+    suspend fun registerCompleted(id: String) {
+        mutex.lock()
+        completed.add(id)
         mutex.unlock()
     }
 
-    private suspend fun runNextFromQueue() {
-        if (queue.isNotEmpty()) {
-            val next = queue.first()
-            next()
-        }
+    suspend fun addToQueue(
+        id: String,
+        dependencies: ArrayList<String> = arrayListOf(),
+        fn: suspend () -> Unit,
+    ) {
+        mutex.lock()
+        addToQueue(BalloonsQueueItem(id, dependencies, fn))
+        mutex.unlock()
     }
 
     suspend fun onDismiss() {
         mutex.lock()
-        // Queue cannot be empty now.
-        queue.removeFirst()
-        runNextFromQueue()
+        completed.add(running!!.id)
+        running = null
+        queue.forEach { removeCompletedDependencies(it.dependencies) }
+        runNextIfPossible()
         mutex.unlock()
     }
 }
@@ -76,6 +106,7 @@ fun IntroTooltip(
     queue: BalloonsQueue,
     modifier: Modifier = Modifier,
     scrollState: ScrollState? = null,
+    dependencies: ArrayList<String> = arrayListOf(),
     content: @Composable () -> Unit,
 ) {
     val dialogDimColor = colorResource(R.color.dialog_dim)
@@ -114,7 +145,7 @@ fun IntroTooltip(
             onBalloonWindowInitialized = {
                 balloonWindow = it
                 scope.launch {
-                    queue.addToQueue {
+                    queue.addToQueue(id, dependencies) {
                         if (layoutCoordinates.value != null) {
                             scope.launch {
                                 scrollState?.animateScrollTo(
@@ -156,5 +187,6 @@ fun IntroTooltip(
         }
     } else {
         content()
+        scope.launch { queue.registerCompleted(id) }
     }
 }

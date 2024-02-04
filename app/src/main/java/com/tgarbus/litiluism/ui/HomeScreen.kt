@@ -130,6 +130,7 @@ fun HomeScreen(navController: NavController) {
 //        GreenBannersGallery(navController)
         IntroTooltip(
             id = "practice",
+            dependencies = arrayListOf("learn", "materials"),
             text = "Apply your knowledge here.",
             queue = balloonsQueue
         ) {
