@@ -64,6 +64,7 @@ fun ExerciseHeaderFrame(
             .fillMaxWidth(),
         fontFamily = sarabunFontFamily,
         fontSize = 32.sp,
+        lineHeight = 37.sp,
         fontWeight = FontWeight.ExtraBold,
     )
 }

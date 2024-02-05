@@ -105,7 +105,7 @@ fun ExerciseScreen(
             id = "transliteration_exercise_flow_row",
             text = "As you solve the exercise, your transliteration will appear directly under the runes.",
             queue = balloonsQueue,
-            scrollState = scrollState
+            scrollState = scrollState,
         ) {
             FlowRow(
                 modifier = Modifier
@@ -217,7 +217,7 @@ fun ExerciseScreen(
                 id = "transliteration_exercise_three_buttons",
                 text = tooltipText,
                 queue = balloonsQueue,
-                scrollState = scrollState
+                scrollState = scrollState,
             ) {
                 val options = generateRuneToLatinOptions(
                     transliterationExercise.runeRow,

@@ -63,36 +63,6 @@ data class ExerciseFilters(
 )
 
 @Composable
-fun <T> FilterButton(
-    buttonValue: T,
-    activeValue: T,
-    onClick: (T) -> Unit,
-    content: @Composable () -> Unit
-) {
-    if (buttonValue == activeValue) {
-        Button(
-            onClick = { onClick(buttonValue) }, colors = ButtonDefaults.buttonColors(
-                containerColor = colorResource(R.color.secondary),
-                contentColor = Color.White
-            )
-        ) {
-            content()
-        }
-    } else {
-        OutlinedButton(
-            modifier = Modifier.padding(0.dp),
-            onClick = { onClick(buttonValue) },
-            colors = ButtonDefaults.outlinedButtonColors(
-                containerColor = Color.White,
-                contentColor = colorResource(R.color.secondary),
-            )
-        ) {
-            content()
-        }
-    }
-}
-
-@Composable
 fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Country, Int>) {
     val buttonText = countryToName(country)
     val flagResource = maybeCountryFlagResource(country)

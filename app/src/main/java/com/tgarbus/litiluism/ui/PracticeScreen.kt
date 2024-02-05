@@ -116,7 +116,7 @@ fun PracticeScreen(navController: NavController) {
                 id = "transliteration",
                 text = "Practice transliteration of full inscriptions!",
                 queue = balloonsQueue,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     PracticeTypeButton(

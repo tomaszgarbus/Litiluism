@@ -196,7 +196,6 @@ fun LessonHeaderFrame(lesson: Lesson, navController: NavController) {
 
 @Composable
 fun LessonScreen(navController: NavController, viewModel: LessonViewModel = viewModel()) {
-    val balloonsQueue = BalloonsQueue()
     val scrollState = rememberScrollState()
     FullScreenPaddedColumn(unownedScrollState = scrollState) {
         val lesson = viewModel.lesson
@@ -204,16 +203,9 @@ fun LessonScreen(navController: NavController, viewModel: LessonViewModel = view
         LessonHeaderFrame(lesson, navController)
         LessonView(lesson)
         val context = LocalContext.current
-        IntroTooltip(
-            id = "complete_lesson",
-            text = "Mark a lesson as completed after reading it.",
-            queue = balloonsQueue,
-            scrollState = scrollState
-        ) {
-            PrimaryButton("Complete") {
-                viewModel.markAsComplete(context)
-                navController.popBackStack()
-            }
+        PrimaryButton("Complete") {
+            viewModel.markAsComplete(context)
+            navController.popBackStack()
         }
     }
 }

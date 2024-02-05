@@ -19,8 +19,12 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.BalloonAnimation
@@ -98,7 +102,6 @@ class BalloonsQueue {
     }
 }
 
-// TODO: https://github.com/skydoves/Balloon
 @Composable
 fun IntroTooltip(
     id: String,
@@ -107,6 +110,7 @@ fun IntroTooltip(
     modifier: Modifier = Modifier,
     scrollState: ScrollState? = null,
     dependencies: ArrayList<String> = arrayListOf(),
+    contentCornerRadius: Dp = 21.dp,
     content: @Composable () -> Unit,
 ) {
     val dialogDimColor = colorResource(R.color.dialog_dim)
@@ -114,6 +118,7 @@ fun IntroTooltip(
     val isCompleted =
         IntroTooltipsRepository(LocalContext.current).isTooltipCompletedAsFlow(id)
             .collectAsState(null)
+    val density = LocalDensity.current
     // create and remember a builder of Balloon.
     val builder = rememberBalloonBuilder {
         setArrowSize(10)
@@ -132,7 +137,10 @@ fun IntroTooltip(
         // Overlay
         isVisibleOverlay = true
         overlayColor = dialogDimColor.toArgb()
-        overlayShape = BalloonOverlayRoundRect(21f, 21f)  // TODO: align w/ highlighted element
+        overlayShape = BalloonOverlayRoundRect(
+            density.run { contentCornerRadius.toPx() },
+            density.run { contentCornerRadius.toPx() }
+        )  // TODO: align w/ highlighted element
         elevation = 5f
     }
     var balloonWindow: BalloonWindow? by remember { mutableStateOf(null) }

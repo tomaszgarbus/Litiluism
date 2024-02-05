@@ -9,7 +9,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.tgarbus.litiluism.ui.FilterButton
 import com.tgarbus.litiluism.ui.Fonts
 
 @Composable
@@ -21,7 +20,7 @@ fun <T> FiltersSection(
     valueDisplay: @Composable (T) -> Unit
 ) {
     val scrollState = rememberScrollState()
-    Column() {
+    Column {
         Text(categoryName, fontFamily = Fonts.sarabunFontFamily)
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),

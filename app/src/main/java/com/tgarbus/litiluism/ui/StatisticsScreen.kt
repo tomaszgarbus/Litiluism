@@ -69,7 +69,7 @@ fun TileWithSemiCircularProgressBar(
         Column(Modifier.fillMaxSize()) {
             Box(
                 Modifier
-                    .weight(2f)
+                    .weight(3f)
                     .padding(10.dp)
             ) {
                 SemiCircularProgressBar(
@@ -77,7 +77,7 @@ fun TileWithSemiCircularProgressBar(
                     canvasModifier = Modifier.fillMaxSize()
                 )
             }
-            Box(Modifier.weight(1f)) {
+            Box(Modifier.weight(2f)) {
                 Text(
                     description,
                     fontFamily = sarabunFontFamily,

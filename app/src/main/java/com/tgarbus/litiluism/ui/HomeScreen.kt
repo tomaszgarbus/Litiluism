@@ -132,7 +132,7 @@ fun HomeScreen(navController: NavController) {
             id = "practice",
             dependencies = arrayListOf("learn", "materials"),
             text = "Apply your knowledge here.",
-            queue = balloonsQueue
+            queue = balloonsQueue,
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 PracticeTypeButton(
