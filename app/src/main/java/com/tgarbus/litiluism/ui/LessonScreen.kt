@@ -102,7 +102,7 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
                 )
             } else {
                 Icon(
-                    painterResource(R.drawable.icon_question_mark),
+                    painterResource(R.drawable.icon_backarrow),
                     "hide description",
                     modifier = Modifier.size(14.dp),
                     tint = colorResource(R.color.black)
