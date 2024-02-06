@@ -51,7 +51,7 @@ fun Tile(modifier: Modifier, content: @Composable () -> Unit) {
             )
             .clip(RoundedCornerShape(size = 21.dp))
             .background(Color.White)
-            .padding(20.dp)
+            .padding(10.dp)
     )
     {
         content()
@@ -77,11 +77,12 @@ fun TileWithSemiCircularProgressBar(
                     canvasModifier = Modifier.fillMaxSize()
                 )
             }
-            Box(Modifier.weight(2f)) {
+            Box(Modifier.weight(2f).fillMaxWidth()) {
                 Text(
                     description,
                     fontFamily = sarabunFontFamily,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }

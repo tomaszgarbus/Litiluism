@@ -334,7 +334,7 @@ fun Filters(
             values = filters.value.languages,
             activeValue = filters.value.activeLanguage,
             onValueChange = { l -> filters.value = filters.value.copy(activeLanguage = l) },
-            categoryName = "Material types"
+            categoryName = "Material language"
         ) {
             Text(
                 text = it.toDisplayableString(),
