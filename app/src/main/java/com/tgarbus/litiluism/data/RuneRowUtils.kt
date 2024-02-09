@@ -27,11 +27,11 @@ fun maybeBaseRuneRowToId(baseRuneRow: BaseRuneRow): String? {
 fun baseRuneRowToString(baseRuneRow: BaseRuneRow): String {
     return when (baseRuneRow) {
         BaseRuneRow.ANY -> "All alphabets"
-        BaseRuneRow.MEDIEVAL -> "Medieval"
-        BaseRuneRow.ANGLO_SAXON -> "Anglo-Saxon"
-        BaseRuneRow.YOUNGER_FUTHARK_SHORT_TWIG -> "Younger Futhark short-twig"
-        BaseRuneRow.YOUNGER_FUTHARK_LONG_BRANCH -> "Younger Futhark long-branch"
-        BaseRuneRow.OLDER_FUTHARK -> "Older Futhark"
+        BaseRuneRow.MEDIEVAL -> "Medieval fuþork"
+        BaseRuneRow.ANGLO_SAXON -> "Anglo-Saxon fuþorc"
+        BaseRuneRow.YOUNGER_FUTHARK_SHORT_TWIG -> "Short-twig younger fuþark"
+        BaseRuneRow.YOUNGER_FUTHARK_LONG_BRANCH -> "Long-branch younger fuþark"
+        BaseRuneRow.OLDER_FUTHARK -> "Older fuþark"
     }
 }
 
