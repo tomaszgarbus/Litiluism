@@ -62,7 +62,7 @@ fun PracticeScreen(navController: NavController) {
             ) {
                 Box(
                     modifier = Modifier
-                        .height(150.dp)
+                        .height(200.dp)
                         .shadow(
                             elevation = 2.dp, shape = RoundedCornerShape(size = 21.dp)
                         )
