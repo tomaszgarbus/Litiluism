@@ -59,7 +59,6 @@ import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 
 // TODO: put all this in an embedded file
-// TODO: Add shows from DRTV and SVT
 val materials = listOf(
     Material(
         id = "runes_barnes",

@@ -91,7 +91,6 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
             .clickable { hidden.value = !hidden.value }
             .padding(10.dp)
     ) {
-        // TODO: use a question mark icon instead
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (hidden.value) {
                 Icon(
@@ -131,6 +130,7 @@ fun LessonView(lesson: Lesson) {
                         block.textBlock.toString(),
                         modifier = Modifier
                             .fillMaxWidth()
+                            .background(Color.White)
                             .aspectRatio(ratio = painter.intrinsicSize.width / painter.intrinsicSize.height),
                         contentScale = ContentScale.Fit,
                     )

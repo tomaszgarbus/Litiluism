@@ -52,6 +52,26 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 </lesson>
 
 <lesson>
+<title>Sound values</title>
+<id>sound_values</id>
+<body>Throughout the exercises and lessons as well you will see not only new rune characters, but likely also many latin-derived letters that may be new for you.
+
+This lesson will equip you with some intuition how to read them.
+
+<b>þ</b> denotes <i>[θ̠]</i>, the consonant sound of English <i>think, method, path</i>.
+<b>æ, ä</b> is something like the vowel in English <i>cat</i>.
+<b>ŋ</b> stands for the final sound in southern English <i>sing</i>.
+<b>ø, ö, œ</b> is the sound in French <i>peuple</i> or German <i>schön</i>.
+<b>ã</b> is a nasalized sound in French <i>danse</i>.
+<b>ð</b> is the consonant sound in English <i>then, father</i>.
+
+Note that we don't know for certain the exact sound values for different runes and the transliterations should never be interpreted as the correct way to pronounce the inscription. For example, while <i>ø</i> and <i>œ</i> denote the same sound in modern alphabets, runologists use them separately to denote runes with similar, but possibly not identical pronunciation.
+
+Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Martin Findell.
+</body>
+</lesson>
+
+<lesson>
 <title>Where did runes come from?</title>
 <id>origins</id>
 <body>The oldest known runic writings date back to at least the second century AD.
@@ -123,7 +143,7 @@ An example inscription in the early variant of younger <i>fuþark</i> is the Sno
 
 Younger <i>fuþark</i> developed in ninth and tenth centuries into two forms: <i>long-branch</i> and <i>short-twig</i>.
 
-<img src="learn_younger_futhark_long_and_short">The less simplified <i>long-branch</i> younger futhark (top) and the more simplified <i>short-twig</i> younger futhark (bottom).</img>
+<img src="learn_younger_futhark_long_and_short">The less simplified <i>long-branch</i> younger futhark and the more simplified <i>short-twig</i> younger futhark.</img>
 
 The geographical distributions of inscriptions in both forms are strongly divergent. The <i>long-branch</i> runes were found mostly in Denmark and the <i>short-twig</i> form in Sweden and Norway. However, in eleventh century, the <i>long-branch</i> form became dominant in Sweden too, while Norway adopted a mixed system:
 
@@ -217,5 +237,25 @@ As you see, the Swedish stones generally were adorned with wormy shapes and anim
 Danish stones were inscribed on the wide face of the stone, the text following a clear direction: horizontal, vertical, or a "frame". Runes were carved between even lines.
 
 Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Martin Findell.
+</body>
+</lesson>
+
+<lesson>
+<title>Ambiguous runes</title>
+<id>ambiguous_runes</id>
+<body>As you will see from the transliteration exercises (if you haven't already), sometimes the same rune was used to represent different sounds.
+
+A good example is the <b>ᚽ</b> rune, which could stand for either <i>h</i> or <i>e</i>. Compare Eiði runestick from Faroe Islands and the Össeby runestone fragment from Sweden:
+
+<img src="image_eidi_runestick">Here <b>ᚽ</b> stands for <i>h</i>, in the rune row.</img>
+<img src="image_osseby_fragment">Here <b>ᚽ</b> stands for <i>e</i>, in the word <b>ᚽᚠᛏᛁᛦ</b> - <i>after</i>.</img>
+
+Consider also the Hobro stone in Denmark and the use of <b>ᛦ</b>-rune on its inscription.
+
+It is first used in its conventional meaning (<i>ʀ</i> in the ending of a masculine name) in the first word <b>ᚦᚢᚱᛁᛦ</b> (<i>Thurir</i>). Later however it represents <i>æ</i> in words <b>ᛏᚱᛦᚴ</b> (<i>træk - guy</i>) and <b>ᚠᛦᛚᛅᚴᛅ</b> (<i>fælaka - friend</i>).
+
+<img src="image_hobro">Hobro stone. Here, the rune <b>ᛦ</b> was used in not only in it's conventional meaning (<i>ʀ</i>), but also to represent <i>æ</i>-sound!</img>
+
+Sources: https://www.mariagerfjordbibliotekerne.dk/runesten
 </body>
 </lesson>

@@ -54,7 +54,6 @@ fun TransliterationExercisesListItem(
             color = colorResource(id = R.color.white),
             shape = RoundedCornerShape(size = 21.dp)
         )
-        // TODO: add ripple effect
         .clickable { navController.navigate("exercise/${exercise.id}") }
         .padding(vertical = 10.dp, horizontal = 10.dp)) {
         Row(

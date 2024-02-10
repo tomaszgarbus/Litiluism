@@ -142,10 +142,7 @@ fun ExerciseScreen(
                         if (i > position) {
                             textColor = colorWithAlpha(textColor, max((position + 4 - i) / 4f, 0f))
                         }
-                        if (i == position) {
-                            // TODO: add inline manual input
-                            // InlineManualInput(options, onCorrectAnswer)
-                        }
+                        // TODO: add inline manual input
                         Text(
                             if (i < position) inputs[i].toString() else "?",
                             textAlign = TextAlign.Center,
