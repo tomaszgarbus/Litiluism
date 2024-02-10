@@ -35,6 +35,7 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 @Composable
 fun ThreeAnswerButtons(
     options: ThreeButtonOptions,
+    showAllVariantsPerAnswer: Boolean,
     onCorrectAnswer: (Char, Boolean) -> Unit,
 ) {
     val buttonShape = RoundedCornerShape(size = 21.dp)
@@ -86,13 +87,15 @@ fun ThreeAnswerButtons(
                         Text(
                             buildAnnotatedString {
                                 append(options[i].first[0].toString())
-                                for (j in 1..<options[i].first.size) {
-                                    withStyle(
-                                        style = SpanStyle(
-                                            fontWeight = FontWeight.Normal,
-                                        )
-                                    ) {
-                                        append("/${options[i].first[j]}")
+                                if (showAllVariantsPerAnswer) {
+                                    for (j in 1..<options[i].first.size) {
+                                        withStyle(
+                                            style = SpanStyle(
+                                                fontWeight = FontWeight.Normal,
+                                            )
+                                        ) {
+                                            append("/${options[i].first[j]}")
+                                        }
                                     }
                                 }
                             },

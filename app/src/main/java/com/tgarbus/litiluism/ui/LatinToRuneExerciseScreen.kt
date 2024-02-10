@@ -51,7 +51,7 @@ fun LatinToRuneExerciseScreen(
             )
 
             val answerOptions = viewModel.optionsFlow.collectAsState().value
-            ThreeAnswerButtons(answerOptions, onCorrectAnswer = { _, corr ->
+            ThreeAnswerButtons(answerOptions, showAllVariantsPerAnswer = false, onCorrectAnswer = { _, corr ->
                 viewModel.onCorrectClick(corr)
             })
         }

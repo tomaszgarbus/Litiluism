@@ -73,18 +73,9 @@ fun ChoiceDialog(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Row() {
+            Row {
                 Spacer(modifier = Modifier.weight(1f))
-                Image(
-                    painter = painterResource(id = R.drawable.icon_cross),
-                    contentDescription = "Close dialog",
-                    contentScale = ContentScale.None,
-                    modifier = Modifier
-                        .padding(0.dp)
-                        .width(21.dp)
-                        .height(21.dp)
-                        .clickable { onClose() }
-                )
+                CloseButton(description = "Close dialog") { onClose() }
             }
             Text(
                 text = title,

@@ -28,7 +28,7 @@ fun RuneToLatinExerciseScreen(
 ) {
     val inputMethod =
         viewModel.getInputMethodAsFlow(LocalContext.current).collectAsState(InputMethod.VARIANTS)
-    FullScreenPaddedColumn() {
+    FullScreenPaddedColumn {
         ExerciseHeaderFrame("Rune to latin exercise", viewModel.runeRowName, navController)
         if (viewModel.finished.collectAsState().value) {
             PrimaryButton(
@@ -60,7 +60,12 @@ fun RuneToLatinExerciseScreen(
                 viewModel.onCorrectClick(corr)
             }
             when (inputMethod.value) {
-                InputMethod.VARIANTS -> ThreeAnswerButtons(answerOptions, onCorrectAnswer)
+                InputMethod.VARIANTS -> ThreeAnswerButtons(
+                    answerOptions,
+                    showAllVariantsPerAnswer = false,
+                    onCorrectAnswer
+                )
+
                 InputMethod.KEYBOARD -> ManualInput(answerOptions, onCorrectAnswer)
             }
         }

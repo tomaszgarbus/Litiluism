@@ -34,16 +34,7 @@ fun ExerciseHeaderFrame(
         modifier = Modifier.fillMaxWidth()
     ) {
         Spacer(modifier = Modifier.weight(1f))
-        Image(
-            painter = painterResource(id = R.drawable.icon_cross),
-            contentDescription = "Close exercise",
-            contentScale = ContentScale.None,
-            modifier = Modifier
-                .padding(0.dp)
-                .width(21.dp)
-                .height(21.dp)
-                .clickable { navController.popBackStack() }
-        )
+        CloseButton(description = "Close exercise") { navController.popBackStack() }
     }
     Text(
         text = exerciseType,

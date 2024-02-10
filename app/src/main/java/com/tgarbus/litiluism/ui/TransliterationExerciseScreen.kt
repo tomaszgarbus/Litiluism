@@ -227,7 +227,12 @@ fun ExerciseScreen(
                     }
                 }
                 when (inputMethod.value) {
-                    InputMethod.VARIANTS -> ThreeAnswerButtons(options, onCorrectAnswer)
+                    InputMethod.VARIANTS -> ThreeAnswerButtons(
+                        options,
+                        showAllVariantsPerAnswer = true,
+                        onCorrectAnswer
+                    )
+
                     InputMethod.KEYBOARD -> ManualInput(options, onCorrectAnswer)
                 }
             }

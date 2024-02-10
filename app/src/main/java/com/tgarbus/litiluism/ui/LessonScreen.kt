@@ -47,6 +47,7 @@ import com.tgarbus.litiluism.data.Lesson
 import com.tgarbus.litiluism.data.LessonTextBlock
 import com.tgarbus.litiluism.data.LessonTextModifier
 import com.tgarbus.litiluism.ui.reusables.BalloonsQueue
+import com.tgarbus.litiluism.ui.reusables.CloseButton
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
@@ -151,16 +152,7 @@ fun LessonHeaderFrame(lesson: Lesson, navController: NavController) {
         modifier = Modifier.fillMaxWidth()
     ) {
         Spacer(modifier = Modifier.weight(1f))
-        Image(
-            painter = painterResource(id = R.drawable.icon_cross),
-            contentDescription = "Close lesson",
-            contentScale = ContentScale.None,
-            modifier = Modifier
-                .padding(0.dp)
-                .width(21.dp)
-                .height(21.dp)
-                .clickable { navController.popBackStack() }
-        )
+        CloseButton(description = "Close lesson") { navController.popBackStack() }
     }
     Text(
         text = "Lesson",
