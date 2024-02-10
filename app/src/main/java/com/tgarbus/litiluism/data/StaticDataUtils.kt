@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.JsonReader
 import android.util.JsonToken
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.isSeparator
 import com.tgarbus.litiluism.removeScandinavianLetters
 import com.tgarbus.litiluism.stripFileExtension
 import java.io.StringReader
@@ -34,7 +35,7 @@ interface FromJson {
 
         private fun readRuneRowSymbol(jsonReader: JsonReader): Pair<Char, List<Char>> {
             jsonReader.beginObject()
-            var rune = ' ';
+            var rune = ' '
             var latin = listOf<Char>()
             while (jsonReader.hasNext()) {
                 val property = jsonReader.nextName()
@@ -128,7 +129,7 @@ interface FromJson {
                     mapping.putAll(runeRow.overrideSymbols)
                     val baseRuneRow = canonicalFormRuneRows[runeRow.inheritsFrom]!!.baseRuneRow
                     val canonicalFormRuneRow = RuneRow(
-                        id = id, name = runeRow.name, mapping = mapping, baseRuneRow = baseRuneRow!!
+                        id = id, name = runeRow.name, mapping = mapping, baseRuneRow = baseRuneRow
                     )
                     canonicalFormRuneRows[id] = canonicalFormRuneRow
                 }
@@ -235,7 +236,7 @@ interface FromJson {
                 }
             }
             jsonReader.endObject()
-            return TransliterationExercise(
+            val exercise = TransliterationExercise(
                 id = id,
                 title = title,
                 runes = runes,
@@ -247,6 +248,22 @@ interface FromJson {
                 sources = sources,
                 location = location
             )
+            validateExercise(exercise)
+            return exercise
+        }
+
+        // Validates on startup:
+        // * that every rune in exercise is either in the rune row or is a separator.
+        private fun validateExercise(
+            exercise: TransliterationExercise,
+        ) {
+            val runeRow = exercise.runeRow
+            // Validate runes.
+            for (rune in exercise.runes) {
+                assert(runeRow.mapping.containsKey(rune) || isSeparator(rune)) {
+                    "${exercise.id} ${rune}"
+                }
+            }
         }
 
         private fun readExercises(
