@@ -1,14 +1,18 @@
 package com.tgarbus.litiluism.ui.reusables
 
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -43,10 +47,22 @@ fun ChoiceDialog(
 ) {
     androidx.compose.animation.AnimatedVisibility(
         visible = visible,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colorResource(R.color.dialog_dim))
+        ) {}
+    }
+    androidx.compose.animation.AnimatedVisibility(
+        visible = visible,
         enter = slideInVertically(),
         exit = slideOutVertically()
     ) {
         val scrollState = rememberScrollState()
+
         Column(
             modifier = Modifier
                 .padding(20.dp)
