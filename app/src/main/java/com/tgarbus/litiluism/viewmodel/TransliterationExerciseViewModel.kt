@@ -32,4 +32,12 @@ class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : Vie
     fun getInputMethodAsFlow(context: Context): Flow<InputMethod> {
         return SettingsRepository(context).inputMethodAsFlow()
     }
+
+    fun resetProgress(context: Context) {
+        viewModelScope.launch {
+            TransliterationExerciseStatesRepository.getInstance(context).resetProgress(
+                transliterationExercise
+            )
+        }
+    }
 }

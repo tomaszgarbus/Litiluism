@@ -90,11 +90,21 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         c: Char,
         countAsCorrect: Boolean
     ) {
-        appendInputToExerciseState(exercise, c, { score -> score.recordAnswer(countAsCorrect) })
+        appendInputToExerciseState(exercise, c) { score -> score.recordAnswer(countAsCorrect) }
         var position = getExercisePosition(exercise)
         while (!isExerciseComplete(exercise) && isSeparator(exercise.runes[position])) {
             appendInputToExerciseState(exercise, exercise.runes[position], { })
             position = getExercisePosition(exercise)
+        }
+    }
+
+    suspend fun resetProgress(exercise: TransliterationExercise) {
+        context.transliterationStatesDataStore.edit { preferences ->
+            preferences[positionKey(exercise.id)] = 0
+            preferences[inputsKey(exercise.id)] = ""
+            preferences[completeKey(exercise.id)] = false
+            preferences[correctAnswersKey(exercise.id)] = 0
+            preferences[totalAnswersKey(exercise.id)] = 0
         }
     }
 

@@ -46,6 +46,7 @@ import com.tgarbus.litiluism.ui.reusables.InlineManualInput
 import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 import com.tgarbus.litiluism.ui.reusables.ManualInput
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
+import com.tgarbus.litiluism.ui.reusables.PrimaryOutlinedButton
 import com.tgarbus.litiluism.ui.reusables.ThreeAnswerButtons
 import com.tgarbus.litiluism.viewmodel.TransliterationExerciseViewModel
 import kotlin.math.max
@@ -233,6 +234,10 @@ fun ExerciseScreen(
                     InputMethod.KEYBOARD -> ManualInput(options, onCorrectAnswer)
                 }
             }
+        }
+        val context = LocalContext.current
+        PrimaryOutlinedButton(text = "Reset progress") {
+            viewModel.resetProgress(context)
         }
     }
 }
