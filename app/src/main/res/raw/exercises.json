@@ -167,6 +167,22 @@
     "location": "lerkaka"
   },
   {
+    "id": "norumfont",
+    "img": "norumfont.jpg",
+    "title": "Norum font",
+    "img_credit": "Own photo, taken in Historiska Museet",
+    "runes": "ᛌᚢᛅᚾᚴᛅᚱᚦᚽ ᛘᛁᚴ ᛘᛁᚴ ᛘᛁᚴ ᛘᛁᚴ ᛘᛁᚴ",
+    "rowType": "younger_futhark_norumfont",
+    "description": "Soapstone baptismal font, found in 1847 in a scrap heap in the cemetery of Norum Church. All four sides are decorated, one side contains a runic inscription.",
+    "explanationAfter": "Indeed, the inscription says: \"Sven made me\" (\"Sven gjorde mig\"). The last 5 characters seem to be bind runes for \"mik\" or \"mig\" - \"me\".",
+    "sources": [
+      "Description in Historiska Museet",
+      "https://vikingar.historiska.se/object_details.php?object=46162_HST&e=no&l=en"
+    ],
+    "country": "SE",
+    "location": "historiska"
+  },
+  {
     "id": "össeby_fragment",
     "img": "össeby_fragment.jpg",
     "img_credit": "Own photo, taken in Historiska Museet",
@@ -270,22 +286,6 @@
     ],
     "country": "NO",
     "location": "bryggen"
-  },
-  {
-    "id": "norumfont",
-    "img": "norumfont.jpg",
-    "title": "Norum font",
-    "img_credit": "Own photo, taken in Historiska Museet",
-    "runes": "ᛌᚢᛅᚾᚴᛅᚱᚦᚽ ᛘᛁᚴ ᛘᛁᚴ ᛘᛁᚴ ᛘᛁᚴ ᛘᛁᚴ",
-    "rowType": "younger_futhark_norumfont",
-    "description": "Soapstone baptismal font, found in 1847 in a scrap heap in the cemetery of Norum Church. All four sides are decorated, one side contains a runic inscription.",
-    "explanationAfter": "Indeed, the inscription says: \"Sven made me\" (\"Sven gjorde mig\"). The last 5 characters seem to be bind runes for \"mik\" or \"mig\" - \"me\".",
-    "sources": [
-      "Description in Historiska Museet",
-      "https://vikingar.historiska.se/object_details.php?object=46162_HST&e=no&l=en"
-    ],
-    "country": "SE",
-    "location": "historiska"
   },
   {
     "id": "eik_sokndal",
