@@ -1,5 +1,8 @@
 package com.tgarbus.litiluism.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -238,8 +241,14 @@ fun ExerciseScreen(
             }
         }
         val context = LocalContext.current
-        PrimaryOutlinedButton(text = "Reset progress") {
-            viewModel.resetProgress(context)
+        AnimatedVisibility(
+            visible = state.inputs.isNotEmpty(),
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            PrimaryOutlinedButton(text = "Reset progress") {
+                viewModel.resetProgress(context)
+            }
         }
     }
 }

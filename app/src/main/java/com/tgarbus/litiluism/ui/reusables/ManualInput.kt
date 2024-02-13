@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tgarbus.litiluism.data.ThreeButtonOptions
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
@@ -52,17 +53,21 @@ fun ManualInput(
                             input = ""
                         } else {
                             showFeedback.value = true
+                            input = ""
                         }
                     }
                 },
-                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(21.dp)),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(21.dp)),
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent
                 ),
                 label = { Text("Input 1 letter") },
                 textStyle = TextStyle(
-                    fontFamily = sarabunFontFamily
+                    fontFamily = sarabunFontFamily,
+                    fontSize = 20.sp
                 )
             )
         }
