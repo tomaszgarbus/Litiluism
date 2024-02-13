@@ -4,7 +4,7 @@
     "img": "gripsholmstone178.jpg",
     "img_credit": "Own photo, taken in Mariefred, Sweden",
     "title": "Gripsholm stone Sö 178",
-    "rowType": "sö178_younger_futhark",
+    "rowType": "younger_futhark_long_branch",
     "description": "A rune stone with inscription from the 11th century.",
     "runes": "ᚼᛅᚴᚢᛚᚠᚱ x ᛅᚢᚴ x ᛅᚢᛚᚠᚱ x ᚦᛅᛁᛦ x ᛚᛅᛏᚢ x ᚱᛅᛁᛁᛋᛅ x ᛋᛏᛅᛁᚾᛅ x ᛒᛅᚦᛅ x ᛅᛏ x ᛒᚱᚬᚦᚢᚱ x ᛋᛁᚾ x ᚴᛁᛏᛁᛚᛘᚢᛏ x ᛅᚢᚴ x ᛒᚱᚬ x ᛁᚠᛏᛁᛦ x ᛋᚬᛘᚢ x ᛘᚬᚦᚢᚱ x ᛋᛁᚾᛅ x ᛁᛅ x ᛁᚱᚢᚾᛁ x ᛁᛁᚢᚴ x ᛒᚱᚬᚦᛁᛦ x ᚼᛁᚾᛅᛦ",
     "explanationAfter": "Correct. The stone reads: \"Hälgulv (?) and Oulv they had this stone raised in memory of their brother, Kätilmund, and built a bridge in memory of Soma, their mother. But Brune (?), her brother, carved (the runes)\"",
@@ -587,7 +587,7 @@
     "title": "A wooden spade from Iceland",
     "img_credit": "Own photo, taken in the National Museum of Iceland",
     "runes": "ᛒᚮᛆᛐᛐᛆᛐᛘᛁᚴ᛫ᛁᚿᚴᛁᛆᛚᚱ᛫ᚴᛆᚱᚦᛁ",
-    "rowType": "wooden_spade_younger_futhark",
+    "rowType": "medieval",
     "description": "A wooden spade with runes cut into the blade. It was found in a peat bog and dates from the 12th century. It can be seen in Iceland's national museum.",
     "explanationAfter": "Correct. The inscription has been interpreted as \"boalliatmik inkialtr kærþi\", in modern Icelandic: \"Páll lét mig (gera), Ingjaldur gerði (mig)\" and in English: \"Páll had me (made), Ingjaldur made (me)\".",
     "sources": [

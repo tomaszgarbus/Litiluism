@@ -583,11 +583,6 @@
       }
     ]
   },
-  "sö178_younger_futhark": {
-    "name": "Long-branch Younger Fuþark",
-    "inherit_from": "younger_futhark_long_branch",
-    "override_symbols": []
-  },
   "hobro_younger_futhark": {
     "name": "Long-branch Younger Fuþark",
     "inherit_from": "younger_futhark_long_branch",
@@ -652,27 +647,6 @@
     "inherit_from": "younger_futhark_short_twig",
     "override_symbols": [
       {
-        "rune": "ᛆ",
-        "latin": "a"
-      },
-      {
-        "rune": "ᛅ",
-        "latin": "a"
-      },
-      {
-        "rune": "ᚽ",
-        "latin": "h"
-      },
-      {
-        "rune": "ᛦ",
-        "latin": [
-          "y",
-          "z",
-          "ʀ",
-          "Ʀ"
-        ]
-      },
-      {
         "rune": "ᛓ",
         "latin": "b"
       }
@@ -724,40 +698,6 @@
       {
         "rune": "ᛒ",
         "latin": "b"
-      }
-    ]
-  },
-  "wooden_spade_younger_futhark": {
-    "name": "Short-twig Younger Fuþark",
-    "inherit_from": "younger_futhark_short_twig",
-    "override_symbols": [
-      {
-        "rune": "ᛒ",
-        "latin": "b"
-      },
-      {
-        "rune": "ᛚ",
-        "latin": "t"
-      },
-      {
-        "rune": "ᛐ",
-        "latin": "l"
-      },
-      {
-        "rune": "ᛘ",
-        "latin": "m"
-      },
-      {
-        "rune": "ᚮ",
-        "latin": "o"
-      },
-      {
-        "rune": "ᛦ",
-        "latin": [
-          "y",
-          "ʀ",
-          "Ʀ"
-        ]
       }
     ]
   },
