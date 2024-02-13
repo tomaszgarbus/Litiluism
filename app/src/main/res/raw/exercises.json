@@ -247,8 +247,8 @@
     "img": "bergenstick_gohome.jpg",
     "img_credit": "Own photo, taken at the Bryggen Museum, Bergen.",
     "title": "Bergen stick B 149",
-    "runes": ["ᚴ", "ᛦ", "ᛆ", ":", "ᛌ", "ᛅ", "ᚼ", "ᛁ", "ᚱ", ":", "ᛆ", "ᛐ", "ᚦ", "ᚢ", ":", "ᚴ", "ᛆ", "ᚴ", ":", "ᚼ", "ᛅ", "ᛁ", "ᛉ"],
-    "rowType": "b149_younger_futhark",
+    "runes": ["ᚴ", "ᛦ", "ᛆ", ":", "ᛌ", "ᛅ", "ᚼ", "ᛁ", "ᚱ", ":", "ᛆ", "ᛐ", "ᚦ", "ᚢ", ":", "ᚴ", "ᛆ", "ᚴ", ":", "ᚼ", "ᛅ", "ᛁ", "ᛘ"],
+    "rowType": "medieval",
     "description": "The stick has an inscription on both sides, consisting of mixed long- and short-twig Younger Futhark runes. The first side says: ᚴᛦᛆ : ᛌᛅᚼᛁᚱ : ᛆᛐᚦᚢ : ᚴᛆᚴ : ᚼᛅᛁᛉ.",
     "explanationAfter": "Yes! That is the famous inscription which translates to \"Gyða segir at þú gakk heim\" - \"Gyða tells you to go home\"!",
     "sources": [
@@ -263,7 +263,7 @@
     "title": "Possible gravestone from Bryggen, Bergen",
     "img_credit": "Own photo, taken at the Bryggen Museum, Bergen.",
     "runes": "ᚦᛁᛐᛆᚱᛅᛁᛌᛐᚱᚿᛁᛁᚴᚦᚱ…ᚦᛁᛐᛆᚱᛅᛁᛌᛐ ᛅᛁᚱᚱᛁᚴᚱ ᛒᛆᚴᛁᚢᛘ ᚿᚮᛐ ᚠ…",
-    "rowType": "bergen_possible_gravestone_younger_futhark",
+    "rowType": "medieval",
     "description": "This stone is dated to 1248-1332 and was possibly a gravestone.",
     "explanationAfter": "Correct. The inscription was interpreted as: \"Arne carved this. Erik bakium (a nickname?) carved this the night before...\" (\"Dette ristet Arne. Dette ristet Eirik bakium natten f...\").",
     "sources": [
@@ -277,8 +277,8 @@
     "img": "bergen_knife_beater.jpg",
     "title": "Bergen knife beater",
     "img_credit": "Own photo, taken at the Bryggen Museum, Bergen.",
-    "runes": "ᚼᛆᚴᚮᚿᚱᛅᛁᛌᛐᛘᛁᚵᚵᚽᚿᛌᚢᛅᛁᚿᛁᚿᛆᛘᛁᚵ",
-    "rowType": "bergen_knife_beater_younger_futhark",
+    "runes": "ᚼᛆᚴᚮᚿᚱᛅᛁᛌᛐᛘᛁᚵᚵᛂᚿᛌᚢᛅᛁᚿᛁᚿᛆᛘᛁᚵ",
+    "rowType": "medieval",
     "description": "A medieval knife beater from Bryggen, Bergen.",
     "explanationAfter": "The inscription runs \"Håkon carved me, but the boy owns me.\" There is additional inscription on the other side, saying: \"Bård owns me. He found much to object to in the person who carved me.\"",
     "sources": [

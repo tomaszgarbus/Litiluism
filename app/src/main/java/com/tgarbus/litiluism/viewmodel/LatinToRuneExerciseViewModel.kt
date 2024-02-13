@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.lifecycle.SavedStateHandle
@@ -14,7 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 // TODO: common interface for this and RuneToLatin
-class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle): ViewModel() {
+class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     private val staticContentRepository = StaticContentRepository.getInstance()
     private val runeRow =
         staticContentRepository.runeRowsMap[savedStateHandle["runeRowId"]!!]!!
@@ -30,7 +31,13 @@ class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle): ViewMode
 
     private fun buildReverseMapping(): Map<Char, List<Char>> {
         // TODO: should I worry about two runes transliterated to the same latin symbol?
-        return runeRow.mapping.entries.associateBy({ it.value[0] }, { listOf(it.key) })
+//        val mapping = runeRow.mapping.entries.associateBy({ it.value[0] }, { listOf(it.key) })
+        val mapping = runeRow.mapping
+            .mapValues { it.value[0] }.entries
+            .groupBy { it.value }
+            .mapValues { entry -> entry.value.map { it.key } }
+        Log.d("debug", mapping.toString())
+        return mapping
     }
 
     private fun getOptions(): ThreeButtonOptions {

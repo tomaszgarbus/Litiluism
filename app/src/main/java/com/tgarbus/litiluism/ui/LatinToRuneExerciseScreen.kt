@@ -23,7 +23,7 @@ fun LatinToRuneExerciseScreen(
     navController: NavController,
     viewModel: LatinToRuneExerciseViewModel = viewModel()
 ) {
-    FullScreenPaddedColumn() {
+    FullScreenPaddedColumn {
         ExerciseHeaderFrame("Rune to latin exercise", viewModel.runeRowName, navController)
         if (viewModel.finished.collectAsState().value) {
             PrimaryButton(
@@ -51,9 +51,12 @@ fun LatinToRuneExerciseScreen(
             )
 
             val answerOptions = viewModel.optionsFlow.collectAsState().value
-            ThreeAnswerButtons(answerOptions, showAllVariantsPerAnswer = false, onCorrectAnswer = { _, corr ->
-                viewModel.onCorrectClick(corr)
-            })
+            ThreeAnswerButtons(
+                answerOptions,
+                showAllVariantsPerAnswer = true,
+                onCorrectAnswer = { _, corr ->
+                    viewModel.onCorrectClick(corr)
+                })
         }
     }
 }

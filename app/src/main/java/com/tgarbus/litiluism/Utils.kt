@@ -15,17 +15,25 @@ fun randomLetter(): Char {
 }
 
 fun isSeparator(rune: Char): Boolean {
-    return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x').contains(rune);
+    return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x').contains(rune)
 }
 
 fun generateOptions(mapping: Map<Char, List<Char>>, symbol: Char): ThreeButtonOptions {
+    fun areAnswersDistinctEnough(symbol1: Char, symbol2: Char): Boolean {
+        return symbol1 != symbol2 && mapping[symbol1]!![0] != mapping[symbol2]!![0]
+    }
+
     val symbols = mapping.keys.toList()
     var secondSymbol = symbols[abs(Random.nextInt()) % symbols.size]
-    while (secondSymbol == symbol) {
+    while (!areAnswersDistinctEnough(secondSymbol, symbol)) {
         secondSymbol = symbols[abs(Random.nextInt()) % symbols.size]
     }
     var thirdSymbol = symbols[abs(Random.nextInt()) % symbols.size]
-    while (thirdSymbol == symbol || thirdSymbol == secondSymbol) {
+    while (!areAnswersDistinctEnough(thirdSymbol, symbol) || !areAnswersDistinctEnough(
+            thirdSymbol,
+            secondSymbol
+        )
+    ) {
         thirdSymbol = symbols[abs(Random.nextInt()) % symbols.size]
     }
     return listOf(
