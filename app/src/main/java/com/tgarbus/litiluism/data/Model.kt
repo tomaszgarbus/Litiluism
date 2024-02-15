@@ -59,7 +59,6 @@ data class TransliterationExerciseState(
 
 data class RuneRow(
     val id: String,
-    val name: String,
     val mapping: Map<Char, List<Char>>,
     val baseRuneRow: BaseRuneRow,
 )

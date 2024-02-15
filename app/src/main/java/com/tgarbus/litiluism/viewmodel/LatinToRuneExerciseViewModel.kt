@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.tgarbus.litiluism.data.ExerciseScore
 import com.tgarbus.litiluism.data.StaticContentRepository
 import com.tgarbus.litiluism.data.ThreeButtonOptions
+import com.tgarbus.litiluism.data.toDisplayableString
 import com.tgarbus.litiluism.generateOptions
 import com.tgarbus.litiluism.generateRuneToLatinOptions
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,7 +26,7 @@ class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewMod
         get() = queue.size
     val optionsFlow = MutableStateFlow(getOptions())
     val questionsFlow = MutableStateFlow(getQuestion())
-    val runeRowName = runeRow.name
+    val runeRowName = runeRow.baseRuneRow.toDisplayableString()
     val finished = MutableStateFlow(false)
     val score = mutableStateOf(ExerciseScore())
 

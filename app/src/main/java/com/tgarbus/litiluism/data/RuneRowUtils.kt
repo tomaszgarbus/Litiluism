@@ -35,6 +35,10 @@ fun baseRuneRowToString(baseRuneRow: BaseRuneRow): String {
     }
 }
 
+fun BaseRuneRow.toDisplayableString(): String {
+    return baseRuneRowToString(this)
+}
+
 fun BaseRuneRow.getIconResourceId(): Int {
     return when (this) {
         BaseRuneRow.ANGLO_SAXON -> R.drawable.icon_runerow_anglo_saxon

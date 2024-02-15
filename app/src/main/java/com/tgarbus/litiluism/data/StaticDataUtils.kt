@@ -115,7 +115,6 @@ interface FromJson {
                 if (runeRow.inheritsFrom.isEmpty()) {
                     val canonicalFormRuneRow = RuneRow(
                         id = id,
-                        name = runeRow.name,
                         mapping = runeRow.symbols,
                         baseRuneRow = maybeBaseRuneRowFromId(id)!!
                     )
@@ -129,7 +128,7 @@ interface FromJson {
                     mapping.putAll(runeRow.overrideSymbols)
                     val baseRuneRow = canonicalFormRuneRows[runeRow.inheritsFrom]!!.baseRuneRow
                     val canonicalFormRuneRow = RuneRow(
-                        id = id, name = runeRow.name, mapping = mapping, baseRuneRow = baseRuneRow
+                        id = id, mapping = mapping, baseRuneRow = baseRuneRow
                     )
                     canonicalFormRuneRows[id] = canonicalFormRuneRow
                 }

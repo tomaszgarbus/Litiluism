@@ -37,6 +37,7 @@ import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import com.tgarbus.litiluism.data.countryToName
 import com.tgarbus.litiluism.data.maybeCountryFlagResource
+import com.tgarbus.litiluism.data.toDisplayableString
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.getThumbnailResourceId
 
@@ -102,7 +103,7 @@ fun TransliterationExercisesListItem(
                     fontSize = 16.sp,
                 )
                 Text(
-                    text = exercise.runeRow.name,
+                    text = exercise.runeRow.baseRuneRow.toDisplayableString(),
                     fontFamily = sarabunFontFamily,
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 16.sp,
