@@ -555,31 +555,8 @@
     "inherit_from": "younger_futhark_long_branch",
     "override_symbols": [
       {
-        "rune": "ᚭ",
-        "latin": [
-          "ą",
-          "o"
-        ]
-      },
-      {
-        "rune": "ᛁ",
-        "latin": "i"
-      },
-      {
         "rune": "ᛆ",
         "latin": "a"
-      },
-      {
-        "rune": "ᛉ",
-        "latin": "m"
-      },
-      {
-        "rune": "ᛦ",
-        "latin": [
-          "ʀ",
-          "Ʀ",
-          "z"
-        ]
       }
     ]
   },
@@ -598,6 +575,7 @@
       {
         "rune": "ᛦ",
         "latin": [
+          "ʀ",
           "r",
           "æ"
         ]
@@ -642,62 +620,17 @@
       }
     ]
   },
-  "younger_futhark_eidi_runestick": {
-    "name": "Short-twig Younger Fuþark",
-    "inherit_from": "younger_futhark_short_twig",
+  "medieval_sandavagur_stone": {
+    "name": "Medieval runes",
+    "inherit_from": "medieval",
     "override_symbols": [
       {
-        "rune": "ᛓ",
-        "latin": "b"
-      }
-    ]
-  },
-  "younger_futhark_sandavagur_stone": {
-    "name": "Short-twig Younger Fuþark",
-    "inherit_from": "younger_futhark_short_twig",
-    "override_symbols": [
-      {
-        "rune": "ᚵ",
-        "latin": "g"
-      },
-      {
-        "rune": "ᛅ",
-        "latin": "a"
-      },
-      {
-        "rune": "ᛂ",
-        "latin": "e"
+        "rune": "ᚭ",
+        "latin": "o"
       },
       {
         "rune": "ᛍ",
-        "latin": [
-          "c",
-          "s"
-        ]
-      },
-      {
-        "rune": "ᛑ",
-        "latin": "d"
-      },
-      {
-        "rune": "ᛉ",
-        "latin": "m"
-      },
-      {
-        "rune": "ᛦ",
-        "latin": [
-          "y",
-          "ʀ",
-          "Ʀ"
-        ]
-      },
-      {
-        "rune": "ᚼ",
-        "latin": "h"
-      },
-      {
-        "rune": "ᛒ",
-        "latin": "b"
+        "latin": "s"
       }
     ]
   },
@@ -715,38 +648,10 @@
       }
     ]
   },
-  "borgarnes_younger_futhark": {
-    "name": "Long-branch Younger Fuþark",
-    "inherit_from": "younger_futhark_long_branch",
-    "override_symbols": [
-      {
-        "rune": "ᚴ",
-        "latin": [
-          "k",
-          "g"
-        ]
-      }
-    ]
-  },
   "medieval_sørvági_box": {
     "name": "Medieval runes",
     "inherit_from": "medieval",
     "override_symbols": [
-      {
-        "rune": "ᛒ",
-        "latin": [
-          "b",
-          "p"
-        ]
-      },
-      {
-        "rune": "ᚴ",
-        "latin": [
-          "c",
-          "g",
-          "k"
-        ]
-      },
       {
         "rune": "ᛏ",
         "latin": "t"
@@ -774,13 +679,6 @@
       {
         "rune": "ᚿ",
         "latin": "n"
-      },
-      {
-        "rune": "ᚦ",
-        "latin": [
-          "þ",
-          "d"
-        ]
       }
     ]
   },
@@ -871,15 +769,5 @@
         "latin": "e"
       }
     ]
-  },
-  "younger_futhark_bjärby": {
-    "name": "Long-branch Younger Fuþark",
-    "inherit_from": "younger_futhark_long_branch",
-    "override_symbols": []
-  },
-  "younger_futhark_gårdby": {
-    "name": "Long-branch Younger Fuþark",
-    "inherit_from": "younger_futhark_long_branch",
-    "override_symbols": []
   }
 }
