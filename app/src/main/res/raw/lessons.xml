@@ -58,12 +58,12 @@ Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Marti
 
 This lesson will equip you with some intuition how to read them.
 
-<b>þ</b> denotes <i>[θ̠]</i>, the consonant sound of English <i>think, method, path</i>.
-<b>æ, ä</b> is something like the vowel in English <i>cat</i>.
-<b>ŋ</b> stands for the final sound in southern English <i>sing</i>.
-<b>ø, ö, œ</b> is the sound in French <i>peuple</i> or German <i>schön</i>.
-<b>ã</b> is a nasalized sound in French <i>danse</i>.
-<b>ð</b> is the consonant sound in English <i>then, father</i>.
+<b>þ</b> denotes <i>[θ̠]</i>, the consonant sound of English <i><b>th</b>ink, me<b>th</b>od, pa<b>th</b></i>.
+<b>æ, ä</b> is something like the vowel in English <i>c<b>a</b>t</i>.
+<b>ŋ</b> stands for the final sound in southern English <i>si<b>ng</b></i>.
+<b>ø, ö, œ</b> is the sound in French <i>p<b>eu</b>ple</i> or German <i>sch<b>ö</b>n</i>.
+<b>ã</b> is a nasalized sound in French <i>d<b>an</b>se</i>.
+<b>ð</b> is the consonant sound in English <i><b>th</b>en, fa<b>th</b>er</i>.
 
 Note that we don't know for certain the exact sound values for different runes and the transliterations should never be interpreted as the correct way to pronounce the inscription. For example, while <i>ø</i> and <i>œ</i> denote the same sound in modern alphabets, runologists use them separately to denote runes with similar, but possibly not identical pronunciation.
 
@@ -275,6 +275,8 @@ The Burseryd font from Småland, Sweden (c. 1300?) has a spelling <b>ᚵᚯᚱ�
 <img src="learn_medieval_futhork">The medieval runes.</img>
 
 The so-called <i>dotted runes</i> (<b>ᚡ, ᚧ, ᚤ, ᚵ, ᛂ, ᛑ, ᛔ</b>) are traditionally transliterated as (respectively) <b>v, ð, y, g, e, d, p</b>. Transliteration with dotted letters is a departure from this standard practice, but it can be useful to show that the characters are derived from their plain counterparts. In this app, we use the traditional transliteration for pragmatic reasons - to use symbols that occur on keyboards.
+
+<img src="learn_dotted_runes_trad">Traditional rendering of the dotted runes.</img>
 
 Sources: <i>Runes: A Handbook</i> by Michael P. Barnes and <i>Runes</i> by Martin Findell.
 </body>

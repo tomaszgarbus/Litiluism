@@ -83,6 +83,7 @@ class ImageResourcesMap {
             "learn_jelling_church" to R.drawable.learn_jelling_church,
             "learn_jelling_stones" to R.drawable.learn_jelling_stones,
             "learn_medieval_futhork" to R.drawable.learn_medieval_futhork,
+            "learn_dotted_runes_trad" to R.drawable.learn_dotted_runes_trad,
             "learn_futhark_6_runes" to R.drawable.learn_futhark_6_runes,
             "learn_aft_kurm" to R.drawable.learn_aft_kurm,
             "learn_aukaft_thaurui" to R.drawable.learn_aukaft_thaurui,
