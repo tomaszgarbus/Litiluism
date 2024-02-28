@@ -77,7 +77,7 @@ fun SettingsItem(
 @Composable
 fun SettingsScreen(navController: NavController) {
     FullScreenPaddedColumn {
-        Header("Settings")
+        Header("Settings & About")
         SettingsItem("About the app", R.drawable.icon_info) {
             navController.navigate("about")
         }
@@ -86,6 +86,9 @@ fun SettingsScreen(navController: NavController) {
         }
         SettingsItem("Input method", R.drawable.icon_input_method) {
             navController.navigate("input_method")
+        }
+        SettingsItem("Materials", R.drawable.icon_materials) {
+            navController.navigate("materials")
         }
     }
     Dock(ButtonType.SETTINGS, navController)

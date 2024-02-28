@@ -44,7 +44,7 @@ fun getResourceId(buttonType: ButtonType): Int {
         ButtonType.HOME -> R.drawable.icon_home
         ButtonType.LEARNING -> R.drawable.icon_learning
         ButtonType.MATERIALS -> R.drawable.icon_materials
-        ButtonType.PRACTICE -> R.drawable.icon_practice
+        ButtonType.PRACTICE -> R.drawable.icon_home
         ButtonType.SETTINGS -> R.drawable.icon_settings
     }
 }
@@ -120,11 +120,14 @@ fun Dock(
                 .align(Alignment.BottomCenter),
         ) {
             Row(
-                modifier = Modifier.height(67.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .height(67.dp)
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                for (buttonType in ButtonType.entries) {
+                for (buttonType in ButtonType.entries.filterNot {
+                    it == ButtonType.HOME || it == ButtonType.MATERIALS }) {
                     DockButton(buttonType, isActive = (activeTab == buttonType), navController)
                 }
             }

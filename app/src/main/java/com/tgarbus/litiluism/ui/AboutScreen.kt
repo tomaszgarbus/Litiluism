@@ -185,7 +185,7 @@ fun Page4(navController: NavController, alreadyCompleted: Boolean, onButtonClick
         if (!alreadyCompleted) {
             PrimaryButton("Get started!") {
                 onButtonClick()
-                navController.navigate("home")
+                navController.navigate("practice")
             }
         }
     }

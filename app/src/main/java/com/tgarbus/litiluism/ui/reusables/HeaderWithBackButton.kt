@@ -8,9 +8,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun HeaderWithBackButton(text: String, navController: NavController) {
+fun HeaderWithBackButton(
+    text: String,
+    navController: NavController,
+    modifier: Modifier = Modifier
+) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         BackButton(navController)

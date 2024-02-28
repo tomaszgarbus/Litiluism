@@ -5,14 +5,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.data.AboutRepository
+import com.tgarbus.litiluism.ui.reusables.OrAboutScreen
 
 @Composable
 fun HomeOrAboutScreen(navController: NavController) {
-    val aboutRepo = AboutRepository()
-    val alreadyCompleted = aboutRepo.getCompletedAsFlow(LocalContext.current).collectAsState(true)
-    if (alreadyCompleted.value) {
+    OrAboutScreen(navController) {
         HomeScreen(navController)
-    } else {
-        AboutScreen(navController)
     }
 }

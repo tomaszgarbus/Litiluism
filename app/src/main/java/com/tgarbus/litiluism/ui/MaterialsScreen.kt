@@ -56,6 +56,7 @@ import com.tgarbus.litiluism.ui.reusables.FiltersSection
 import com.tgarbus.litiluism.ui.reusables.FiltersToggle
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
+import com.tgarbus.litiluism.ui.reusables.HeaderWithBackButton
 import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 
 // TODO: put all this in an embedded file
@@ -362,17 +363,15 @@ fun MaterialsScreen(navController: NavController) {
     val balloonsQueue = BalloonsQueue()
     FullScreenPaddedColumn {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Header(
-                "Materials", modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(2f)
+            HeaderWithBackButton(
+                "Materials", navController, Modifier.weight(2f)
             )
             IntroTooltip(
                 id = "filter_materials",
                 text = "Click here to filter materials by country and language.",
                 queue = balloonsQueue
             ) {
-                FiltersToggle(showFiltersDialog)
+            FiltersToggle(showFiltersDialog)
             }
         }
         AnimatedVisibility(
@@ -391,5 +390,5 @@ fun MaterialsScreen(navController: NavController) {
             }
         }
     }
-    Dock(ButtonType.MATERIALS, navController)
+//    Dock(ButtonType.MATERIALS, navController)
 }

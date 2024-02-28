@@ -62,7 +62,9 @@ fun PracticeScreen(navController: NavController) {
             IntroTooltip(
                 id = "map",
                 text = "Explore the runic objects on the map.",
-                queue = balloonsQueue
+                queue = balloonsQueue,
+                scrollState = scrollState,
+                dependencies = arrayListOf("learn")
             ) {
                 Box(
                     modifier = Modifier
@@ -93,7 +95,9 @@ fun PracticeScreen(navController: NavController) {
                     id = "runetolatin",
                     text = "Practice transliteration, one rune at a time.",
                     queue = balloonsQueue,
-                    Modifier.weight(1f)
+                    scrollState = scrollState,
+                    modifier = Modifier.weight(1f),
+                    dependencies = arrayListOf("learn")
                 ) {
                     PracticeTypeButton(
                         "Rune to Latin",
@@ -106,7 +110,9 @@ fun PracticeScreen(navController: NavController) {
                     id = "latintorune",
                     text = "Practice writing in runes, one rune at a time.",
                     queue = balloonsQueue,
-                    Modifier.weight(1f)
+                    scrollState = scrollState,
+                    modifier = Modifier.weight(1f),
+                    dependencies = arrayListOf("learn")
                 ) {
                     PracticeTypeButton(
                         "Latin to rune",
@@ -122,12 +128,28 @@ fun PracticeScreen(navController: NavController) {
                 queue = balloonsQueue,
                 scrollState = scrollState,
                 modifier = Modifier.fillMaxWidth(),
+                dependencies = arrayListOf("learn")
             ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     PracticeTypeButton(
                         "Text transliteration",
                         R.drawable.button_bg_transliteration_exercises,
                         onClick = { navController.navigate("exerciseslist") }
+                    )
+                }
+            }
+            IntroTooltip(
+                id = "learn",
+                text = "Learn or revise the history of runes here.",
+                queue = balloonsQueue,
+                scrollState = scrollState,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    PracticeTypeButton(
+                        "Learn",
+                        R.drawable.button_bg_lessons_wide,
+                        onClick = { navController.navigate("learning") }
                     )
                 }
             }

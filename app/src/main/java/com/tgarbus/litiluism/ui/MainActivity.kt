@@ -46,12 +46,15 @@ class MainActivity : ComponentActivity() {
             ) {
                 val navController = rememberNavController()
                 NavHost(navController = navController,
-                    startDestination = "homeorabout",
+                    startDestination = "practiceorabout",
                     enterTransition = { EnterTransition.None },
                     exitTransition = { ExitTransition.None },
                     modifier = Modifier.fillMaxSize()) {
-                    composable("homeorabout") {
-                        HomeOrAboutScreen(navController)
+//                    composable("homeorabout") {
+//                        HomeOrAboutScreen(navController)
+//                    }
+                    composable("practiceorabout") {
+                        PracticeOrAboutScreen(navController)
                     }
                     composable("practice") {
                         PracticeScreen(navController)
