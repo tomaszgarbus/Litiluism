@@ -79,7 +79,11 @@ fun ExerciseScreen(
         viewModel.getInputMethodAsFlow(LocalContext.current).collectAsState(InputMethod.VARIANTS)
 
     FullScreenPaddedColumn(unownedScrollState = scrollState) {
-        ExerciseHeaderFrame("Transliteration exercise", title, navController)
+        ExerciseHeaderFrame(
+            LocalContext.current.getString(
+                R.string.transliteration_exercise_header
+            ), title, navController
+        )
         Text(
             text = description,
             modifier = Modifier.padding(vertical = 20.dp),
@@ -107,7 +111,9 @@ fun ExerciseScreen(
         }
         IntroTooltip(
             id = "transliteration_exercise_flow_row",
-            text = "As you solve the exercise, your transliteration will appear directly under the runes.",
+            text = LocalContext.current.getString(
+                R.string.intro_tooltips_transliteration_exercise_flow
+            ),
             queue = balloonsQueue,
             scrollState = scrollState,
         ) {
@@ -161,7 +167,9 @@ fun ExerciseScreen(
         }
         if (state.complete) {
             Text(
-                text = "Correct!",
+                text = LocalContext.current.getString(
+                    R.string.transliteration_exercise_correct
+                ),
                 color = colorResource(id = R.color.correct_green),
                 fontSize = 24.sp,
                 fontFamily = sarabunFontFamily,
@@ -186,7 +194,9 @@ fun ExerciseScreen(
                 )
                 if (transliterationExercise.sources.isNotEmpty()) {
                     Text(
-                        text = "Sources:",
+                        text = LocalContext.current.getString(
+                            R.string.transliteration_exercise_sources
+                        ),
                         fontFamily = sarabunFontFamily,
                         fontSize = 12.sp,
                     )
@@ -201,7 +211,7 @@ fun ExerciseScreen(
             }
             Spacer(modifier = Modifier.height(20.dp))
             PrimaryButton(
-                text = "Complete",
+                text = LocalContext.current.getString(R.string.complete),
                 onClick = {
                     val correct = state.score.correct
                     val total = state.score.total
@@ -210,10 +220,12 @@ fun ExerciseScreen(
             )
         } else {
             val context = LocalContext.current
-            val tooltipText = when (inputMethod.value) {
-                InputMethod.VARIANTS -> "Select the correct transliteration for the currently highlighted rune."
-                InputMethod.KEYBOARD -> "Input the correct transliteration for the currently highlighted rune."
-            }
+            val tooltipText = context.getString(
+                when (inputMethod.value) {
+                    InputMethod.VARIANTS -> R.string.intro_tooltips_transliteration_with_variants
+                    InputMethod.KEYBOARD -> R.string.intro_tooltips_transliteration_with_keyboard
+                }
+            )
             IntroTooltip(
                 id = "transliteration_exercise_three_buttons",
                 text = tooltipText,
@@ -246,7 +258,11 @@ fun ExerciseScreen(
             enter = fadeIn(),
             exit = fadeOut()
         ) {
-            PrimaryOutlinedButton(text = "Reset progress") {
+            PrimaryOutlinedButton(
+                text = LocalContext.current.getString(
+                    R.string.transliteration_exercise_reset_progress
+                )
+            ) {
                 viewModel.resetProgress(context)
             }
         }

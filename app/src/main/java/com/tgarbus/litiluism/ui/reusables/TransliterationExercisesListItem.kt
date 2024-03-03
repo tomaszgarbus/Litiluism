@@ -82,7 +82,7 @@ fun TransliterationExercisesListItem(
                         painter = painterResource(
                             maybeCountryFlagResource(exercise.country)!!
                         ),
-                        countryToName(exercise.country),
+                        countryToName(exercise.country, LocalContext.current),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .align(Alignment.BottomStart)
@@ -103,7 +103,7 @@ fun TransliterationExercisesListItem(
                     fontSize = 16.sp,
                 )
                 Text(
-                    text = exercise.runeRow.baseRuneRow.toDisplayableString(),
+                    text = exercise.runeRow.baseRuneRow.toDisplayableString(LocalContext.current),
                     fontFamily = sarabunFontFamily,
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 16.sp,

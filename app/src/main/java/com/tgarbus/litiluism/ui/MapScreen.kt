@@ -7,9 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.ui.reusables.ChoiceDialog
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.HeaderWithBackButton
@@ -24,7 +26,11 @@ fun MapScreen(
 ) {
     val showLocationDialog = remember { mutableStateOf(viewModel.locationFromSavedStateHandle) }
     FullScreenPaddedColumn(scrollable = false) {
-        HeaderWithBackButton("Pick from map", navController)
+        HeaderWithBackButton(
+            LocalContext.current.getString(
+                R.string.map_header
+            ), navController
+        )
         Box(modifier = Modifier.clip(RoundedCornerShape(size = 21.dp))) {
             MapPreview(navController, onLocationClick = { l ->
                 run {

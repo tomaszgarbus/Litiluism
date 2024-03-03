@@ -213,7 +213,7 @@ fun MaterialTypeMarker(type: MaterialType, modifier: Modifier = Modifier) {
             .padding(start = 10.dp, end = 10.dp)
     ) {
         Text(
-            text = type.toDisplayableString(),
+            text = type.toDisplayableString(LocalContext.current),
             fontFamily = sarabunFontFamily,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
@@ -228,7 +228,7 @@ fun LanguageFlag(language: Language) {
     if (flagResource != null) {
         Image(
             painterResource(flagResource),
-            language.toDisplayableString(),
+            language.toDisplayableString(LocalContext.current),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .requiredSize(18.dp)
@@ -323,10 +323,12 @@ fun Filters(
             values = filters.value.types,
             activeValue = filters.value.activeType,
             onValueChange = { t -> filters.value = filters.value.copy(activeType = t) },
-            categoryName = "Material types"
+            categoryName = LocalContext.current.getString(
+                R.string.materials_material_types
+            )
         ) {
             Text(
-                text = it.toDisplayableString(),
+                text = it.toDisplayableString(LocalContext.current),
                 fontFamily = sarabunFontFamily
             )
         }
@@ -334,10 +336,12 @@ fun Filters(
             values = filters.value.languages,
             activeValue = filters.value.activeLanguage,
             onValueChange = { l -> filters.value = filters.value.copy(activeLanguage = l) },
-            categoryName = "Material language"
+            categoryName = LocalContext.current.getString(
+                R.string.materials_material_language
+            )
         ) {
             Text(
-                text = it.toDisplayableString(),
+                text = it.toDisplayableString(LocalContext.current),
                 fontFamily = sarabunFontFamily
             )
         }
@@ -364,11 +368,15 @@ fun MaterialsScreen(navController: NavController) {
     FullScreenPaddedColumn {
         Row(verticalAlignment = Alignment.CenterVertically) {
             HeaderWithBackButton(
-                "Materials", navController, Modifier.weight(2f)
+                LocalContext.current.getString(
+                    R.string.materials_header
+                ), navController, Modifier.weight(2f)
             )
             IntroTooltip(
                 id = "filter_materials",
-                text = "Click here to filter materials by country and language.",
+                text = LocalContext.current.getString(
+                    R.string.intro_tooltips_filter_materials
+                ),
                 queue = balloonsQueue
             ) {
             FiltersToggle(showFiltersDialog)

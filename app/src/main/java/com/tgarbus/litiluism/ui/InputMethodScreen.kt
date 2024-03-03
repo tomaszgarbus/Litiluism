@@ -77,14 +77,22 @@ fun InputMethodScreen(navController: NavController, viewModel: SettingsViewModel
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     FullScreenPaddedColumn {
-        HeaderWithBackButton("Input method", navController)
+        HeaderWithBackButton(
+            LocalContext.current.getString(
+                R.string.input_method_input_method
+            ), navController
+        )
         Text(
-            text = "Choose how you prefer to input latin letters when transliterating runes. Latin to rune exercise will stay in the Variants mode.",
+            text = LocalContext.current.getString(
+                R.string.input_method_help_text
+            ),
             fontFamily = sarabunFontFamily,
             color = colorResource(R.color.dark_grey)
         )
         Option(
-            "Variants",
+            LocalContext.current.getString(
+                R.string.input_method_variants
+            ),
             R.drawable.icon_input_method_variants,
             inputMethod.value == InputMethod.VARIANTS,
         ) {
@@ -93,7 +101,9 @@ fun InputMethodScreen(navController: NavController, viewModel: SettingsViewModel
             }
         }
         Option(
-            "Manually",
+            LocalContext.current.getString(
+                R.string.input_method_manually
+            ),
             R.drawable.icon_input_method_manually,
             inputMethod.value == InputMethod.KEYBOARD,
         ) {

@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -77,17 +78,37 @@ fun SettingsItem(
 @Composable
 fun SettingsScreen(navController: NavController) {
     FullScreenPaddedColumn {
-        Header("Settings & About")
-        SettingsItem("About the app", R.drawable.icon_info) {
+        Header(
+            LocalContext.current.getString(
+                R.string.settings_header
+            )
+        )
+        SettingsItem(
+            LocalContext.current.getString(
+                R.string.settings_about_the_app
+            ), R.drawable.icon_info
+        ) {
             navController.navigate("about")
         }
-        SettingsItem("Statistics", R.drawable.icon_info) {
+        SettingsItem(
+            LocalContext.current.getString(
+                R.string.settings_statistics
+            ), R.drawable.icon_info
+        ) {
             navController.navigate("statistics")
         }
-        SettingsItem("Input method", R.drawable.icon_input_method) {
+        SettingsItem(
+            LocalContext.current.getString(
+                R.string.settings_input_method
+            ), R.drawable.icon_input_method
+        ) {
             navController.navigate("input_method")
         }
-        SettingsItem("Materials", R.drawable.icon_materials) {
+        SettingsItem(
+            LocalContext.current.getString(
+                R.string.settings_materials
+            ), R.drawable.icon_materials
+        ) {
             navController.navigate("materials")
         }
     }

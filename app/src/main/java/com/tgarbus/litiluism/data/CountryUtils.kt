@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.data
 
+import android.content.Context
 import com.tgarbus.litiluism.R
 
 fun countryFromCode(code: String): Country {
@@ -13,24 +14,15 @@ fun countryFromCode(code: String): Country {
     }
 }
 
-fun countryToName(country: Country): String {
-    return when (country) {
-        Country.ANY -> "All countries"
-        Country.FO -> "Faroe Islands"
-        Country.DA -> "Denmark"
-        Country.IS -> "Iceland"
-        Country.NO -> "Norway"
-        Country.SE -> "Sweden"
-    }
-}
-
-fun nameToCountry(name: String): Country {
-    for (ct in Country.entries) {
-        if (countryToName(ct) == name) {
-            return ct
-        }
-    }
-    return Country.ANY
+fun countryToName(country: Country, context: Context): String {
+    return context.getString(when (country) {
+        Country.ANY -> R.string.country_all
+        Country.FO -> R.string.country_faroe_islands
+        Country.DA -> R.string.country_denmark
+        Country.IS -> R.string.country_iceland
+        Country.NO -> R.string.country_norway
+        Country.SE -> R.string.country_sweden
+    })
 }
 
 fun maybeCountryFlagResource(country: Country): Int? {

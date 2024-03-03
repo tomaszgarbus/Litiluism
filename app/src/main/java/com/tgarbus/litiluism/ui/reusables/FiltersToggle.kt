@@ -10,6 +10,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import com.tgarbus.litiluism.R
@@ -37,7 +38,9 @@ fun FiltersToggle(
     ) {
         Icon(
             painter = painterResource(id = R.drawable.icon_filter),
-            contentDescription = "filters",
+            contentDescription = LocalContext.current.getString(
+                R.string.content_description_filters
+            ),
         )
     }
 }

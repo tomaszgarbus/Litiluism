@@ -77,7 +77,10 @@ fun TileWithSemiCircularProgressBar(
                     canvasModifier = Modifier.fillMaxSize()
                 )
             }
-            Box(Modifier.weight(2f).fillMaxWidth()) {
+            Box(
+                Modifier
+                    .weight(2f)
+                    .fillMaxWidth()) {
                 Text(
                     description,
                     fontFamily = sarabunFontFamily,
@@ -94,7 +97,11 @@ fun ExercisesByCountry(viewModel: StatisticsViewModel) {
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Text("Exercises by country", fontFamily = sarabunFontFamily)
+        Text(
+            LocalContext.current.getString(
+                R.string.statistics_by_country
+            ), fontFamily = sarabunFontFamily
+        )
         for (country in Country.entries.filterNot { it == Country.ANY }) {
             Row(
                 Modifier
@@ -136,7 +143,9 @@ fun ExercisesByCountry(viewModel: StatisticsViewModel) {
                                 fontFamily = sarabunFontFamily,
                                 color = Color.White,
                                 textAlign = TextAlign.End,
-                                modifier = Modifier.fillMaxWidth().padding(horizontal = 5.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 5.dp),
                                 fontSize = 14.sp,
                             )
                         }
@@ -153,7 +162,9 @@ fun ExercisesByCountry(viewModel: StatisticsViewModel) {
                                 fontFamily = sarabunFontFamily,
                                 color = colorResource(R.color.primary),
                                 textAlign = TextAlign.Start,
-                                modifier = Modifier.fillMaxWidth().padding(horizontal = 5.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 5.dp),
                                 fontSize = 14.sp,
                             )
                         }
@@ -169,7 +180,7 @@ fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewMode
     FullScreenPaddedColumn {
         Row(verticalAlignment = Alignment.CenterVertically) {
             BackButton(navController)
-            Header("Statistics")
+            Header(LocalContext.current.getString(R.string.statistics_header))
         }
         val context = LocalContext.current
         val lessonsPercentage =
@@ -181,14 +192,18 @@ fun StatisticsScreen(navController: NavController, viewModel: StatisticsViewMode
         ) {
             TileWithSemiCircularProgressBar(
                 progressPercentage = lessonsPercentage.value,
-                description = "lessons completed",
+                description = LocalContext.current.getString(
+                    R.string.statistics_lessons_completed
+                ),
                 tileModifier = Modifier
                     .weight(1f)
                     .aspectRatio(1f)
             )
             TileWithSemiCircularProgressBar(
                 progressPercentage = exercisesPercentage.value,
-                description = "exercises completed",
+                description = LocalContext.current.getString(
+                    R.string.statistics_exercises_completed
+                ),
                 tileModifier = Modifier
                     .weight(1f)
                     .aspectRatio(1f)

@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.InputMethod
+import com.tgarbus.litiluism.data.toDisplayableString
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.ExerciseHeaderFrame
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
@@ -29,10 +30,16 @@ fun RuneToLatinExerciseScreen(
     val inputMethod =
         viewModel.getInputMethodAsFlow(LocalContext.current).collectAsState(InputMethod.VARIANTS)
     FullScreenPaddedColumn {
-        ExerciseHeaderFrame("Rune to latin exercise", viewModel.runeRowName, navController)
+        ExerciseHeaderFrame(
+            LocalContext.current.getString(
+                R.string.rune_to_latin_header
+            ), viewModel.baseRuneRow.toDisplayableString(LocalContext.current), navController
+        )
         if (viewModel.finished.collectAsState().value) {
             PrimaryButton(
-                text = "Complete",
+                text = LocalContext.current.getString(
+                    R.string.complete
+                ),
                 onClick = {
                     val correct = viewModel.score.value.correct
                     val total = viewModel.score.value.total
@@ -41,7 +48,11 @@ fun RuneToLatinExerciseScreen(
             )
         } else {
             Text(
-                "${viewModel.queueSize} left",
+                "${viewModel.queueSize} ${
+                    LocalContext.current.getString(
+                        R.string.rune_to_latin_left
+                    )
+                }",
                 fontFamily = sarabunFontFamily,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()

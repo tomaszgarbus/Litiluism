@@ -1,5 +1,8 @@
 package com.tgarbus.litiluism.data
 
+import android.content.Context
+import com.tgarbus.litiluism.R
+
 enum class Country {
     ANY,
     SE,
@@ -111,14 +114,14 @@ enum class Language {
     PL
 }
 
-fun Language.toDisplayableString(): String {
-    return when (this) {
-        Language.ANY -> "any"
-        Language.EN -> "English"
-        Language.DA -> "Danish"
-        Language.SE -> "Swedish"
-        Language.PL -> "Polish"
-    }
+fun Language.toDisplayableString(context: Context): String {
+    return context.getString(when (this) {
+        Language.ANY -> R.string.lang_any
+        Language.EN -> R.string.lang_english
+        Language.DA -> R.string.lang_danish
+        Language.SE -> R.string.lang_swedish
+        Language.PL -> R.string.lang_polish
+    })
 }
 
 enum class MaterialType {
@@ -129,14 +132,14 @@ enum class MaterialType {
     TV
 }
 
-fun MaterialType.toDisplayableString(): String {
-    return when (this) {
-        MaterialType.ANY -> "all"
-        MaterialType.BOOK -> "book"
-        MaterialType.PODCAST -> "podcast"
-        MaterialType.ONLINE_ARTICLE -> "article"
-        MaterialType.TV -> "TV"
-    }
+fun MaterialType.toDisplayableString(context: Context): String {
+    return context.getString(when (this) {
+        MaterialType.ANY -> R.string.material_type_any
+        MaterialType.BOOK -> R.string.material_type_book
+        MaterialType.PODCAST -> R.string.material_type_podcast
+        MaterialType.ONLINE_ARTICLE -> R.string.material_type_article
+        MaterialType.TV -> R.string.material_type_tv
+    })
 }
 
 data class Material(

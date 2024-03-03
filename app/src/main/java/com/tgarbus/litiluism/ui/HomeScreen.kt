@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -50,7 +51,9 @@ fun GreenBanner(
         val painter = painterResource(R.drawable.banner_home)
         Image(
             painter,
-            "banner",
+            contentDescription = LocalContext.current.getString(
+                R.string.content_description_banner
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(painter.intrinsicSize.width / painter.intrinsicSize.height),

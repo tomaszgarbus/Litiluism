@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui.reusables
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,6 +25,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -49,14 +51,16 @@ fun getResourceId(buttonType: ButtonType): Int {
     }
 }
 
-fun getName(buttonType: ButtonType): String {
-    return when (buttonType) {
-        ButtonType.HOME -> "Home"
-        ButtonType.SETTINGS -> "Settings"
-        ButtonType.PRACTICE -> "Practice"
-        ButtonType.MATERIALS -> "Materials"
-        ButtonType.LEARNING -> "Learning"
-    }
+fun getName(buttonType: ButtonType, context: Context): String {
+    return context.getString(
+        when (buttonType) {
+            ButtonType.HOME -> R.string.dock_home
+            ButtonType.SETTINGS -> R.string.dock_settings
+            ButtonType.PRACTICE -> R.string.dock_practice
+            ButtonType.MATERIALS -> R.string.dock_materials
+            ButtonType.LEARNING -> R.string.dock_learning
+        }
+    )
 }
 
 fun getLink(buttonType: ButtonType): String {
@@ -81,7 +85,7 @@ fun DockButton(
     ) {
         Image(
             painterResource(getResourceId(buttonType)),
-            getName(buttonType),
+            getName(buttonType, LocalContext.current),
             modifier = Modifier
                 .size(25.dp),
             colorFilter = if (isActive) ColorFilter.tint(
@@ -127,7 +131,8 @@ fun Dock(
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 for (buttonType in ButtonType.entries.filterNot {
-                    it == ButtonType.HOME || it == ButtonType.MATERIALS }) {
+                    it == ButtonType.HOME || it == ButtonType.MATERIALS
+                }) {
                     DockButton(buttonType, isActive = (activeTab == buttonType), navController)
                 }
             }

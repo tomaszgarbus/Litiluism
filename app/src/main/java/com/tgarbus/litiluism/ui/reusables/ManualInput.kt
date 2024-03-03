@@ -16,9 +16,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.ThreeButtonOptions
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 
@@ -35,9 +37,9 @@ fun ManualInput(
     ) {
         Column {
             InputFeedbackText(
-                "Correct answer is: ${
+                "${LocalContext.current.getString(R.string.manual_input_correct_answer_is)}: ${
                     correctAnswers?.joinToString(separator = "/") { c -> c.toString() }
-                }. Input below to continue.",
+                }. ${LocalContext.current.getString(R.string.manual_input_input_below)}",
                 showFeedback.value
             )
             TextField(
@@ -64,7 +66,13 @@ fun ManualInput(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent
                 ),
-                label = { Text("Input 1 letter") },
+                label = {
+                    Text(
+                        LocalContext.current.getString(
+                            R.string.manual_input_text_field_label
+                        )
+                    )
+                },
                 textStyle = TextStyle(
                     fontFamily = sarabunFontFamily,
                     fontSize = 20.sp

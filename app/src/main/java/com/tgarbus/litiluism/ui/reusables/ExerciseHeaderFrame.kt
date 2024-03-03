@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -29,12 +30,17 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 fun ExerciseHeaderFrame(
     exerciseType: String,
     title: String,
-    navController: NavController) {
+    navController: NavController
+) {
     Row(
         modifier = Modifier.fillMaxWidth()
     ) {
         Spacer(modifier = Modifier.weight(1f))
-        CloseButton(description = "Close exercise") { navController.popBackStack() }
+        CloseButton(
+            description = LocalContext.current.getString(
+                R.string.content_description_close_exercise
+            )
+        ) { navController.popBackStack() }
     }
     Text(
         text = exerciseType,

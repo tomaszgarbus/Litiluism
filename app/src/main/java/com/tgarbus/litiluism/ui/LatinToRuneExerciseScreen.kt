@@ -5,12 +5,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.data.toDisplayableString
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.ExerciseHeaderFrame
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
@@ -24,10 +26,14 @@ fun LatinToRuneExerciseScreen(
     viewModel: LatinToRuneExerciseViewModel = viewModel()
 ) {
     FullScreenPaddedColumn {
-        ExerciseHeaderFrame("Rune to latin exercise", viewModel.runeRowName, navController)
+        ExerciseHeaderFrame(LocalContext.current.getString(
+            R.string.latin_to_rune_header
+        ), viewModel.baseRuneRow.toDisplayableString(LocalContext.current), navController)
         if (viewModel.finished.collectAsState().value) {
             PrimaryButton(
-                text = "Complete",
+                text = LocalContext.current.getString(
+                    R.string.complete
+                ),
                 onClick = {
                     val correct = viewModel.score.value.correct
                     val total = viewModel.score.value.total
@@ -36,7 +42,11 @@ fun LatinToRuneExerciseScreen(
             )
         } else {
             Text(
-                "${viewModel.queueSize} left",
+                "${viewModel.queueSize} ${
+                    LocalContext.current.getString(
+                        R.string.latin_to_rune_left
+                    )
+                }",
                 fontFamily = sarabunFontFamily,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()

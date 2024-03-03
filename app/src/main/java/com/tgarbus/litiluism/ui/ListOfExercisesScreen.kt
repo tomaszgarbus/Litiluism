@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -64,7 +65,7 @@ data class ExerciseFilters(
 
 @Composable
 fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Country, Int>) {
-    val buttonText = countryToName(country)
+    val buttonText = countryToName(country, LocalContext.current)
     val flagResource = maybeCountryFlagResource(country)
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -73,7 +74,7 @@ fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Coun
         if (flagResource != null) {
             Image(
                 painterResource(flagResource),
-                countryToName(country),
+                countryToName(country, LocalContext.current),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .requiredSize(24.dp)
@@ -117,7 +118,9 @@ fun Filters(
             values = filters.value.countries,
             activeValue = filters.value.activeCountry,
             onValueChange = { c -> filters.value = filters.value.copy(activeCountry = c) },
-            categoryName = "Countries",
+            categoryName = LocalContext.current.getString(
+                R.string.list_of_exercises_countries
+            ),
         ) {
             CountryButtonContent(it, exercisesByCountryCount)
         }
@@ -125,10 +128,12 @@ fun Filters(
             values = filters.value.runeRows,
             activeValue = filters.value.activeRuneRow,
             onValueChange = { r -> filters.value = filters.value.copy(activeRuneRow = r) },
-            categoryName = "Runic alphabets"
+            categoryName = LocalContext.current.getString(
+                R.string.list_of_exercises_runic_alphabets
+            )
         ) {
             Text(
-                text = baseRuneRowToString(it),
+                text = baseRuneRowToString(it, LocalContext.current),
                 fontFamily = sarabunFontFamily
             )
         }
@@ -165,13 +170,19 @@ fun ListOfExercisesScreen(
         Row(verticalAlignment = Alignment.CenterVertically) {
             BackButton(navController)
             Header(
-                "Transliteration exercises",
+                LocalContext.current.getString(
+                    R.string.list_of_exercises_header
+                ),
                 modifier = Modifier
                     .padding(vertical = 20.dp)
                     .fillMaxWidth()
                     .weight(2f)
             )
-            IntroTooltip(id = "filter_exercises", text = "Click here to filter exercises.", queue = balloonsQueue) {
+            IntroTooltip(
+                id = "filter_exercises", text = LocalContext.current.getString(
+                    R.string.intro_tooltips_filter_exercises
+                ), queue = balloonsQueue
+            ) {
                 FiltersToggle(showFiltersDialog)
             }
         }
@@ -188,7 +199,7 @@ fun ListOfExercisesScreen(
         for (exercise in transliterationExercises) {
             AnimatedVisibility(
                 visible = showExercise(exercise, filters.value),
-                enter = slideInHorizontally(initialOffsetX = { - 2 * it }),
+                enter = slideInHorizontally(initialOffsetX = { -2 * it }),
                 exit = slideOutHorizontally(targetOffsetX = { 2 * it })
             ) {
                 TransliterationExercisesListItem(

@@ -43,7 +43,7 @@ fun PrimaryButton(text: String, onClick: () -> Unit) {
         Spacer(modifier = Modifier.width(10.dp))
         Image(
             painterResource(R.drawable.icon_forward),
-            "Complete",
+            contentDescription = text,
             modifier = Modifier.size(20.dp),
         )
     }

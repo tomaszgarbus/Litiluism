@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -76,7 +77,9 @@ fun AfterExerciseScreen(
         Image(
             painter = painterResource(R.drawable.background_secondary_gradient_with_runes),
             modifier = Modifier.fillMaxSize(),
-            contentDescription = "Background",
+            contentDescription = LocalContext.current.getString(
+                R.string.content_description_background
+            ),
             contentScale = ContentScale.FillBounds
         )
         Column(
@@ -85,7 +88,9 @@ fun AfterExerciseScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Keep it up!",
+                text = LocalContext.current.getString(
+                    R.string.after_exercise_keep_it_up
+                ),
                 fontFamily = sarabunFontFamily,
                 fontWeight = FontWeight.ExtraBold,
                 color = colorResource(R.color.primary),
@@ -93,7 +98,9 @@ fun AfterExerciseScreen(
             )
             ScoreDisplay(viewModel.score)
             PrimaryButton(
-                text = "Back to practice",
+                text = LocalContext.current.getString(
+                    R.string.after_exercise_back_to_practice
+                ),
                 onClick = {
                     navController.popBackStack()
                     navController.popBackStack()

@@ -19,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -47,7 +48,11 @@ fun ThreeAnswerButtons(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            InputFeedbackText("Click the correct answer to continue", showFeedback.value)
+            InputFeedbackText(
+                LocalContext.current.getString(
+                    R.string.variants_input_click_correct_answer
+                ), showFeedback.value
+            )
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),

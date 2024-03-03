@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -40,15 +41,10 @@ import com.tgarbus.litiluism.R
 
 @Composable
 fun ChoiceDialog(
-    visible: Boolean,
-    onClose: () -> Unit,
-    title: String,
-    content: @Composable () -> Unit
+    visible: Boolean, onClose: () -> Unit, title: String, content: @Composable () -> Unit
 ) {
     androidx.compose.animation.AnimatedVisibility(
-        visible = visible,
-        enter = fadeIn(),
-        exit = fadeOut()
+        visible = visible, enter = fadeIn(), exit = fadeOut()
     ) {
         Box(
             modifier = Modifier
@@ -57,9 +53,7 @@ fun ChoiceDialog(
         ) {}
     }
     androidx.compose.animation.AnimatedVisibility(
-        visible = visible,
-        enter = slideInVertically(),
-        exit = slideOutVertically()
+        visible = visible, enter = slideInVertically(), exit = slideOutVertically()
     ) {
         val scrollState = rememberScrollState()
 
@@ -75,12 +69,15 @@ fun ChoiceDialog(
         ) {
             Row {
                 Spacer(modifier = Modifier.weight(1f))
-                CloseButton(description = "Close dialog") { onClose() }
+                CloseButton(
+                    description = LocalContext.current.getString(
+                        R.string.content_description_close_dialog
+                    )
+                ) { onClose() }
             }
             Text(
                 text = title,
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 style = TextStyle(
                     fontSize = 16.sp,

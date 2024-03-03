@@ -96,14 +96,18 @@ fun LessonTextBlockOnImageView(textBlock: LessonTextBlock) {
             if (hidden.value) {
                 Icon(
                     painterResource(R.drawable.icon_question_mark),
-                    "show description",
+                    LocalContext.current.getString(
+                        R.string.content_description_show_description
+                    ),
                     modifier = Modifier.size(14.dp),
                     tint = colorResource(R.color.black)
                 )
             } else {
                 Icon(
                     painterResource(R.drawable.icon_backarrow),
-                    "hide description",
+                    LocalContext.current.getString(
+                        R.string.content_description_hide_description
+                    ),
                     modifier = Modifier.size(14.dp),
                     tint = colorResource(R.color.black)
                 )
@@ -152,10 +156,16 @@ fun LessonHeaderFrame(lesson: Lesson, navController: NavController) {
         modifier = Modifier.fillMaxWidth()
     ) {
         Spacer(modifier = Modifier.weight(1f))
-        CloseButton(description = "Close lesson") { navController.popBackStack() }
+        CloseButton(
+            description = LocalContext.current.getString(
+                R.string.content_description_close_lesson
+            )
+        ) { navController.popBackStack() }
     }
     Text(
-        text = "Lesson",
+        text = LocalContext.current.getString(
+            R.string.lesson_lesson
+        ),
         modifier = Modifier
             .fillMaxWidth(),
         textAlign = TextAlign.Center,
@@ -195,7 +205,7 @@ fun LessonScreen(navController: NavController, viewModel: LessonViewModel = view
         LessonHeaderFrame(lesson, navController)
         LessonView(lesson)
         val context = LocalContext.current
-        PrimaryButton("Complete") {
+        PrimaryButton(LocalContext.current.getString(R.string.complete)) {
             viewModel.markAsComplete(context)
             navController.popBackStack()
         }

@@ -60,7 +60,11 @@ fun LessonListItem(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Lesson ${lessonNumber + 1}",
+                    text = "${
+                        LocalContext.current.getString(
+                            R.string.learning_lesson
+                        )
+                    } ${lessonNumber + 1}",
                     fontFamily = sarabunFontFamily,
                     color = colorResource(R.color.primary),
                     fontSize = 14.sp,
@@ -95,7 +99,11 @@ fun LessonsScreen(navController: NavController, viewModel: LearningViewModel = v
         viewModel.getCompletedLessons(LocalContext.current).collectAsState(setOf())
     Box(modifier = Modifier.fillMaxSize()) {
         FullScreenPaddedColumn {
-            Header("Learn")
+            Header(
+                LocalContext.current.getString(
+                    R.string.learning_learn
+                )
+            )
             StaticContentRepository.getInstance().lessons.forEachIndexed { i, lesson ->
                 LessonListItem(lesson, i, completedLessons.value.contains(lesson.id), navController)
             }

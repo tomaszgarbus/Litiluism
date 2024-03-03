@@ -177,7 +177,9 @@ fun IntroTooltip(
                 Column {
                     Text(text)
                     Text(
-                        "GOT IT",
+                        LocalContext.current.getString(
+                            R.string.intro_tooltips_got_it
+                        ),
                         fontFamily = sarabunFontFamily,
                         color = colorResource(R.color.primary),
                         fontSize = 16.sp,

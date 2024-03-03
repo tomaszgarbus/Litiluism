@@ -59,14 +59,14 @@ import kotlin.math.max
 fun Page1() {
     Column {
         Text(
-            text = "Welcome!",
+            text = LocalContext.current.getString(R.string.about_screen_welcome),
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.primary),
         )
         Text(
-            text = "First things first. You're probably wondering...",
+            text = LocalContext.current.getString(R.string.about_screen_first_things_first),
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
@@ -74,9 +74,9 @@ fun Page1() {
         )
         Text(
             text = buildAnnotatedString {
-                append("what ")
+                append("${LocalContext.current.getString(R.string.about_screen_what)} ")
                 withStyle(SpanStyle(fontStyle = FontStyle.Italic)) {
-                    append("is")
+                    append(LocalContext.current.getString(R.string.about_screen_is))
                 }
                 append(" Litiluism?")
             },
@@ -86,7 +86,7 @@ fun Page1() {
             color = colorResource(R.color.dark_grey),
         )
         Text(
-            text = "Swipe left to find out.",
+            text = LocalContext.current.getString(R.string.about_screen_swipe_left),
             fontSize = 16.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
@@ -107,11 +107,23 @@ fun Page2() {
         )
         Text(
             text = buildAnnotatedString {
-                append("While it sounds like an English word, it is in fact a ")
+                append(
+                    LocalContext.current.getString(
+                        R.string.about_screen_while_it_sounds
+                    )
+                )
                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("transliteration")
+                    append(
+                        LocalContext.current.getString(
+                            R.string.about_screen_transliteraion
+                        )
+                    )
                 }
-                append(" of a runic inscription found in Oseberg, Norway:")
+                append(
+                    LocalContext.current.getString(
+                        R.string.about_screen_of_a_runic_inscription
+                    )
+                )
             },
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
@@ -134,14 +146,20 @@ fun Page2() {
 fun Page3() {
     Column {
         Text(
-            text = "It is sometimes interpreted as ",
+            text = LocalContext.current.getString(
+                R.string.about_screen_it_is_sometimes
+            ),
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
         Text(
-            text = "lítilvíss maðr - man knows little",
+            text = "lítilvíss maðr - ${
+                LocalContext.current.getString(
+                    R.string.about_screen_man_knows_little
+                )
+            }",
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
@@ -149,9 +167,9 @@ fun Page3() {
             color = colorResource(R.color.primary),
         )
         Text(
-            text = buildAnnotatedString {
-                append("It may be a statement that human knowledge is limited, or perhaps some viking was just insulting their friend.")
-            },
+            text = LocalContext.current.getString(
+                R.string.about_screen_it_may_be_a_statement
+            ),
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
@@ -164,18 +182,18 @@ fun Page3() {
 fun Page4(navController: NavController, alreadyCompleted: Boolean, onButtonClick: () -> Unit) {
     Column {
         Text(
-            text = buildAnnotatedString {
-                append("Personally, we choose to take it as an invitation to learn and gain new knowledge.")
-            },
+            text = LocalContext.current.getString(
+                R.string.about_screen_personally
+            ),
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.dark_grey),
         )
         Text(
-            text = buildAnnotatedString {
-                append("Join us on the journey through the history written in runes!")
-            },
+            text = LocalContext.current.getString(
+                R.string.about_screen_join_us
+            ),
             fontSize = 20.sp,
             fontFamily = sarabunFontFamily,
             fontWeight = FontWeight.Bold,
@@ -183,7 +201,11 @@ fun Page4(navController: NavController, alreadyCompleted: Boolean, onButtonClick
         )
         Spacer(modifier = Modifier.height(20.dp))
         if (!alreadyCompleted) {
-            PrimaryButton("Get started!") {
+            PrimaryButton(
+                LocalContext.current.getString(
+                    R.string.about_screen_get_started
+                )
+            ) {
                 onButtonClick()
                 navController.navigate("practice")
             }
@@ -264,12 +286,18 @@ fun AboutScreen(navController: NavController) {
                         .padding(20.dp)
                 ) {
                     Spacer(modifier = Modifier.weight(1f))
-                    CloseButton(description = "Close") { navController.popBackStack() }
+                    CloseButton(
+                        description = LocalContext.current.getString(
+                            R.string.content_description_close
+                        )
+                    ) { navController.popBackStack() }
                 }
             }
             Image(
                 painterResource(R.drawable.banner_about_screen),
-                "App logo"
+                contentDescription = LocalContext.current.getString(
+                    R.string.content_description_app_logo
+                )
             )
             Text(
                 "Litiluism",

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -55,7 +56,7 @@ fun RuneRowList(
                 ) {
                     Column {
                         Text(
-                            baseRuneRowToString(runeRow),
+                            baseRuneRowToString(runeRow, LocalContext.current),
                             fontFamily = sarabunFontFamily,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold
@@ -71,7 +72,12 @@ fun RuneRowList(
                             color = colorResource(R.color.dim_grey_text)
                         )
                     }
-                    Icon(painterResource(R.drawable.icon_forward), "select")
+                    Icon(
+                        painterResource(R.drawable.icon_forward),
+                        LocalContext.current.getString(
+                            R.string.content_description_select
+                        )
+                    )
                 }
             }
         }

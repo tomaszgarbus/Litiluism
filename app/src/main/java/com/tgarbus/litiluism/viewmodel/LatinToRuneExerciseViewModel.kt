@@ -26,7 +26,7 @@ class LatinToRuneExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewMod
         get() = queue.size
     val optionsFlow = MutableStateFlow(getOptions())
     val questionsFlow = MutableStateFlow(getQuestion())
-    val runeRowName = runeRow.baseRuneRow.toDisplayableString()
+    val baseRuneRow = runeRow.baseRuneRow
     val finished = MutableStateFlow(false)
     val score = mutableStateOf(ExerciseScore())
 

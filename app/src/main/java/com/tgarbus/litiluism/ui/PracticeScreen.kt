@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui
 
+import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
@@ -42,11 +44,13 @@ fun DestinationType.toNavigationString(): String {
     }
 }
 
-fun DestinationType.toDisplayableString(): String {
-    return when (this) {
-        DestinationType.LATIN_TO_RUNE -> "Latin to rune"
-        DestinationType.RUNE_TO_LATIN -> "Rune to latin"
-    }
+fun DestinationType.toDisplayableString(context: Context): String {
+    return context.getString(
+        when (this) {
+            DestinationType.LATIN_TO_RUNE -> R.string.practice_latin_to_rune
+            DestinationType.RUNE_TO_LATIN -> R.string.practice_rune_to_latin
+        }
+    )
 }
 
 @Composable
@@ -57,11 +61,17 @@ fun PracticeScreen(navController: NavController) {
         FullScreenPaddedColumn(
             unownedScrollState = scrollState
         ) {
-            Header("Practice")
+            Header(
+                LocalContext.current.getString(
+                    R.string.practice_header
+                )
+            )
             val balloonsQueue = BalloonsQueue()
             IntroTooltip(
                 id = "map",
-                text = "Explore the runic objects on the map.",
+                text = LocalContext.current.getString(
+                    R.string.intro_tooltips_explore_on_map
+                ),
                 queue = balloonsQueue,
                 scrollState = scrollState,
                 dependencies = arrayListOf("learn")
@@ -78,7 +88,9 @@ fun PracticeScreen(navController: NavController) {
                 ) {
                     MapPreview(navController, onLocationClick = {})
                     PracticeTypeButtonText(
-                        name = "Pick from map",
+                        name = LocalContext.current.getString(
+                            R.string.practice_pick_from_map
+                        ),
                     )
                     Box(modifier = Modifier
                         .fillMaxSize()
@@ -93,14 +105,18 @@ fun PracticeScreen(navController: NavController) {
             ) {
                 IntroTooltip(
                     id = "runetolatin",
-                    text = "Practice transliteration, one rune at a time.",
+                    text = LocalContext.current.getString(
+                        R.string.intro_tooltips_rune_to_latin
+                    ),
                     queue = balloonsQueue,
                     scrollState = scrollState,
                     modifier = Modifier.weight(1f),
                     dependencies = arrayListOf("learn")
                 ) {
                     PracticeTypeButton(
-                        "Rune to Latin",
+                        LocalContext.current.getString(
+                            R.string.practice_rune_to_latin
+                        ),
                         R.drawable.button_bg_rune_to_latin,
                         Modifier.weight(1f),
                         onClick = { runeRowDialogDestination.value = DestinationType.RUNE_TO_LATIN }
@@ -108,14 +124,18 @@ fun PracticeScreen(navController: NavController) {
                 }
                 IntroTooltip(
                     id = "latintorune",
-                    text = "Practice writing in runes, one rune at a time.",
+                    text = LocalContext.current.getString(
+                        R.string.intro_tooltips_latin_to_rune
+                    ),
                     queue = balloonsQueue,
                     scrollState = scrollState,
                     modifier = Modifier.weight(1f),
                     dependencies = arrayListOf("learn")
                 ) {
                     PracticeTypeButton(
-                        "Latin to rune",
+                        LocalContext.current.getString(
+                            R.string.practice_latin_to_rune
+                        ),
                         R.drawable.button_bg_latin_to_rune,
                         Modifier.weight(1f),
                         onClick = { runeRowDialogDestination.value = DestinationType.LATIN_TO_RUNE }
@@ -124,7 +144,9 @@ fun PracticeScreen(navController: NavController) {
             }
             IntroTooltip(
                 id = "transliteration",
-                text = "Practice transliteration of full inscriptions!",
+                text = LocalContext.current.getString(
+                    R.string.intro_tooltips_transliteration
+                ),
                 queue = balloonsQueue,
                 scrollState = scrollState,
                 modifier = Modifier.fillMaxWidth(),
@@ -132,7 +154,9 @@ fun PracticeScreen(navController: NavController) {
             ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     PracticeTypeButton(
-                        "Text transliteration",
+                        LocalContext.current.getString(
+                            R.string.practice_text_transliteration
+                        ),
                         R.drawable.button_bg_transliteration_exercises,
                         onClick = { navController.navigate("exerciseslist") }
                     )
@@ -140,14 +164,18 @@ fun PracticeScreen(navController: NavController) {
             }
             IntroTooltip(
                 id = "learn",
-                text = "Learn or revise the history of runes here.",
+                text = LocalContext.current.getString(
+                    R.string.intro_tooltips_learn
+                ),
                 queue = balloonsQueue,
                 scrollState = scrollState,
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     PracticeTypeButton(
-                        "Learn",
+                        LocalContext.current.getString(
+                            R.string.practice_learn
+                        ),
                         R.drawable.button_bg_lessons_wide,
                         onClick = { navController.navigate("learning") }
                     )
@@ -158,7 +186,7 @@ fun PracticeScreen(navController: NavController) {
         ListOfRuneRowsDialog(
             visible = runeRowDialogDestination.value != null,
             onClose = { runeRowDialogDestination.value = null },
-            title = runeRowDialogDestination.value?.toDisplayableString() ?: "",
+            title = runeRowDialogDestination.value?.toDisplayableString(LocalContext.current) ?: "",
             onSelectItem = { baseRuneRow ->
                 val destination = runeRowDialogDestination.value
                 if (destination != null) {

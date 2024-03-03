@@ -1,3 +1,160 @@
 <resources>
     <string name="app_name">Litiluism</string>
+
+    <!--Countries-->
+    <string name="country_all">All countries</string>
+    <string name="country_faroe_islands">Faroe Islands</string>
+    <string name="country_denmark">Denmark</string>
+    <string name="country_iceland">Iceland</string>
+    <string name="country_norway">Norway</string>
+    <string name="country_sweden">Sweden</string>
+
+    <!--Languages-->
+    <string name="lang_any">any</string>
+    <string name="lang_english">English</string>
+    <string name="lang_danish">Danish</string>
+    <string name="lang_swedish">Swedish</string>
+    <string name="lang_polish">Polish</string>
+
+    <!--Material types-->
+    <string name="material_type_any">any</string>
+    <string name="material_type_book">book</string>
+    <string name="material_type_podcast">podcast</string>
+    <string name="material_type_article">article</string>
+    <string name="material_type_tv">TV</string>
+
+    <!--Alphabets-->
+    <string name="alphabet_all">All alphabets</string>
+    <string name="alphabet_medieval">Medieval fuþork</string>
+    <string name="alphabet_anglo_saxon">Anglo-Saxon fuþorc</string>
+    <string name="alphabet_younger_futhark_short_twig">Short-twig younger fuþark</string>
+    <string name="alphabet_younger_futhark_long_branch">Long-branch younger fuþark</string>
+    <string name="alphabet_older_futhark">Older fuþark</string>
+
+    <!--Content descriptions-->
+    <string name="content_description_back">Back</string>
+    <string name="content_description_close">Close</string>
+    <string name="content_description_close_dialog">Close dialog</string>
+    <string name="content_description_close_exercise">Close exercise</string>
+    <string name="content_description_close_lesson">Close lesson</string>
+    <string name="content_description_filters">Filters</string>
+    <string name="content_description_select">Select</string>
+    <string name="content_description_app_logo">App logo</string>
+    <string name="content_description_background">Background</string>
+    <string name="content_description_banner">Banner</string>
+    <string name="content_description_show_description">Show description</string>
+    <string name="content_description_hide_description">Hide description</string>
+
+    <!--Common-->
+    <string name="complete">Complete</string>
+
+    <!--Dock-->
+    <string name="dock_home">Home</string>
+    <string name="dock_learning">Learning</string>
+    <string name="dock_practice">Practice</string>
+    <string name="dock_materials">Materials</string>
+    <string name="dock_settings">Settings</string>
+
+    <!--Intro tooltips-->
+    <string name="intro_tooltips_got_it">GOT IT</string>
+    <string name="intro_tooltips_filter_exercises">Click here to filter exercises.</string>
+    <string name="intro_tooltips_filter_materials">Click here to filter materials by country and language.</string>
+    <string name="intro_tooltips_explore_on_map">Explore the runic objects on the map.</string>
+    <string name="intro_tooltips_rune_to_latin">Practice transliteration, one rune at a time.</string>
+    <string name="intro_tooltips_latin_to_rune">Practice writing in runes, one rune at a time.</string>
+    <string name="intro_tooltips_transliteration">Practice transliteration of full inscriptions!</string>
+    <string name="intro_tooltips_learn">Learn or revise the history of runes here.</string>
+    <string name="intro_tooltips_transliteration_exercise_flow">As you solve the exercise, your transliteration will appear directly under the runes.</string>
+    <string name="intro_tooltips_transliteration_with_variants">Select the correct transliteration for the currently highlighted rune</string>
+    <string name="intro_tooltips_transliteration_with_keyboard">Input the correct transliteration for the currently highlighted rune.</string>
+
+    <!--Manual input-->
+    <string name="manual_input_text_field_label">Input 1 letter</string>
+    <string name="manual_input_correct_answer_is">Correct answer is</string>
+    <string name="manual_input_input_below">Input below to continue.</string>
+
+    <!--Variants input-->
+    <string name="variants_input_click_correct_answer">Click the correct answer to continue</string>
+
+    <!--About screen-->
+    <string name="about_screen_welcome">Welcome!</string>
+    <string name="about_screen_first_things_first">First things first. You\'re probably wondering...</string>
+    <!--Next 2 are: "what **is** Litiluism?"-->
+    <string name="about_screen_what">what</string>
+    <string name="about_screen_is">is</string>
+    <string name="about_screen_swipe_left">Swipe left to find out.</string>
+    <string name="about_screen_while_it_sounds">While it sounds like an English word, it is in fact a </string>
+    <string name="about_screen_transliteraion">transliteration</string>
+    <string name="about_screen_of_a_runic_inscription"> of a runic inscription found in Oseberg, Norway:</string>
+    <string name="about_screen_it_is_sometimes">It is sometimes interpreted as </string>
+    <string name="about_screen_man_knows_little">man knows little</string>
+    <string name="about_screen_it_may_be_a_statement">It may be a statement that human knowledge is limited, or perhaps some viking was just insulting their friend.</string>
+    <string name="about_screen_personally">Personally, we choose to take it as an invitation to learn and gain new knowledge."</string>
+    <string name="about_screen_join_us">Join us on the journey through the history written in runes!</string>
+    <string name="about_screen_get_started">Get started!</string>
+
+    <!--After exercise screen-->
+    <string name="after_exercise_keep_it_up">Keep it up!</string>
+    <string name="after_exercise_back_to_practice">Back to practice</string>
+
+    <!--Input method screen-->
+    <string name="input_method_input_method">Input method</string>
+    <string name="input_method_help_text">Choose how you prefer to input latin letters when transliterating runes. Latin to rune exercise will stay in the Variants mode.</string>
+    <string name="input_method_variants">Variants</string>
+    <string name="input_method_manually">Manually</string>
+
+    <!--Latin to rune exercise-->
+    <string name="latin_to_rune_header">Rune to latin exercise</string>
+    <string name="latin_to_rune_left">left</string> <!--"left" as in "10/25 left"-->
+
+    <!--Learning screen-->
+    <string name="learning_learn">Learn</string>
+    <string name="learning_lesson">Lesson</string>
+
+    <!--Lesson screen-->
+    <string name="lesson_lesson">Lesson</string>
+
+    <!--List of exercises screen-->
+    <string name="list_of_exercises_header">Transliteration exercises</string>
+    <string name="list_of_exercises_countries">Countries</string>
+    <string name="list_of_exercises_runic_alphabets">Runic_alphabets</string>
+
+    <!--Map screen-->
+    <string name="map_header">Pick from map</string>
+
+    <!--Materials screen-->
+    <string name="materials_header">Materials</string>
+    <string name="materials_material_types">Material types</string>
+    <string name="materials_material_language">Material language</string>
+
+    <!--Practice screen-->
+    <string name="practice_header">Practice</string>
+    <string name="practice_latin_to_rune">Latin to rune</string>
+    <string name="practice_rune_to_latin">Rune to latin</string>
+    <string name="practice_text_transliteration">Text transliteration</string>
+    <string name="practice_learn">Learn</string>
+    <string name="practice_pick_from_map">Pick from map</string>
+
+    <!--Rune to latin exercise-->
+    <string name="rune_to_latin_header">Latin to rune exercise</string>
+    <string name="rune_to_latin_left">left</string> <!--"left" as in "10/25 left"-->
+
+    <!--Settings screen-->
+    <string name="settings_header">Settings &amp; About</string>
+    <string name="settings_about_the_app">About the app</string>
+    <string name="settings_statistics">Statistics</string>
+    <string name="settings_input_method">Input method</string>
+    <string name="settings_materials">Materials</string>
+
+    <!--Statistics screen-->
+    <string name="statistics_header">Statistics</string>
+    <string name="statistics_by_country">Exercises by country</string>
+    <string name="statistics_lessons_completed">lessons completed</string>
+    <string name="statistics_exercises_completed">exercises completed</string>
+
+    <!--Transliteration exercise screen-->
+    <string name="transliteration_exercise_header">Transliteration exercise</string>
+    <string name="transliteration_exercise_correct">Correct!</string>
+    <string name="transliteration_exercise_sources">Sources:</string>
+    <string name="transliteration_exercise_reset_progress">Reset progress</string>
 </resources>

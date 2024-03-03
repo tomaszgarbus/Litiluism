@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.data
 
+import android.content.Context
 import com.tgarbus.litiluism.R
 
 fun maybeBaseRuneRowFromId(id: String): BaseRuneRow? {
@@ -24,19 +25,19 @@ fun maybeBaseRuneRowToId(baseRuneRow: BaseRuneRow): String? {
     }
 }
 
-fun baseRuneRowToString(baseRuneRow: BaseRuneRow): String {
-    return when (baseRuneRow) {
-        BaseRuneRow.ANY -> "All alphabets"
-        BaseRuneRow.MEDIEVAL -> "Medieval fuþork"
-        BaseRuneRow.ANGLO_SAXON -> "Anglo-Saxon fuþorc"
-        BaseRuneRow.YOUNGER_FUTHARK_SHORT_TWIG -> "Short-twig younger fuþark"
-        BaseRuneRow.YOUNGER_FUTHARK_LONG_BRANCH -> "Long-branch younger fuþark"
-        BaseRuneRow.OLDER_FUTHARK -> "Older fuþark"
-    }
+fun baseRuneRowToString(baseRuneRow: BaseRuneRow, context: Context): String {
+    return context.getString(when (baseRuneRow) {
+        BaseRuneRow.ANY -> R.string.alphabet_all
+        BaseRuneRow.MEDIEVAL -> R.string.alphabet_medieval
+        BaseRuneRow.ANGLO_SAXON -> R.string.alphabet_anglo_saxon
+        BaseRuneRow.YOUNGER_FUTHARK_SHORT_TWIG -> R.string.alphabet_younger_futhark_short_twig
+        BaseRuneRow.YOUNGER_FUTHARK_LONG_BRANCH -> R.string.alphabet_younger_futhark_long_branch
+        BaseRuneRow.OLDER_FUTHARK -> R.string.alphabet_older_futhark
+    })
 }
 
-fun BaseRuneRow.toDisplayableString(): String {
-    return baseRuneRowToString(this)
+fun BaseRuneRow.toDisplayableString(context: Context): String {
+    return baseRuneRowToString(this, context)
 }
 
 fun BaseRuneRow.getIconResourceId(): Int {
