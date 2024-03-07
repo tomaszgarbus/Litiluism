@@ -117,7 +117,7 @@
     <!--List of exercises screen-->
     <string name="list_of_exercises_header">Transliteration exercises</string>
     <string name="list_of_exercises_countries">Countries</string>
-    <string name="list_of_exercises_runic_alphabets">Runic_alphabets</string>
+    <string name="list_of_exercises_runic_alphabets">Runic alphabets</string>
 
     <!--Map screen-->
     <string name="map_header">Pick from map</string>

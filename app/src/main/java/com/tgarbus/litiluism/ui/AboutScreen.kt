@@ -112,6 +112,7 @@ fun Page2() {
                         R.string.about_screen_while_it_sounds
                     )
                 )
+                append(" ")
                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                     append(
                         LocalContext.current.getString(
@@ -119,6 +120,7 @@ fun Page2() {
                         )
                     )
                 }
+                append(" ")
                 append(
                     LocalContext.current.getString(
                         R.string.about_screen_of_a_runic_inscription
