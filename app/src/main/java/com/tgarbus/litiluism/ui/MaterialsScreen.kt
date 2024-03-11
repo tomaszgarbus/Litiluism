@@ -329,7 +329,9 @@ fun Filters(
         ) {
             Text(
                 text = it.toDisplayableString(LocalContext.current),
-                fontFamily = sarabunFontFamily
+                fontFamily = sarabunFontFamily,
+                // DO NOT SET COLOR. COLOR INHERITED FROM BUTTON.
+//                color = colorResource(R.color.dark_grey)
             )
         }
         FiltersSection(
@@ -342,7 +344,9 @@ fun Filters(
         ) {
             Text(
                 text = it.toDisplayableString(LocalContext.current),
-                fontFamily = sarabunFontFamily
+                fontFamily = sarabunFontFamily,
+                // DO NOT SET COLOR. COLOR INHERITED FROM BUTTON.
+//                color = colorResource(R.color.dark_grey)
             )
         }
     }

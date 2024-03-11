@@ -8,7 +8,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.ui.Fonts
 
 @Composable
@@ -21,7 +23,11 @@ fun <T> FiltersSection(
 ) {
     val scrollState = rememberScrollState()
     Column {
-        Text(categoryName, fontFamily = Fonts.sarabunFontFamily)
+        Text(
+            categoryName,
+            fontFamily = Fonts.sarabunFontFamily,
+            color = colorResource(R.color.dark_grey)
+        )
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.horizontalScroll(scrollState)

@@ -16,12 +16,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -53,7 +55,8 @@ fun ChoiceDialog(
         ) {}
     }
     androidx.compose.animation.AnimatedVisibility(
-        visible = visible, enter = slideInVertically(), exit = slideOutVertically()
+        visible = visible, enter = slideInVertically(), exit = slideOutVertically(),
+        modifier = Modifier.safeDrawingPadding()
     ) {
         val scrollState = rememberScrollState()
 
@@ -67,25 +70,25 @@ fun ChoiceDialog(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Row {
-                Spacer(modifier = Modifier.weight(1f))
+            Box(modifier = Modifier.fillMaxWidth()) {
                 CloseButton(
                     description = LocalContext.current.getString(
                         R.string.content_description_close_dialog
-                    )
+                    ),
+                    modifier = Modifier.align(Alignment.CenterEnd)
                 ) { onClose() }
-            }
-            Text(
-                text = title,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    fontFamily = FontFamily(Font(R.font.sarabun_regular)),
-                    fontWeight = FontWeight.ExtraBold,
-                    color = Color(0xFF9C9C9C),
+                Text(
+                    text = title,
+                    modifier = Modifier.align(Alignment.Center),
+                    textAlign = TextAlign.Center,
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontFamily = FontFamily(Font(R.font.sarabun_regular)),
+                        fontWeight = FontWeight.ExtraBold,
+                        color = Color(0xFF9C9C9C),
+                    )
                 )
-            )
+            }
             content()
         }
     }

@@ -59,7 +59,8 @@ fun RuneRowList(
                             baseRuneRowToString(runeRow, LocalContext.current),
                             fontFamily = sarabunFontFamily,
                             fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            color = colorResource(R.color.dark_grey)
                         )
                         Text(
                             "${

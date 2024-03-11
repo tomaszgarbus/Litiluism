@@ -49,7 +49,8 @@ fun LatinToRuneExerciseScreen(
                 }",
                 fontFamily = sarabunFontFamily,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                color = colorResource(R.color.dark_grey)
             )
             Text(
                 viewModel.questionsFlow.collectAsState().value.toString(),

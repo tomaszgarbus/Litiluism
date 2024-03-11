@@ -85,7 +85,7 @@ fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Coun
         Text(
             buildAnnotatedString {
                 withStyle(
-                    style = SpanStyle(fontFamily = sarabunFontFamily)
+                    style = SpanStyle(fontFamily = sarabunFontFamily),
                 ) {
                     withStyle(
                         style = SpanStyle(
@@ -103,7 +103,8 @@ fun CountryButtonContent(country: Country, exercisesByCountryCount: HashMap<Coun
                         append(countriesCountText)
                     }
                 }
-            }
+            },
+            // DO NOT SET COLOR. COLOR INHERITED FROM BUTTON.
         )
     }
 }
@@ -134,7 +135,9 @@ fun Filters(
         ) {
             Text(
                 text = baseRuneRowToString(it, LocalContext.current),
-                fontFamily = sarabunFontFamily
+                fontFamily = sarabunFontFamily,
+                // DO NOT SET COLOR. COLOR INHERITED FROM BUTTON.
+//                color = colorResource(R.color.dark_grey)
             )
         }
     }

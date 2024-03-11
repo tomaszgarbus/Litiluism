@@ -90,7 +90,8 @@ fun ExerciseScreen(
             textAlign = TextAlign.Justify,
             fontFamily = sarabunFontFamily,
             fontSize = 14.sp,
-            fontWeight = FontWeight.Normal
+            fontWeight = FontWeight.Normal,
+            color = colorResource(R.color.dark_grey)
         )
         Box(
             modifier = Modifier
@@ -191,6 +192,7 @@ fun ExerciseScreen(
                     text = transliterationExercise.explanation,
                     fontFamily = sarabunFontFamily,
                     fontSize = 18.sp,
+                    color = colorResource(R.color.dark_grey)
                 )
                 if (transliterationExercise.sources.isNotEmpty()) {
                     Text(
@@ -199,12 +201,14 @@ fun ExerciseScreen(
                         ),
                         fontFamily = sarabunFontFamily,
                         fontSize = 12.sp,
+                        color = colorResource(R.color.dark_grey),
                     )
                     for (source in transliterationExercise.sources) {
                         Text(
                             text = source,
                             fontFamily = sarabunFontFamily,
                             fontSize = 12.sp,
+                            color = colorResource(R.color.dark_grey),
                         )
                     }
                 }

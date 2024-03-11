@@ -60,7 +60,8 @@ fun LessonTextBlockView(textBlock: LessonTextBlock) {
             withStyle(
                 style = SpanStyle(
                     fontFamily = Fonts.sarabunFontFamily,
-                    fontSize = 14.sp
+                    fontSize = 14.sp,
+                    color = colorResource(R.color.dark_grey)
                 )
             ) {
                 for (span in textBlock.spans) {
@@ -152,36 +153,36 @@ fun LessonView(lesson: Lesson) {
 
 @Composable
 fun LessonHeaderFrame(lesson: Lesson, navController: NavController) {
-    Row(
+    Box(
         modifier = Modifier.fillMaxWidth()
     ) {
-        Spacer(modifier = Modifier.weight(1f))
         CloseButton(
             description = LocalContext.current.getString(
                 R.string.content_description_close_lesson
-            )
+            ),
+            modifier = Modifier.align(Alignment.CenterEnd)
         ) { navController.popBackStack() }
-    }
-    Text(
-        text = LocalContext.current.getString(
-            R.string.lesson_lesson
-        ),
-        modifier = Modifier
-            .fillMaxWidth(),
-        textAlign = TextAlign.Center,
-        style = TextStyle(
-            fontSize = 20.sp,
-            fontFamily = Fonts.sarabunFontFamily,
-            fontWeight = FontWeight.ExtraBold,
-            brush = Brush.linearGradient(
-                listOf(
-                    colorResource(R.color.primary),
-                    colorResource(R.color.primary_gradient)
+        Text(
+            text = LocalContext.current.getString(
+                R.string.lesson_lesson
+            ),
+            modifier = Modifier
+                .align(Alignment.Center),
+            textAlign = TextAlign.Center,
+            style = TextStyle(
+                fontSize = 20.sp,
+                fontFamily = Fonts.sarabunFontFamily,
+                fontWeight = FontWeight.ExtraBold,
+                brush = Brush.linearGradient(
+                    listOf(
+                        colorResource(R.color.primary),
+                        colorResource(R.color.primary_gradient)
+                    )
                 )
-            )
-//            color = Color(0xFF9C9C9C),
+            ),
+            color = colorResource(R.color.dark_grey)
         )
-    )
+    }
     Text(
         text = lesson.title,
         textAlign = TextAlign.Center,

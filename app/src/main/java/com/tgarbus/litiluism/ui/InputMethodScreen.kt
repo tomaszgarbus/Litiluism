@@ -65,7 +65,8 @@ fun Option(
             name,
             fontFamily = sarabunFontFamily,
             fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = colorResource(R.color.dark_grey)
         )
     }
 }

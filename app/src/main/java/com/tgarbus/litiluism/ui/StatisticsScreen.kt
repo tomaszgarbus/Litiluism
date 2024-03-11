@@ -85,7 +85,8 @@ fun TileWithSemiCircularProgressBar(
                     description,
                     fontFamily = sarabunFontFamily,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    color = colorResource(R.color.dark_grey)
                 )
             }
         }
@@ -100,7 +101,8 @@ fun ExercisesByCountry(viewModel: StatisticsViewModel) {
         Text(
             LocalContext.current.getString(
                 R.string.statistics_by_country
-            ), fontFamily = sarabunFontFamily
+            ), fontFamily = sarabunFontFamily,
+            color = colorResource(R.color.dark_grey)
         )
         for (country in Country.entries.filterNot { it == Country.ANY }) {
             Row(

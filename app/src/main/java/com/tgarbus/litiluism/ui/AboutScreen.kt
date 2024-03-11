@@ -291,7 +291,8 @@ fun AboutScreen(navController: NavController) {
                     CloseButton(
                         description = LocalContext.current.getString(
                             R.string.content_description_close
-                        )
+                        ),
+                        brightTint = true
                     ) { navController.popBackStack() }
                 }
             }

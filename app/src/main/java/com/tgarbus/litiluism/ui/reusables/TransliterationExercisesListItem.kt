@@ -101,6 +101,7 @@ fun TransliterationExercisesListItem(
                     fontFamily = sarabunFontFamily,
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 16.sp,
+                    color = colorResource(R.color.dark_grey)
                 )
                 Text(
                     text = exercise.runeRow.baseRuneRow.toDisplayableString(LocalContext.current),

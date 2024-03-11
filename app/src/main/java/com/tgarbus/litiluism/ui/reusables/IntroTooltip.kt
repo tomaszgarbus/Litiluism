@@ -175,7 +175,7 @@ fun IntroTooltip(
             },
             balloonContent = {
                 Column {
-                    Text(text)
+                    Text(text, color = colorResource(R.color.dark_grey))
                     Text(
                         LocalContext.current.getString(
                             R.string.intro_tooltips_got_it

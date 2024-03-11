@@ -2,6 +2,8 @@ package com.tgarbus.litiluism.ui.reusables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,10 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -32,28 +36,28 @@ fun ExerciseHeaderFrame(
     title: String,
     navController: NavController
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth()
+    Box(
+        modifier = Modifier.fillMaxWidth(),
     ) {
-        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text = exerciseType,
+            modifier = Modifier.align(Alignment.Center),
+            textAlign = TextAlign.Center,
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontFamily = sarabunFontFamily,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color(0xFF9C9C9C),
+            )
+        )
+//        Spacer(modifier = Modifier.weight(1f))
         CloseButton(
             description = LocalContext.current.getString(
                 R.string.content_description_close_exercise
-            )
+            ),
+            modifier = Modifier.align(Alignment.CenterEnd)
         ) { navController.popBackStack() }
     }
-    Text(
-        text = exerciseType,
-        modifier = Modifier
-            .fillMaxWidth(),
-        textAlign = TextAlign.Center,
-        style = TextStyle(
-            fontSize = 16.sp,
-            fontFamily = sarabunFontFamily,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF9C9C9C),
-        )
-    )
     Text(
         text = title,
         textAlign = TextAlign.Center,
@@ -63,5 +67,6 @@ fun ExerciseHeaderFrame(
         fontSize = 32.sp,
         lineHeight = 37.sp,
         fontWeight = FontWeight.ExtraBold,
+        color = colorResource(R.color.dark_grey),
     )
 }
