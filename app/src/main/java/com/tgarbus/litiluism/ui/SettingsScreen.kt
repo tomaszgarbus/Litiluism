@@ -93,7 +93,7 @@ fun SettingsScreen(navController: NavController) {
         SettingsItem(
             LocalContext.current.getString(
                 R.string.settings_statistics
-            ), R.drawable.icon_info
+            ), R.drawable.icon_statistics
         ) {
             navController.navigate("statistics")
         }
@@ -110,6 +110,13 @@ fun SettingsScreen(navController: NavController) {
             ), R.drawable.icon_materials
         ) {
             navController.navigate("materials")
+        }
+        SettingsItem(
+            LocalContext.current.getString(
+                R.string.settings_contact
+            ), R.drawable.icon_contact
+        ) {
+            navController.navigate("contact")
         }
     }
     Dock(ButtonType.SETTINGS, navController)

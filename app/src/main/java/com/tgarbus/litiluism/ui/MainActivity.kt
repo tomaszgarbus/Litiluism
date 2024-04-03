@@ -117,6 +117,9 @@ class MainActivity : ComponentActivity() {
                     composable("input_method") {
                         InputMethodScreen(navController)
                     }
+                    composable("contact") {
+                        ContactScreen(navController)
+                    }
                 }
             }
         }

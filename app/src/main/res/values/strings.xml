@@ -38,6 +38,7 @@
     <string name="content_description_close_exercise">Close exercise</string>
     <string name="content_description_close_lesson">Close lesson</string>
     <string name="content_description_filters">Filters</string>
+    <string name="content_description_sort">Sort</string>
     <string name="content_description_select">Select</string>
     <string name="content_description_app_logo">App logo</string>
     <string name="content_description_background">Background</string>
@@ -47,6 +48,12 @@
 
     <!--Common-->
     <string name="complete">Complete</string>
+
+    <!--Sort section-->
+    <string name="sort_by">Sort by</string>
+    <string name="sort_order_default">Default</string>
+    <string name="sort_order_length">Length</string>
+    <string name="sort_order_alphabetical">Alphabetical</string>
 
     <!--Dock-->
     <string name="dock_home">Home</string>
@@ -145,6 +152,7 @@
     <string name="settings_statistics">Statistics</string>
     <string name="settings_input_method">Input method</string>
     <string name="settings_materials">Materials</string>
+    <string name="settings_contact">Contact us</string>
 
     <!--Statistics screen-->
     <string name="statistics_header">Statistics</string>
@@ -157,4 +165,12 @@
     <string name="transliteration_exercise_correct">Correct!</string>
     <string name="transliteration_exercise_sources">Sources:</string>
     <string name="transliteration_exercise_reset_progress">Reset progress</string>
+
+    <!--Contact screen-->
+    <string name="contact_contact">Contact us</string>
+    <string name="contact_help_text">We\'re looking forward to hearing from you! Shoot us an email, a DM on IG or Reddit, and don\'t forget to rate the app!</string>
+    <string name="contact_rate">Rate the app!</string>
+    <string name="contact_email">Email</string>
+    <string name="contact_instagram">Instagram</string>
+    <string name="contact_reddit">Reddit</string>
 </resources>

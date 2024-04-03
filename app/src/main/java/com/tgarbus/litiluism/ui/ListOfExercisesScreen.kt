@@ -53,6 +53,9 @@ import com.tgarbus.litiluism.ui.reusables.FiltersToggle
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.IntroTooltip
+import com.tgarbus.litiluism.ui.reusables.SortOrder
+import com.tgarbus.litiluism.ui.reusables.SortSection
+import com.tgarbus.litiluism.ui.reusables.SortToggle
 import com.tgarbus.litiluism.ui.reusables.TransliterationExercisesListItem
 import com.tgarbus.litiluism.viewmodel.ListOfExercisesViewModel
 
@@ -168,6 +171,16 @@ fun ListOfExercisesScreen(
 
     val filters = remember { mutableStateOf(ExerciseFilters()) }
     val showFiltersDialog = remember { mutableStateOf(false) }
+    val showSortDialog = remember { mutableStateOf(false) }
+    val sortOrder = remember { mutableStateOf(SortOrder.DEFAULT) }
+
+    fun applySort(transliterationExercises: List<TransliterationExercise>): List<TransliterationExercise> {
+        return when (sortOrder.value) {
+            SortOrder.DEFAULT -> transliterationExercises.sortedBy { 1 }
+            SortOrder.LENGTH -> transliterationExercises.sortedBy { it.runes.length }
+            SortOrder.ALPHABETICAL -> transliterationExercises.sortedBy { it.title.lowercase() }
+        }
+    }
 
     FullScreenPaddedColumn {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -181,12 +194,21 @@ fun ListOfExercisesScreen(
                     .fillMaxWidth()
                     .weight(2f)
             )
-            IntroTooltip(
-                id = "filter_exercises", text = LocalContext.current.getString(
-                    R.string.intro_tooltips_filter_exercises
-                ), queue = balloonsQueue
-            ) {
-                FiltersToggle(showFiltersDialog)
+            Column {
+                IntroTooltip(
+                    id = "filter_exercises", text = LocalContext.current.getString(
+                        R.string.intro_tooltips_filter_exercises
+                    ), queue = balloonsQueue
+                ) {
+                    FiltersToggle(showFiltersDialog)
+                }
+                IntroTooltip(
+                    id = "sort_exercises",
+                    text = "Click here to sort exercises.",
+                    queue = balloonsQueue
+                ) {
+                    SortToggle(showSortDialog)
+                }
             }
         }
         AnimatedVisibility(
@@ -199,7 +221,17 @@ fun ListOfExercisesScreen(
                 viewModel.exercisesByCountryCount(),
             )
         }
-        for (exercise in transliterationExercises) {
+        AnimatedVisibility(
+            visible = showSortDialog.value,
+            enter = slideInVertically() + fadeIn(),
+            exit = slideOutVertically() + fadeOut()
+        ) {
+            SortSection(
+                onValueChange = { sortOrder.value = it },
+                activeOrder = sortOrder.value
+            )
+        }
+        for (exercise in applySort(transliterationExercises)) {
             AnimatedVisibility(
                 visible = showExercise(exercise, filters.value),
                 enter = slideInHorizontally(initialOffsetX = { -2 * it }),
