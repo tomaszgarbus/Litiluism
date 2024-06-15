@@ -70,24 +70,27 @@ fun ChoiceDialog(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
+
             Box(modifier = Modifier.fillMaxWidth()) {
-                CloseButton(
+                val buttonSize = closeButton(
                     description = LocalContext.current.getString(
                         R.string.content_description_close_dialog
                     ),
                     modifier = Modifier.align(Alignment.CenterEnd)
                 ) { onClose() }
-                Text(
-                    text = title,
-                    modifier = Modifier.align(Alignment.Center),
-                    textAlign = TextAlign.Center,
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(R.font.sarabun_regular)),
-                        fontWeight = FontWeight.ExtraBold,
-                        color = Color(0xFF9C9C9C),
+                Box(modifier = Modifier.padding(horizontal = buttonSize)) {
+                    Text(
+                        text = title,
+                        modifier = Modifier.align(Alignment.Center),
+                        textAlign = TextAlign.Center,
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            fontFamily = FontFamily(Font(R.font.sarabun_regular)),
+                            fontWeight = FontWeight.ExtraBold,
+                            color = Color(0xFF9C9C9C),
+                        )
                     )
-                )
+                }
             }
             content()
         }

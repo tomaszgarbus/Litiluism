@@ -51,7 +51,7 @@ fun ExerciseHeaderFrame(
             )
         )
 //        Spacer(modifier = Modifier.weight(1f))
-        CloseButton(
+        closeButton(
             description = LocalContext.current.getString(
                 R.string.content_description_close_exercise
             ),

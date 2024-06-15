@@ -47,7 +47,7 @@ import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.AboutRepository
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
-import com.tgarbus.litiluism.ui.reusables.CloseButton
+import com.tgarbus.litiluism.ui.reusables.closeButton
 import com.tgarbus.litiluism.ui.reusables.PageIndicator
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
 import com.tgarbus.litiluism.viewmodel.AboutViewModel
@@ -288,7 +288,7 @@ fun AboutScreen(navController: NavController) {
                         .padding(20.dp)
                 ) {
                     Spacer(modifier = Modifier.weight(1f))
-                    CloseButton(
+                    closeButton(
                         description = LocalContext.current.getString(
                             R.string.content_description_close
                         ),

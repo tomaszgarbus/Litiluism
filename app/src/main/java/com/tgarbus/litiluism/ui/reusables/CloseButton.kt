@@ -15,17 +15,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 
+// Returns the size of the button + padding.
 @Composable
-fun CloseButton(description: String, brightTint: Boolean = false, modifier: Modifier = Modifier, onClose: () -> Unit) {
+fun closeButton(description: String, brightTint: Boolean = false, modifier: Modifier = Modifier, onClose: () -> Unit): Dp {
+    val padding = 8.dp
+    val size = 21.dp
     Box(
         modifier
             .clip(CircleShape)
             .clickable { onClose() }
-            .padding(8.dp)
+            .padding(padding)
     ) {
         Icon(
             painter = painterResource(id = R.drawable.icon_cross),
@@ -33,8 +37,9 @@ fun CloseButton(description: String, brightTint: Boolean = false, modifier: Modi
             tint = if (brightTint) Color.White else colorResource(R.color.dark_grey),
             modifier = Modifier
                 .padding(0.dp)
-                .width(21.dp)
-                .height(21.dp)
+                .width(size)
+                .height(size)
         )
     }
+    return padding * 2 + size
 }
