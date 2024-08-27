@@ -1,5 +1,20 @@
 [
   {
+    "id": "norrby",
+    "img": "norrby.jpg",
+    "img_credit": "Own photo, taken in Norrby, Sweden",
+    "title": "Norrby stone Sö 272",
+    "rowType": "younger_futhark_norrby",
+    "description": "A runestone from the 11th century. It was found in the summer 1915 when ploughing a field. It's currently located next to a roundabout in Norrby, just south of Stockholm.",
+    "runes": "ᚦᚢᚱᚠᛅᛋᛏᚱ x ᛚᚽᛏ x ᚱᛅᛁ… x ᛋᛏᛅᚽᚾ x ᚦᚽᚾᛅ x ᛅᚠᛏᛁᛦ x ᚼᛅᛚᚠᛏᛅᚾ x ᛋᚢᚾᛅ x ᛋ…ᚾ",
+    "explanationAfter": "Correct. The stone reads: \"Torfast had this stone raised after Halvdan, his son.\"",
+    "sources": [
+      "A plaque next to the stone, provided by Riksantikvarieambetet"
+    ],
+    "country": "SE",
+    "location": "norrby"
+  },
+  {
     "id": "gripsholmstone178",
     "img": "gripsholmstone178.jpg",
     "img_credit": "Own photo, taken in Mariefred, Sweden",

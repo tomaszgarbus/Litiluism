@@ -130,5 +130,11 @@
     "lat": 55.443527391582165,
     "long": 10.617347561682074,
     "description": "Ladby Vikingmuseet"
+  },
+  {
+    "id": "norrby",
+    "lat": 59.187399,
+    "long": 18.1537265,
+    "description": "Norrby"
   }
 ]
