@@ -1,5 +1,20 @@
 [
   {
+    "id": "olstastenen",
+    "img": "olstastenen",
+    "img_credit": "Own photo, taken in Skansen Stockholm.",
+    "title": "Ölstastenen U 871",
+    "rowType": "younger_futhark_ölsta",
+    "description": "Rune stone from Uppland (Sweden) carved by Åsmund Kåresson in 11-th century. It can be visited in Skansen on Djursgården, Stockholm. This rune stone was painted in what is believed to be the authentic manner.",
+    "runes": "ᛒᛁᚾᚱᚾ ᛫ ᛅᚢᚦᚢᛚᚠᚱ ᛫ ᚴᚢᚾᚬᚱ ᛫ ᚼᚢᛚᛘᛏᛁᛋ ᛫ ᛚᛅᛏᚢ ᚱᛁᛏᚬ ᛋᛏᛁᚾ ᚦᛁᚾᚬ ᛫ ᛁᚠᛏᛁᛦ ᛫ ᚢᛚᚠ ᛫ ᚴᛁᚾᛚᛅᚢᚼᛅᛦᛒᚢᛅᚾᛏᛅ ᛫ ᛁᚾᚬᛋᛘᚢᚾᛏᚱᚼᛁ",
+    "explanationAfter": "Correct. The text translated to modern Swedish is \"Björn, Ödulv, Gunnar, Holmdis läto resa denna sten efter Ulv, Ginnlögs man. Och Åsmund högg.\" And to English: \"Björn, Ödulv, Gunnar, Holmdis erected this stone in memory of Ulf, Ginnlög's husband. And Åsmund carved it.\"",
+    "sources": [
+      "A plaque next to the stone, provided by Skansen Stockholm."
+    ],
+    "country": "SE",
+    "location": "skansen"
+  },
+  {
     "id": "norrby",
     "img": "norrby.jpg",
     "img_credit": "Own photo, taken in Norrby, Sweden",
