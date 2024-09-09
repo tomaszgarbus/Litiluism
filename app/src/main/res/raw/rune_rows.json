@@ -794,5 +794,10 @@
         "latin": "e"
       }
     ]
+  },
+  "younger_futhark_norslundastenen": {
+    "name": "Long-branch Younger Fuþark",
+    "inherit_from": "younger_futhark_long_branch",
+    "override_symbols": []
   }
 }

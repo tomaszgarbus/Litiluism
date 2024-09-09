@@ -1,7 +1,7 @@
 [
   {
     "id": "olstastenen",
-    "img": "olstastenen",
+    "img": "olstastenen.jpg",
     "img_credit": "Own photo, taken in Skansen Stockholm.",
     "title": "Ölstastenen U 871",
     "rowType": "younger_futhark_ölsta",
@@ -16,13 +16,28 @@
   },
   {
     "id": "hanstastenen",
-    "img": "hanstastenen",
+    "img": "hanstastenen.jpg",
     "img_credit": "Own photo, taken in Skansen Stockholm.",
     "title": "Hanstastenen U 72",
     "rowType": "younger_futhark_hansta",
-    "description": "One of the four runestones currently stored in Skansen, Stockholm.",
-    "runes": "ᚴᛁᛅᚱᚦᛅᚱ + ᛅᚢᚴ • ᛁᚬᚱᚢᚾᛏᚱ • ᛚᛅᛏᛅ • ᚱᚽᛁᛋᛅ • ᚦᛁᛋᛅ • ᛋᛏᚽᛁᚾᛅ • ᛁᚠᛏᛁᚱ • ᛋᛁᛋᛏᚢᚱ • ᛋᚢᚾᛁ • ᛋᛁᚾᛅ • ᛁᚱᚾᛘᚢᚾᛏ × ᛅᚢᚴ • ᛁᚴᛁᚢᚾᛏ",
+    "description": "Rune stone from Uppland. One of the four runestones currently stored in Skansen, Stockholm.",
+    "runes": "ᚴᛁᛅᚱᚦᛅᚱ + ᛅᚢᚴ ᛫ ᛁᚬᚱᚢᚾᛏᚱ ᛫ ᛚᛅᛏᛅ ᛫ ᚱᚽᛁᛋᛅ ᛫ ᚦᛁᛋᛅ ᛫ ᛋᛏᚽᛁᚾᛅ ᛫ ᛁᚠᛏᛁᚱ ᛫ ᛋᛁᛋᛏᚢᚱ ᛫ ᛋᚢᚾᛁ ᛫ ᛋᛁᚾᛅ ᛫ ᛁᚱᚾᛘᚢᚾᛏ x ᛅᚢᚴ ᛫ ᛁᚴᛁᚢᚾᛏ",
     "explanationAfter": "Correct. The text translates to modern Swedish as \"Gärdar och Jorun låta resa dessa stenar till minne av sina systersöner Ärnmund och Ingemund\". And English: \"Gärdar and Jorund erected this stone in memory of their nephews Ärnmund and Ingemund\".",
+    "sources": [
+      "A plaque next to the stone, provided by Skansen Stockholm."
+    ],
+    "country": "SE",
+    "location": "skansen"
+  },
+  {
+    "id": "norslundastenen",
+    "img": "norslundastenen",
+    "img_credit": "Own photo, taken in Skansen Stockholm.",
+    "rowType": "younger_futhark_norslundastenen",
+    "title": "Norslundastenen U 419",
+    "description":  "Rune stone from Uppland. One of the four runestones currently stored in Skansen, Stockholm.",
+    "runes": "ᚦᛅᚢᚾ ᛫ ᚴᚢᛚᚠᛁᚾᚴᚱ ᛫ ᛅᚢᚴ ᛫ ᛋᛏᛁᚾᚠᚱᛁᚦᚱ ᛫ ᛅᚢᚴ ᛫ ᛋ…ᚱ ᛫ ᛚᛁᛏᚢ ᛫ ᚱᛅᛁᛋᛅ ᛫ ᛋᛏᛁᚾ ᛫ ᚦᛁᚾᚬ ᛫ ᚬᚠᛏᛁᛦ ᛫ ᛅᚢᛋᛏᚾᛁᚾ ᛫ ᚴᚢᚾᛅᚱᛋᚢᚾ ᛫ ᛋ ᛫ ᛅᛏ ᛫ ᛁᚢᚱᛁᛅ ᛫ ᚴᚢᚦ … ᛅᛚᛒᛁ ᛫ ᚼᚬᚾᛋ",
+    "explanationAfter": "Correct. The text translates to modern Swedish as \"Kylving och Stenfrid och Sigfast läto resa denna sten efter Östen, Gunnars son... Gud hjälpe hans själ\". And English: \"Kylving and Stenfrid and Sigfast erected this stone in memory of Östen, son of Gunnar... May God preserve his soul\".",
     "sources": [
       "A plaque next to the stone, provided by Skansen Stockholm."
     ],
