@@ -20,7 +20,7 @@ jobs:
       - name: Resize all images
         run: for f in `ls original\ images | grep -E 'jpg|jpeg|png'`; do
              echo "converting $f to image_";
-             convert original\ images/$f -resize 2000x2000\> output/image_$f;
+             convert original\ images/$f -resize 1600x1600\> output/image_$f;
              echo "converting $f to thumbnail_";
              convert original\ images/$f -resize 200x200^ output/thumbnail_$f;
              done;
