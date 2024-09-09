@@ -15,6 +15,21 @@
     "location": "skansen"
   },
   {
+    "id": "hanstastenen",
+    "img": "hanstastenen",
+    "img_credit": "Own photo, taken in Skansen Stockholm.",
+    "title": "Hanstastenen U 72",
+    "rowType": "younger_futhark_hansta",
+    "description": "One of the four runestones currently stored in Skansen, Stockholm.",
+    "runes": "ᚴᛁᛅᚱᚦᛅᚱ + ᛅᚢᚴ • ᛁᚬᚱᚢᚾᛏᚱ • ᛚᛅᛏᛅ • ᚱᚽᛁᛋᛅ • ᚦᛁᛋᛅ • ᛋᛏᚽᛁᚾᛅ • ᛁᚠᛏᛁᚱ • ᛋᛁᛋᛏᚢᚱ • ᛋᚢᚾᛁ • ᛋᛁᚾᛅ • ᛁᚱᚾᛘᚢᚾᛏ × ᛅᚢᚴ • ᛁᚴᛁᚢᚾᛏ",
+    "explanationAfter": "Correct. The text translates to modern Swedish as \"Gärdar och Jorun låta resa dessa stenar till minne av sina systersöner Ärnmund och Ingemund\". And English: \"Gärdar and Jorund erected this stone in memory of their nephews Ärnmund and Ingemund\".",
+    "sources": [
+      "A plaque next to the stone, provided by Skansen Stockholm."
+    ],
+    "country": "SE",
+    "location": "skansen"
+  },
+  {
     "id": "norrby",
     "img": "norrby.jpg",
     "img_credit": "Own photo, taken in Norrby, Sweden",
