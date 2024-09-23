@@ -8,14 +8,8 @@ import com.tgarbus.litiluism.data.ThreeButtonOptions
 import kotlin.math.abs
 import kotlin.random.Random
 
-fun randomLetter(): Char {
-    val letters = "qwertyuiopasdfghjklzxcvbnm"
-    val index = abs(Random.nextInt()) % letters.length
-    return letters[index]
-}
-
 fun isSeparator(rune: Char): Boolean {
-    return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x').contains(rune)
+    return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x', '×').contains(rune)
 }
 
 fun generateOptions(mapping: Map<Char, List<Char>>, symbol: Char): ThreeButtonOptions {

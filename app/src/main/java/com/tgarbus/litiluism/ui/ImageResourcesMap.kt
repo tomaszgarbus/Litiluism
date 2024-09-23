@@ -80,6 +80,7 @@ class ImageResourcesMap {
             "image_thorfinn_karlsefni" to R.drawable.image_thorfinn_karlsefni,
             "image_u613" to R.drawable.image_u613,
             "image_u614" to R.drawable.image_u614,
+            "image_uppsala_u937" to R.drawable.image_uppsala_u937,
             "image_wooden_spade" to R.drawable.image_wooden_spade,
             "learn_anglo_frisian_futhorc" to R.drawable.learn_anglo_frisian_futhorc,
             "learn_early_younger_futhark" to R.drawable.learn_early_younger_futhark,
@@ -150,6 +151,7 @@ class ImageResourcesMap {
             "thumbnail_thorfinn_karlsefni" to R.drawable.thumbnail_thorfinn_karlsefni,
             "thumbnail_u613" to R.drawable.thumbnail_u613,
             "thumbnail_u614" to R.drawable.thumbnail_u614,
+            "thumbnail_uppsala_u937" to R.drawable.thumbnail_uppsala_u937,
             "thumbnail_wooden_spade" to R.drawable.thumbnail_wooden_spade,
         )
     }

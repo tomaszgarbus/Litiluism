@@ -142,5 +142,11 @@
     "lat": 59.326694,
     "long": 18.103000,
     "description": "Skansen, Stockholm"
+  },
+  {
+    "id": "uppsala_uniparken",
+    "lat": 59.85817504201361,
+    "long": 17.63138653742075,
+    "description": "Universitetsparken, Uppsala"
   }
 ]

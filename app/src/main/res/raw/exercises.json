@@ -1,5 +1,20 @@
 [
   {
+    "id": "uppsala_u937",
+    "img": "uppsala_u937.jpg",
+    "img_credit": "Own photo, taken in Universitetsparken Uppsala.",
+    "title": "Uppsala stone U937",
+    "rowType": "younger_futhark_long_branch",
+    "description": "One of the many runestones standing in Universitetsparken Uppsala, originating from the Viking Age.",
+    "runes": "ᚦᛁᛅᚴ(ᚾ) × ᛅᚢᚴ × ᚴᚢᚾᛅᚱ × ᚱᛅᛁᛋᛏᚢ × ᛋᛏᛅᚾᛅ × ᛅᚠᛏᛁᛦ × ᚢᛅᚦᚱ × ᛒᚱᚢᚦᚢᚱ ᛋᛁᚾ",
+    "explanationAfter": "That's correct. This stone translates to: \"Þegn and Gunnarr raised the stones in memory of Veðr, their brother\".",
+    "sources": [
+      "https://app.raa.se"
+    ],
+    "country": "SE",
+    "location": "uppsala_uniparken"
+  },
+  {
     "id": "olstastenen",
     "img": "olstastenen.jpg",
     "img_credit": "Own photo, taken in Skansen Stockholm.",
