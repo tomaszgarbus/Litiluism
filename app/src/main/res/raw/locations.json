@@ -148,5 +148,11 @@
     "lat": 59.85817504201361,
     "long": 17.63138653742075,
     "description": "Universitetsparken, Uppsala"
+  },
+  {
+    "id": "gamla_stan",
+    "lat": 59.32480462651689,
+    "long": 18.06999044882936,
+    "description": "Prästgatan, Gamla Stan, Stockholm"
   }
 ]
