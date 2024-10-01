@@ -1,5 +1,20 @@
 [
   {
+    "id": "uppsala_u933",
+    "img": "uppsala_u933.jpg",
+    "img_credit": "Own photo, taken at Uppsala Domkyrka.",
+    "title": "Uppsala stone U 933",
+    "rowType": "younger_futhark_u933",
+    "description": "The runestone was found in 1866 in the foundation wall of Uppsala Domkyrka. It was carved by runemaster Öpir, who created 5 of 18 known runestones in that church.",
+    "runes": "ᛒᚭᚱᚼᛅᛚᛁᛏ᛫ᚱᛅᛁᛋᛅ᛫ᛋᛏᛅᛁᚾ᛫ᛁᚠᛏᛁᛦ᛫ᛋᛏᚤᚾᛒᛁᛅᚱ…ᚴᛁᛚ᛫ᛚᛁᛏ᛫ᛁᚠᛏᛁᛦ᛫ᛒᚱᚭᚦᚢᚱ᛫ᛋᛁᚾ…",
+    "explanationAfter": "Yes! The inscription reads in Swedish: \"Borga lät resa stenen efter Stynbjörn ... Torken lät (resa den) efter sin broder\" and in English \"Borga had this stone raised after Stynbjörn ... Torken had (it raised) after his brother\".",
+    "sources": [
+      "A plaque next to the stone, provided by Riksantikvarieämbetet."
+    ],
+    "country": "SE",
+    "location": "uppsala_uniparken"
+  },
+  {
     "id": "gamla_stan_stenen",
     "img": "gamla_stan_stenen.jpg",
     "img_credit": "Own photo, taken at Gamla Stan.",
