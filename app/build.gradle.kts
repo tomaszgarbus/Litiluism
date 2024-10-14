@@ -11,8 +11,8 @@ android {
         applicationId = "com.tgarbus.litiluism"
         minSdk = 24
         targetSdk = 34
-        versionCode = 8
-        versionName = "1.07"
+        versionCode = 11
+        versionName = "1.10"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
