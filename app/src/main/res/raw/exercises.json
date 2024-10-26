@@ -1,5 +1,20 @@
 [
   {
+    "id": "uppsala_u_fv1976_107",
+    "img": "uppsala_u_fv1976_107.jpg",
+    "img_credit": "Own photo, taken at Uppsala Domkyrka.",
+    "title": "Uppsala stone U Fv1976 107",
+    "rowType": "younger_futhark_u_fv1976_107",
+    "description": "This magnificent runestone was discovered in 1975 under the southern buttress of the Vasa burial chapel in Uppsala Cathedral. ",
+    "runes": "…ᛅᚱᚾ᛫ᚢᚴ᛫ᛒᚱᛅᚾᛏᚱ ᛚᛁᛏᚢ᛫ᚱᛁᛋᛅ᛫ᛋᛏᛁᚾ᛫ᛅᛏ᛫ᚴᛅᚱᛚᚢᚴ᛫ᚠᛅᚦᚢᚱ᛫ᛋᛁᚾ᛫ᛁᚾ᛫ᚴᛁᛏᛁᛚᛒᛁᛅᚱᚾ ᛅᛏ᛫ᛒᚱᚬᚦᚢᚱ᛫ᛁᛒᛁᚱ ᚱᛁᛋᛏᛁ ᚱᚢᚾ",
+    "explanationAfter": "Correct! The inscription translates to Swedish as \"...-björn (?) och Brand lät resa stenen efter Karlung, sin fader, och Kättilbjörn efter (sin) broder. Öpir ristade runorna.\" And to English: \"...-björn (?) and Brand had this stone raised in memory of Karlung, their father, and Kättilbjörn for (his) brother. Öpir carved the runes.\" Skipping the reflexive possessive pronoun (sin) is typical for Öpir's inscriptions.",
+    "sources": [
+      "A plaque next to the stone, provided by Riksantikvarieämbetet.",
+      "http://kulturarvsdata.se/raa/fornvannen/html/1976_096"
+    ],
+    "location": "uppsala_uniparken"
+  },
+  {
     "id": "uppsala_u934",
     "img": "uppsala_u934.jpg",
     "img_credit": "Own photo, taken at Uppsala Domkyrka.",
@@ -106,7 +121,7 @@
   },
   {
     "id": "norrby",
-    "img": "norrby.jpg",
+    "img": "norrby_runsten.jpg",
     "img_credit": "Own photo, taken in Norrby, Sweden",
     "title": "Norrby stone Sö 272",
     "rowType": "younger_futhark_norrby",
