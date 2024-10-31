@@ -121,7 +121,7 @@ fun TransliterationExercisesListItem(
                 )
                 // TODO: move this to a ViewModel
                 if (TransliterationExerciseStatesRepository.getInstance(LocalContext.current)
-                        .getExerciseStateAsFlow(exercise.id)
+                        .getExerciseStateAsFlow(exercise)
                         .collectAsState(TransliterationExerciseState()).value.complete
                 ) {
                    DoneMarker()

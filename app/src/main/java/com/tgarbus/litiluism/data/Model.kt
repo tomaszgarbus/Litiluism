@@ -2,6 +2,7 @@ package com.tgarbus.litiluism.data
 
 import android.content.Context
 import com.tgarbus.litiluism.R
+import com.tgarbus.litiluism.isSeparator
 
 enum class Country {
     ANY,
@@ -42,7 +43,19 @@ data class TransliterationExercise(
     val runeRow: RuneRow,
     // Images
     val imgResourceName: String,
-)
+) {
+    fun leadingSeparators(): String {
+        val result = StringBuilder()
+        for (rune in runes) {
+            if (isSeparator(rune)) {
+                result.append(rune)
+            } else {
+                break
+            }
+        }
+        return result.toString()
+    }
+}
 
 data class ExerciseScore(var correct: Int = 0, var total: Int = 0) {
     fun recordAnswer(isCorrect: Boolean) {

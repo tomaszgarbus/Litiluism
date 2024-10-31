@@ -19,7 +19,7 @@ class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : Vie
 
     fun getState(context: Context): Flow<TransliterationExerciseState> {
         return TransliterationExerciseStatesRepository.getInstance(context)
-            .getExerciseStateAsFlow(transliterationExercise.id)
+            .getExerciseStateAsFlow(transliterationExercise)
     }
 
     fun onUserInput(c: Char, context: Context, countAsCorrect: Boolean) {

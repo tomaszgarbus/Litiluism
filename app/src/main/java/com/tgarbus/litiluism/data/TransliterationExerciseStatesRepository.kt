@@ -26,10 +26,11 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
 
     private fun preferencesToState(
         preferences: Preferences,
-        exerciseId: String
+        exerciseId: String,
+        leadingSeparators: String = ""
     ): TransliterationExerciseState {
-        val position = preferences[positionKey(exerciseId)] ?: 0
-        val inputs = preferences[inputsKey(exerciseId)] ?: ""
+        val position = preferences[positionKey(exerciseId)] ?: leadingSeparators.length
+        val inputs = preferences[inputsKey(exerciseId)] ?: leadingSeparators
         val complete = preferences[completeKey(exerciseId)] ?: false
         val correctAnswers = preferences[correctAnswersKey(exerciseId)] ?: 0
         val totalAnswers = preferences[totalAnswersKey(exerciseId)] ?: 0
@@ -41,9 +42,9 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         )
     }
 
-    fun getExerciseStateAsFlow(exerciseId: String): Flow<TransliterationExerciseState> {
+    fun getExerciseStateAsFlow(exercise: TransliterationExercise): Flow<TransliterationExerciseState> {
         return context.transliterationStatesDataStore.data.map { preferences ->
-            preferencesToState(preferences, exerciseId)
+            preferencesToState(preferences, exercise.id, exercise.leadingSeparators())
         }
     }
 
@@ -58,13 +59,13 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
     }
 
     private suspend fun isExerciseComplete(exercise: TransliterationExercise): Boolean {
-        val exerciseStateFlow = getExerciseStateAsFlow(exercise.id)
+        val exerciseStateFlow = getExerciseStateAsFlow(exercise)
         val state = exerciseStateFlow.firstOrNull() ?: return false
         return state.complete
     }
 
     private suspend fun getExercisePosition(exercise: TransliterationExercise): Int {
-        val exerciseStateFlow = getExerciseStateAsFlow(exercise.id)
+        val exerciseStateFlow = getExerciseStateAsFlow(exercise)
         val state = exerciseStateFlow.firstOrNull() ?: return 0
         return state.position
     }
@@ -100,8 +101,9 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
 
     suspend fun resetProgress(exercise: TransliterationExercise) {
         context.transliterationStatesDataStore.edit { preferences ->
-            preferences[positionKey(exercise.id)] = 0
-            preferences[inputsKey(exercise.id)] = ""
+            val leadingSeparators = exercise.leadingSeparators()
+            preferences[positionKey(exercise.id)] = leadingSeparators.length
+            preferences[inputsKey(exercise.id)] = leadingSeparators
             preferences[completeKey(exercise.id)] = false
             preferences[correctAnswersKey(exercise.id)] = 0
             preferences[totalAnswersKey(exercise.id)] = 0
