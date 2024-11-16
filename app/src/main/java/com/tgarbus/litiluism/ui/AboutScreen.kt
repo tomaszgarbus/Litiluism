@@ -3,8 +3,6 @@ package com.tgarbus.litiluism.ui
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,11 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -47,9 +43,9 @@ import androidx.navigation.NavController
 import com.tgarbus.litiluism.R
 import com.tgarbus.litiluism.data.AboutRepository
 import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
-import com.tgarbus.litiluism.ui.reusables.closeButton
 import com.tgarbus.litiluism.ui.reusables.PageIndicator
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
+import com.tgarbus.litiluism.ui.reusables.closeButton
 import com.tgarbus.litiluism.viewmodel.AboutViewModel
 import kotlin.math.absoluteValue
 import kotlin.math.max
@@ -234,7 +230,7 @@ fun AboutSliderCards(
             beyondBoundsPageCount = 3,
             modifier = Modifier.fillMaxWidth()
         ) { page ->
-            var distanceFromCurrentPage = (
+            val distanceFromCurrentPage = (
                     (pagerState.currentPage - page) + pagerState
                         .currentPageOffsetFraction
                     ).absoluteValue
