@@ -859,5 +859,15 @@
     "name": "Long-branch Younger Fuþark",
     "inherit_from": "younger_futhark_long_branch",
     "override_symbols": []
+  },
+  "younger_futhark_kista_sten": {
+    "name": "Long-branch Younger Fuþark",
+    "inherit_from": "younger_futhark_long_branch",
+    "override_symbols": [
+      {
+        "rune": "ᚽ",
+        "latin": "e"
+      }
+    ]
   }
 }

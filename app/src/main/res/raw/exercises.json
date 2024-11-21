@@ -46,6 +46,22 @@
     "location": "uppsala_uniparken"
   },
   {
+    "id": "kistastenen",
+    "img": "kistastenen.jpg",
+    "img_credit": "Own photo, taken in Kista.",
+    "title": "Kistastenen U 75",
+    "rowType": "younger_futhark_kista_sten",
+    "description": "This light gray granit stone is one of runestones preserved in Järvafältet area, north of Stockholm. It is not known exactly where and when it was first found, but it is believed it was first discovered in 19th century nearby its current location. The inscription is placed along a beautiful animal design and the top of the stone is adorned with a small cross. The inscription starts from the top right side, just below the cross.",
+    "runes": "× ᛋᛁᚼᚢᛁᚦᚱ × ᛚᛁᛏ × ᚱᚽᛁᛋᛅ × ᚦᛁᚾᛅ ᛋᛏᚽᛁᚾ × ᚽᚠᛏᛦ × ᚠᛅᚦᚢᚱ · ᛋᛁᚾ · ᚽᚼᚢᛁᚦ ᛅᚢᚴ · ᛘᚬᚦᚢ × ᛋᚾᛅ · ᚼᚢᛚᛘᚠᚱᛁᚦᛁ × ᛅᚢᚴ × ᛁᛁᚠᚢᚱ·ᚠᛁᚱᚦ",
+    "explanationAfter": "Correct. The inscription translates in modern Swedish as: \"Sigvid lät resa denna sten efter sin fader Hägvid och sin moder Holmfrid, och Jovurfrid\" and in English: \"Sigvid had this stone raised for their father Egvid and mother Holmfrid, and Jovurfrid.\". The meaning is possibly that siblings Sigvid and Jovurfrid had the stone raised for their parents. Interestingly, U 75 was the first stone discovered where the name Jovurfrid appears.",
+    "sources": [
+      "A board next to the stone, provided by Stockholms Stadsmuseum.",
+      "https://www.raa.se/runinskrifter/sri_uppland_b06_text_2.pdf"
+    ],
+    "country": "SE",
+    "location": "kista_gardsvag"
+  },
+  {
     "id": "gamla_stan_stenen",
     "img": "gamla_stan_stenen.jpg",
     "img_credit": "Own photo, taken at Gamla Stan.",

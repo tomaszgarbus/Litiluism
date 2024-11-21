@@ -154,5 +154,11 @@
     "lat": 59.32480462651689,
     "long": 18.06999044882936,
     "description": "Prästgatan, Gamla Stan, Stockholm"
+  },
+  {
+    "id": "kista_gardsvag",
+    "lat": 59.4079547,
+    "long": 17.9394058,
+    "description": "Kista Gårdsväg"
   }
 ]
