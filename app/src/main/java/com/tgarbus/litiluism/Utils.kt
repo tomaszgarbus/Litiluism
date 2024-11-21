@@ -9,7 +9,7 @@ import kotlin.math.abs
 import kotlin.random.Random
 
 fun isSeparator(rune: Char): Boolean {
-    return charArrayOf(':', '᛫', '…', '|', ' ', '+', '-', '(', ')', '|', 'x', '×').contains(rune)
+    return charArrayOf(':', '᛫', '·', '…', '|', ' ', '+', '-', '(', ')', '|', 'x', '×').contains(rune)
 }
 
 fun generateOptions(mapping: Map<Char, List<Char>>, symbol: Char): ThreeButtonOptions {
