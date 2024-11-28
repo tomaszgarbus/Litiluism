@@ -39,7 +39,6 @@ import com.tgarbus.litiluism.ui.reusables.BackButton
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
 import com.tgarbus.litiluism.ui.reusables.Header
 import com.tgarbus.litiluism.ui.reusables.SemiCircularProgressBar
-import com.tgarbus.litiluism.ui.reusables.StatisticsLineChart
 import com.tgarbus.litiluism.viewmodel.StatisticsViewModel
 
 @Composable

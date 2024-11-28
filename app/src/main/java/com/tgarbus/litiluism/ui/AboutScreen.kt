@@ -227,7 +227,7 @@ fun AboutSliderCards(
         HorizontalPager(
             state = pagerState,
             contentPadding = PaddingValues(32.dp),
-            beyondBoundsPageCount = 3,
+            beyondViewportPageCount = 3,
             modifier = Modifier.fillMaxWidth()
         ) { page ->
             val distanceFromCurrentPage = (

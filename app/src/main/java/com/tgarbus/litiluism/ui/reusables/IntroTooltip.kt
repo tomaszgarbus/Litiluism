@@ -1,6 +1,8 @@
 package com.tgarbus.litiluism.ui.reusables
 
 import android.graphics.Color
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -153,13 +155,15 @@ fun IntroTooltip(
             builder = builder,
             onBalloonWindowInitialized = {
                 balloonWindow = it
+            },
+            onComposedAnchor = {
                 scope.launch {
                     queue.addToQueue(id, dependencies) {
                         if (layoutCoordinates.value != null) {
                             scope.launch {
                                 scrollState?.animateScrollTo(
                                     value = layoutCoordinates.value!!.positionInParent().y.toInt(),
-                                    // TODO: slow down the animation
+                                    animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
                                 )
                             }
                         }
