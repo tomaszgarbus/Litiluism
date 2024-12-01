@@ -1,0 +1,2 @@
+Licence: GNU GPLv3
+
