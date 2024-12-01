@@ -11,9 +11,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -182,66 +186,78 @@ fun ListOfExercisesScreen(
         }
     }
 
-    FullScreenPaddedColumn {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            BackButton(navController)
-            Header(
-                LocalContext.current.getString(
-                    R.string.list_of_exercises_header
-                ),
-                modifier = Modifier
-                    .padding(vertical = 20.dp)
-                    .fillMaxWidth()
-                    .weight(2f)
-            )
-            Column {
-                IntroTooltip(
-                    id = "filter_exercises", text = LocalContext.current.getString(
-                        R.string.intro_tooltips_filter_exercises
-                    ), queue = balloonsQueue
-                ) {
-                    FiltersToggle(showFiltersDialog)
+    fun applyFilters(transliterationExercises: List<TransliterationExercise>): List<TransliterationExercise> {
+        return transliterationExercises.filter { showExercise(it, filters.value) }
+    }
+
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp).safeDrawingPadding()
+    ) {
+        item {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                BackButton(navController)
+                Header(
+                    LocalContext.current.getString(
+                        R.string.list_of_exercises_header
+                    ),
+                    modifier = Modifier
+                        .padding(vertical = 20.dp)
+                        .fillMaxWidth()
+                        .weight(2f)
+                )
+                Column {
+                    IntroTooltip(
+                        id = "filter_exercises", text = LocalContext.current.getString(
+                            R.string.intro_tooltips_filter_exercises
+                        ), queue = balloonsQueue
+                    ) {
+                        FiltersToggle(showFiltersDialog)
+                    }
+                    IntroTooltip(
+                        id = "sort_exercises",
+                        text = "Click here to sort exercises.",
+                        queue = balloonsQueue
+                    ) {
+                        SortToggle(showSortDialog)
+                    }
                 }
-                IntroTooltip(
-                    id = "sort_exercises",
-                    text = "Click here to sort exercises.",
-                    queue = balloonsQueue
-                ) {
-                    SortToggle(showSortDialog)
-                }
+
             }
         }
-        AnimatedVisibility(
-            visible = showFiltersDialog.value,
-            enter = slideInVertically() + fadeIn(),
-            exit = slideOutVertically() + fadeOut()
-        ) {
-            Filters(
-                filters,
-                viewModel.exercisesByCountryCount(),
-            )
-        }
-        AnimatedVisibility(
-            visible = showSortDialog.value,
-            enter = slideInVertically() + fadeIn(),
-            exit = slideOutVertically() + fadeOut()
-        ) {
-            SortSection(
-                onValueChange = { sortOrder.value = it },
-                activeOrder = sortOrder.value
-            )
-        }
-        for (exercise in applySort(transliterationExercises)) {
+
+        item {
             AnimatedVisibility(
-                visible = showExercise(exercise, filters.value),
-                enter = slideInHorizontally(initialOffsetX = { -2 * it }),
-                exit = slideOutHorizontally(targetOffsetX = { 2 * it })
+                visible = showFiltersDialog.value,
+                enter = slideInVertically() + fadeIn(),
+                exit = slideOutVertically() + fadeOut()
             ) {
-                TransliterationExercisesListItem(
-                    exercise,
-                    navController
+                Filters(
+                    filters,
+                    viewModel.exercisesByCountryCount(),
                 )
             }
+        }
+
+        item {
+            AnimatedVisibility(
+                visible = showSortDialog.value,
+                enter = slideInVertically() + fadeIn(),
+                exit = slideOutVertically() + fadeOut()
+            ) {
+                SortSection(
+                    onValueChange = { sortOrder.value = it },
+                    activeOrder = sortOrder.value
+                )
+            }
+        }
+
+        items(applySort(applyFilters(transliterationExercises)), key = { it.id }) { exercise ->
+            TransliterationExercisesListItem(
+                exercise,
+                navController,
+                modifier = Modifier.animateItem()
+            )
         }
     }
 }

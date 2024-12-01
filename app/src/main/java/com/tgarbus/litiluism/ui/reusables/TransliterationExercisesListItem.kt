@@ -44,9 +44,10 @@ import com.tgarbus.litiluism.ui.getThumbnailResourceId
 @Composable
 fun TransliterationExercisesListItem(
     exercise: TransliterationExercise,
-    navController: NavController
+    navController: NavController,
+    modifier: Modifier = Modifier
 ) {
-    Box(modifier = Modifier
+    Box(modifier = modifier
         .fillMaxWidth()
         .shadow(
             elevation = 1.dp, shape = RoundedCornerShape(size = 21.dp)

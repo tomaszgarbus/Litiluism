@@ -74,4 +74,5 @@ dependencies {
     implementation("org.osmdroid:osmdroid-mapsforge:6.1.17")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.github.skydoves:balloon-compose:1.6.4")
+    implementation("androidx.compose.runtime:runtime-tracing:1.0.0-beta01")
 }
