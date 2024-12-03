@@ -1,0 +1,9 @@
+Litiluism (ᛚᛁᛏᛁᛚᚢᛁᛌᛙ) is an interactive rune learning app.
+
+Features:
+ * Brief introduction into history of runic writing, comparison of different scripts.
+ * Introductory exercises to practice one rune at a time.
+ * Full transliteration exercises of runic inscriptions spanning multiple regions and epochs.
+ * Recommended external materials in multiple languages.
+
+All content is based on books and materials of acclaimed scholars and information from museums and national and regional cultural organisations.
