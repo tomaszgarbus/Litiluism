@@ -70,6 +70,20 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         return state.position
     }
 
+    private suspend fun appendInputsToExerciseState(
+        exercise: TransliterationExercise,
+        cs: List<Char>
+    ) {
+        context.transliterationStatesDataStore.edit { preferences ->
+            val state = preferencesToState(preferences, exercise.id)
+            preferences[positionKey(exercise.id)] = state.position + cs.size
+            preferences[inputsKey(exercise.id)] = state.inputs + cs.joinToString("")
+            preferences[completeKey(exercise.id)] = (state.position + cs.size == exercise.runes.length)
+            preferences[correctAnswersKey(exercise.id)] = state.score.correct
+            preferences[totalAnswersKey(exercise.id)] = state.score.total
+        }
+    }
+
     private suspend fun appendInputToExerciseState(
         exercise: TransliterationExercise,
         c: Char,
@@ -93,10 +107,12 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
     ) {
         appendInputToExerciseState(exercise, c) { score -> score.recordAnswer(countAsCorrect) }
         var position = getExercisePosition(exercise)
-        while (!isExerciseComplete(exercise) && isSeparator(exercise.runes[position])) {
-            appendInputToExerciseState(exercise, exercise.runes[position], { })
-            position = getExercisePosition(exercise)
+        val inputsToAppend = ArrayList<Char>()
+        while (position < exercise.runes.length && isSeparator(exercise.runes[position])) {
+            inputsToAppend.add(exercise.runes[position])
+            position++
         }
+        appendInputsToExerciseState(exercise, inputsToAppend)
     }
 
     suspend fun resetProgress(exercise: TransliterationExercise) {

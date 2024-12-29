@@ -1,5 +1,20 @@
 [
   {
+    "id": "uppland_u88",
+    "img": "uppland_u88.jpg",
+    "img_credit": "Own photo, taken in Järfälla.",
+    "title": "Uppland stone U 88",
+    "rowType": "younger_futhark_long_branch",
+    "description": "This runestone has stood in its current place, by the side of a district road between Barkarby and Lövsta, for a thousand years. That important road led to a harbour in Lövsta, from which one could reach islands on the Mälaren lake. At least 9 runestones used to stand by that road under the Viking Age. Raising a stone by a side of a heavy-travelled road made it possible for many people to see it. And it was important for the authors to make the message well known - after all, inscriptions memorizing deceased family members often implied a claim to inheritance.",
+    "runes": "ᛋᛒᛁᛅᛚᛒᚢᚦᛁ × ᚬᚴ × ᚢᚾᛁ × ᛚᛁᛏᚢ × ᚱᛅᛁᛋᛏᚢ × ᛋᛏᛅᛁᚾ × ᛅᛏ · ᛏᛁᚦᚴᚢᛘᛅ × ᛁᚴᛁᚦᚬᚱᚢ",
+    "explanationAfter": "Correct! The inscription translates in Swedish to \"Spjallbode och Une lät resa stenen efter Tidkume, Ingetoras (man)\". In English: \"Spjallbode and Une had this stone raised in memory of Tidkume, Ingetora's (husband).\"",
+    "sources": [
+      "A plaque next to the stone, provided by Riksantikvarieämbetet."
+    ],
+    "country": "SE",
+    "location": "jarfalla_runstensvagen"
+  },
+  {
     "id": "uppsala_u_fv1976_107",
     "img": "uppsala_u_fv1976_107.jpg",
     "img_credit": "Own photo, taken at Uppsala Domkyrka.",

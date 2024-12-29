@@ -160,5 +160,11 @@
     "lat": 59.4079547,
     "long": 17.9394058,
     "description": "Kista Gårdsväg"
+  },
+  {
+    "id": "jarfalla_runstensvagen",
+    "lat": 59.4015546,
+    "long": 17.8409124,
+    "description": "Runstensvägen, Järfälla"
   }
 ]
