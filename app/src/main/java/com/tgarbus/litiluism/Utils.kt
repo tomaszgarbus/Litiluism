@@ -40,9 +40,9 @@ fun generateOptions(mapping: Map<Char, List<Char>>, symbol: Char): ThreeButtonOp
 fun generateRuneToLatinOptions(runeRow: RuneRow, symbol: Char): ThreeButtonOptions {
     if (isSeparator(symbol)) {
         return listOf(
-            Pair(listOf(symbol), false),
-            Pair(listOf(symbol), false),
-            Pair(listOf(symbol), false),
+            Pair(listOf(symbol), true),
+            Pair(listOf(symbol), true),
+            Pair(listOf(symbol), true),
         )
     }
     return generateOptions(runeRow.mapping, symbol)
