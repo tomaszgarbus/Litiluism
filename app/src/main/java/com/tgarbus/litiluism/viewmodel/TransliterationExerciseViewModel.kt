@@ -11,21 +11,25 @@ import com.tgarbus.litiluism.data.TransliterationExerciseState
 import com.tgarbus.litiluism.data.TransliterationExerciseStatesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
 
 class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
     private val staticContentRepository = StaticContentRepository.getInstance()
     var transliterationExercise =
         staticContentRepository.exercisesMap[savedStateHandle["exerciseId"]!!]!!
+    private val stateEditMutex = Mutex()
 
     fun getState(context: Context): Flow<TransliterationExerciseState> {
         return TransliterationExerciseStatesRepository.getInstance(context)
             .getExerciseStateAsFlow(transliterationExercise)
     }
 
-    fun onUserInput(c: Char, context: Context, countAsCorrect: Boolean) {
+    fun onUserInput(c: Char, position: Int, context: Context, countAsCorrect: Boolean) {
         viewModelScope.launch {
+            stateEditMutex.lock()
             TransliterationExerciseStatesRepository.getInstance(context)
-                .updateExerciseWithUserInput(transliterationExercise, c, countAsCorrect)
+                .updateExerciseWithUserInput(transliterationExercise, c, position, countAsCorrect)
+            stateEditMutex.unlock()
         }
     }
 
@@ -35,9 +39,11 @@ class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : Vie
 
     fun resetProgress(context: Context) {
         viewModelScope.launch {
+            stateEditMutex.lock()
             TransliterationExerciseStatesRepository.getInstance(context).resetProgress(
                 transliterationExercise
             )
+            stateEditMutex.unlock()
         }
     }
 }

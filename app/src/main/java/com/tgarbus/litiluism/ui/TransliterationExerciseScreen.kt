@@ -45,7 +45,6 @@ import com.tgarbus.litiluism.ui.Fonts.Companion.sarabunFontFamily
 import com.tgarbus.litiluism.ui.reusables.BalloonsQueue
 import com.tgarbus.litiluism.ui.reusables.ExerciseHeaderFrame
 import com.tgarbus.litiluism.ui.reusables.FullScreenPaddedColumn
-import com.tgarbus.litiluism.ui.reusables.InlineManualInput
 import com.tgarbus.litiluism.ui.reusables.IntroTooltip
 import com.tgarbus.litiluism.ui.reusables.ManualInput
 import com.tgarbus.litiluism.ui.reusables.PrimaryButton
@@ -241,9 +240,7 @@ fun ExerciseScreen(
                     transliterationExercise.runes[position]
                 )
                 val onCorrectAnswer: (Char, Boolean) -> Unit = { c, corr ->
-                    run {
-                        viewModel.onUserInput(c, context, corr)
-                    }
+                    viewModel.onUserInput(c, state.inputs.length, context, corr)
                 }
                 when (inputMethod.value) {
                     InputMethod.VARIANTS -> ThreeAnswerButtons(

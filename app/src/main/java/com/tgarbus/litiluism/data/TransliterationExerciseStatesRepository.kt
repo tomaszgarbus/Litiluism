@@ -13,8 +13,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
-typealias TransliterationExerciseStates = HashMap<String, TransliterationExerciseState>
-
 val Context.transliterationStatesDataStore: DataStore<Preferences> by preferencesDataStore("transliterationExerciseStates")
 
 class TransliterationExerciseStatesRepository(private val context: Context) {
@@ -72,10 +70,14 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
 
     private suspend fun appendInputsToExerciseState(
         exercise: TransliterationExercise,
+        inputPosition: Int,
         cs: List<Char>
     ) {
         context.transliterationStatesDataStore.edit { preferences ->
             val state = preferencesToState(preferences, exercise.id)
+            if (state.position != inputPosition) {
+                return@edit
+            }
             preferences[positionKey(exercise.id)] = state.position + cs.size
             preferences[inputsKey(exercise.id)] = state.inputs + cs.joinToString("")
             preferences[completeKey(exercise.id)] = (state.position + cs.size == exercise.runes.length)
@@ -87,10 +89,14 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
     private suspend fun appendInputToExerciseState(
         exercise: TransliterationExercise,
         c: Char,
+        inputPosition: Int,
         scoreUpdate: (ExerciseScore) -> Unit
     ) {
         context.transliterationStatesDataStore.edit { preferences ->
             val state = preferencesToState(preferences, exercise.id)
+            if (state.position != inputPosition) {
+                return@edit
+            }
             scoreUpdate(state.score)
             preferences[positionKey(exercise.id)] = state.position + 1
             preferences[inputsKey(exercise.id)] = state.inputs + c
@@ -103,16 +109,17 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
     suspend fun updateExerciseWithUserInput(
         exercise: TransliterationExercise,
         c: Char,
+        inputPosition: Int,  // Used to verify that we're inputting at right position.
         countAsCorrect: Boolean
     ) {
-        appendInputToExerciseState(exercise, c) { score -> score.recordAnswer(countAsCorrect) }
+        appendInputToExerciseState(exercise, c, inputPosition) { score -> score.recordAnswer(countAsCorrect) }
         var position = getExercisePosition(exercise)
         val inputsToAppend = ArrayList<Char>()
         while (position < exercise.runes.length && isSeparator(exercise.runes[position])) {
             inputsToAppend.add(exercise.runes[position])
             position++
         }
-        appendInputsToExerciseState(exercise, inputsToAppend)
+        appendInputsToExerciseState(exercise, inputPosition + 1, inputsToAppend)
     }
 
     suspend fun resetProgress(exercise: TransliterationExercise) {
