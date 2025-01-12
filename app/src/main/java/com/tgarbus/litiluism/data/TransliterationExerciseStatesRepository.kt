@@ -40,6 +40,19 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         )
     }
 
+    suspend fun maybeInitStateForExercise(exercise: TransliterationExercise) {
+        context.transliterationStatesDataStore.edit { preferences ->
+            val position = preferences[positionKey(exercise.id)]
+            if (position == null) {
+                preferences[positionKey(exercise.id)] = exercise.leadingSeparators().length
+                preferences[inputsKey(exercise.id)] = exercise.leadingSeparators()
+                preferences[completeKey(exercise.id)] = false
+                preferences[correctAnswersKey(exercise.id)] = 0
+                preferences[totalAnswersKey(exercise.id)] = 0
+            }
+        }
+    }
+
     fun getExerciseStateAsFlow(exercise: TransliterationExercise): Flow<TransliterationExerciseState> {
         return context.transliterationStatesDataStore.data.map { preferences ->
             preferencesToState(preferences, exercise.id, exercise.leadingSeparators())
@@ -71,25 +84,7 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
     private suspend fun appendInputsToExerciseState(
         exercise: TransliterationExercise,
         inputPosition: Int,
-        cs: List<Char>
-    ) {
-        context.transliterationStatesDataStore.edit { preferences ->
-            val state = preferencesToState(preferences, exercise.id)
-            if (state.position != inputPosition) {
-                return@edit
-            }
-            preferences[positionKey(exercise.id)] = state.position + cs.size
-            preferences[inputsKey(exercise.id)] = state.inputs + cs.joinToString("")
-            preferences[completeKey(exercise.id)] = (state.position + cs.size == exercise.runes.length)
-            preferences[correctAnswersKey(exercise.id)] = state.score.correct
-            preferences[totalAnswersKey(exercise.id)] = state.score.total
-        }
-    }
-
-    private suspend fun appendInputToExerciseState(
-        exercise: TransliterationExercise,
-        c: Char,
-        inputPosition: Int,
+        cs: List<Char>,
         scoreUpdate: (ExerciseScore) -> Unit
     ) {
         context.transliterationStatesDataStore.edit { preferences ->
@@ -98,9 +93,9 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
                 return@edit
             }
             scoreUpdate(state.score)
-            preferences[positionKey(exercise.id)] = state.position + 1
-            preferences[inputsKey(exercise.id)] = state.inputs + c
-            preferences[completeKey(exercise.id)] = (state.position + 1 == exercise.runes.length)
+            preferences[positionKey(exercise.id)] = state.position + cs.size
+            preferences[inputsKey(exercise.id)] = state.inputs + cs.joinToString("")
+            preferences[completeKey(exercise.id)] = (state.position + cs.size == exercise.runes.length)
             preferences[correctAnswersKey(exercise.id)] = state.score.correct
             preferences[totalAnswersKey(exercise.id)] = state.score.total
         }
@@ -112,14 +107,18 @@ class TransliterationExerciseStatesRepository(private val context: Context) {
         inputPosition: Int,  // Used to verify that we're inputting at right position.
         countAsCorrect: Boolean
     ) {
-        appendInputToExerciseState(exercise, c, inputPosition) { score -> score.recordAnswer(countAsCorrect) }
-        var position = getExercisePosition(exercise)
-        val inputsToAppend = ArrayList<Char>()
+        var position = inputPosition
+        val inputsToAppend = arrayListOf(c)
+        position++
         while (position < exercise.runes.length && isSeparator(exercise.runes[position])) {
             inputsToAppend.add(exercise.runes[position])
             position++
         }
-        appendInputsToExerciseState(exercise, inputPosition + 1, inputsToAppend)
+        appendInputsToExerciseState(exercise, inputPosition, inputsToAppend) { score ->
+            score.recordAnswer(
+                countAsCorrect
+            )
+        }
     }
 
     suspend fun resetProgress(exercise: TransliterationExercise) {

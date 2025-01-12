@@ -1,5 +1,6 @@
 package com.tgarbus.litiluism.ui
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -65,8 +66,10 @@ fun ExerciseScreen(
     navController: NavController
 ) {
     viewModel.transliterationExercise = transliterationExercise
+    viewModel.maybeInitState(LocalContext.current)
     val state = viewModel.getState(LocalContext.current)
         .collectAsState(TransliterationExerciseState()).value
+    Log.d("debug", "Debugging state: $state")
     val position = state.position
     val inputs = state.inputs
     val title = transliterationExercise.title

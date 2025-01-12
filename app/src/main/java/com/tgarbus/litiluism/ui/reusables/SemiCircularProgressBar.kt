@@ -31,7 +31,7 @@ fun SemiCircularProgressBar(
     Canvas(
         modifier = canvasModifier
     ) {
-        Log.d("size", size.toString())
+        Log.d("debug", "size: $size")
         val radius = min(size.width / 2, size.height)
         // size.width - 2 * (size.width / 2 - radius) = 2 * radius
         // size.height - 2 * (size.height / 2 - radius / 2) = radius

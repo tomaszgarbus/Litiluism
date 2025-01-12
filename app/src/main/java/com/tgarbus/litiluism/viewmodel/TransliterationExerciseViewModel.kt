@@ -37,6 +37,15 @@ class TransliterationExerciseViewModel(savedStateHandle: SavedStateHandle) : Vie
         return SettingsRepository(context).inputMethodAsFlow()
     }
 
+    fun maybeInitState(context: Context) {
+        viewModelScope.launch {
+            stateEditMutex.lock()
+            TransliterationExerciseStatesRepository.getInstance(context)
+                .maybeInitStateForExercise(transliterationExercise)
+            stateEditMutex.unlock()
+        }
+    }
+
     fun resetProgress(context: Context) {
         viewModelScope.launch {
             stateEditMutex.lock()
