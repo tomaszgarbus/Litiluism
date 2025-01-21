@@ -166,5 +166,11 @@
     "lat": 59.4015546,
     "long": 17.8409124,
     "description": "Runstensvägen, Järfälla"
+  },
+  {
+    "id": "anundshog",
+    "lat": 59.6308,
+    "long": 16.6437018,
+    "description": "Anundshög, Västerås"
   }
 ]

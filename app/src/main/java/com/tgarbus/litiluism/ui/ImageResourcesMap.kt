@@ -87,6 +87,7 @@ class ImageResourcesMap {
             "image_uppsala_u933" to R.drawable.image_uppsala_u933,
             "image_uppsala_u934" to R.drawable.image_uppsala_u934,
             "image_uppsala_u937" to R.drawable.image_uppsala_u937,
+            "image_vs_13" to R.drawable.image_vs_13,
             "image_wooden_spade" to R.drawable.image_wooden_spade,
             "learn_anglo_frisian_futhorc" to R.drawable.learn_anglo_frisian_futhorc,
             "learn_early_younger_futhark" to R.drawable.learn_early_younger_futhark,
@@ -164,6 +165,7 @@ class ImageResourcesMap {
             "thumbnail_uppsala_u933" to R.drawable.thumbnail_uppsala_u933,
             "thumbnail_uppsala_u934" to R.drawable.thumbnail_uppsala_u934,
             "thumbnail_uppsala_u937" to R.drawable.thumbnail_uppsala_u937,
+            "thumbnail_vs_13" to R.drawable.thumbnail_vs_13,
             "thumbnail_wooden_spade" to R.drawable.thumbnail_wooden_spade,
         )
     }

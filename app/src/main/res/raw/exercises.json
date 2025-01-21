@@ -1,5 +1,20 @@
 [
   {
+    "id": "vs_13",
+    "img": "vs_13.jpg",
+    "img_credit": "Own photo, taken in Västerås.",
+    "title": "Vs 13 at Anundshög",
+    "rowType": "younger_futhark_long_branch",
+    "description": "This huge stone is standing over 3 metres tall in a cultural heritage area of Anundshög, where other beautiful artifacts are to be found: the tallest burial mound in Sweden, four stone ship settings, and a medieval road of kings marked with a row of monoliths.",
+    "runes": "ᚠᚢᛚᚴᚢᛁᚦᚱ × ᚱᛅᛁᛋᛏᛁ × ᛋᛏᛅᛁᚾᛅ × ᚦᛅᛋᛁ × ᛅᛚᛅ × ᛅᛏ × ᛋᚢᚾ × ᛋᛁᚾ × ᚼᛁᚦᛁᚾ × ᛒᚱᚢᚦᚢᚱ × ᛅᚾᚢᛏᛅᛦ × ᚢᚱᛅᛁᚦᚱ ᚼᛁᚴ × ᚱᚢᚾᛅᛦ",
+    "explanationAfter": "Excellent! The stone reads in modern Swedish: \"Folkvid reste alla dessa stenar efter sin son Heden, Anunds broder. Vred högg runorna.\" In English: \"Folkvid raised all these stones after his son Heden, Anunds brother. Vred carved the runes\". Folkvid was a prominent man in Badelunda who also paid for the road to be built past Anundshög and marked with a row of monoliths (\"all these stones\"). The road was to be used when the newly crowned king rode through his realm to receive the homage of his people. Note that the Anund named on the stone is a different person than the one buried in Anundshög, which originates from 5-6th century. The name Anund was very common in the 10th century, to which the runestone is dated.",
+    "sources": [
+      "Info board next to the stone."
+    ],
+    "country" : "SE",
+    "location": "anundshog"
+  },
+  {
     "id": "uppland_u88",
     "img": "uppland_u88.jpg",
     "img_credit": "Own photo, taken in Järfälla.",
