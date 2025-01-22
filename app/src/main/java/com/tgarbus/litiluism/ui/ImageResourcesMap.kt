@@ -89,6 +89,8 @@ class ImageResourcesMap {
             "image_uppsala_u937" to R.drawable.image_uppsala_u937,
             "image_vs_13" to R.drawable.image_vs_13,
             "image_wooden_spade" to R.drawable.image_wooden_spade,
+            "learn_anundshog" to R.drawable.learn_anundshog,
+            "learn_anundshog_view" to R.drawable.learn_anundshog_view,
             "learn_anglo_frisian_futhorc" to R.drawable.learn_anglo_frisian_futhorc,
             "learn_early_younger_futhark" to R.drawable.learn_early_younger_futhark,
             "learn_futhark_reduction" to R.drawable.learn_futhark_reduction,
